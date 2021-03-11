@@ -28,7 +28,7 @@ class CoordinateRendererTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->coordinateRenderer = new CoordinateRenderer();
     }

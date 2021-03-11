@@ -29,7 +29,7 @@ class PolylineCollectorTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->polylineCollector = new PolylineCollector();
     }

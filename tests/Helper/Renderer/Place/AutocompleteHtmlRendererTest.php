@@ -31,7 +31,7 @@ class AutocompleteHtmlRendererTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->autocompleteHtmlRenderer = new AutocompleteHtmlRenderer(
             $formatter = new Formatter(),

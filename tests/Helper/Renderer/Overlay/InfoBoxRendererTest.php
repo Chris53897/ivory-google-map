@@ -36,7 +36,7 @@ class InfoBoxRendererTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->infoBoxRenderer = new InfoBoxRenderer(
             $formatter = new Formatter(),

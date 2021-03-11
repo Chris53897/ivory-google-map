@@ -28,7 +28,7 @@ class PolylineStyleRendererTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->polylineStyleRenderer = new PolylineStyleRenderer();
     }

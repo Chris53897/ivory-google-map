@@ -37,7 +37,7 @@ class GeocoderAddressRequestTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->request = new GeocoderAddressRequest($this->address = 'Lille');
     }

@@ -30,7 +30,7 @@ class ControlPositionRendererTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->controlPositionRenderer = new ControlPositionRenderer(new Formatter());
     }

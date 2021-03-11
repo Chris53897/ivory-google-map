@@ -12,7 +12,7 @@
 namespace Ivory\Tests\GoogleMap\Service\Utility;
 
 use Http\Client\Common\Plugin\Journal as JournalInterface;
-use Http\Client\Exception;
+use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
@@ -47,7 +47,7 @@ class Journal implements JournalInterface
     /**
      * {@inheritdoc}
      */
-    public function addFailure(RequestInterface $request, Exception $exception)
+    public function addFailure(RequestInterface $request, ClientExceptionInterface $exception)
     {
         $this->data = [];
     }

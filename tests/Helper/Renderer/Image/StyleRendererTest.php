@@ -27,7 +27,7 @@ class StyleRendererTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->styleRenderer = new StyleRenderer();
     }

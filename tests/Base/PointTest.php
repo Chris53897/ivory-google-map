@@ -28,7 +28,7 @@ class PointTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->point = new Point();
     }

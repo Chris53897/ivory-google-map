@@ -29,7 +29,7 @@ class AutocompleteEventCollectorTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->eventCollector = new AutocompleteEventCollector();
     }

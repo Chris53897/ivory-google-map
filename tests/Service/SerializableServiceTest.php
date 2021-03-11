@@ -53,7 +53,7 @@ class SerializableServiceTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->service = $this->getMockBuilder(AbstractSerializableService::class)
             ->setConstructorArgs([

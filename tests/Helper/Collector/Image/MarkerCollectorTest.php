@@ -32,7 +32,7 @@ class MarkerCollectorTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->markerCollector = new MarkerCollector(new MarkerStyleRenderer(new PointRenderer()));
     }

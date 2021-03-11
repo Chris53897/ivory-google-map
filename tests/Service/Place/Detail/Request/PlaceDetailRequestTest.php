@@ -34,7 +34,7 @@ class PlaceDetailRequestTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->request = new PlaceDetailRequest($this->placeId = 'place');
     }

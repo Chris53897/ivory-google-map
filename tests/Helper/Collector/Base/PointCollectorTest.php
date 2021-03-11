@@ -34,7 +34,7 @@ class PointCollectorTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->pointCollector = new PointCollector(new MarkerCollector());
     }

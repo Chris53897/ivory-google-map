@@ -31,7 +31,7 @@ class JavascriptHelperBuilderTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->helperBuilder = $this->createAbstractJavascriptHelperBuilder();
     }

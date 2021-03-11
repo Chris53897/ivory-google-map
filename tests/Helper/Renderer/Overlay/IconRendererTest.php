@@ -33,7 +33,7 @@ class IconRendererTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->iconRenderer = new IconRenderer(new Formatter(), new JsonBuilder());
     }

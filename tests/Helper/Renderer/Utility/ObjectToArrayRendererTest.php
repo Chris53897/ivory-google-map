@@ -29,7 +29,7 @@ class ObjectToArrayRendererTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->objectToArrayRenderer = new ObjectToArrayRenderer(new Formatter());
     }

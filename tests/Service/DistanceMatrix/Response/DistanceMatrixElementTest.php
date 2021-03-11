@@ -32,7 +32,7 @@ class DistanceMatrixElementTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->element = new DistanceMatrixElement();
     }

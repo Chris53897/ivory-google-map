@@ -35,7 +35,7 @@ class RotateControlRendererTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->rotateControlRenderer = new RotateControlRenderer(
             $formatter = new Formatter(),

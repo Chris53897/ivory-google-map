@@ -33,7 +33,7 @@ class TextPlaceSearchRequestTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->request = new TextPlaceSearchRequest($this->query = 'foo');
     }

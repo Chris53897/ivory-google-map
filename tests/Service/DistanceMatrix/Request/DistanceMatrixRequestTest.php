@@ -48,7 +48,7 @@ class DistanceMatrixRequestTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->request = new DistanceMatrixRequest(
             $this->origins = [new AddressLocation('Paris')],

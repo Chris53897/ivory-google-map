@@ -48,7 +48,7 @@ class DirectionRequestTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->request = new DirectionRequest(
             $this->origin = $this->createLocationMock('origin'),

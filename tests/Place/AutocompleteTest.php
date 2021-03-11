@@ -33,7 +33,7 @@ class AutocompleteTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->autocomplete = new Autocomplete();
     }

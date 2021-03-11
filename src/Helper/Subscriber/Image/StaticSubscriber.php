@@ -13,8 +13,8 @@ namespace Ivory\GoogleMap\Helper\Subscriber\Image;
 
 use Ivory\GoogleMap\Helper\Event\StaticMapEvents;
 use Ivory\GoogleMap\Helper\Subscriber\DelegateSubscriberInterface;
-use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Contracts\EventDispatcher\Event;
 
 /**
  * @author GeLo <geloen.eric@gmail.com>

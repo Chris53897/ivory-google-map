@@ -20,8 +20,8 @@ use Ivory\GoogleMap\Helper\Renderer\Html\JavascriptTagRenderer;
 use Ivory\GoogleMap\Helper\Renderer\MapRenderer;
 use Ivory\GoogleMap\Helper\Renderer\Utility\CallbackRenderer;
 use Ivory\GoogleMap\Map;
-use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Contracts\EventDispatcher\Event;
 
 /**
  * @author GeLo <geloen.eric@gmail.com>

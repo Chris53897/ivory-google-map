@@ -47,7 +47,7 @@ class ControlManagerRendererTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->controlManagerRenderer = new ControlManagerRenderer();
     }

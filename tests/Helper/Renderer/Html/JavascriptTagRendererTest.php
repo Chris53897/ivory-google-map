@@ -30,7 +30,7 @@ class JavascriptTagRendererTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->javascriptTagRenderer = new JavascriptTagRenderer(
             $formatter = new Formatter(),

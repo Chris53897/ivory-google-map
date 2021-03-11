@@ -31,7 +31,7 @@ class BoundTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->bound = new Bound();
     }

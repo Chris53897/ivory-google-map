@@ -29,7 +29,7 @@ class ZoomControlTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->zoomControl = new ZoomControl();
     }

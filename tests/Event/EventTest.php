@@ -44,7 +44,7 @@ class EventTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->event = new Event(
             $this->instance = 'instance',

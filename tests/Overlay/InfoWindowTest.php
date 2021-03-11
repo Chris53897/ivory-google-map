@@ -40,7 +40,7 @@ class InfoWindowTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->infoWindow = new InfoWindow($this->content = '<p>content</p>');
     }

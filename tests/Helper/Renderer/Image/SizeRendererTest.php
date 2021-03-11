@@ -28,7 +28,7 @@ class SizeRendererTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->sizeRenderer = new SizeRenderer();
     }

@@ -30,7 +30,7 @@ class MapCenterRendererTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->mapCenterRenderer = new MapCenterRenderer(new Formatter());
     }

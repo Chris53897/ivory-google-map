@@ -43,7 +43,7 @@ class LayerManagerTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->bound = $this->createBoundMock();
         $this->map = $this->createMapMock($this->bound);

@@ -12,7 +12,7 @@
 namespace Ivory\GoogleMap\Helper\Event;
 
 use Ivory\GoogleMap\Map;
-use Symfony\Component\EventDispatcher\Event;
+use Symfony\Contracts\EventDispatcher\Event;
 
 /**
  * @author GeLo <geloen.eric@gmail.com>

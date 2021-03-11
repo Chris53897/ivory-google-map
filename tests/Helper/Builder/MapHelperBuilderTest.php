@@ -29,7 +29,7 @@ class MapHelperBuilderTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->mapHelperBuilder = MapHelperBuilder::create($_SERVER['API_KEY'] ?? null);
     }

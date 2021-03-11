@@ -37,7 +37,7 @@ class AbstractPlaceAutocompleteRequestTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->request = $this->getMockBuilder(AbstractPlaceAutocompleteRequest::class)
             ->setConstructorArgs([$this->input = 'input'])

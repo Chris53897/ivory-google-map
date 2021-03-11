@@ -29,7 +29,7 @@ class ReviewTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->review = new Review();
     }

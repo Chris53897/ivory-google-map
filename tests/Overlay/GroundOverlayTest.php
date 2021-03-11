@@ -42,7 +42,7 @@ class GroundOverlayTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->groundOverlay = new GroundOverlay(
             $this->url = 'https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg',

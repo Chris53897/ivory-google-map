@@ -33,7 +33,7 @@ class DefaultViewportExtendableRendererTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->defaultViewportExtendableRenderer = new DefaultViewportExtendableRenderer(new Formatter());
     }

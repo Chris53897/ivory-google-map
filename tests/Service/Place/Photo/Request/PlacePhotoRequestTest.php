@@ -34,7 +34,7 @@ class PlacePhotoRequestTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->request = new PlacePhotoRequest($this->reference = 'foo');
     }

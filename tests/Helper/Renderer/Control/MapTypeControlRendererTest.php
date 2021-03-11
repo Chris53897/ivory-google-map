@@ -37,7 +37,7 @@ class MapTypeControlRendererTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->mapTypeControlRenderer = new MapTypeControlRenderer(
             $formatter = new Formatter(),

@@ -33,7 +33,7 @@ class GeocoderPlaceIdRequestTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->request = new GeocoderPlaceIdRequest($this->placeId = 'ChIJLU7jZClu5kcR4PcOOO6p3I0');
     }

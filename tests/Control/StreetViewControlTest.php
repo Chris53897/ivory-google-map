@@ -28,7 +28,7 @@ class StreetViewControlTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->streetViewControl = new StreetViewControl();
     }

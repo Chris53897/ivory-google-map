@@ -27,7 +27,7 @@ class PlaceAutocompleteTermTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->match = new PlaceAutocompleteTerm();
     }

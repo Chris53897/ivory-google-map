@@ -27,9 +27,9 @@ class OpeningHoursTest extends TestCase
     private $openingHours;
 
     /**
-     * @inheritdoc}
+     * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->openingHours = new OpeningHours();
     }

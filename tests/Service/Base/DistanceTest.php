@@ -37,7 +37,7 @@ class DistanceTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->distance = new Distance($this->value = 2.3, $this->text = 'foo');
     }

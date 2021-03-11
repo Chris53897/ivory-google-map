@@ -33,7 +33,7 @@ class RectangleRendererTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->rectangleRenderer = new RectangleRenderer(new Formatter(), new JsonBuilder());
     }

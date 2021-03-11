@@ -29,7 +29,7 @@ class KmlLayerCollectorTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->kmlLayerCollector = new KmlLayerCollector();
     }

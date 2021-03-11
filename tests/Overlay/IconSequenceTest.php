@@ -36,7 +36,7 @@ class IconSequenceTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->iconSequence = new IconSequence($this->symbol = $this->createSymbolMock());
     }

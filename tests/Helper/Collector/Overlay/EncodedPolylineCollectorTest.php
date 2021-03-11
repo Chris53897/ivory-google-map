@@ -29,7 +29,7 @@ class EncodedPolylineCollectorTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->encodedPolylineCollector = new EncodedPolylineCollector();
     }

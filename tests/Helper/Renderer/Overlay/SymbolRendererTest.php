@@ -34,7 +34,7 @@ class SymbolRendererTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->symbolRenderer = new SymbolRenderer(
             $formatter = new Formatter(),

@@ -21,8 +21,8 @@ use Ivory\GoogleMap\Helper\Renderer\Place\AutocompleteRenderer;
 use Ivory\GoogleMap\Helper\Renderer\Utility\CallbackRenderer;
 use Ivory\GoogleMap\Helper\Subscriber\AbstractDelegateSubscriber;
 use Ivory\GoogleMap\Place\Autocomplete;
-use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Contracts\EventDispatcher\Event;
 
 /**
  * @author GeLo <geloen.eric@gmail.com>

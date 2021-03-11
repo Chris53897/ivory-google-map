@@ -42,7 +42,7 @@ class TimeTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->time = new Time(
             $this->value = new \DateTime(),

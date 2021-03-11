@@ -30,7 +30,7 @@ class MapTypeControlTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->mapTypeControl = new MapTypeControl();
     }

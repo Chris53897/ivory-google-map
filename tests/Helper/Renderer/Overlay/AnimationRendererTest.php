@@ -30,7 +30,7 @@ class AnimationRendererTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->animationRenderer = new AnimationRenderer(new Formatter());
     }
