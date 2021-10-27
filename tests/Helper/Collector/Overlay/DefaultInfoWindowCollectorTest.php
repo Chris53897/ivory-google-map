@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -16,19 +18,12 @@ use Ivory\GoogleMap\Helper\Collector\Overlay\MarkerCollector;
 use Ivory\GoogleMap\Overlay\InfoWindowType;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class DefaultInfoWindowCollectorTest extends TestCase
 {
-    /**
-     * @var DefaultInfoWindowCollector
-     */
+    /** @var DefaultInfoWindowCollector */
     private $defaultInfoWindowCollector;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->defaultInfoWindowCollector = new DefaultInfoWindowCollector(new MarkerCollector());

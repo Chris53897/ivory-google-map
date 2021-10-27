@@ -43,7 +43,7 @@ class MapContainerSubscriber extends AbstractSubscriber
     public function handleMap(MapEvent $event): void
     {
         $formatter = $this->getFormatter();
-        $map = $event->getMap();
+        $map       = $event->getMap();
 
         $event->addCode($formatter->renderContainerAssignment(
             $map,
@@ -51,9 +51,7 @@ class MapContainerSubscriber extends AbstractSubscriber
         ));
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     public static function getSubscribedEvents(): array
     {
         return [MapEvents::JAVASCRIPT_INIT_CONTAINER => 'handleMap'];

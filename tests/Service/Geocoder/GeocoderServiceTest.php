@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,7 +13,6 @@
 
 namespace Ivory\Tests\GoogleMap\Service\Geocoder;
 
-use Http\Client\Common\Exception\ClientErrorException;
 use Ivory\GoogleMap\Base\Bound;
 use Ivory\GoogleMap\Base\Coordinate;
 use Ivory\GoogleMap\Service\Geocoder\GeocoderService;
@@ -24,19 +25,12 @@ use Ivory\GoogleMap\Service\Geocoder\Response\GeocoderResult;
 use Ivory\GoogleMap\Service\Geocoder\Response\GeocoderStatus;
 use Ivory\Tests\GoogleMap\Service\AbstractSerializableServiceTest;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class GeocoderServiceTest extends AbstractSerializableServiceTest
 {
-    /**
-     * @var GeocoderService
-     */
+    /** @var GeocoderService */
     protected $service;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         if (!isset($_SERVER['API_KEY'])) {
@@ -73,7 +67,7 @@ class GeocoderServiceTest extends AbstractSerializableServiceTest
     {
         $request = new GeocoderAddressRequest('Grand place');
         $request->setComponents([
-            GeocoderComponentType::COUNTRY     => 'fr',
+            GeocoderComponentType::COUNTRY => 'fr',
             GeocoderComponentType::POSTAL_CODE => 59800,
         ]);
 
@@ -172,25 +166,21 @@ class GeocoderServiceTest extends AbstractSerializableServiceTest
      */
     public function testErrorRequest($format)
     {
-        $this->expectException(ClientErrorException::class);
-
         $this->service->setFormat($format);
         $this->service->setKey('invalid');
 
-        $this->service->geocode($this->createAddressRequest());
+        $response = $this->service->geocode($this->createAddressRequest());
+
+        $this->assertSame(GeocoderStatus::REQUEST_DENIED, $response->getStatus());
     }
 
-    /**
-     * @return GeocoderAddressRequest
-     */
+    /** @return GeocoderAddressRequest */
     protected function createAddressRequest()
     {
         return new GeocoderAddressRequest('Paris');
     }
 
-    /**
-     * @return GeocoderCoordinateRequest
-     */
+    /** @return GeocoderCoordinateRequest */
     protected function createCoordinateRequest()
     {
         return new GeocoderCoordinateRequest(new Coordinate(48.858369, 2.294482));
@@ -202,7 +192,7 @@ class GeocoderServiceTest extends AbstractSerializableServiceTest
      */
     protected function assertGeocoderResponse($response, $request)
     {
-        $options = array_merge(['results' => []], self::$journal->getData());
+        $options = array_merge(['results' => []], $this->journal->getData());
         $options['status'] = GeocoderStatus::OK;
 
         $this->assertInstanceOf(GeocoderResponse::class, $response);
@@ -224,13 +214,13 @@ class GeocoderServiceTest extends AbstractSerializableServiceTest
     private function assertGeocoderResult($result, array $options = [])
     {
         $options = array_merge([
-            'place_id'            => null,
-            'formatted_address'   => null,
-            'partial_match'       => null,
-            'types'               => [],
+            'place_id' => null,
+            'formatted_address' => null,
+            'partial_match' => null,
+            'types' => [],
             'postcode_localities' => [],
-            'address_components'  => [],
-            'geometry'            => [],
+            'address_components' => [],
+            'geometry' => [],
         ], $options);
 
         $this->assertInstanceOf(GeocoderResult::class, $result);

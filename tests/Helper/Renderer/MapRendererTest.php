@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -23,19 +25,12 @@ use Ivory\JsonBuilder\JsonBuilder;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class MapRendererTest extends TestCase
 {
-    /**
-     * @var MapRenderer
-     */
+    /** @var MapRenderer */
     private $mapRenderer;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->mapRenderer = new MapRenderer(
@@ -127,25 +122,19 @@ class MapRendererTest extends TestCase
         $this->assertSame('typeof google.maps!==typeof undefined', $this->mapRenderer->renderRequirement());
     }
 
-    /**
-     * @return MockObject|MapTypeIdRenderer
-     */
+    /** @return MockObject|MapTypeIdRenderer */
     private function createMapTypeIdRendererMock()
     {
         return $this->createMock(MapTypeIdRenderer::class);
     }
 
-    /**
-     * @return MockObject|ControlManagerRenderer
-     */
+    /** @return MockObject|ControlManagerRenderer */
     private function createControlManagerRendererMock()
     {
         return $this->createMock(ControlManagerRenderer::class);
     }
 
-    /**
-     * @return MockObject|RequirementRenderer
-     */
+    /** @return MockObject|RequirementRenderer */
     private function createRequirementRendererMock()
     {
         return $this->createMock(RequirementRenderer::class);

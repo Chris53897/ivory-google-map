@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,368 +20,260 @@ use Ivory\GoogleMap\Service\Base\Time;
 
 /**
  * @see http://code.google.com/apis/maps/documentation/javascript/reference.html#DirectionLeg
- *
- * @author GeLo <geloen.eric@gmail.com>
  */
 class DirectionLeg
 {
-    /**
-     * @var Distance|null
-     */
+    /** @var Distance|null */
     private $distance;
 
-    /**
-     * @var Duration|null
-     */
+    /** @var Duration|null */
     private $duration;
 
-    /**
-     * @var Duration|null
-     */
+    /** @var Duration|null */
     private $durationInTraffic;
 
-    /**
-     * @var Time|null
-     */
+    /** @var Time|null */
     private $arrivalTime;
 
-    /**
-     * @var Time|null
-     */
+    /** @var Time|null */
     private $departureTime;
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $endAddress;
 
-    /**
-     * @var Coordinate|null
-     */
+    /** @var Coordinate|null */
     private $endLocation;
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $startAddress;
 
-    /**
-     * @var Coordinate|null
-     */
+    /** @var Coordinate|null */
     private $startLocation;
 
-    /**
-     * @var DirectionStep[]
-     */
+    /** @var DirectionStep[] */
     private $steps = [];
 
-    /**
-     * @var DirectionWaypoint[]
-     */
+    /** @var DirectionWaypoint[] */
     private $viaWaypoints = [];
 
-    /**
-     * @return bool
-     */
-    public function hasDistance()
+    public function hasDistance(): bool
     {
         return null !== $this->distance;
     }
 
-    /**
-     * @return Distance|null
-     */
-    public function getDistance()
+    public function getDistance(): ?Distance
     {
         return $this->distance;
     }
 
-    public function setDistance(Distance $distance = null)
+    public function setDistance(Distance $distance = null): void
     {
         $this->distance = $distance;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasDuration()
+    public function hasDuration(): bool
     {
         return null !== $this->duration;
     }
 
-    /**
-     * @return Duration|null
-     */
-    public function getDuration()
+    public function getDuration(): ?Duration
     {
         return $this->duration;
     }
 
-    public function setDuration(Duration $duration = null)
+    public function setDuration(Duration $duration = null): void
     {
         $this->duration = $duration;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasDurationInTraffic()
+    public function hasDurationInTraffic(): bool
     {
         return null !== $this->durationInTraffic;
     }
 
-    /**
-     * @return Duration|null
-     */
-    public function getDurationInTraffic()
+    public function getDurationInTraffic(): ?Duration
     {
         return $this->durationInTraffic;
     }
 
-    public function setDurationInTraffic(Duration $durationInTraffic = null)
+    public function setDurationInTraffic(Duration $durationInTraffic = null): void
     {
         $this->durationInTraffic = $durationInTraffic;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasArrivalTime()
+    public function hasArrivalTime(): bool
     {
         return null !== $this->arrivalTime;
     }
 
-    /**
-     * @return Time|null
-     */
-    public function getArrivalTime()
+    public function getArrivalTime(): ?Time
     {
         return $this->arrivalTime;
     }
 
-    public function setArrivalTime(Time $arrivalTime = null)
+    public function setArrivalTime(?Time $arrivalTime = null): void
     {
         $this->arrivalTime = $arrivalTime;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasDepartureTime()
+    public function hasDepartureTime(): bool
     {
         return null !== $this->departureTime;
     }
 
-    /**
-     * @return Time|null
-     */
-    public function getDepartureTime()
+    public function getDepartureTime(): ?Time
     {
         return $this->departureTime;
     }
 
-    public function setDepartureTime(Time $departureTime = null)
+    public function setDepartureTime(?Time $departureTime = null): void
     {
         $this->departureTime = $departureTime;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasEndAddress()
+    public function hasEndAddress(): bool
     {
         return null !== $this->endAddress;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getEndAddress()
+    public function getEndAddress(): ?string
     {
         return $this->endAddress;
     }
 
-    /**
-     * @param string|null $endAddress
-     */
-    public function setEndAddress($endAddress = null)
+    public function setEndAddress(?string $endAddress = null): void
     {
         $this->endAddress = $endAddress;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasEndLocation()
+    public function hasEndLocation(): bool
     {
         return null !== $this->endLocation;
     }
 
-    /**
-     * @return Coordinate|null
-     */
-    public function getEndLocation()
+    public function getEndLocation(): ?Coordinate
     {
         return $this->endLocation;
     }
 
-    public function setEndLocation(Coordinate $endLocation = null)
+    public function setEndLocation(?Coordinate $endLocation = null): void
     {
         $this->endLocation = $endLocation;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasStartAddress()
+    public function hasStartAddress(): bool
     {
         return null !== $this->startAddress;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getStartAddress()
+    public function getStartAddress(): ?string
     {
         return $this->startAddress;
     }
 
-    /**
-     * @param string|null $startAddress
-     */
-    public function setStartAddress($startAddress = null)
+    public function setStartAddress(?string $startAddress = null): void
     {
         $this->startAddress = $startAddress;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasStartLocation()
+    public function hasStartLocation(): bool
     {
         return null !== $this->startLocation;
     }
 
-    /**
-     * @return Coordinate|null
-     */
-    public function getStartLocation()
+    public function getStartLocation(): ?Coordinate
     {
         return $this->startLocation;
     }
 
-    public function setStartLocation(Coordinate $startLocation = null)
+    public function setStartLocation(?Coordinate $startLocation = null): void
     {
         $this->startLocation = $startLocation;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasSteps()
+    public function hasSteps(): bool
     {
         return !empty($this->steps);
     }
 
-    /**
-     * @return DirectionStep[]
-     */
-    public function getSteps()
+    /** @return DirectionStep[] */
+    public function getSteps(): array
     {
         return $this->steps;
     }
 
-    /**
-     * @param DirectionStep[] $steps
-     */
-    public function setSteps(array $steps)
+    /** @param DirectionStep[] $steps */
+    public function setSteps(array $steps): void
     {
         $this->steps = [];
         $this->addSteps($steps);
     }
 
-    /**
-     * @param DirectionStep[] $steps
-     */
-    public function addSteps(array $steps)
+    /** @param DirectionStep[] $steps */
+    public function addSteps(array $steps): void
     {
         foreach ($steps as $step) {
             $this->addStep($step);
         }
     }
 
-    /**
-     * @return bool
-     */
-    public function hasStep(DirectionStep $step)
+    public function hasStep(DirectionStep $step): bool
     {
         return in_array($step, $this->steps, true);
     }
 
-    public function addStep(DirectionStep $step)
+    public function addStep(DirectionStep $step): void
     {
         if (!$this->hasStep($step)) {
             $this->steps[] = $step;
         }
     }
 
-    public function removeStep(DirectionStep $step)
+    public function removeStep(DirectionStep $step): void
     {
         unset($this->steps[array_search($step, $this->steps, true)]);
         $this->steps = empty($this->steps) ? [] : array_values($this->steps);
     }
 
-    /**
-     * @return bool
-     */
-    public function hasViaWaypoints()
+    public function hasViaWaypoints(): bool
     {
         return !empty($this->viaWaypoints);
     }
 
-    /**
-     * @return DirectionWaypoint[]
-     */
-    public function getViaWaypoints()
+    /** @return DirectionWaypoint[] */
+    public function getViaWaypoints(): array
     {
         return $this->viaWaypoints;
     }
 
-    /**
-     * @param DirectionWaypoint[] $viaWaypoints
-     */
-    public function setViaWaypoints(array $viaWaypoints)
+    /** @param DirectionWaypoint[] $viaWaypoints */
+    public function setViaWaypoints(array $viaWaypoints): void
     {
         $this->viaWaypoints = [];
         $this->addViaWaypoints($viaWaypoints);
     }
 
-    /**
-     * @param DirectionWaypoint[] $viaWaypoints
-     */
-    public function addViaWaypoints(array $viaWaypoints)
+    /** @param DirectionWaypoint[] $viaWaypoints */
+    public function addViaWaypoints(array $viaWaypoints): void
     {
         foreach ($viaWaypoints as $viaWaypoint) {
             $this->addViaWaypoint($viaWaypoint);
         }
     }
 
-    /**
-     * @return bool
-     */
-    public function hasViaWaypoint(DirectionWaypoint $viaWaypoint)
+    public function hasViaWaypoint(DirectionWaypoint $viaWaypoint): bool
     {
         return in_array($viaWaypoint, $this->viaWaypoints, true);
     }
 
-    public function addViaWaypoint(DirectionWaypoint $viaWaypoint)
+    public function addViaWaypoint(DirectionWaypoint $viaWaypoint): void
     {
         if (!$this->hasViaWaypoint($viaWaypoint)) {
             $this->viaWaypoints[] = $viaWaypoint;
         }
     }
 
-    public function removeViaWaypoint(DirectionWaypoint $viaWaypoint)
+    public function removeViaWaypoint(DirectionWaypoint $viaWaypoint): void
     {
         unset($this->viaWaypoints[array_search($viaWaypoint, $this->viaWaypoints, true)]);
         $this->viaWaypoints = empty($this->viaWaypoints) ? [] : array_values($this->viaWaypoints);

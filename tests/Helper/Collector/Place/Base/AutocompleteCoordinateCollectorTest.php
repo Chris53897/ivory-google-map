@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -19,19 +21,12 @@ use Ivory\GoogleMap\Place\Autocomplete;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class AutocompleteCoordinateCollectorTest extends TestCase
 {
-    /**
-     * @var AutocompleteCoordinateCollector
-     */
+    /** @var AutocompleteCoordinateCollector */
     private $autocompleteCoordinateCollector;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->autocompleteCoordinateCollector = new AutocompleteCoordinateCollector(new AutocompleteBoundCollector());
@@ -61,9 +56,7 @@ class AutocompleteCoordinateCollectorTest extends TestCase
         $this->assertSame([$southWest, $northEast], $this->autocompleteCoordinateCollector->collect($autocomplete));
     }
 
-    /**
-     * @return MockObject|AutocompleteBoundCollector
-     */
+    /** @return MockObject|AutocompleteBoundCollector */
     private function createAutocompleteBoundCollectorMock()
     {
         return $this->createMock(AutocompleteBoundCollector::class);

@@ -46,9 +46,7 @@ class AutocompleteHtmlSubscriber extends AbstractSubscriber
         $event->addCode($this->htmlRenderer->render($event->getAutocomplete()));
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     public static function getSubscribedEvents(): array
     {
         return [PlaceAutocompleteEvents::HTML => 'handleAutocomplete'];

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -17,27 +19,18 @@ use Ivory\GoogleMap\Service\Base\Location\LocationInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class CoordinateLocationTest extends TestCase
 {
-    /**
-     * @var CoordinateLocation
-     */
+    /** @var CoordinateLocation */
     private $coordinateLocation;
 
-    /**
-     * @var Coordinate|MockObject
-     */
+    /** @var Coordinate|MockObject */
     private $coordinate;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
-        $this->coordinate = $this->createCoordinateMock();
+        $this->coordinate         = $this->createCoordinateMock();
         $this->coordinateLocation = new CoordinateLocation($this->coordinate);
     }
 
@@ -73,9 +66,7 @@ class CoordinateLocationTest extends TestCase
         $this->assertSame('1.2,2.3', $this->coordinateLocation->buildQuery());
     }
 
-    /**
-     * @return MockObject|Coordinate
-     */
+    /** @return MockObject|Coordinate */
     private function createCoordinateMock()
     {
         return $this->createMock(Coordinate::class);

@@ -17,7 +17,6 @@ use Ivory\GoogleMap\Helper\Renderer\AbstractJsonRenderer;
 
 class AutocompleteContainerRenderer extends AbstractJsonRenderer
 {
-
     public function render(): string
     {
         return $this->getJsonBuilder()

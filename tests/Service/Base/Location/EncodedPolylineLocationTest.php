@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -15,24 +17,15 @@ use Ivory\GoogleMap\Service\Base\Location\EncodedPolylineLocation;
 use Ivory\GoogleMap\Service\Base\Location\LocationInterface;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class EncodedPolylineLocationTest extends TestCase
 {
-    /**
-     * @var EncodedPolylineLocation
-     */
+    /** @var EncodedPolylineLocation */
     private $encodedPolylineLocation;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $encodedPolyline;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->encodedPolylineLocation = new EncodedPolylineLocation($this->encodedPolyline = 'value');

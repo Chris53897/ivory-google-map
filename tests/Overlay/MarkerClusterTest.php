@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -22,38 +24,25 @@ use Ivory\GoogleMap\Utility\VariableAwareInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class MarkerClusterTest extends TestCase
 {
-    /**
-     * @var MarkerCluster
-     */
+    /** @var MarkerCluster */
     private $markerCluster;
 
-    /**
-     * @var MockObject|OverlayManager
-     */
+    /** @var MockObject|OverlayManager */
     private $overlayManager;
 
-    /**
-     * @var MockObject|Map
-     */
+    /** @var MockObject|Map */
     private $map;
 
-    /**
-     * @var MockObject|Bound
-     */
+    /** @var MockObject|Bound */
     private $bound;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
-        $this->bound = $this->createBoundMock();
-        $this->map = $this->createMapMock($this->bound);
+        $this->bound          = $this->createBoundMock();
+        $this->map            = $this->createMapMock($this->bound);
         $this->overlayManager = $this->createOverlayManagerMock($this->map);
 
         $this->markerCluster = new MarkerCluster();
@@ -235,9 +224,7 @@ class MarkerClusterTest extends TestCase
         $this->assertEmpty($this->markerCluster->getMarkers());
     }
 
-    /**
-     * @return MockObject|OverlayManager
-     */
+    /** @return MockObject|OverlayManager */
     private function createOverlayManagerMock(Map $map = null)
     {
         $overlayManager = $this->createMock(OverlayManager::class);
@@ -254,9 +241,7 @@ class MarkerClusterTest extends TestCase
         return $overlayManager;
     }
 
-    /**
-     * @return MockObject|Map
-     */
+    /** @return MockObject|Map */
     private function createMapMock(Bound $bound = null)
     {
         $map = $this->createMock(Map::class);
@@ -268,17 +253,13 @@ class MarkerClusterTest extends TestCase
         return $map;
     }
 
-    /**
-     * @return MockObject|Bound
-     */
+    /** @return MockObject|Bound */
     private function createBoundMock()
     {
         return $this->createMock(Bound::class);
     }
 
-    /**
-     * @return MockObject|Marker
-     */
+    /** @return MockObject|Marker */
     private function createMarkerMock()
     {
         return $this->createMock(Marker::class);

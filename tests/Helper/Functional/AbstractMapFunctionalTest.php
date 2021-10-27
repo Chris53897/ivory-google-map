@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -37,19 +39,12 @@ use Ivory\GoogleMap\Overlay\Rectangle;
 use Ivory\GoogleMap\Overlay\Symbol;
 use Ivory\GoogleMap\Overlay\SymbolPath;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 abstract class AbstractMapFunctionalTest extends AbstractApiFunctionalTest
 {
-    /**
-     * @var MapHelper
-     */
+    /** @var MapHelper */
     private $mapHelper;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         parent::setUp();
@@ -57,9 +52,7 @@ abstract class AbstractMapFunctionalTest extends AbstractApiFunctionalTest
         $this->mapHelper = $this->createMapHelper();
     }
 
-    /**
-     * @param string|null $html
-     */
+    /** @param string|null $html */
     protected function renderMap(Map $map, $html = null)
     {
         $this->renderHtml(implode('', [$html, $this->mapHelper->render($map), $this->renderApi([$map])]));
@@ -331,9 +324,7 @@ abstract class AbstractMapFunctionalTest extends AbstractApiFunctionalTest
         $this->assertOptions($marker);
     }
 
-    /**
-     * @param string $expected
-     */
+    /** @param string $expected */
     protected function assertIcon(Map $map, Icon $icon, $expected)
     {
         $this->assertSameContainerVariable(
@@ -363,9 +354,7 @@ abstract class AbstractMapFunctionalTest extends AbstractApiFunctionalTest
         }
     }
 
-    /**
-     * @param string $expected
-     */
+    /** @param string $expected */
     protected function assertIconSequence(Map $map, IconSequence $iconSequence, $expected)
     {
         $this->assertSameContainerVariable(
@@ -380,9 +369,7 @@ abstract class AbstractMapFunctionalTest extends AbstractApiFunctionalTest
         $this->assertOptions($iconSequence);
     }
 
-    /**
-     * @param string $expected
-     */
+    /** @param string $expected */
     protected function assertMarkerShape(Map $map, MarkerShape $markerShape, $expected)
     {
         $this->assertSameContainerVariable(
@@ -452,9 +439,7 @@ abstract class AbstractMapFunctionalTest extends AbstractApiFunctionalTest
         $this->assertOptions($rectangle);
     }
 
-    /**
-     * @param string $expected
-     */
+    /** @param string $expected */
     protected function assertSymbol(Map $map, Symbol $symbol, $expected)
     {
         $this->assertSameContainerVariable(
@@ -498,17 +483,13 @@ abstract class AbstractMapFunctionalTest extends AbstractApiFunctionalTest
         $this->assertSameContainerVariable($map, 'map');
     }
 
-    /**
-     * @return MapHelper
-     */
+    /** @return MapHelper */
     protected function createMapHelper()
     {
         return MapHelperBuilder::create($_SERVER['API_KEY'] ?? null)->build();
     }
 
-    /**
-     * @return callable
-     */
+    /** @return callable */
     private function getMapFormatter()
     {
         return function ($expected, $variable, $formatter) {
@@ -516,9 +497,7 @@ abstract class AbstractMapFunctionalTest extends AbstractApiFunctionalTest
         };
     }
 
-    /**
-     * @return callable
-     */
+    /** @return callable */
     private function getJsonFormatter()
     {
         return function ($expected, $variable, $formatter) {
@@ -526,9 +505,7 @@ abstract class AbstractMapFunctionalTest extends AbstractApiFunctionalTest
         };
     }
 
-    /**
-     * @return string[]
-     */
+    /** @return string[] */
     private function getContainerPropertyPaths()
     {
         return [

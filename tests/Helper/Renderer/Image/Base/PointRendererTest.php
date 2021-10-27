@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -15,19 +17,12 @@ use Ivory\GoogleMap\Base\Point;
 use Ivory\GoogleMap\Helper\Renderer\Image\Base\PointRenderer;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class PointRendererTest extends TestCase
 {
-    /**
-     * @var PointRenderer
-     */
+    /** @var PointRenderer */
     private $pointRenderer;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->pointRenderer = new PointRenderer();

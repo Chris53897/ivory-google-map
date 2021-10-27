@@ -78,7 +78,7 @@ class HeatmapLayerSubscriber extends AbstractSubscriber
     public function handleMap(MapEvent $event): void
     {
         $formatter = $this->getFormatter();
-        $map = $event->getMap();
+        $map       = $event->getMap();
 
         foreach ($this->heatmapLayerCollector->collect($map) as $heatmapLayer) {
             $event->addCode($formatter->renderContainerAssignment(
@@ -90,9 +90,7 @@ class HeatmapLayerSubscriber extends AbstractSubscriber
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     public static function getSubscribedEvents(): array
     {
         return [

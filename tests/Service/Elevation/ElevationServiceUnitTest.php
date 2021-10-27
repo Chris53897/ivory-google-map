@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -17,19 +19,12 @@ use Ivory\GoogleMap\Service\Elevation\Response\ElevationResponse;
 use Ivory\Tests\GoogleMap\Service\AbstractUnitServiceTest;
 use PHPUnit\Framework\MockObject\MockObject;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class ElevationServiceUnitTest extends AbstractUnitServiceTest
 {
-    /**
-     * @var ElevationService
-     */
+    /** @var ElevationService */
     private $service;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         parent::setUp();
@@ -104,17 +99,13 @@ class ElevationServiceUnitTest extends AbstractUnitServiceTest
         $this->assertSame($response, $this->service->process($request));
     }
 
-    /**
-     * @return MockObject|ElevationRequestInterface
-     */
+    /** @return MockObject|ElevationRequestInterface */
     private function createElevationRequestMock()
     {
         return $this->createMock(ElevationRequestInterface::class);
     }
 
-    /**
-     * @return MockObject|ElevationResponse
-     */
+    /** @return MockObject|ElevationResponse */
     private function createElevationResponseMock()
     {
         return $this->createMock(ElevationResponse::class);

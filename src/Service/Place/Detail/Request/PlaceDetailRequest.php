@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,73 +13,45 @@
 
 namespace Ivory\GoogleMap\Service\Place\Detail\Request;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class PlaceDetailRequest implements PlaceDetailRequestInterface
 {
-    /**
-     * @var string
-     */
+    /** @var string */
     private $placeId;
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $language;
 
-    /**
-     * @param string $placeId
-     */
-    public function __construct($placeId)
+    public function __construct(string $placeId)
     {
         $this->setPlaceId($placeId);
     }
 
-    /**
-     * @return string
-     */
-    public function getPlaceId()
+    public function getPlaceId(): string
     {
         return $this->placeId;
     }
 
-    /**
-     * @param string $placeId
-     */
-    public function setPlaceId($placeId)
+    public function setPlaceId(string $placeId): void
     {
         $this->placeId = $placeId;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasLanguage()
+    public function hasLanguage(): bool
     {
         return null !== $this->language;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getLanguage()
+    public function getLanguage(): ?string
     {
         return $this->language;
     }
 
-    /**
-     * @param string|null $language
-     */
-    public function setLanguage($language)
+    public function setLanguage(?string $language): void
     {
         $this->language = $language;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function buildQuery()
+    public function buildQuery(): array
     {
         $query = ['placeid' => $this->placeId];
 

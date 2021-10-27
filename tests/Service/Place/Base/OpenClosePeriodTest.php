@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -15,19 +17,12 @@ use Ivory\GoogleMap\Service\Place\Base\DayOfWeek;
 use Ivory\GoogleMap\Service\Place\Base\OpenClosePeriod;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class OpenClosePeriodTest extends TestCase
 {
-    /**
-     * @var OpenClosePeriod
-     */
+    /** @var OpenClosePeriod */
     private $openClosePeriod;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->openClosePeriod = new OpenClosePeriod();

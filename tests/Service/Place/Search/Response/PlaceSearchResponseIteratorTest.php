@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,29 +20,18 @@ use Ivory\GoogleMap\Service\Place\Search\Response\PlaceSearchResponseIterator;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class PlaceSearchResponseIteratorTest extends TestCase
 {
-    /**
-     * @var PlaceSearchResponseIterator
-     */
+    /** @var PlaceSearchResponseIterator */
     private $iterator;
 
-    /**
-     * @var PlaceSearchService|MockObject
-     */
+    /** @var PlaceSearchService|MockObject */
     private $service;
 
-    /**
-     * @var PlaceSearchResponse|MockObject
-     */
+    /** @var PlaceSearchResponse|MockObject */
     private $response;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->iterator = new PlaceSearchResponseIterator(
@@ -110,17 +101,13 @@ class PlaceSearchResponseIteratorTest extends TestCase
         $this->assertNull($this->iterator->current());
     }
 
-    /**
-     * @return MockObject|PlaceSearchService
-     */
+    /** @return MockObject|PlaceSearchService */
     private function createServiceMock()
     {
         return $this->createMock(PlaceSearchService::class);
     }
 
-    /**
-     * @return MockObject|PlaceSearchResponse
-     */
+    /** @return MockObject|PlaceSearchResponse */
     private function createResponseMock()
     {
         return $this->createMock(PlaceSearchResponse::class);

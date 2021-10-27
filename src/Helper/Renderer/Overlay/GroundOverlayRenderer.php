@@ -21,7 +21,7 @@ class GroundOverlayRenderer extends AbstractJsonRenderer
 {
     public function render(GroundOverlay $groundOverlay, Map $map): string
     {
-        $formatter = $this->getFormatter();
+        $formatter   = $this->getFormatter();
         $jsonBuilder = $this->getJsonBuilder()
             ->setValue('[map]', $map->getVariable(), false)
             ->setValues($groundOverlay->getOptions());

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -15,19 +17,12 @@ use Ivory\GoogleMap\Helper\Renderer\Image\SizeRenderer;
 use Ivory\GoogleMap\Map;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class SizeRendererTest extends TestCase
 {
-    /**
-     * @var SizeRenderer
-     */
+    /** @var SizeRenderer */
     private $sizeRenderer;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->sizeRenderer = new SizeRenderer();

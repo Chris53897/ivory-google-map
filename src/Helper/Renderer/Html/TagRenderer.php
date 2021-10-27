@@ -17,9 +17,7 @@ use Ivory\GoogleMap\Helper\Renderer\AbstractRenderer;
 
 class TagRenderer extends AbstractRenderer
 {
-    /**
-     * @param string[]    $attributes
-     */
+    /** @param string[] $attributes */
     public function render(string $name, ?string $code = null, array $attributes = [], bool $newLine = true): string
     {
         $formatter = $this->getFormatter();

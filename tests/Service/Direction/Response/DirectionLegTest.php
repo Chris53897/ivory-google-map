@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -21,19 +23,12 @@ use Ivory\GoogleMap\Service\Direction\Response\DirectionWaypoint;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class DirectionLegTest extends TestCase
 {
-    /**
-     * @var DirectionLeg
-     */
+    /** @var DirectionLeg */
     private $leg;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->leg = new DirectionLeg();
@@ -294,49 +289,37 @@ class DirectionLegTest extends TestCase
         $this->assertEmpty($this->leg->getViaWaypoints());
     }
 
-    /**
-     * @return MockObject|Duration
-     */
+    /** @return MockObject|Duration */
     private function createDurationMock()
     {
         return $this->createMock(Duration::class);
     }
 
-    /**
-     * @return MockObject|Distance
-     */
+    /** @return MockObject|Distance */
     private function createDistanceMock()
     {
         return $this->createMock(Distance::class);
     }
 
-    /**
-     * @return MockObject|Coordinate
-     */
+    /** @return MockObject|Coordinate */
     private function createCoordinateMock()
     {
         return $this->createMock(Coordinate::class);
     }
 
-    /**
-     * @return MockObject|Time
-     */
+    /** @return MockObject|Time */
     private function createTimeMock()
     {
         return $this->createMock(Time::class);
     }
 
-    /**
-     * @return MockObject|DirectionStep
-     */
+    /** @return MockObject|DirectionStep */
     private function createStepMock()
     {
         return $this->createMock(DirectionStep::class);
     }
 
-    /**
-     * @return MockObject|DirectionWaypoint
-     */
+    /** @return MockObject|DirectionWaypoint */
     private function createWaypointMock()
     {
         return $this->createMock(DirectionWaypoint::class);

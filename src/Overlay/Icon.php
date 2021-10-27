@@ -23,9 +23,8 @@ use Ivory\GoogleMap\Utility\VariableAwareTrait;
  */
 class Icon implements VariableAwareInterface
 {
-    public const DEFAULT_URL = 'https://maps.gstatic.com/mapfiles/markers/marker.png';
-
     use VariableAwareTrait;
+    public const DEFAULT_URL = 'https://maps.gstatic.com/mapfiles/markers/marker.png';
 
     /** @var string */
     private $url;
@@ -47,11 +46,11 @@ class Icon implements VariableAwareInterface
 
     public function __construct(
         string $url = self::DEFAULT_URL,
-        Point  $anchor = null,
-        Point  $origin = null,
-        Size   $scaledSize = null,
-        Size   $size = null,
-        Point  $labelOrigin = null
+        Point $anchor = null,
+        Point $origin = null,
+        Size $scaledSize = null,
+        Size $size = null,
+        Point $labelOrigin = null
     ) {
         $this->setUrl($url);
         $this->setAnchor($anchor);
@@ -145,5 +144,4 @@ class Icon implements VariableAwareInterface
     {
         $this->labelOrigin = $labelOrigin;
     }
-
 }

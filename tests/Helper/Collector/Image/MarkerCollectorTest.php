@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -19,19 +21,12 @@ use Ivory\GoogleMap\Map;
 use Ivory\GoogleMap\Overlay\Marker;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class MarkerCollectorTest extends TestCase
 {
-    /**
-     * @var MarkerCollector
-     */
+    /** @var MarkerCollector */
     private $markerCollector;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->markerCollector = new MarkerCollector(new MarkerStyleRenderer(new PointRenderer()));

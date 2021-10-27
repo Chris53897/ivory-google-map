@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -14,24 +16,15 @@ namespace Ivory\GoogleMap\Service\Place\Search\Response;
 use Ivory\GoogleMap\Service\Place\Search\PlaceSearchService;
 use Ivory\GoogleMap\Service\Place\Search\Request\PageTokenPlaceSearchRequest;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class PlaceSearchResponseIterator implements \Iterator
 {
-    /**
-     * @var PlaceSearchService
-     */
+    /** @var PlaceSearchService */
     private $service;
 
-    /**
-     * @var PlaceSearchResponse[]
-     */
+    /** @var PlaceSearchResponse[] */
     private $responses = [];
 
-    /**
-     * @var int
-     */
+    /** @var int */
     private $position = 0;
 
     public function __construct(PlaceSearchService $service, PlaceSearchResponse $response)
@@ -40,9 +33,7 @@ class PlaceSearchResponseIterator implements \Iterator
         $this->responses[] = $response;
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     public function current()
     {
         if ($this->valid()) {
@@ -50,10 +41,8 @@ class PlaceSearchResponseIterator implements \Iterator
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function next()
+    /** {@inheritdoc} */
+    public function next(): void
     {
         if (!$this->valid()) {
             return;
@@ -75,26 +64,20 @@ class PlaceSearchResponseIterator implements \Iterator
         $this->responses[] = $this->service->process($request)->current();
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     public function key()
     {
         return $this->position;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function valid()
+    /** {@inheritdoc} */
+    public function valid(): bool
     {
         return $this->position < count($this->responses);
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function rewind()
+    /** {@inheritdoc} */
+    public function rewind(): void
     {
         $this->position = 0;
     }

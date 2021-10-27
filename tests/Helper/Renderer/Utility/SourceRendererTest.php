@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -16,19 +18,12 @@ use Ivory\GoogleMap\Helper\Renderer\AbstractRenderer;
 use Ivory\GoogleMap\Helper\Renderer\Utility\SourceRenderer;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class SourceRendererTest extends TestCase
 {
-    /**
-     * @var SourceRenderer
-     */
+    /** @var SourceRenderer */
     private $sourceRenderer;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->sourceRenderer = new SourceRenderer(new Formatter());

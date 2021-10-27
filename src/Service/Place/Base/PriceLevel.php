@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,20 +13,15 @@
 
 namespace Ivory\GoogleMap\Service\Place\Base;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 final class PriceLevel
 {
-    const FREE = 0;
-    const INEXPENSIVE = 1;
-    const MODERATE = 2;
-    const EXPENSIVE = 3;
-    const VERY_EXPENSIVE = 4;
+    public const FREE           = 0;
+    public const INEXPENSIVE    = 1;
+    public const MODERATE       = 2;
+    public const EXPENSIVE      = 3;
+    public const VERY_EXPENSIVE = 4;
 
-    /**
-     * @codeCoverageIgnore
-     */
+    /** @codeCoverageIgnore */
     private function __construct()
     {
     }

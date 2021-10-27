@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -16,19 +18,12 @@ use Ivory\GoogleMap\Helper\Formatter\Formatter;
 use Ivory\GoogleMap\Helper\Renderer\Control\ZoomControlStyleRenderer;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class ZoomControlStyleRendererTest extends TestCase
 {
-    /**
-     * @var ZoomControlStyleRenderer
-     */
+    /** @var ZoomControlStyleRenderer */
     private $zoomControlStyleRenderer;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->zoomControlStyleRenderer = new ZoomControlStyleRenderer(new Formatter());

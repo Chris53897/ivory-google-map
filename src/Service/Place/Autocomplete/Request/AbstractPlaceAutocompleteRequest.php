@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -13,157 +15,99 @@ namespace Ivory\GoogleMap\Service\Place\Autocomplete\Request;
 
 use Ivory\GoogleMap\Base\Coordinate;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 abstract class AbstractPlaceAutocompleteRequest implements PlaceAutocompleteRequestInterface
 {
-    /**
-     * @var string
-     */
+    /** @var string */
     private $input;
 
-    /**
-     * @var int|null
-     */
+    /** @var int|null */
     private $offset;
 
-    /**
-     * @var Coordinate|null
-     */
+    /** @var Coordinate|null */
     private $location;
 
-    /**
-     * @var float|null
-     */
+    /** @var float|null */
     private $radius;
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $language;
 
-    /**
-     * @param string $input
-     */
-    public function __construct($input)
+    public function __construct(string $input)
     {
         $this->setInput($input);
     }
 
-    /**
-     * @return string
-     */
-    public function getInput()
+    public function getInput(): string
     {
         return $this->input;
     }
 
-    /**
-     * @param string $input
-     */
-    public function setInput($input)
+    public function setInput(string $input): void
     {
         $this->input = $input;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasOffset()
+    public function hasOffset(): bool
     {
         return null !== $this->offset;
     }
 
-    /**
-     * @return int|null
-     */
-    public function getOffset()
+    public function getOffset(): ?int
     {
         return $this->offset;
     }
 
-    /**
-     * @param int|null $offset
-     */
-    public function setOffset($offset)
+    public function setOffset(?int $offset): void
     {
         $this->offset = $offset;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasLocation()
+    public function hasLocation(): bool
     {
         return null !== $this->location;
     }
 
-    /**
-     * @return Coordinate|null
-     */
-    public function getLocation()
+    public function getLocation(): ?Coordinate
     {
         return $this->location;
     }
 
-    public function setLocation(Coordinate $location = null)
+    public function setLocation(Coordinate $location = null): void
     {
         $this->location = $location;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasRadius()
+    public function hasRadius(): bool
     {
         return null !== $this->radius;
     }
 
-    /**
-     * @return float|null
-     */
-    public function getRadius()
+    public function getRadius(): ?float
     {
         return $this->radius;
     }
 
-    /**
-     * @param float|null $radius
-     */
-    public function setRadius($radius)
+    public function setRadius(?float $radius): void
     {
         $this->radius = $radius;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasLanguage()
+    public function hasLanguage(): bool
     {
         return null !== $this->language;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getLanguage()
+    public function getLanguage(): ?string
     {
         return $this->language;
     }
 
-    /**
-     * @param string|null $language
-     */
-    public function setLanguage($language)
+    public function setLanguage(?string $language): void
     {
         $this->language = $language;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function buildQuery()
+    public function buildQuery(): array
     {
         $query = ['input' => $this->input];
 
@@ -186,10 +130,7 @@ abstract class AbstractPlaceAutocompleteRequest implements PlaceAutocompleteRequ
         return $query;
     }
 
-    /**
-     * @return string
-     */
-    private function buildCoordinate(Coordinate $coordinate)
+    private function buildCoordinate(Coordinate $coordinate): string
     {
         return $coordinate->getLatitude().','.$coordinate->getLongitude();
     }

@@ -61,7 +61,7 @@ class AutocompleteBoundSubscriber extends AbstractSubscriber
 
     public function handleAutocomplete(PlaceAutocompleteEvent $event): void
     {
-        $formatter = $this->getFormatter();
+        $formatter    = $this->getFormatter();
         $autocomplete = $event->getAutocomplete();
 
         foreach ($this->boundCollector->collect($autocomplete) as $bound) {
@@ -74,9 +74,7 @@ class AutocompleteBoundSubscriber extends AbstractSubscriber
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     public static function getSubscribedEvents(): array
     {
         return [PlaceAutocompleteEvents::JAVASCRIPT_BASE_BOUND => 'handleAutocomplete'];

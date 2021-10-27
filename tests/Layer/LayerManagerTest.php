@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -20,33 +22,22 @@ use Ivory\GoogleMap\Map;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class LayerManagerTest extends TestCase
 {
-    /**
-     * @var LayerManager
-     */
+    /** @var LayerManager */
     private $layerManager;
 
-    /**
-     * @var MockObject|Map
-     */
+    /** @var MockObject|Map */
     private $map;
 
-    /**
-     * @var MockObject|Bound
-     */
+    /** @var MockObject|Bound */
     private $bound;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->bound = $this->createBoundMock();
-        $this->map = $this->createMapMock($this->bound);
+        $this->map   = $this->createMapMock($this->bound);
 
         $this->layerManager = new LayerManager();
         $this->layerManager->setMap($this->map);
@@ -390,9 +381,7 @@ class LayerManagerTest extends TestCase
         $this->assertEmpty($this->layerManager->getKmlLayers());
     }
 
-    /**
-     * @return MockObject|Map
-     */
+    /** @return MockObject|Map */
     private function createMapMock(Bound $bound = null)
     {
         $map = $this->createMock(Map::class);
@@ -404,33 +393,25 @@ class LayerManagerTest extends TestCase
         return $map;
     }
 
-    /**
-     * @return MockObject|Bound
-     */
+    /** @return MockObject|Bound */
     private function createBoundMock()
     {
         return $this->createMock(Bound::class);
     }
 
-    /**
-     * @return MockObject|GeoJsonLayer
-     */
+    /** @return MockObject|GeoJsonLayer */
     private function createGeoJsonLayerMock()
     {
         return $this->createMock(GeoJsonLayer::class);
     }
 
-    /**
-     * @return MockObject|HeatmapLayer
-     */
+    /** @return MockObject|HeatmapLayer */
     private function createHeatmapLayerMock()
     {
         return $this->createMock(HeatmapLayer::class);
     }
 
-    /**
-     * @return MockObject|KmlLayer
-     */
+    /** @return MockObject|KmlLayer */
     private function createKmlLayerMock()
     {
         return $this->createMock(KmlLayer::class);

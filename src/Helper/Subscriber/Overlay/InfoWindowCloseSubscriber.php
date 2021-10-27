@@ -47,8 +47,8 @@ class InfoWindowCloseSubscriber extends AbstractInfoWindowSubscriber
     public function handleMap(MapEvent $event): void
     {
         $formatter = $this->getFormatter();
-        $map = $event->getMap();
-        $codes = [];
+        $map       = $event->getMap();
+        $codes     = [];
 
         foreach ($this->getInfoWindowCollector()->collect($map) as $infoWindow) {
             if ($infoWindow->isAutoClose()) {
@@ -63,9 +63,7 @@ class InfoWindowCloseSubscriber extends AbstractInfoWindowSubscriber
         ));
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     public static function getSubscribedEvents(): array
     {
         return [MapEvents::JAVASCRIPT_INIT_FUNCTION => 'handleMap'];

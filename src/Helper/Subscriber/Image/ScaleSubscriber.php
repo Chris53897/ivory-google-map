@@ -28,9 +28,7 @@ class ScaleSubscriber implements EventSubscriberInterface
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     public static function getSubscribedEvents(): array
     {
         return [StaticMapEvents::SCALE => 'handleMap'];

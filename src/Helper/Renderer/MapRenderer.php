@@ -77,7 +77,7 @@ class MapRenderer extends AbstractJsonRenderer
 
     public function render(Map $map): string
     {
-        $formatter = $this->getFormatter();
+        $formatter   = $this->getFormatter();
         $jsonBuilder = $this->getJsonBuilder();
 
         $options = $map->getMapOptions();

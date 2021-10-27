@@ -17,22 +17,19 @@ use SplObjectStorage;
 
 class ApiInitRenderer extends AbstractRenderer
 {
-    /**
-     * @param string[] $sources
-     */
+    /** @param string[] $sources */
     public function render(
-        string           $name,
+        string $name,
         SplObjectStorage $callbacks,
         SplObjectStorage $requirements,
-        array            $sources,
-        string           $sourceCallback,
-        string           $requirementCallback,
-        bool             $newLine = true
-    ): string
-    {
+        array $sources,
+        string $sourceCallback,
+        string $requirementCallback,
+        bool $newLine = true
+    ): string {
         $formatter = $this->getFormatter();
         $separator = $formatter->renderSeparator();
-        $codes = [];
+        $codes     = [];
 
         foreach ($sources as $source) {
             $codes[] = $formatter->renderCall($sourceCallback, [$formatter->renderEscape($source)], true);

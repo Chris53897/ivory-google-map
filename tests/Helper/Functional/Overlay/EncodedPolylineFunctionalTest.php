@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -16,8 +18,6 @@ use Ivory\GoogleMap\Overlay\EncodedPolyline;
 use Ivory\Tests\GoogleMap\Helper\Functional\AbstractMapFunctionalTest;
 
 /**
- * @author GeLo <geloen.eric@gmail.com>
- *
  * @group functional
  */
 class EncodedPolylineFunctionalTest extends AbstractMapFunctionalTest
@@ -41,9 +41,7 @@ class EncodedPolylineFunctionalTest extends AbstractMapFunctionalTest
         $this->assertMap($map);
     }
 
-    /**
-     * @return EncodedPolyline
-     */
+    /** @return EncodedPolyline */
     private function createEncodedPolyline()
     {
         return new EncodedPolyline('yv_tHizrQiGsR`HcP');

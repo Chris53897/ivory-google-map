@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -17,19 +19,12 @@ use Ivory\GoogleMap\Service\Geocoder\Response\GeocoderResult;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class GeocoderResultTest extends TestCase
 {
-    /**
-     * @var GeocoderResult
-     */
+    /** @var GeocoderResult */
     private $result;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->result = new GeocoderResult();
@@ -247,17 +242,13 @@ class GeocoderResultTest extends TestCase
         $this->assertEmpty($this->result->getTypes());
     }
 
-    /**
-     * @return MockObject|AddressComponent
-     */
+    /** @return MockObject|AddressComponent */
     private function createAddressComponentMock()
     {
         return $this->createMock(AddressComponent::class);
     }
 
-    /**
-     * @return MockObject|Geometry
-     */
+    /** @return MockObject|Geometry */
     private function createGeometryMock()
     {
         return $this->createMock(Geometry::class);

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -20,19 +22,12 @@ use Ivory\GoogleMap\Overlay\InfoWindow;
 use Ivory\GoogleMap\Overlay\Marker;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class InfoWindowOpenRendererTest extends TestCase
 {
-    /**
-     * @var InfoWindowOpenRenderer
-     */
+    /** @var InfoWindowOpenRenderer */
     private $infoWindowOpenRenderer;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->infoWindowOpenRenderer = new InfoWindowOpenRenderer(new Formatter());

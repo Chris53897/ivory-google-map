@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -17,19 +19,12 @@ use Ivory\GoogleMap\Helper\Renderer\Overlay\SymbolPathRenderer;
 use Ivory\GoogleMap\Overlay\SymbolPath;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class SymbolPathRendererTest extends TestCase
 {
-    /**
-     * @var SymbolPathRenderer
-     */
+    /** @var SymbolPathRenderer */
     private $symbolPathRenderer;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->symbolPathRenderer = new SymbolPathRenderer(new Formatter());

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -20,19 +22,12 @@ use Ivory\GoogleMap\Service\Direction\Response\DirectionStatus;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class DirectionResponseTest extends TestCase
 {
-    /**
-     * @var DirectionResponse
-     */
+    /** @var DirectionResponse */
     private $response;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->response = new DirectionResponse();
@@ -192,25 +187,19 @@ class DirectionResponseTest extends TestCase
         $this->assertEmpty($this->response->getAvailableTravelModes());
     }
 
-    /**
-     * @return MockObject|DirectionRequestInterface
-     */
+    /** @return MockObject|DirectionRequestInterface */
     private function createRequestMock()
     {
         return $this->createMock(DirectionRequestInterface::class);
     }
 
-    /**
-     * @return MockObject|DirectionRoute
-     */
+    /** @return MockObject|DirectionRoute */
     private function createRouteMock()
     {
         return $this->createMock(DirectionRoute::class);
     }
 
-    /**
-     * @return MockObject|DirectionGeocoded
-     */
+    /** @return MockObject|DirectionGeocoded */
     private function createGeocodedWaypointMock()
     {
         return $this->createMock(DirectionGeocoded::class);

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -16,19 +18,12 @@ use Ivory\GoogleMap\Map;
 use Ivory\GoogleMap\Overlay\Polygon;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class PolygonCollectorTest extends TestCase
 {
-    /**
-     * @var PolygonCollector
-     */
+    /** @var PolygonCollector */
     private $polygonCollector;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->polygonCollector = new PolygonCollector();

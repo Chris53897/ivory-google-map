@@ -34,7 +34,7 @@ class EncodedPolylineRenderer
     public function render(EncodedPolyline $encodedPolyline): string
     {
         $result = [];
-        $style = $this->encodedPolylineStyleRenderer->render($encodedPolyline);
+        $style  = $this->encodedPolylineStyleRenderer->render($encodedPolyline);
 
         if (!empty($style)) {
             $result[] = $style;

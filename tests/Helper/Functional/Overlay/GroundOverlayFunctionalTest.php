@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,8 +20,6 @@ use Ivory\GoogleMap\Overlay\GroundOverlay;
 use Ivory\Tests\GoogleMap\Helper\Functional\AbstractMapFunctionalTest;
 
 /**
- * @author GeLo <geloen.eric@gmail.com>
- *
  * @group functional
  */
 class GroundOverlayFunctionalTest extends AbstractMapFunctionalTest
@@ -43,9 +43,7 @@ class GroundOverlayFunctionalTest extends AbstractMapFunctionalTest
         $this->assertMap($map);
     }
 
-    /**
-     * @return GroundOverlay
-     */
+    /** @return GroundOverlay */
     private function createGroundOverlay()
     {
         return new GroundOverlay(

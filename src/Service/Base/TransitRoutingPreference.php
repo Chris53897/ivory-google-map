@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,17 +13,12 @@
 
 namespace Ivory\GoogleMap\Service\Base;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 final class TransitRoutingPreference
 {
-    const LESS_WALKING = 'less_walking';
-    const FEWER_TRANSFERS = 'fewer_transfers';
+    public const LESS_WALKING    = 'less_walking';
+    public const FEWER_TRANSFERS = 'fewer_transfers';
 
-    /**
-     * @codeCoverageIgnore
-     */
+    /** @codeCoverageIgnore */
     private function __construct()
     {
     }

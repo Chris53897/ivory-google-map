@@ -48,12 +48,12 @@ class Marker implements ExtendableInterface, OptionsAwareInterface, StaticOption
     private $infoWindow;
 
     public function __construct(
-        Coordinate  $position,
-        string      $animation = null,
-        Icon        $icon = null,
-        Symbol      $symbol = null,
+        Coordinate $position,
+        string $animation = null,
+        Icon $icon = null,
+        Symbol $symbol = null,
         MarkerShape $shape = null,
-        array       $options = []
+        array $options = []
     ) {
         $this->setPosition($position);
         $this->setAnimation($animation);

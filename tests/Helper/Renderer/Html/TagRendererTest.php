@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -16,19 +18,12 @@ use Ivory\GoogleMap\Helper\Renderer\AbstractRenderer;
 use Ivory\GoogleMap\Helper\Renderer\Html\TagRenderer;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class TagRendererTest extends TestCase
 {
-    /**
-     * @var TagRenderer
-     */
+    /** @var TagRenderer */
     private $tagRenderer;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->tagRenderer = new TagRenderer(new Formatter());
@@ -62,9 +57,7 @@ class TagRendererTest extends TestCase
         $this->assertSame($expected, $this->tagRenderer->render($name, $code, $attributes, $newLine));
     }
 
-    /**
-     * @return mixed[][]
-     */
+    /** @return mixed[][] */
     public function renderProvider()
     {
         return [

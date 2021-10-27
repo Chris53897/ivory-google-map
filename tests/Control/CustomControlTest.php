@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -15,29 +17,18 @@ use Ivory\GoogleMap\Control\ControlPosition;
 use Ivory\GoogleMap\Control\CustomControl;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class CustomControlTest extends TestCase
 {
-    /**
-     * @var CustomControl
-     */
+    /** @var CustomControl */
     private $customControl;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $position;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $control;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->customControl = new CustomControl(

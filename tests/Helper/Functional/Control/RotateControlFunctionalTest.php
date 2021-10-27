@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -17,8 +19,6 @@ use Ivory\GoogleMap\Map;
 use Ivory\Tests\GoogleMap\Helper\Functional\AbstractMapFunctionalTest;
 
 /**
- * @author GeLo <geloen.eric@gmail.com>
- *
  * @group functional
  */
 class RotateControlFunctionalTest extends AbstractMapFunctionalTest
@@ -32,9 +32,7 @@ class RotateControlFunctionalTest extends AbstractMapFunctionalTest
         $this->assertMap($map);
     }
 
-    /**
-     * @return RotateControl
-     */
+    /** @return RotateControl */
     private function createRotateControl()
     {
         return new RotateControl(ControlPosition::TOP_CENTER);

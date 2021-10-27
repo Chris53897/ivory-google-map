@@ -67,17 +67,13 @@ class MarkerCluster implements OptionsAwareInterface, VariableAwareInterface
         return !empty($this->markers);
     }
 
-    /**
-     * @return Marker[]
-     */
+    /** @return Marker[] */
     public function getMarkers(): array
     {
         return $this->markers;
     }
 
-    /**
-     * @param Marker[] $markers
-     */
+    /** @param Marker[] $markers */
     public function setMarkers(array $markers): void
     {
         foreach ($this->markers as $marker) {
@@ -87,9 +83,7 @@ class MarkerCluster implements OptionsAwareInterface, VariableAwareInterface
         $this->addMarkers($markers);
     }
 
-    /**
-     * @param Marker[] $markers
-     */
+    /** @param Marker[] $markers */
     public function addMarkers(array $markers): void
     {
         foreach ($markers as $marker) {

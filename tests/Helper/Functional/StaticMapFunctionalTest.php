@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -33,35 +35,23 @@ use Psr\Cache\CacheItemPoolInterface;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
 /**
- * @author GeLo <geloen.eric@gmail.com>
- *
  * @group functional
  */
 class StaticMapFunctionalTest extends TestCase
 {
-    /**
-     * @var StaticMapHelper
-     */
+    /** @var StaticMapHelper */
     private $staticMapHelper;
 
-    /**
-     * @var HttpClient
-     */
+    /** @var HttpClient */
     private $client;
 
-    /**
-     * @var MessageFactory
-     */
+    /** @var MessageFactory */
     private $messageFactory;
 
-    /**
-     * @var CacheItemPoolInterface
-     */
+    /** @var CacheItemPoolInterface */
     protected $pool;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         if (!isset($_SERVER['API_KEY'])) {
@@ -74,7 +64,7 @@ class StaticMapFunctionalTest extends TestCase
 
         $this->staticMapHelper = $this->createStaticMapHelper();
 
-        $this->pool = new FilesystemAdapter('', 0, $_SERVER['CACHE_PATH']);
+        $this->pool           = new FilesystemAdapter('', 0, $_SERVER['CACHE_PATH']);
         $this->messageFactory = new GuzzleMessageFactory();
 
         $this->client = new PluginClient(new Client(), [
@@ -371,18 +361,14 @@ class StaticMapFunctionalTest extends TestCase
         $this->renderMap(new Map());
     }
 
-    /**
-     * @return StaticMapHelper
-     */
+    /** @return StaticMapHelper */
     protected function createStaticMapHelper()
     {
         return StaticMapHelperBuilder::create($_SERVER['API_KEY'])
             ->build();
     }
 
-    /**
-     * @return Polyline
-     */
+    /** @return Polyline */
     private function createPolyline()
     {
         return new Polyline([
@@ -393,9 +379,7 @@ class StaticMapFunctionalTest extends TestCase
         ]);
     }
 
-    /**
-     * @return Polyline
-     */
+    /** @return Polyline */
     private function createPolylineAddress()
     {
         $polyline = new Polyline();
@@ -409,9 +393,7 @@ class StaticMapFunctionalTest extends TestCase
         return $polyline;
     }
 
-    /**
-     * @return EncodedPolyline
-     */
+    /** @return EncodedPolyline */
     private function createEncodedPolyline()
     {
         return new EncodedPolyline('yv_tHizrQiGsR`HcP');
@@ -419,7 +401,7 @@ class StaticMapFunctionalTest extends TestCase
 
     private function renderMap(Map $map)
     {
-        $request = $this->messageFactory->createRequest('GET', $this->staticMapHelper->render($map));
+        $request  = $this->messageFactory->createRequest('GET', $this->staticMapHelper->render($map));
         $response = $this->client->sendRequest($request);
 
         $this->assertSame(200, $response->getStatusCode());

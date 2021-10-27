@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -19,19 +21,12 @@ use Ivory\GoogleMap\Map;
 use Ivory\JsonBuilder\JsonBuilder;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class GeoJsonLayerRendererTest extends TestCase
 {
-    /**
-     * @var GeoJsonLayerRenderer
-     */
+    /** @var GeoJsonLayerRenderer */
     private $geoJsonLayerRenderer;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->geoJsonLayerRenderer = new GeoJsonLayerRenderer(new Formatter(), new JsonBuilder());

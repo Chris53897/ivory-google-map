@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,19 +20,12 @@ use Ivory\GoogleMap\Helper\Renderer\Place\AutocompleteHtmlRenderer;
 use Ivory\GoogleMap\Place\Autocomplete;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class AutocompleteHtmlRendererTest extends TestCase
 {
-    /**
-     * @var AutocompleteHtmlRenderer
-     */
+    /** @var AutocompleteHtmlRenderer */
     private $autocompleteHtmlRenderer;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->autocompleteHtmlRenderer = new AutocompleteHtmlRenderer(

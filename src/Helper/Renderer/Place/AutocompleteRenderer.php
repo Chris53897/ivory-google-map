@@ -46,7 +46,7 @@ class AutocompleteRenderer extends AbstractJsonRenderer
 
     public function render(Autocomplete $autocomplete): string
     {
-        $formatter = $this->getFormatter();
+        $formatter   = $this->getFormatter();
         $jsonBuilder = $this->getJsonBuilder();
 
         if ($autocomplete->hasTypes()) {

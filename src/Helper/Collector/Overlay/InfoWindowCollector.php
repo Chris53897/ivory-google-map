@@ -19,7 +19,7 @@ use Ivory\GoogleMap\Overlay\InfoWindow;
 
 class InfoWindowCollector extends AbstractCollector
 {
-    public const STRATEGY_MAP = 1;
+    public const STRATEGY_MAP    = 1;
     public const STRATEGY_MARKER = 2;
 
     /** @var MarkerCollector */
@@ -80,9 +80,7 @@ class InfoWindowCollector extends AbstractCollector
         return $infoWindows;
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function collectValue(object $value, array $defaults = []): array
     {
         if (null !== $this->type && $value->getType() !== $this->type) {

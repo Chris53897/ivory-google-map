@@ -34,8 +34,8 @@ class ExtendableRenderer
         MarkerLocationRenderer $markerLocationRenderer,
         PolylineLocationRenderer $polylineLocationRenderer
     ) {
-        $this->coordinateRenderer = $coordinateRenderer;
-        $this->markerLocationRenderer = $markerLocationRenderer;
+        $this->coordinateRenderer       = $coordinateRenderer;
+        $this->markerLocationRenderer   = $markerLocationRenderer;
         $this->polylineLocationRenderer = $polylineLocationRenderer;
     }
 

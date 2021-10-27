@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -13,215 +15,135 @@ namespace Ivory\GoogleMap\Service\Place\Search\Request;
 
 use Ivory\GoogleMap\Base\Coordinate;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 abstract class AbstractPlaceSearchRequest implements PlaceSearchRequestInterface
 {
-    /**
-     * @var Coordinate|null
-     */
+    /** @var Coordinate|null */
     private $location;
 
-    /**
-     * @var float|null
-     */
+    /** @var float|null */
     private $radius;
 
-    /**
-     * @var int|null
-     */
+    /** @var int|null */
     private $minPrice;
 
-    /**
-     * @var int|null
-     */
+    /** @var int|null */
     private $maxPrice;
 
-    /**
-     * @var bool|null
-     */
+    /** @var bool|null */
     private $openNow;
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $type;
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $language;
 
-    /**
-     * @return bool
-     */
-    public function hasLocation()
+    public function hasLocation(): bool
     {
         return null !== $this->location;
     }
 
-    /**
-     * @return Coordinate|null
-     */
-    public function getLocation()
+    public function getLocation(): ?Coordinate
     {
         return $this->location;
     }
 
-    public function setLocation(Coordinate $location = null)
+    public function setLocation(Coordinate $location = null): void
     {
         $this->location = $location;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasRadius()
+    public function hasRadius(): bool
     {
         return null !== $this->radius;
     }
 
-    /**
-     * @return float
-     */
-    public function getRadius()
+    public function getRadius(): ?float
     {
         return $this->radius;
     }
 
-    /**
-     * @param float $radius
-     */
-    public function setRadius($radius)
+    public function setRadius(?float $radius): void
     {
         $this->radius = $radius;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasMinPrice()
+    public function hasMinPrice(): bool
     {
         return null !== $this->minPrice;
     }
 
-    /**
-     * @return int|null
-     */
-    public function getMinPrice()
+    public function getMinPrice(): ?int
     {
         return $this->minPrice;
     }
 
-    /**
-     * @param int|null $minPrice
-     */
-    public function setMinPrice($minPrice)
+    public function setMinPrice(?int $minPrice): void
     {
         $this->minPrice = $minPrice;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasMaxPrice()
+    public function hasMaxPrice(): bool
     {
         return null !== $this->maxPrice;
     }
 
-    /**
-     * @return int|null
-     */
-    public function getMaxPrice()
+    public function getMaxPrice(): ?int
     {
         return $this->maxPrice;
     }
 
-    /**
-     * @param int|null $maxPrice
-     */
-    public function setMaxPrice($maxPrice)
+    public function setMaxPrice(?int $maxPrice): void
     {
         $this->maxPrice = $maxPrice;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasOpenNow()
+    public function hasOpenNow(): bool
     {
         return null !== $this->openNow;
     }
 
-    /**
-     * @return bool|null
-     */
-    public function isOpenNow()
+    public function isOpenNow(): ?bool
     {
         return $this->openNow;
     }
 
-    /**
-     * @param bool|null $openNow
-     */
-    public function setOpenNow($openNow)
+    public function setOpenNow(?bool $openNow): void
     {
         $this->openNow = $openNow;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasType()
+    public function hasType(): bool
     {
         return null !== $this->type;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getType()
+    public function getType(): ?string
     {
         return $this->type;
     }
 
-    /**
-     * @param string|null $type
-     */
-    public function setType($type)
+    public function setType(?string $type): void
     {
         $this->type = $type;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasLanguage()
+    public function hasLanguage(): bool
     {
         return null !== $this->language;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getLanguage()
+    public function getLanguage(): ?string
     {
         return $this->language;
     }
 
-    /**
-     * @param string|null $language
-     */
-    public function setLanguage($language)
+    public function setLanguage(?string $language): void
     {
         $this->language = $language;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function buildQuery()
+    public function buildQuery(): array
     {
         $query = [];
 
@@ -256,10 +178,7 @@ abstract class AbstractPlaceSearchRequest implements PlaceSearchRequestInterface
         return $query;
     }
 
-    /**
-     * @return string
-     */
-    private function buildCoordinate(Coordinate $place)
+    private function buildCoordinate(Coordinate $place): string
     {
         return $place->getLatitude().','.$place->getLongitude();
     }

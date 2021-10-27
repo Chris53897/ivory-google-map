@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -23,19 +25,12 @@ use Ivory\GoogleMap\Utility\VariableAwareInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class MapTest extends TestCase
 {
-    /**
-     * @var Map
-     */
+    /** @var Map */
     private $map;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->map = new Map();
@@ -318,49 +313,37 @@ class MapTest extends TestCase
         $this->assertNull($this->map->getHtmlAttribute($htmlAttribute));
     }
 
-    /**
-     * @return MockObject|Coordinate
-     */
+    /** @return MockObject|Coordinate */
     private function createCoordinateMock()
     {
         return $this->createMock(Coordinate::class);
     }
 
-    /**
-     * @return MockObject|Bound
-     */
+    /** @return MockObject|Bound */
     private function createBoundMock()
     {
         return $this->createMock(Bound::class);
     }
 
-    /**
-     * @return MockObject|ControlManager
-     */
+    /** @return MockObject|ControlManager */
     private function createControlManagerMock()
     {
         return $this->createMock(ControlManager::class);
     }
 
-    /**
-     * @return MockObject|EventManager
-     */
+    /** @return MockObject|EventManager */
     private function createEventManagerMock()
     {
         return $this->createMock(EventManager::class);
     }
 
-    /**
-     * @return MockObject|LayerManager
-     */
+    /** @return MockObject|LayerManager */
     private function createLayerManagerMock()
     {
         return $this->createMock(LayerManager::class);
     }
 
-    /**
-     * @return MockObject|OverlayManager
-     */
+    /** @return MockObject|OverlayManager */
     private function createOverlayManagerMock()
     {
         return $this->createMock(OverlayManager::class);

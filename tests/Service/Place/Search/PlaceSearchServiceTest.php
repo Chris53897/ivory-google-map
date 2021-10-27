@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,7 +13,6 @@
 
 namespace Ivory\Tests\GoogleMap\Service\Place\Search;
 
-use Http\Client\Common\Exception\ClientErrorException;
 use Ivory\GoogleMap\Base\Coordinate;
 use Ivory\GoogleMap\Service\Place\Base\PlaceType;
 use Ivory\GoogleMap\Service\Place\Base\PriceLevel;
@@ -26,19 +27,12 @@ use Ivory\GoogleMap\Service\Place\Search\Response\PlaceSearchResponseIterator;
 use Ivory\GoogleMap\Service\Place\Search\Response\PlaceSearchStatus;
 use Ivory\Tests\GoogleMap\Service\Place\AbstractPlaceSerializableServiceTest;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class PlaceSearchServiceTest extends AbstractPlaceSerializableServiceTest
 {
-    /**
-     * @var PlaceSearchService
-     */
+    /** @var PlaceSearchService */
     private $service;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         if (!isset($_SERVER['API_KEY'])) {
@@ -291,12 +285,11 @@ class PlaceSearchServiceTest extends AbstractPlaceSerializableServiceTest
      */
     public function testErrorRequest($format)
     {
-        $this->expectException(ClientErrorException::class);
-
         $this->service->setFormat($format);
         $this->service->setKey('invalid');
 
-        $this->service->process($this->createNearbyRequest());
+        $iterator = $this->service->process($this->createNearbyRequest());
+        $this->assertSame(PlaceSearchStatus::REQUEST_DENIED, $iterator->current()->getStatus());
     }
 
     /**
@@ -347,11 +340,11 @@ class PlaceSearchServiceTest extends AbstractPlaceSerializableServiceTest
     private function assertPlaceSearchResponse($response, $request)
     {
         $options = array_merge([
-            'status'            => PlaceSearchStatus::OK,
-            'results'           => [],
+            'status' => PlaceSearchStatus::OK,
+            'results' => [],
             'html_attributions' => [],
-            'next_page_token'   => null,
-        ], self::$journal->getData());
+            'next_page_token' => null,
+        ], $this->journal->getData());
 
         $this->assertInstanceOf(PlaceSearchResponse::class, $response);
 

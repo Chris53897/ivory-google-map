@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -24,19 +26,12 @@ use Ivory\GoogleMap\Service\Place\Base\Review;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class PlaceTest extends TestCase
 {
-    /**
-     * @var Place
-     */
+    /** @var Place */
     private $result;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->result = new Place();
@@ -445,49 +440,37 @@ class PlaceTest extends TestCase
         $this->assertTrue($this->result->isPermanentlyClose());
     }
 
-    /**
-     * @return MockObject|AddressComponent
-     */
+    /** @return MockObject|AddressComponent */
     private function createAddressComponentMock()
     {
         return $this->createMock(AddressComponent::class);
     }
 
-    /**
-     * @return MockObject|Geometry
-     */
+    /** @return MockObject|Geometry */
     private function createGeometryMock()
     {
         return $this->createMock(Geometry::class);
     }
 
-    /**
-     * @return MockObject|OpeningHours
-     */
+    /** @return MockObject|OpeningHours */
     private function createOpeningHoursMock()
     {
         return $this->createMock(OpeningHours::class);
     }
 
-    /**
-     * @return MockObject|Photo
-     */
+    /** @return MockObject|Photo */
     private function createPhotoMock()
     {
         return $this->createMock(Photo::class);
     }
 
-    /**
-     * @return MockObject|AlternatePlaceId
-     */
+    /** @return MockObject|AlternatePlaceId */
     private function createAlternatePlaceIdMock()
     {
         return $this->createMock(AlternatePlaceId::class);
     }
 
-    /**
-     * @return MockObject|Review
-     */
+    /** @return MockObject|Review */
     private function createReviewMock()
     {
         return $this->createMock(Review::class);

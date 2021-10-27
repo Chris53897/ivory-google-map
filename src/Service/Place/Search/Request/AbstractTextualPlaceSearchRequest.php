@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,44 +13,27 @@
 
 namespace Ivory\GoogleMap\Service\Place\Search\Request;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 abstract class AbstractTextualPlaceSearchRequest extends AbstractPlaceSearchRequest
 {
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $keyword;
 
-    /**
-     * @return bool
-     */
-    public function hasKeyword()
+    public function hasKeyword(): bool
     {
         return null !== $this->keyword;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getKeyword()
+    public function getKeyword(): ?string
     {
         return $this->keyword;
     }
 
-    /**
-     * @param string|null $keyword
-     */
-    public function setKeyword($keyword)
+    public function setKeyword(?string $keyword): void
     {
         $this->keyword = $keyword;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function buildQuery()
+    public function buildQuery(): array
     {
         $query = parent::buildQuery();
 

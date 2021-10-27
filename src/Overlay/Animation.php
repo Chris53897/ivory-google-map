@@ -19,11 +19,9 @@ namespace Ivory\GoogleMap\Overlay;
 final class Animation
 {
     public const BOUNCE = 'bounce';
-    public const DROP = 'drop';
+    public const DROP   = 'drop';
 
-    /**
-     * @codeCoverageIgnore
-     */
+    /** @codeCoverageIgnore */
     private function __construct()
     {
     }

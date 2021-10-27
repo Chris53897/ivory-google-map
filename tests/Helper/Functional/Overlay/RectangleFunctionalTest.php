@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,8 +20,6 @@ use Ivory\GoogleMap\Overlay\Rectangle;
 use Ivory\Tests\GoogleMap\Helper\Functional\AbstractMapFunctionalTest;
 
 /**
- * @author GeLo <geloen.eric@gmail.com>
- *
  * @group functional
  */
 class RectangleFunctionalTest extends AbstractMapFunctionalTest
@@ -43,9 +43,7 @@ class RectangleFunctionalTest extends AbstractMapFunctionalTest
         $this->assertMap($map);
     }
 
-    /**
-     * @return Rectangle
-     */
+    /** @return Rectangle */
     private function createRectangle()
     {
         return new Rectangle(new Bound(new Coordinate(-1, -2), new Coordinate(1, 2)));

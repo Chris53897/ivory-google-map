@@ -91,26 +91,20 @@ class Autocomplete implements VariableAwareInterface
         return !empty($this->types);
     }
 
-    /**
-     * @return string[]
-     */
+    /** @return string[] */
     public function getTypes(): array
     {
         return $this->types;
     }
 
-    /**
-     * @param string[] $types
-     */
+    /** @param string[] $types */
     public function setTypes(array $types): void
     {
         $this->types = [];
         $this->addTypes($types);
     }
 
-    /**
-     * @param string[] $types
-     */
+    /** @param string[] $types */
     public function addTypes(array $types): void
     {
         foreach ($types as $type) {
@@ -164,17 +158,11 @@ class Autocomplete implements VariableAwareInterface
         return isset($this->components[$type]);
     }
 
-    /**
-     * @return mixed
-     */
     public function getComponent(string $type)
     {
         return $this->hasComponent($type) ? $this->components[$type] : null;
     }
 
-    /**
-     * @param mixed  $value
-     */
     public function setComponent(string $type, $value): void
     {
         $this->components[$type] = $value;
@@ -205,26 +193,20 @@ class Autocomplete implements VariableAwareInterface
         return !empty($this->inputAttributes);
     }
 
-    /**
-     * @return string[]
-     */
+    /** @return string[] */
     public function getInputAttributes(): array
     {
         return $this->inputAttributes;
     }
 
-    /**
-     * @param string[] $inputAttributes
-     */
+    /** @param string[] $inputAttributes */
     public function setInputAttributes(array $inputAttributes): void
     {
         $this->inputAttributes = [];
         $this->addInputAttributes($inputAttributes);
     }
 
-    /**
-     * @param string[] $inputAttributes
-     */
+    /** @param string[] $inputAttributes */
     public function addInputAttributes(array $inputAttributes): void
     {
         foreach ($inputAttributes as $name => $value) {
@@ -257,26 +239,20 @@ class Autocomplete implements VariableAwareInterface
         return !empty($this->libraries);
     }
 
-    /**
-     * @return string[]
-     */
+    /** @return string[] */
     public function getLibraries(): array
     {
         return $this->libraries;
     }
 
-    /**
-     * @param string[] $libraries
-     */
+    /** @param string[] $libraries */
     public function setLibraries(array $libraries): void
     {
         $this->libraries = [];
         $this->addLibraries($libraries);
     }
 
-    /**
-     * @param string[] $libraries
-     */
+    /** @param string[] $libraries */
     public function addLibraries(array $libraries): void
     {
         foreach ($libraries as $library) {

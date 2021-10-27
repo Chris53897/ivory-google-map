@@ -18,9 +18,7 @@ use Ivory\GoogleMap\Helper\Subscriber\AbstractDelegateSubscriber;
 
 class LayerSubscriber extends AbstractDelegateSubscriber
 {
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     public static function getDelegatedSubscribedEvents(): array
     {
         return [

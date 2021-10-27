@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,39 +13,28 @@
 
 namespace Ivory\Tests\GoogleMap\Service;
 
-use Http\Client\HttpClient;
-use Http\Message\MessageFactory;
 use Ivory\GoogleMap\Service\BusinessAccount;
 use Ivory\Serializer\SerializerInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use Psr\Http\Client\ClientInterface;
+use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 abstract class AbstractUnitServiceTest extends TestCase
 {
-    /**
-     * @var HttpClient|MockObject
-     */
+    /** @var ClientInterface|MockObject */
     protected $client;
 
-    /**
-     * @var MessageFactory|MockObject
-     */
+    /** @var RequestFactoryInterface|MockObject */
     protected $messageFactory;
 
-    /**
-     * @var SerializerInterface|MockObject
-     */
+    /** @var SerializerInterface|MockObject */
     protected $serializer;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->client = $this->createHttpClientMock();
@@ -51,57 +42,43 @@ abstract class AbstractUnitServiceTest extends TestCase
         $this->serializer = $this->createSerializerMock();
     }
 
-    /**
-     * @return MockObject|HttpClient
-     */
+    /** @return MockObject|ClientInterface */
     protected function createHttpClientMock()
     {
-        return $this->createMock(HttpClient::class);
+        return $this->createMock(ClientInterface::class);
     }
 
-    /**
-     * @return MockObject|MessageFactory
-     */
+    /** @return MockObject|RequestFactoryInterface */
     protected function createMessageFactoryMock()
     {
-        return $this->createMock(MessageFactory::class);
+        return $this->createMock(RequestFactoryInterface::class);
     }
 
-    /**
-     * @return MockObject|SerializerInterface
-     */
+    /** @return MockObject|SerializerInterface */
     protected function createSerializerMock()
     {
         return $this->createMock(SerializerInterface::class);
     }
 
-    /**
-     * @return MockObject|RequestInterface
-     */
+    /** @return MockObject|RequestInterface */
     protected function createHttpRequestMock()
     {
         return $this->createMock(RequestInterface::class);
     }
 
-    /**
-     * @return MockObject|ResponseInterface
-     */
+    /** @return MockObject|ResponseInterface */
     protected function createHttpResponseMock()
     {
         return $this->createMock(ResponseInterface::class);
     }
 
-    /**
-     * @return MockObject|StreamInterface
-     */
+    /** @return MockObject|StreamInterface */
     protected function createHttpStreamMock()
     {
         return $this->createMock(StreamInterface::class);
     }
 
-    /**
-     * @return MockObject|BusinessAccount
-     */
+    /** @return MockObject|BusinessAccount */
     protected function createBusinessAccountMock()
     {
         return $this->createMock(BusinessAccount::class);

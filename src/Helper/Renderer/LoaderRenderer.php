@@ -57,17 +57,14 @@ class LoaderRenderer extends AbstractJsonRenderer
         $this->key = $key;
     }
 
-    /**
-     * @param string[] $libraries
-     */
+    /** @param string[] $libraries */
     public function render(
         string $name,
         string $callback,
-        array  $libraries = [],
+        array $libraries = [],
         bool $newLine = true
-    ): string
-    {
-        $formatter = $this->getFormatter();
+    ): string {
+        $formatter   = $this->getFormatter();
         $jsonBuilder = $this->getJsonBuilder();
 
         $parameters = ['language' => $this->language];

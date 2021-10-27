@@ -21,7 +21,7 @@ class KmlLayerRenderer extends AbstractJsonRenderer
 {
     public function render(KmlLayer $kmlLayer, Map $map): string
     {
-        $formatter = $this->getFormatter();
+        $formatter   = $this->getFormatter();
         $jsonBuilder = $this->getJsonBuilder()
             ->setValue('[map]', $map->getVariable(), false)
             ->setValues($kmlLayer->getOptions());

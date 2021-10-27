@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -13,14 +15,9 @@ namespace Ivory\GoogleMap\Service\Place\Search\Request;
 
 use Ivory\GoogleMap\Service\Place\Search\Response\PlaceSearchResponse;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class PageTokenPlaceSearchRequest implements PlaceSearchRequestInterface
 {
-    /**
-     * @var PlaceSearchResponse
-     */
+    /** @var PlaceSearchResponse */
     private $response;
 
     public function __construct(PlaceSearchResponse $response)
@@ -28,31 +25,22 @@ class PageTokenPlaceSearchRequest implements PlaceSearchRequestInterface
         $this->setResponse($response);
     }
 
-    /**
-     * @return PlaceSearchResponse
-     */
-    public function getResponse()
+    public function getResponse(): PlaceSearchResponse
     {
         return $this->response;
     }
 
-    public function setResponse(PlaceSearchResponse $response)
+    public function setResponse(PlaceSearchResponse $response): void
     {
         $this->response = $response;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function buildContext()
+    public function buildContext(): string
     {
         return $this->response->getRequest()->buildContext();
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function buildQuery()
+    public function buildQuery(): array
     {
         return ['pagetoken' => $this->response->getNextPageToken()];
     }

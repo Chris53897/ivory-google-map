@@ -15,9 +15,7 @@ namespace Ivory\GoogleMap\Helper\Renderer\Html;
 
 class JavascriptTagRenderer extends AbstractTagRenderer
 {
-    /**
-     * @param string[]    $attributes
-     */
+    /** @param string[] $attributes */
     public function render(string $code = null, array $attributes = [], bool $newLine = true): string
     {
         return $this->getTagRenderer()->render(

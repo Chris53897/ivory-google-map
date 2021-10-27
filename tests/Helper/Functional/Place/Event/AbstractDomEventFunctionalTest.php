@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -15,19 +17,12 @@ use Ivory\GoogleMap\Event\Event;
 use Ivory\GoogleMap\Event\MouseEvent;
 use Ivory\GoogleMap\Place\Autocomplete;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 abstract class AbstractDomEventFunctionalTest extends AbstractEventFunctionalTest
 {
-    /**
-     * @var string
-     */
+    /** @var string */
     private $spyButton;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         parent::setUp();
@@ -35,17 +30,13 @@ abstract class AbstractDomEventFunctionalTest extends AbstractEventFunctionalTes
         $this->spyButton = 'spy_button';
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function renderAutocomplete(Autocomplete $autocomplete, $html = null)
     {
         return parent::renderAutocomplete($autocomplete, $html ?: '<button id="'.$this->spyButton.'">Button</button>');
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function createEvent($instance = null): Event
     {
         $event = parent::createEvent($instance ?: 'document.getElementById("'.$this->spyButton.'")');

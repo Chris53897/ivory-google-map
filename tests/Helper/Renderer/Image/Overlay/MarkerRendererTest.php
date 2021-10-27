@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -20,19 +22,12 @@ use Ivory\GoogleMap\Helper\Renderer\Image\Overlay\MarkerStyleRenderer;
 use Ivory\GoogleMap\Overlay\Marker;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class MarkerRendererTest extends TestCase
 {
-    /**
-     * @var MarkerRenderer
-     */
+    /** @var MarkerRenderer */
     private $markerRenderer;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->markerRenderer = new MarkerRenderer(
@@ -55,8 +50,8 @@ class MarkerRendererTest extends TestCase
     public function testRenderWithStyles()
     {
         $styles = [
-            'size'   => 'tiny',
-            'color'  => 'blue',
+            'size'  => 'tiny',
+            'color' => 'blue',
         ];
 
         $marker1 = new Marker(new Coordinate(1.2, 2.3));

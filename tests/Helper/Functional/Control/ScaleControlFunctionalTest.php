@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,8 +20,6 @@ use Ivory\GoogleMap\Map;
 use Ivory\Tests\GoogleMap\Helper\Functional\AbstractMapFunctionalTest;
 
 /**
- * @author GeLo <geloen.eric@gmail.com>
- *
  * @group functional
  */
 class ScaleControlFunctionalTest extends AbstractMapFunctionalTest
@@ -33,9 +33,7 @@ class ScaleControlFunctionalTest extends AbstractMapFunctionalTest
         $this->assertMap($map);
     }
 
-    /**
-     * @return ScaleControl
-     */
+    /** @return ScaleControl */
     private function createScaleControl()
     {
         return new ScaleControl(ControlPosition::TOP_CENTER, ScaleControlStyle::DEFAULT_);

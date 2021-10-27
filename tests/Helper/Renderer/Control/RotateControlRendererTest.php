@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,7 +13,6 @@
 
 namespace Ivory\Tests\GoogleMap\Helper\Renderer\Control;
 
-use InvalidArgumentException;
 use Ivory\GoogleMap\Control\RotateControl;
 use Ivory\GoogleMap\Helper\Formatter\Formatter;
 use Ivory\GoogleMap\Helper\Renderer\AbstractJsonRenderer;
@@ -22,19 +23,12 @@ use Ivory\JsonBuilder\JsonBuilder;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class RotateControlRendererTest extends TestCase
 {
-    /**
-     * @var RotateControlRenderer
-     */
+    /** @var RotateControlRenderer */
     private $rotateControlRenderer;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->rotateControlRenderer = new RotateControlRenderer(
@@ -68,14 +62,12 @@ class RotateControlRendererTest extends TestCase
 
     public function testRenderWithInvalidControl()
     {
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(\TypeError::class);
 
         $this->rotateControlRenderer->render('foo');
     }
 
-    /**
-     * @return MockObject|ControlPositionRenderer
-     */
+    /** @return MockObject|ControlPositionRenderer */
     private function createControlPositionRendererMock()
     {
         return $this->createMock(ControlPositionRenderer::class);

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,19 +20,12 @@ use Ivory\Serializer\Context\Context;
 use Ivory\Tests\GoogleMap\Service\AbstractUnitServiceTest;
 use PHPUnit\Framework\MockObject\MockObject;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class GeocoderServiceUnitTest extends AbstractUnitServiceTest
 {
-    /**
-     * @var GeocoderService
-     */
+    /** @var GeocoderService */
     private $service;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         parent::setUp();
@@ -105,17 +100,13 @@ class GeocoderServiceUnitTest extends AbstractUnitServiceTest
         $this->assertSame($response, $this->service->geocode($request));
     }
 
-    /**
-     * @return MockObject|AbstractGeocoderRequest
-     */
+    /** @return MockObject|AbstractGeocoderRequest */
     private function createGeocoderRequestMock()
     {
         return $this->createMock(AbstractGeocoderRequest::class);
     }
 
-    /**
-     * @return MockObject|AbstractGeocoderRequest
-     */
+    /** @return MockObject|AbstractGeocoderRequest */
     private function createGeocoderResponseMock()
     {
         return $this->createMock(GeocoderResponse::class);

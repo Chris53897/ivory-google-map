@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -13,9 +15,6 @@ namespace Ivory\GoogleMap\Service\Place\Search\Request;
 
 use Ivory\GoogleMap\Service\ContextualizedRequestInterface;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 interface PlaceSearchRequestInterface extends ContextualizedRequestInterface
 {
 }

@@ -61,7 +61,7 @@ class MarkerClustererSubscriber extends AbstractSubscriber
     public function handleMap(MapEvent $event): void
     {
         $formatter = $this->getFormatter();
-        $map = $event->getMap();
+        $map       = $event->getMap();
 
         if (null !== ($markerCluster = $this->getMarkerCluster($map))) {
             $event->addCode($formatter->renderContainerAssignment(
@@ -75,9 +75,7 @@ class MarkerClustererSubscriber extends AbstractSubscriber
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     public static function getSubscribedEvents(): array
     {
         return [

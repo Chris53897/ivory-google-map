@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -17,19 +19,12 @@ use Ivory\GoogleMap\Map;
 use Ivory\GoogleMap\Overlay\GroundOverlay;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class GroundOverlayCollectorTest extends TestCase
 {
-    /**
-     * @var GroundOverlayCollector
-     */
+    /** @var GroundOverlayCollector */
     private $groundOverlayCollector;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->groundOverlayCollector = new GroundOverlayCollector();

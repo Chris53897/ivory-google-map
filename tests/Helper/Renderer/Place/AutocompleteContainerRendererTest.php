@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -17,19 +19,12 @@ use Ivory\GoogleMap\Helper\Renderer\Place\AutocompleteContainerRenderer;
 use Ivory\JsonBuilder\JsonBuilder;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class AutocompleteContainerRendererTest extends TestCase
 {
-    /**
-     * @var AutocompleteContainerRenderer
-     */
+    /** @var AutocompleteContainerRenderer */
     private $autocompleteContainerRenderer;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->autocompleteContainerRenderer = new AutocompleteContainerRenderer(new Formatter(), new JsonBuilder());

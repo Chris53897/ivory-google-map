@@ -68,7 +68,7 @@ class OverlayManager
         }
     }
 
-    public function getMarkerCluster(): MarkerCluster
+    public function getMarkerCluster(): ?MarkerCluster
     {
         return $this->markerCluster;
     }
@@ -87,25 +87,19 @@ class OverlayManager
         return $this->markerCluster->hasMarkers();
     }
 
-    /**
-     * @return Marker[]
-     */
+    /** @return Marker[] */
     public function getMarkers(): array
     {
         return $this->markerCluster->getMarkers();
     }
 
-    /**
-     * @param Marker[] $markers
-     */
+    /** @param Marker[] $markers */
     public function setMarkers(array $markers): void
     {
         $this->markerCluster->setMarkers($markers);
     }
 
-    /**
-     * @param Marker[] $markers
-     */
+    /** @param Marker[] $markers */
     public function addMarkers(array $markers): void
     {
         $this->markerCluster->addMarkers($markers);
@@ -131,17 +125,13 @@ class OverlayManager
         return !empty($this->infoWindows);
     }
 
-    /**
-     * @return InfoWindow[]
-     */
+    /** @return InfoWindow[] */
     public function getInfoWindows(): array
     {
         return $this->infoWindows;
     }
 
-    /**
-     * @param InfoWindow[] $infoWindows
-     */
+    /** @param InfoWindow[] $infoWindows */
     public function setInfoWindows(array $infoWindows): void
     {
         foreach ($this->infoWindows as $infoWindow) {
@@ -151,9 +141,7 @@ class OverlayManager
         $this->addInfoWindows($infoWindows);
     }
 
-    /**
-     * @param InfoWindow[] $infoWindows
-     */
+    /** @param InfoWindow[] $infoWindows */
     public function addInfoWindows(array $infoWindows): void
     {
         foreach ($infoWindows as $infoWindow) {
@@ -187,17 +175,13 @@ class OverlayManager
         return !empty($this->polylines);
     }
 
-    /**
-     * @return Polyline[]
-     */
+    /** @return Polyline[] */
     public function getPolylines(): array
     {
         return $this->polylines;
     }
 
-    /**
-     * @param Polyline[] $polylines
-     */
+    /** @param Polyline[] $polylines */
     public function setPolylines(array $polylines): void
     {
         foreach ($this->polylines as $polyline) {
@@ -207,9 +191,7 @@ class OverlayManager
         $this->addPolylines($polylines);
     }
 
-    /**
-     * @param Polyline[] $polylines
-     */
+    /** @param Polyline[] $polylines */
     public function addPolylines(array $polylines): void
     {
         foreach ($polylines as $polyline) {
@@ -243,17 +225,13 @@ class OverlayManager
         return !empty($this->encodedPolylines);
     }
 
-    /**
-     * @return EncodedPolyline[]
-     */
+    /** @return EncodedPolyline[] */
     public function getEncodedPolylines(): array
     {
         return $this->encodedPolylines;
     }
 
-    /**
-     * @param EncodedPolyline[] $encodedPolylines
-     */
+    /** @param EncodedPolyline[] $encodedPolylines */
     public function setEncodedPolylines(array $encodedPolylines): void
     {
         foreach ($this->encodedPolylines as $encodedPolyline) {
@@ -263,9 +241,7 @@ class OverlayManager
         $this->addEncodedPolylines($encodedPolylines);
     }
 
-    /**
-     * @param EncodedPolyline[] $encodedPolylines
-     */
+    /** @param EncodedPolyline[] $encodedPolylines */
     public function addEncodedPolylines(array $encodedPolylines): void
     {
         foreach ($encodedPolylines as $encodedPolyline) {
@@ -299,17 +275,13 @@ class OverlayManager
         return !empty($this->polygons);
     }
 
-    /**
-     * @return Polygon[]
-     */
+    /** @return Polygon[] */
     public function getPolygons(): array
     {
         return $this->polygons;
     }
 
-    /**
-     * @param Polygon[] $polygons
-     */
+    /** @param Polygon[] $polygons */
     public function setPolygons(array $polygons): void
     {
         foreach ($this->polygons as $polygon) {
@@ -319,9 +291,7 @@ class OverlayManager
         $this->addPolygons($polygons);
     }
 
-    /**
-     * @param Polygon[] $polygons
-     */
+    /** @param Polygon[] $polygons */
     public function addPolygons(array $polygons): void
     {
         foreach ($polygons as $polygon) {
@@ -355,17 +325,13 @@ class OverlayManager
         return !empty($this->rectangles);
     }
 
-    /**
-     * @return Rectangle[]
-     */
+    /** @return Rectangle[] */
     public function getRectangles(): array
     {
         return $this->rectangles;
     }
 
-    /**
-     * @param Rectangle[] $rectangles
-     */
+    /** @param Rectangle[] $rectangles */
     public function setRectangles(array $rectangles): void
     {
         foreach ($this->rectangles as $rectangle) {
@@ -375,9 +341,7 @@ class OverlayManager
         $this->addRectangles($rectangles);
     }
 
-    /**
-     * @param Rectangle[] $rectangles
-     */
+    /** @param Rectangle[] $rectangles */
     public function addRectangles(array $rectangles): void
     {
         foreach ($rectangles as $rectangle) {
@@ -411,17 +375,13 @@ class OverlayManager
         return !empty($this->circles);
     }
 
-    /**
-     * @return Circle[]
-     */
+    /** @return Circle[] */
     public function getCircles(): array
     {
         return $this->circles;
     }
 
-    /**
-     * @param Circle[] $circles
-     */
+    /** @param Circle[] $circles */
     public function setCircles(array $circles): void
     {
         foreach ($this->circles as $circle) {
@@ -431,9 +391,7 @@ class OverlayManager
         $this->addCircles($circles);
     }
 
-    /**
-     * @param Circle[] $circles
-     */
+    /** @param Circle[] $circles */
     public function addCircles(array $circles): void
     {
         foreach ($circles as $circle) {
@@ -467,17 +425,13 @@ class OverlayManager
         return !empty($this->groundOverlays);
     }
 
-    /**
-     * @return GroundOverlay[]
-     */
+    /** @return GroundOverlay[] */
     public function getGroundOverlays(): array
     {
         return $this->groundOverlays;
     }
 
-    /**
-     * @param GroundOverlay[] $groundOverlays
-     */
+    /** @param GroundOverlay[] $groundOverlays */
     public function setGroundOverlays(array $groundOverlays): void
     {
         foreach ($this->groundOverlays as $groundOverlay) {
@@ -487,9 +441,7 @@ class OverlayManager
         $this->addGroundOverlays($groundOverlays);
     }
 
-    /**
-     * @param GroundOverlay[] $groundOverlays
-     */
+    /** @param GroundOverlay[] $groundOverlays */
     public function addGroundOverlays(array $groundOverlays): void
     {
         foreach ($groundOverlays as $groundOverlay) {

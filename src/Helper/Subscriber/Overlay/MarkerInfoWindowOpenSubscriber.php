@@ -66,7 +66,7 @@ class MarkerInfoWindowOpenSubscriber extends AbstractMarkerSubscriber
     public function handleMap(MapEvent $event): void
     {
         $formatter = $this->getFormatter();
-        $map = $event->getMap();
+        $map       = $event->getMap();
 
         foreach ($this->getMarkerCollector()->collect($map) as $marker) {
             if ($marker->hasInfoWindow() && $marker->getInfoWindow()->isAutoOpen()) {
@@ -84,9 +84,7 @@ class MarkerInfoWindowOpenSubscriber extends AbstractMarkerSubscriber
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     public static function getSubscribedEvents(): array
     {
         return [MapEvents::JAVASCRIPT_EVENT => 'handleMap'];

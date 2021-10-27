@@ -49,7 +49,7 @@ class DefaultInfoWindowSubscriber extends AbstractInfoWindowSubscriber
 
     public function handleMap(MapEvent $event): void
     {
-        $map = $event->getMap();
+        $map       = $event->getMap();
         $collector = $this->getInfoWindowCollector();
 
         foreach ($collector->collect($map, [], InfoWindowCollector::STRATEGY_MAP) as $infoWindow) {
@@ -61,9 +61,7 @@ class DefaultInfoWindowSubscriber extends AbstractInfoWindowSubscriber
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     public static function getSubscribedEvents(): array
     {
         return [MapEvents::JAVASCRIPT_OVERLAY_INFO_WINDOW => 'handleMap'];

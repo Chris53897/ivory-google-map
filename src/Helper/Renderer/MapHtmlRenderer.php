@@ -43,7 +43,7 @@ class MapHtmlRenderer extends AbstractTagRenderer
 
     public function render(Map $map): string
     {
-        $styles = [];
+        $styles      = [];
         $stylesheets = [
             'width'  => $map->hasStylesheetOption('width') ? $map->getStylesheetOption('width') : '300px',
             'height' => $map->hasStylesheetOption('height') ? $map->getStylesheetOption('height') : '300px',

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -21,19 +23,12 @@ use Ivory\JsonBuilder\JsonBuilder;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class FullscreenControlRendererTest extends TestCase
 {
-    /**
-     * @var FullscreenControlRenderer
-     */
+    /** @var FullscreenControlRenderer */
     private $fullscreenControlRenderer;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->fullscreenControlRenderer = new FullscreenControlRenderer(
@@ -67,14 +62,12 @@ class FullscreenControlRendererTest extends TestCase
 
     public function testRenderWithInvalidControl()
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(\TypeError::class);
 
         $this->fullscreenControlRenderer->render('foo');
     }
 
-    /**
-     * @return MockObject|ControlPositionRenderer
-     */
+    /** @return MockObject|ControlPositionRenderer */
     private function createControlPositionRendererMock()
     {
         return $this->createMock(ControlPositionRenderer::class);

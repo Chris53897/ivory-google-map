@@ -26,26 +26,20 @@ class ControlManagerRenderer
         return !empty($this->renderers);
     }
 
-    /**
-     * @return ControlRendererInterface[]
-     */
+    /** @return ControlRendererInterface[] */
     public function getRenderers(): array
     {
         return $this->renderers;
     }
 
-    /**
-     * @param ControlRendererInterface[] $renderers
-     */
+    /** @param ControlRendererInterface[] $renderers */
     public function setRenderers(array $renderers): void
     {
         $this->renderers = [];
         $this->addRenderers($renderers);
     }
 
-    /**
-     * @param ControlRendererInterface[] $renderers
-     */
+    /** @param ControlRendererInterface[] $renderers */
     public function addRenderers(array $renderers): void
     {
         foreach ($renderers as $renderer) {

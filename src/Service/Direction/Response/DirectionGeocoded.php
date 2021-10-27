@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,162 +13,104 @@
 
 namespace Ivory\GoogleMap\Service\Direction\Response;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class DirectionGeocoded
 {
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $status;
 
-    /**
-     * @var bool|null
-     */
+    /** @var bool|null */
     private $partialMatch;
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $placeId;
 
-    /**
-     * @var string[]
-     */
+    /** @var string[] */
     private $types = [];
 
-    /**
-     * @return bool
-     */
-    public function hasStatus()
+    public function hasStatus(): bool
     {
         return null !== $this->status;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
-    /**
-     * @param string|null $status
-     */
-    public function setStatus($status)
+    public function setStatus(?string $status): void
     {
         $this->status = $status;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasPartialMatch()
+    public function hasPartialMatch(): bool
     {
         return null !== $this->partialMatch;
     }
 
-    /**
-     * @return bool|null
-     */
-    public function isPartialMatch()
+    public function isPartialMatch(): ?bool
     {
         return $this->partialMatch;
     }
 
-    /**
-     * @param bool|null $partialMatch
-     */
-    public function setPartialMatch($partialMatch)
+    public function setPartialMatch(?bool $partialMatch): void
     {
         $this->partialMatch = $partialMatch;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasPlaceId()
+    public function hasPlaceId(): bool
     {
         return null !== $this->placeId;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getPlaceId()
+    public function getPlaceId(): ?string
     {
         return $this->placeId;
     }
 
-    /**
-     * @param string|null $placeId
-     */
-    public function setPlaceId($placeId)
+    public function setPlaceId(?string $placeId): void
     {
         $this->placeId = $placeId;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasTypes()
+    public function hasTypes(): bool
     {
         return !empty($this->types);
     }
 
-    /**
-     * @return string[]
-     */
-    public function getTypes()
+    /** @return string[] */
+    public function getTypes(): array
     {
         return $this->types;
     }
 
-    /**
-     * @param string[] $types
-     */
-    public function setTypes(array $types)
+    /** @param string[] $types */
+    public function setTypes(array $types): void
     {
         $this->types = [];
         $this->addTypes($types);
     }
 
-    /**
-     * @param string[] $types
-     */
-    public function addTypes(array $types)
+    /** @param string[] $types */
+    public function addTypes(array $types): void
     {
         foreach ($types as $type) {
             $this->addType($type);
         }
     }
 
-    /**
-     * @param string $type
-     *
-     * @return bool
-     */
-    public function hasType($type)
+    public function hasType(string $type): bool
     {
         return in_array($type, $this->types, true);
     }
 
-    /**
-     * @param string $type
-     */
-    public function addType($type)
+    public function addType(string $type): void
     {
         if (!$this->hasType($type)) {
             $this->types[] = $type;
         }
     }
 
-    /**
-     * @param string $type
-     */
-    public function removeType($type)
+    public function removeType(string $type): void
     {
         unset($this->types[array_search($type, $this->types, true)]);
         $this->types = empty($this->types) ? [] : array_values($this->types);

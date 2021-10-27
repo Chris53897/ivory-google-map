@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -16,19 +18,12 @@ use Ivory\GoogleMap\Service\Place\Base\Review;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class ReviewTest extends TestCase
 {
-    /**
-     * @var Review
-     */
+    /** @var Review */
     private $review;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->review = new Review();
@@ -138,9 +133,7 @@ class ReviewTest extends TestCase
         $this->assertEmpty($this->review->getAspects());
     }
 
-    /**
-     * @return MockObject|AspectRating
-     */
+    /** @return MockObject|AspectRating */
     private function createAspectRatingMock()
     {
         return $this->createMock(AspectRating::class);

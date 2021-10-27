@@ -78,7 +78,7 @@ class EncodedPolylineSubscriber extends AbstractSubscriber
     public function handleMap(MapEvent $event): void
     {
         $formatter = $this->getFormatter();
-        $map = $event->getMap();
+        $map       = $event->getMap();
 
         foreach ($this->encodedPolylineCollector->collect($map) as $encodedPolyline) {
             $event->addCode($formatter->renderContainerAssignment(
@@ -90,9 +90,7 @@ class EncodedPolylineSubscriber extends AbstractSubscriber
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     public static function getSubscribedEvents(): array
     {
         return [

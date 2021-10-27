@@ -32,13 +32,11 @@ class ApiEvent extends AbstractEvent
     /** @var SplObjectStorage */
     private $requirements;
 
-    /**
-     * @param object[] $objects
-     */
+    /** @param object[] $objects */
     public function __construct(array $objects)
     {
-        $this->objects = $objects;
-        $this->callbacks = new SplObjectStorage();
+        $this->objects      = $objects;
+        $this->callbacks    = new SplObjectStorage();
         $this->requirements = new SplObjectStorage();
     }
 
@@ -49,9 +47,7 @@ class ApiEvent extends AbstractEvent
         return !empty($objects);
     }
 
-    /**
-     * @return object[]
-     */
+    /** @return object[] */
     public function getObjects(?string $class = null): array
     {
         if (null === $class) {
@@ -74,26 +70,20 @@ class ApiEvent extends AbstractEvent
         return !empty($this->sources);
     }
 
-    /**
-     * @return string[]
-     */
+    /** @return string[] */
     public function getSources(): array
     {
         return $this->sources;
     }
 
-    /**
-     * @param string[] $sources
-     */
+    /** @param string[] $sources */
     public function setSources(array $sources): void
     {
         $this->sources = [];
         $this->addSources($sources);
     }
 
-    /**
-     * @param string[] $sources
-     */
+    /** @param string[] $sources */
     public function addSources(array $sources): void
     {
         foreach ($sources as $source) {
@@ -124,26 +114,20 @@ class ApiEvent extends AbstractEvent
         return !empty($this->libraries);
     }
 
-    /**
-     * @return string[]
-     */
+    /** @return string[] */
     public function getLibraries(): array
     {
         return $this->libraries;
     }
 
-    /**
-     * @param string[] $libraries
-     */
+    /** @param string[] $libraries */
     public function setLibraries(array $libraries): void
     {
         $this->libraries = [];
         $this->addLibraries($libraries);
     }
 
-    /**
-     * @param string[] $libraries
-     */
+    /** @param string[] $libraries */
     public function addLibraries(array $libraries): void
     {
         foreach ($libraries as $library) {
@@ -246,26 +230,20 @@ class ApiEvent extends AbstractEvent
         return $this->requirements;
     }
 
-    /**
-     * @return string[]
-     */
+    /** @return string[] */
     public function getRequirementsObject(object $object): array
     {
         return $this->hasRequirement($object) ? $this->requirements[$object] : [];
     }
 
-    /**
-     * @param string[] $requirements
-     */
+    /** @param string[] $requirements */
     public function setRequirements(object $object, array $requirements): void
     {
         $this->requirements = new SplObjectStorage();
         $this->addRequirements($object, $requirements);
     }
 
-    /**
-     * @param string[] $requirements
-     */
+    /** @param string[] $requirements */
     public function addRequirements(object $object, array $requirements): void
     {
         foreach ($requirements as $requirement) {

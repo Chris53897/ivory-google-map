@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,267 +13,176 @@
 
 namespace Ivory\GoogleMap\Service\Direction\Response\Transit;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class DirectionTransitLine
 {
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $name;
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $shortName;
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $color;
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $url;
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $icon;
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $textColor;
 
-    /**
-     * @var DirectionTransitVehicle|null
-     */
+    /** @var DirectionTransitVehicle|null */
     private $vehicle;
 
-    /**
-     * @var DirectionTransitAgency[]
-     */
+    /** @var DirectionTransitAgency[] */
     private $agencies = [];
 
-    /**
-     * @return bool
-     */
-    public function hasName()
+    public function hasName(): bool
     {
         return null !== $this->name;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param string|null $name
-     */
-    public function setName($name)
+    public function setName(?string $name): void
     {
         $this->name = $name;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasShortName()
+    public function hasShortName(): bool
     {
         return null !== $this->shortName;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getShortName()
+    public function getShortName(): ?string
     {
         return $this->shortName;
     }
 
-    /**
-     * @param string|null $shortName
-     */
-    public function setShortName($shortName)
+    public function setShortName(?string $shortName): void
     {
         $this->shortName = $shortName;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasColor()
+    public function hasColor(): bool
     {
         return null !== $this->color;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getColor()
+    public function getColor(): ?string
     {
         return $this->color;
     }
 
-    /**
-     * @param string|null $color
-     */
-    public function setColor($color)
+    public function setColor(?string $color): void
     {
         $this->color = $color;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasUrl()
+    public function hasUrl(): bool
     {
         return null !== $this->url;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getUrl()
+    public function getUrl(): ?string
     {
         return $this->url;
     }
 
-    /**
-     * @param string|null $url
-     */
-    public function setUrl($url)
+    public function setUrl(?string $url): void
     {
         $this->url = $url;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasIcon()
+    public function hasIcon(): bool
     {
         return null !== $this->icon;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getIcon()
+    public function getIcon(): ?string
     {
         return $this->icon;
     }
 
-    /**
-     * @param string|null $icon
-     */
-    public function setIcon($icon)
+    public function setIcon(?string $icon): void
     {
         $this->icon = $icon;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasTextColor()
+    public function hasTextColor(): bool
     {
         return null !== $this->textColor;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getTextColor()
+    public function getTextColor(): ?string
     {
         return $this->textColor;
     }
 
-    /**
-     * @param string|null $textColor
-     */
-    public function setTextColor($textColor)
+    public function setTextColor(?string $textColor): void
     {
         $this->textColor = $textColor;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasVehicle()
+    public function hasVehicle(): bool
     {
         return null !== $this->vehicle;
     }
 
-    /**
-     * @return DirectionTransitVehicle|null
-     */
-    public function getVehicle()
+    public function getVehicle(): ?DirectionTransitVehicle
     {
         return $this->vehicle;
     }
 
-    public function setVehicle(DirectionTransitVehicle $vehicle = null)
+    public function setVehicle(DirectionTransitVehicle $vehicle = null): void
     {
         $this->vehicle = $vehicle;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasAgencies()
+    public function hasAgencies(): bool
     {
         return !empty($this->agencies);
     }
 
-    /**
-     * @return DirectionTransitAgency[]
-     */
-    public function getAgencies()
+    /** @return DirectionTransitAgency[] */
+    public function getAgencies(): array
     {
         return $this->agencies;
     }
 
-    /**
-     * @param DirectionTransitAgency[] $agencies
-     */
-    public function setAgencies(array $agencies)
+    /** @param DirectionTransitAgency[] $agencies */
+    public function setAgencies(array $agencies): void
     {
         $this->agencies = $agencies;
         $this->addAgencies($agencies);
     }
 
-    /**
-     * @param DirectionTransitAgency[] $agencies
-     */
-    public function addAgencies(array $agencies)
+    /** @param DirectionTransitAgency[] $agencies */
+    public function addAgencies(array $agencies): void
     {
         foreach ($agencies as $agency) {
             $this->addAgency($agency);
         }
     }
 
-    /**
-     * @return bool
-     */
-    public function hasAgency(DirectionTransitAgency $agency)
+    public function hasAgency(DirectionTransitAgency $agency): bool
     {
         return in_array($agency, $this->agencies, true);
     }
 
-    public function addAgency(DirectionTransitAgency $agency)
+    public function addAgency(DirectionTransitAgency $agency): void
     {
         if (!$this->hasAgency($agency)) {
             $this->agencies[] = $agency;
         }
     }
 
-    public function removeAgency(DirectionTransitAgency $agency)
+    public function removeAgency(DirectionTransitAgency $agency): void
     {
         unset($this->agencies[array_search($agency, $this->agencies, true)]);
         $this->agencies = empty($this->agencies) ? [] : array_values($this->agencies);

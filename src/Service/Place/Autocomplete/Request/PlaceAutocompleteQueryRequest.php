@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,15 +13,9 @@
 
 namespace Ivory\GoogleMap\Service\Place\Autocomplete\Request;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class PlaceAutocompleteQueryRequest extends AbstractPlaceAutocompleteRequest
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function buildContext()
+    public function buildContext(): string
     {
         return 'queryautocomplete';
     }

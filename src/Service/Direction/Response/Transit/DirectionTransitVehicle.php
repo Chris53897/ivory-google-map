@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,123 +13,76 @@
 
 namespace Ivory\GoogleMap\Service\Direction\Response\Transit;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class DirectionTransitVehicle
 {
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $name;
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $icon;
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $type;
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $localIcon;
 
-    /**
-     * @return bool
-     */
-    public function hasName()
+    public function hasName(): bool
     {
         return null !== $this->name;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param string|null $name
-     */
-    public function setName($name)
+    public function setName($name): void
     {
         $this->name = $name;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasIcon()
+    public function hasIcon(): bool
     {
         return null !== $this->icon;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getIcon()
+    public function getIcon(): ?string
     {
         return $this->icon;
     }
 
-    /**
-     * @param string|null $icon
-     */
-    public function setIcon($icon)
+    public function setIcon($icon): void
     {
         $this->icon = $icon;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasType()
+    public function hasType(): bool
     {
         return null !== $this->type;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getType()
+    public function getType(): ?string
     {
         return $this->type;
     }
 
-    /**
-     * @param string|null $type
-     */
-    public function setType($type)
+    public function setType(?string $type): void
     {
         $this->type = $type;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasLocalIcon()
+    public function hasLocalIcon(): bool
     {
         return null !== $this->localIcon;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getLocalIcon()
+    public function getLocalIcon(): ?string
     {
         return $this->localIcon;
     }
 
-    /**
-     * @param string|null $localIcon
-     */
-    public function setLocalIcon($localIcon)
+    public function setLocalIcon(?string $localIcon): void
     {
         $this->localIcon = $localIcon;
     }

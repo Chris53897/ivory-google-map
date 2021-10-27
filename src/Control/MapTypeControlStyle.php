@@ -18,13 +18,11 @@ namespace Ivory\GoogleMap\Control;
  */
 final class MapTypeControlStyle
 {
-    public const DEFAULT_ = 'default';
-    public const DROPDOWN_MENU = 'dropdown_menu';
+    public const DEFAULT_       = 'default';
+    public const DROPDOWN_MENU  = 'dropdown_menu';
     public const HORIZONTAL_BAR = 'horizontal_bar';
 
-    /**
-     * @codeCoverageIgnore
-     */
+    /** @codeCoverageIgnore */
     private function __construct()
     {
     }

@@ -38,7 +38,7 @@ class MarkerCollector extends AbstractCollector
         $result = [];
 
         foreach (array_merge($markers, $map->getOverlayManager()->getMarkers()) as $marker) {
-            $hash = md5($this->markerStyleRenderer->render($marker));
+            $hash          = md5((string) $this->markerStyleRenderer->render($marker));
             $result[$hash] = $this->collectValue($marker, $result[$hash] ?? []);
         }
 

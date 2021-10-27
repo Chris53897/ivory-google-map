@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -17,19 +19,12 @@ use Ivory\GoogleMap\Helper\Renderer\Image\Overlay\EncodedPolylineValueRenderer;
 use Ivory\GoogleMap\Overlay\EncodedPolyline;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class EncodedPolylineRendererTest extends TestCase
 {
-    /**
-     * @var EncodedPolylineRenderer
-     */
+    /** @var EncodedPolylineRenderer */
     private $encodedPolylineRenderer;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->encodedPolylineRenderer = new EncodedPolylineRenderer(

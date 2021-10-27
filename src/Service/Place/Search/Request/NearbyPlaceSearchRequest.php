@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -13,55 +15,34 @@ namespace Ivory\GoogleMap\Service\Place\Search\Request;
 
 use Ivory\GoogleMap\Base\Coordinate;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class NearbyPlaceSearchRequest extends AbstractTextualPlaceSearchRequest
 {
-    /**
-     * @var string
-     */
+    /** @var string */
     private $rankBy;
 
-    /**
-     * @param string     $rankBy
-     * @param float|null $radius
-     */
-    public function __construct(Coordinate $location, $rankBy, $radius = null)
+    public function __construct(Coordinate $location, string $rankBy, float $radius = null)
     {
         $this->setLocation($location);
         $this->setRankBy($rankBy);
         $this->setRadius($radius);
     }
 
-    /**
-     * @return string
-     */
-    public function getRankBy()
+    public function getRankBy(): string
     {
         return $this->rankBy;
     }
 
-    /**
-     * @param string $rankBy
-     */
-    public function setRankBy($rankBy)
+    public function setRankBy(string $rankBy): void
     {
         $this->rankBy = $rankBy;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function buildContext()
+    public function buildContext(): string
     {
         return 'nearbysearch';
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function buildQuery()
+    public function buildQuery(): array
     {
         $query = parent::buildQuery();
         $query['rankby'] = $this->rankBy;

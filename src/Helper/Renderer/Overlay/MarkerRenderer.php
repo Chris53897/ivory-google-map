@@ -46,7 +46,7 @@ class MarkerRenderer extends AbstractJsonRenderer
 
     public function render(Marker $marker, Map $map = null): string
     {
-        $formatter = $this->getFormatter();
+        $formatter   = $this->getFormatter();
         $jsonBuilder = $this->getJsonBuilder()
             ->setValue('[position]', $marker->getPosition()->getVariable(), false);
 

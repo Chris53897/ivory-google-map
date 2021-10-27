@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -13,59 +15,37 @@ namespace Ivory\GoogleMap\Service\Base;
 
 /**
  * @see http://code.google.com/apis/maps/documentation/javascript/reference.html#Duration
- *
- * @author GeLo <geloen.eric@gmail.com>
  */
 class Duration
 {
-    /**
-     * @var float
-     */
+    /** @var float */
     private $value;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $text;
 
-    /**
-     * @param float  $value
-     * @param string $text
-     */
-    public function __construct($value, $text)
+    public function __construct(float $value, string $text)
     {
         $this->setValue($value);
         $this->setText($text);
     }
 
-    /**
-     * @return float
-     */
-    public function getValue()
+    public function getValue(): float
     {
         return $this->value;
     }
 
-    /**
-     * @param float $value
-     */
-    public function setValue($value)
+    public function setValue(float $value): void
     {
         $this->value = $value;
     }
 
-    /**
-     * @return string
-     */
-    public function getText()
+    public function getText(): string
     {
         return $this->text;
     }
 
-    /**
-     * @param string $text
-     */
-    public function setText($text)
+    public function setText(string $text): void
     {
         $this->text = $text;
     }

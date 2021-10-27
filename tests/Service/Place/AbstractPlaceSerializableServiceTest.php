@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -21,9 +23,6 @@ use Ivory\GoogleMap\Service\Place\Base\Place;
 use Ivory\GoogleMap\Service\Place\Base\Review;
 use Ivory\Tests\GoogleMap\Service\AbstractSerializableServiceTest;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 abstract class AbstractPlaceSerializableServiceTest extends AbstractSerializableServiceTest
 {
     /**

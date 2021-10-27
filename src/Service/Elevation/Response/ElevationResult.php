@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -13,91 +15,58 @@ namespace Ivory\GoogleMap\Service\Elevation\Response;
 
 use Ivory\GoogleMap\Base\Coordinate;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class ElevationResult
 {
-    /**
-     * @var Coordinate|null
-     */
+    /** @var Coordinate|null */
     private $location;
 
-    /**
-     * @var float|null
-     */
+    /** @var float|null */
     private $elevation;
 
-    /**
-     * @var float|null
-     */
+    /** @var float|null */
     private $resolution;
 
-    /**
-     * @return bool
-     */
-    public function hasLocation()
+    public function hasLocation(): bool
     {
         return null !== $this->location;
     }
 
-    /**
-     * @return Coordinate|null
-     */
-    public function getLocation()
+    public function getLocation(): ?Coordinate
     {
         return $this->location;
     }
 
-    public function setLocation(Coordinate $location = null)
+    public function setLocation(Coordinate $location = null): void
     {
         $this->location = $location;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasElevation()
+    public function hasElevation(): bool
     {
         return null !== $this->elevation;
     }
 
-    /**
-     * @return float|null
-     */
-    public function getElevation()
+    public function getElevation(): ?float
     {
         return $this->elevation;
     }
 
-    /**
-     * @param float|null $elevation
-     */
-    public function setElevation($elevation)
+    public function setElevation(?float $elevation): void
     {
         $this->elevation = $elevation;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasResolution()
+    public function hasResolution(): bool
     {
         return null !== $this->resolution;
     }
 
-    /**
-     * @return float|null
-     */
-    public function getResolution()
+    public function getResolution(): ?float
     {
         return $this->resolution;
     }
 
-    /**
-     * @param float|null $resolution
-     */
-    public function setResolution($resolution)
+    public function setResolution(?float $resolution): void
     {
         $this->resolution = $resolution;
     }

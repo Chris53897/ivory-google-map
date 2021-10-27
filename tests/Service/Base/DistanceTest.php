@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -14,29 +16,18 @@ namespace Ivory\Tests\GoogleMap\Service\Base;
 use Ivory\GoogleMap\Service\Base\Distance;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class DistanceTest extends TestCase
 {
-    /**
-     * @var Distance
-     */
+    /** @var Distance */
     private $distance;
 
-    /**
-     * @var float
-     */
+    /** @var float */
     private $value;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $text;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->distance = new Distance($this->value = 2.3, $this->text = 'foo');

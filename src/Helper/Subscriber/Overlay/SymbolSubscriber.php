@@ -62,7 +62,7 @@ class SymbolSubscriber extends AbstractSubscriber
     public function handleMap(MapEvent $event): void
     {
         $formatter = $this->getFormatter();
-        $map = $event->getMap();
+        $map       = $event->getMap();
 
         foreach ($this->getSymbolCollector()->collect($map) as $symbol) {
             $event->addCode($formatter->renderContainerAssignment(
@@ -74,9 +74,7 @@ class SymbolSubscriber extends AbstractSubscriber
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     public static function getSubscribedEvents(): array
     {
         return [MapEvents::JAVASCRIPT_OVERLAY_SYMBOL => 'handleMap'];

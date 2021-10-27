@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -17,19 +19,12 @@ use Ivory\GoogleMap\Service\Direction\Response\Transit\DirectionTransitVehicle;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class DirectionTransitLineTest extends TestCase
 {
-    /**
-     * @var DirectionTransitLine
-     */
+    /** @var DirectionTransitLine */
     private $transitLine;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->transitLine = new DirectionTransitLine();
@@ -149,17 +144,13 @@ class DirectionTransitLineTest extends TestCase
         $this->assertEmpty($this->transitLine->getAgencies());
     }
 
-    /**
-     * @return MockObject|DirectionTransitAgency
-     */
+    /** @return MockObject|DirectionTransitAgency */
     private function createTransitAgencyMock()
     {
         return $this->createMock(DirectionTransitAgency::class);
     }
 
-    /**
-     * @return MockObject|DirectionTransitVehicle
-     */
+    /** @return MockObject|DirectionTransitVehicle */
     private function createTransitVehicleMock()
     {
         return $this->createMock(DirectionTransitVehicle::class);

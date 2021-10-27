@@ -62,7 +62,7 @@ class DomEventOnceSubscriber extends AbstractSubscriber
     public function handleMap(MapEvent $event): void
     {
         $formatter = $this->getFormatter();
-        $map = $event->getMap();
+        $map       = $event->getMap();
 
         foreach ($this->domEventOnceCollector->collect($map) as $domEventOnce) {
             $event->addCode($formatter->renderContainerAssignment(
@@ -74,9 +74,7 @@ class DomEventOnceSubscriber extends AbstractSubscriber
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     public static function getSubscribedEvents(): array
     {
         return [MapEvents::JAVASCRIPT_EVENT_DOM_EVENT_ONCE => 'handleMap'];

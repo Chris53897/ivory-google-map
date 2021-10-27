@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -16,19 +18,12 @@ use Ivory\GoogleMap\Layer\HeatmapLayer;
 use Ivory\GoogleMap\Map;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class HeatmapLayerCollectorTest extends TestCase
 {
-    /**
-     * @var HeatmapLayerCollector
-     */
+    /** @var HeatmapLayerCollector */
     private $heatmapLayerCollector;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->heatmapLayerCollector = new HeatmapLayerCollector();

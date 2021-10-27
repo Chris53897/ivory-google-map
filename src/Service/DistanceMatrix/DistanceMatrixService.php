@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,18 +13,15 @@
 
 namespace Ivory\GoogleMap\Service\DistanceMatrix;
 
-use Http\Client\HttpClient;
-use Http\Message\MessageFactory;
 use Ivory\GoogleMap\Service\AbstractSerializableService;
 use Ivory\GoogleMap\Service\DistanceMatrix\Request\DistanceMatrixRequestInterface;
 use Ivory\GoogleMap\Service\DistanceMatrix\Response\DistanceMatrixResponse;
 use Ivory\Serializer\Context\Context;
 use Ivory\Serializer\Naming\SnakeCaseNamingStrategy;
 use Ivory\Serializer\SerializerInterface;
+use Psr\Http\Client\ClientInterface as HttpClient;
+use Psr\Http\Message\RequestFactoryInterface as MessageFactory;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class DistanceMatrixService extends AbstractSerializableService
 {
     public function __construct(
@@ -38,12 +37,9 @@ class DistanceMatrixService extends AbstractSerializableService
         );
     }
 
-    /**
-     * @return DistanceMatrixResponse
-     */
-    public function process(DistanceMatrixRequestInterface $request)
+    public function process(DistanceMatrixRequestInterface $request): DistanceMatrixResponse
     {
-        $httpRequest = $this->createRequest($request);
+        $httpRequest  = $this->createRequest($request);
         $httpResponse = $this->getClient()->sendRequest($httpRequest);
 
         $response = $this->deserialize(

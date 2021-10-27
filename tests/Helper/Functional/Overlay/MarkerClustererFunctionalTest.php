@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,8 +20,6 @@ use Ivory\GoogleMap\Overlay\MarkerClusterType;
 use Ivory\Tests\GoogleMap\Helper\Functional\AbstractMapFunctionalTest;
 
 /**
- * @author GeLo <geloen.eric@gmail.com>
- *
  * @group functional
  */
 class MarkerClustererFunctionalTest extends AbstractMapFunctionalTest
@@ -49,9 +49,7 @@ class MarkerClustererFunctionalTest extends AbstractMapFunctionalTest
         $this->assertMap($map);
     }
 
-    /**
-     * @return Marker
-     */
+    /** @return Marker */
     private function createMarker(Coordinate $position = null)
     {
         return new Marker($position ?: new Coordinate());

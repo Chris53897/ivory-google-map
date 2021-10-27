@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -13,17 +15,13 @@ namespace Ivory\GoogleMap\Service\Base;
 
 /**
  * @see http://code.google.com/apis/maps/documentation/javascript/reference.html#UnitSystem
- *
- * @author GeLo <geloen.eric@gmail.com>
  */
 final class UnitSystem
 {
-    const IMPERIAL = 'IMPERIAL';
-    const METRIC = 'METRIC';
+    public const IMPERIAL = 'IMPERIAL';
+    public const METRIC   = 'METRIC';
 
-    /**
-     * @codeCoverageIgnore
-     */
+    /** @codeCoverageIgnore */
     private function __construct()
     {
     }

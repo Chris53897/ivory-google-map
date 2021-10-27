@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -16,19 +18,12 @@ use Ivory\GoogleMap\Service\Place\Base\Period;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class OpeningHoursTest extends TestCase
 {
-    /**
-     * @var OpeningHours
-     */
+    /** @var OpeningHours */
     private $openingHours;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->openingHours = new OpeningHours();
@@ -128,9 +123,7 @@ class OpeningHoursTest extends TestCase
         $this->assertEmpty($this->openingHours->getWeekdayTexts());
     }
 
-    /**
-     * @return MockObject|Period
-     */
+    /** @return MockObject|Period */
     private function createPeriodMock()
     {
         return $this->createMock(Period::class);

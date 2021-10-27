@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -20,19 +22,12 @@ use Ivory\GoogleMap\Map;
 use Ivory\JsonBuilder\JsonBuilder;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class HeatmapLayerRendererTest extends TestCase
 {
-    /**
-     * @var HeatmapLayerRenderer
-     */
+    /** @var HeatmapLayerRenderer */
     private $heatmapLayerRenderer;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->heatmapLayerRenderer = new HeatmapLayerRenderer(new Formatter(), new JsonBuilder());

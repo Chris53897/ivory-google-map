@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -13,122 +15,86 @@ namespace Ivory\GoogleMap\Service\Elevation\Response;
 
 use Ivory\GoogleMap\Service\Elevation\Request\ElevationRequestInterface;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class ElevationResponse
 {
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $status;
 
-    /**
-     * @var ElevationRequestInterface|null
-     */
+    /** @var ElevationRequestInterface|null */
     private $request;
 
-    /**
-     * @var ElevationResult[]
-     */
+    /** @var ElevationResult[] */
     private $results = [];
 
-    /**
-     * @return bool
-     */
-    public function hasStatus()
+    public function hasStatus(): bool
     {
         return null !== $this->status;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
-    /**
-     * @param string|null $status
-     */
-    public function setStatus($status)
+    public function setStatus(?string $status): void
     {
         $this->status = $status;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasRequest()
+    public function hasRequest(): bool
     {
         return null !== $this->request;
     }
 
-    /**
-     * @return ElevationRequestInterface|null
-     */
-    public function getRequest()
+    public function getRequest(): ?ElevationRequestInterface
     {
         return $this->request;
     }
 
-    public function setRequest(ElevationRequestInterface $request = null)
+    public function setRequest(ElevationRequestInterface $request = null): void
     {
         $this->request = $request;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasResults()
+    public function hasResults(): bool
     {
         return !empty($this->results);
     }
 
-    /**
-     * @return ElevationResult[]
-     */
-    public function getResults()
+    /** @return ElevationResult[] */
+    public function getResults(): array
     {
         return $this->results;
     }
 
-    /**
-     * @param ElevationResult[] $results
-     */
-    public function setResults(array $results)
+    /** @param ElevationResult[] $results */
+    public function setResults(array $results): void
     {
         $this->results = [];
         $this->addResults($results);
     }
 
-    /**
-     * @param ElevationResult[] $results
-     */
-    public function addResults(array $results)
+    /** @param ElevationResult[] $results */
+    public function addResults(array $results): void
     {
         foreach ($results as $result) {
             $this->addResult($result);
         }
     }
 
-    /**
-     * @return bool
-     */
-    public function hasResult(ElevationResult $result)
+    public function hasResult(ElevationResult $result): bool
     {
         return in_array($result, $this->results, true);
     }
 
-    public function addResult(ElevationResult $result)
+    public function addResult(ElevationResult $result): void
     {
         if (!$this->hasResult($result)) {
             $this->results[] = $result;
         }
     }
 
-    public function removeResult(ElevationResult $result)
+    public function removeResult(ElevationResult $result): void
     {
         unset($this->results[array_search($result, $this->results, true)]);
         $this->results = empty($this->results) ? [] : array_values($this->results);

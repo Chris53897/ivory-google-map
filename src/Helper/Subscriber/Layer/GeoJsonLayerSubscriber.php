@@ -62,16 +62,14 @@ class GeoJsonLayerSubscriber extends AbstractSubscriber
     public function handleMap(MapEvent $event): void
     {
         $formatter = $this->getFormatter();
-        $map = $event->getMap();
+        $map       = $event->getMap();
 
         foreach ($this->geoJsonLayerCollector->collect($map) as $geoJsonLayer) {
             $event->addCode($formatter->renderCode($this->geoJsonLayerRenderer->render($geoJsonLayer, $map)));
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     public static function getSubscribedEvents(): array
     {
         return [MapEvents::JAVASCRIPT_LAYER_GEO_JSON_LAYER => 'handleMap'];

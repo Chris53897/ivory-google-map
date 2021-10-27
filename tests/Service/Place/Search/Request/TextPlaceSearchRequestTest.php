@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -15,24 +17,15 @@ use Ivory\GoogleMap\Service\Place\Search\Request\AbstractPlaceSearchRequest;
 use Ivory\GoogleMap\Service\Place\Search\Request\TextPlaceSearchRequest;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class TextPlaceSearchRequestTest extends TestCase
 {
-    /**
-     * @var TextPlaceSearchRequest
-     */
+    /** @var TextPlaceSearchRequest */
     private $request;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $query;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->request = new TextPlaceSearchRequest($this->query = 'foo');

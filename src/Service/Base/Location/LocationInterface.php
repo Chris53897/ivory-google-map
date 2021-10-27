@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,13 +13,7 @@
 
 namespace Ivory\GoogleMap\Service\Base\Location;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 interface LocationInterface
 {
-    /**
-     * @return string
-     */
-    public function buildQuery();
+    public function buildQuery(): string;
 }

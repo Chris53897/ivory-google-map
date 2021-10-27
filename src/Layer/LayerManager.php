@@ -54,26 +54,20 @@ class LayerManager
         return !empty($this->geoJsonLayers);
     }
 
-    /**
-     * @return GeoJsonLayer[]
-     */
+    /** @return GeoJsonLayer[] */
     public function getGeoJsonLayers(): array
     {
         return $this->geoJsonLayers;
     }
 
-    /**
-     * @param GeoJsonLayer[] $geoJsonLayers
-     */
+    /** @param GeoJsonLayer[] $geoJsonLayers */
     public function setGeoJsonLayers(array $geoJsonLayers): void
     {
         $this->geoJsonLayers = [];
         $this->addGeoJsonLayers($geoJsonLayers);
     }
 
-    /**
-     * @param GeoJsonLayer[] $geoJsonLayers
-     */
+    /** @param GeoJsonLayer[] $geoJsonLayers */
     public function addGeoJsonLayers(array $geoJsonLayers): void
     {
         foreach ($geoJsonLayers as $geoJsonLayer) {
@@ -104,17 +98,13 @@ class LayerManager
         return !empty($this->heatmapLayers);
     }
 
-    /**
-     * @return HeatmapLayer[]
-     */
+    /** @return HeatmapLayer[] */
     public function getHeatmapLayers(): array
     {
         return $this->heatmapLayers;
     }
 
-    /**
-     * @param HeatmapLayer[] $heatmapLayers
-     */
+    /** @param HeatmapLayer[] $heatmapLayers */
     public function setHeatmapLayers(array $heatmapLayers): void
     {
         foreach ($this->heatmapLayers as $heatmapLayer) {
@@ -124,9 +114,7 @@ class LayerManager
         $this->addHeatmapLayers($heatmapLayers);
     }
 
-    /**
-     * @param HeatmapLayer[] $heatmapLayers
-     */
+    /** @param HeatmapLayer[] $heatmapLayers */
     public function addHeatmapLayers(array $heatmapLayers): void
     {
         foreach ($heatmapLayers as $heatmapLayer) {
@@ -160,17 +148,13 @@ class LayerManager
         return !empty($this->kmlLayers);
     }
 
-    /**
-     * @return KmlLayer[]
-     */
+    /** @return KmlLayer[] */
     public function getKmlLayers(): array
     {
         return $this->kmlLayers;
     }
 
-    /**
-     * @param KmlLayer[] $kmlLayers
-     */
+    /** @param KmlLayer[] $kmlLayers */
     public function setKmlLayers(array $kmlLayers): void
     {
         foreach ($this->kmlLayers as $kmlLayer) {
@@ -180,9 +164,7 @@ class LayerManager
         $this->addKmlLayers($kmlLayers);
     }
 
-    /**
-     * @param KmlLayer[] $kmlLayers
-     */
+    /** @param KmlLayer[] $kmlLayers */
     public function addKmlLayers(array $kmlLayers): void
     {
         foreach ($kmlLayers as $kmlLayer) {

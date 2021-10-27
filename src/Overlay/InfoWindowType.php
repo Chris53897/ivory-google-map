@@ -18,9 +18,7 @@ final class InfoWindowType
     public const DEFAULT_ = 'default';
     public const INFO_BOX = 'info_box';
 
-    /**
-     * @codeCoverageIgnore
-     */
+    /** @codeCoverageIgnore */
     private function __construct()
     {
     }

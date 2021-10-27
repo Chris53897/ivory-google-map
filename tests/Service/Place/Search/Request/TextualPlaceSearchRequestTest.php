@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -16,19 +18,12 @@ use Ivory\GoogleMap\Service\Place\Search\Request\AbstractTextualPlaceSearchReque
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class TextualPlaceSearchRequestTest extends TestCase
 {
-    /**
-     * @var AbstractTextualPlaceSearchRequest|MockObject
-     */
+    /** @var AbstractTextualPlaceSearchRequest|MockObject */
     private $request;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->request = $this->createRequestMock();
@@ -65,9 +60,7 @@ class TextualPlaceSearchRequestTest extends TestCase
         $this->assertSame(['keyword' => $keyword], $this->request->buildQuery());
     }
 
-    /**
-     * @return MockObject|AbstractTextualPlaceSearchRequest
-     */
+    /** @return MockObject|AbstractTextualPlaceSearchRequest */
     private function createRequestMock()
     {
         return $this->getMockForAbstractClass(AbstractTextualPlaceSearchRequest::class);

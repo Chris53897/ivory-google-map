@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,7 +13,6 @@
 
 namespace Ivory\Tests\GoogleMap\Service\TimeZone;
 
-use Http\Client\Common\Exception\ClientErrorException;
 use Ivory\GoogleMap\Base\Coordinate;
 use Ivory\GoogleMap\Service\TimeZone\Request\TimeZoneRequest;
 use Ivory\GoogleMap\Service\TimeZone\Request\TimeZoneRequestInterface;
@@ -20,19 +21,12 @@ use Ivory\GoogleMap\Service\TimeZone\Response\TimeZoneStatus;
 use Ivory\GoogleMap\Service\TimeZone\TimeZoneService;
 use Ivory\Tests\GoogleMap\Service\AbstractSerializableServiceTest;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class TimeZoneServiceApiKeyTest extends AbstractSerializableServiceTest
 {
-    /**
-     * @var TimeZoneService
-     */
+    /** @var TimeZoneService */
     protected $service;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         if (!isset($_SERVER['API_KEY'])) {
@@ -83,17 +77,14 @@ class TimeZoneServiceApiKeyTest extends AbstractSerializableServiceTest
      */
     public function testErrorRequest($format)
     {
-        $this->expectException(ClientErrorException::class);
-
         $this->service->setFormat($format);
         $this->service->setKey('invalid');
 
-        $this->service->process($this->createRequest());
+        $response = $this->service->process($this->createRequest());
+        $this->assertSame(TimeZoneStatus::REQUEST_DENIED, $response->getStatus());
     }
 
-    /**
-     * @return TimeZoneRequest
-     */
+    /** @return TimeZoneRequest */
     private function createRequest()
     {
         return new TimeZoneRequest(
@@ -109,11 +100,11 @@ class TimeZoneServiceApiKeyTest extends AbstractSerializableServiceTest
     private function assertTimeZoneResponse($response, $request)
     {
         $options = array_merge([
-            'dstOffset'    => null,
-            'rawOffset'    => null,
-            'timeZoneId'   => null,
+            'dstOffset' => null,
+            'rawOffset' => null,
+            'timeZoneId' => null,
             'timeZoneName' => null,
-        ], self::$journal->getData());
+        ], $this->journal->getData());
 
         $options['status'] = TimeZoneStatus::OK;
 

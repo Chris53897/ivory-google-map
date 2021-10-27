@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -25,19 +27,12 @@ use Ivory\GoogleMap\Overlay\SymbolPath;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class SymbolCollectorTest extends TestCase
 {
-    /**
-     * @var SymbolCollector
-     */
+    /** @var SymbolCollector */
     private $symbolCollector;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->symbolCollector = new SymbolCollector(
@@ -78,17 +73,13 @@ class SymbolCollectorTest extends TestCase
         $this->assertSame([$markerSymbol, $polylineSymbol], $this->symbolCollector->collect($map));
     }
 
-    /**
-     * @return MockObject|MarkerCollector
-     */
+    /** @return MockObject|MarkerCollector */
     private function createMarkerCollectorMock()
     {
         return $this->createMock(MarkerCollector::class);
     }
 
-    /**
-     * @return MockObject|IconSequenceCollector
-     */
+    /** @return MockObject|IconSequenceCollector */
     private function createIconSequenceCollectorMock()
     {
         return $this->createMock(IconSequenceCollector::class);

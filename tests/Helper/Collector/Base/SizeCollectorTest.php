@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -24,19 +26,12 @@ use Ivory\GoogleMap\Overlay\Marker;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class SizeCollectorTest extends TestCase
 {
-    /**
-     * @var SizeCollector
-     */
+    /** @var SizeCollector */
     private $sizeCollector;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->sizeCollector = new SizeCollector(
@@ -90,17 +85,13 @@ class SizeCollectorTest extends TestCase
         $this->assertSame([$size, $scaledSize], $this->sizeCollector->collect($map));
     }
 
-    /**
-     * @return MockObject|InfoWindowCollector
-     */
+    /** @return MockObject|InfoWindowCollector */
     private function createInfoWindowCollectorMock()
     {
         return $this->createMock(InfoWindowCollector::class);
     }
 
-    /**
-     * @return MockObject|IconCollector
-     */
+    /** @return MockObject|IconCollector */
     private function createIconCollectorMock()
     {
         return $this->createMock(IconCollector::class);

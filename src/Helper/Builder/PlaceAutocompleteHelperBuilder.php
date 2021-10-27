@@ -54,46 +54,44 @@ class PlaceAutocompleteHelperBuilder extends AbstractJavascriptHelperBuilder
         return new PlaceAutocompleteHelper($this->createEventDispatcher());
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function createSubscribers(): array
     {
-        $formatter = $this->getFormatter();
+        $formatter   = $this->getFormatter();
         $jsonBuilder = $this->getJsonBuilder();
 
         // Base collectors
-        $boundCollector = new AutocompleteBoundCollector();
+        $boundCollector      = new AutocompleteBoundCollector();
         $coordinateCollector = new AutocompleteCoordinateCollector($boundCollector);
 
         // Event collectors
-        $domEventCollector = new AutocompleteDomEventCollector();
+        $domEventCollector     = new AutocompleteDomEventCollector();
         $domEventOnceCollector = new AutocompleteDomEventOnceCollector();
-        $eventCollector = new AutocompleteEventCollector();
-        $eventOnceCollector = new AutocompleteEventOnceCollector();
+        $eventCollector        = new AutocompleteEventCollector();
+        $eventOnceCollector    = new AutocompleteEventOnceCollector();
 
         // Base renderers
         $coordinateRenderer = new CoordinateRenderer($formatter);
-        $boundRenderer = new BoundRenderer($formatter);
+        $boundRenderer      = new BoundRenderer($formatter);
 
         // Event renderers
         $domEventOnceRenderer = new DomEventOnceRenderer($formatter);
-        $domEventRenderer = new DomEventRenderer($formatter);
-        $eventOnceRenderer = new EventOnceRenderer($formatter);
-        $eventRenderer = new EventRenderer($formatter);
+        $domEventRenderer     = new DomEventRenderer($formatter);
+        $eventOnceRenderer    = new EventOnceRenderer($formatter);
+        $eventRenderer        = new EventRenderer($formatter);
 
         // Html renderers
-        $tagRenderer = new TagRenderer($formatter);
+        $tagRenderer              = new TagRenderer($formatter);
         $autocompleteHtmlRenderer = new AutocompleteHtmlRenderer($formatter, $tagRenderer);
-        $javascriptTagRenderer = new JavascriptTagRenderer($formatter, $tagRenderer);
+        $javascriptTagRenderer    = new JavascriptTagRenderer($formatter, $tagRenderer);
 
         // Utility renderers
-        $callbackRenderer = new CallbackRenderer($formatter);
+        $callbackRenderer    = new CallbackRenderer($formatter);
         $requirementRenderer = new RequirementRenderer($formatter);
 
         // Autocomplete renderers
         $autocompleteContainerRenderer = new AutocompleteContainerRenderer($formatter, $jsonBuilder);
-        $autocompleteRenderer = new AutocompleteRenderer($formatter, $jsonBuilder, $requirementRenderer);
+        $autocompleteRenderer          = new AutocompleteRenderer($formatter, $jsonBuilder, $requirementRenderer);
 
         return array_merge([
             // Base

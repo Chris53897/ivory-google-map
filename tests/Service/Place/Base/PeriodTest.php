@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -16,19 +18,12 @@ use Ivory\GoogleMap\Service\Place\Base\Period;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class PeriodTest extends TestCase
 {
-    /**
-     * @var Period
-     */
+    /** @var Period */
     private $period;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->period = new Period();
@@ -58,9 +53,7 @@ class PeriodTest extends TestCase
         $this->assertSame($close, $this->period->getClose());
     }
 
-    /**
-     * @return MockObject|OpenClosePeriod
-     */
+    /** @return MockObject|OpenClosePeriod */
     private function createOpenClosePeriodMock()
     {
         return $this->createMock(OpenClosePeriod::class);

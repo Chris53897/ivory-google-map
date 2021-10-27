@@ -62,7 +62,7 @@ class KmlLayerSubscriber extends AbstractSubscriber
     public function handleMap(MapEvent $event): void
     {
         $formatter = $this->getFormatter();
-        $map = $event->getMap();
+        $map       = $event->getMap();
 
         foreach ($this->kmlLayerCollector->collect($map) as $kmlLayer) {
             $event->addCode($formatter->renderContainerAssignment(
@@ -74,9 +74,7 @@ class KmlLayerSubscriber extends AbstractSubscriber
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     public static function getSubscribedEvents(): array
     {
         return [MapEvents::JAVASCRIPT_LAYER_KML_LAYER => 'handleMap'];

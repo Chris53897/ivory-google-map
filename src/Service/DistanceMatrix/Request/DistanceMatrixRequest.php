@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,74 +13,49 @@
 
 namespace Ivory\GoogleMap\Service\DistanceMatrix\Request;
 
+use DateTime;
 use Ivory\GoogleMap\Service\Base\Location\EncodedPolylineLocation;
 use Ivory\GoogleMap\Service\Base\Location\LocationInterface;
 
 /**
  * @see http://code.google.com/apis/maps/documentation/javascript/reference.html#DistanceMatrixRequest
- *
- * @author GeLo <geloen.eric@gmail.com>
  */
 class DistanceMatrixRequest implements DistanceMatrixRequestInterface
 {
-    /**
-     * @var LocationInterface[]
-     */
+    /** @var LocationInterface[] */
     private $origins = [];
 
-    /**
-     * @var LocationInterface[]
-     */
+    /** @var LocationInterface[] */
     private $destinations = [];
 
-    /**
-     * @var \DateTime|null
-     */
+    /** @var DateTime|null */
     private $departureTime;
 
-    /**
-     * @var \DateTime|null
-     */
+    /** @var DateTime|null */
     private $arrivalTime;
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $travelMode;
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $avoid;
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $trafficModel;
 
-    /**
-     * @var string[]
-     */
+    /** @var string[] */
     private $transitModes = [];
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $transitRoutingPreference;
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $region;
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $unitSystem;
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $language;
 
     /**
@@ -91,388 +68,269 @@ class DistanceMatrixRequest implements DistanceMatrixRequestInterface
         $this->setDestinations($destinations);
     }
 
-    /**
-     * @return bool
-     */
-    public function hasOrigins()
+    public function hasOrigins(): bool
     {
         return !empty($this->origins);
     }
 
-    /**
-     * @return LocationInterface[]
-     */
-    public function getOrigins()
+    /** @return LocationInterface[] */
+    public function getOrigins(): array
     {
         return $this->origins;
     }
 
-    /**
-     * @param LocationInterface[] $origins
-     */
-    public function setOrigins(array $origins)
+    /** @param LocationInterface[] $origins */
+    public function setOrigins(array $origins): void
     {
         $this->origins = [];
         $this->addOrigins($origins);
     }
 
-    /**
-     * @param LocationInterface[] $origins
-     */
-    public function addOrigins(array $origins)
+    /** @param LocationInterface[] $origins */
+    public function addOrigins(array $origins): void
     {
         foreach ($origins as $origin) {
             $this->addOrigin($origin);
         }
     }
 
-    /**
-     * @return bool
-     */
-    public function hasOrigin(LocationInterface $origin)
+    public function hasOrigin(LocationInterface $origin): bool
     {
         return in_array($origin, $this->origins, true);
     }
 
-    public function addOrigin(LocationInterface $origin)
+    public function addOrigin(LocationInterface $origin): void
     {
         if (!$this->hasOrigin($origin)) {
             $this->origins[] = $origin;
         }
     }
 
-    public function removeOrigin(LocationInterface $origin)
+    public function removeOrigin(LocationInterface $origin): void
     {
         unset($this->origins[array_search($origin, $this->origins, true)]);
         $this->origins = empty($this->origins) ? [] : array_values($this->origins);
     }
 
-    /**
-     * @return bool
-     */
-    public function hasDestinations()
+    public function hasDestinations(): bool
     {
         return !empty($this->destinations);
     }
 
-    /**
-     * @return LocationInterface[]
-     */
-    public function getDestinations()
+    /** @return LocationInterface[] */
+    public function getDestinations(): array
     {
         return $this->destinations;
     }
 
-    /**
-     * @param LocationInterface[] $destinations
-     */
-    public function setDestinations(array $destinations)
+    /** @param LocationInterface[] $destinations */
+    public function setDestinations(array $destinations): void
     {
         $this->destinations = [];
         $this->addDestinations($destinations);
     }
 
-    /**
-     * @param LocationInterface[] $destinations
-     */
-    public function addDestinations(array $destinations)
+    /** @param LocationInterface[] $destinations */
+    public function addDestinations(array $destinations): void
     {
         foreach ($destinations as $destination) {
             $this->addDestination($destination);
         }
     }
 
-    /**
-     * @return bool
-     */
-    public function hasDestination(LocationInterface $destination)
+    public function hasDestination(LocationInterface $destination): bool
     {
         return in_array($destination, $this->destinations, true);
     }
 
-    public function addDestination(LocationInterface $destination)
+    public function addDestination(LocationInterface $destination): void
     {
         if (!$this->hasDestination($destination)) {
             $this->destinations[] = $destination;
         }
     }
 
-    public function removeDestination(LocationInterface $destination)
+    public function removeDestination(LocationInterface $destination): void
     {
         unset($this->destinations[array_search($destination, $this->destinations, true)]);
         $this->destinations = empty($this->destinations) ? [] : array_values($this->destinations);
     }
 
-    /**
-     * @return bool
-     */
-    public function hasDepartureTime()
+    public function hasDepartureTime(): bool
     {
         return null !== $this->departureTime;
     }
 
-    /**
-     * @return \DateTime|null
-     */
-    public function getDepartureTime()
+    public function getDepartureTime(): ?DateTime
     {
         return $this->departureTime;
     }
 
-    public function setDepartureTime(\DateTime $departureTime = null)
+    public function setDepartureTime(DateTime $departureTime = null): void
     {
         $this->departureTime = $departureTime;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasArrivalTime()
+    public function hasArrivalTime(): bool
     {
         return null !== $this->arrivalTime;
     }
 
-    /**
-     * @return \DateTime|null
-     */
-    public function getArrivalTime()
+    public function getArrivalTime(): ?DateTime
     {
         return $this->arrivalTime;
     }
 
-    public function setArrivalTime(\DateTime $arrivalTime = null)
+    public function setArrivalTime(DateTime $arrivalTime = null): void
     {
         $this->arrivalTime = $arrivalTime;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasTravelMode()
+    public function hasTravelMode(): bool
     {
         return null !== $this->travelMode;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getTravelMode()
+    public function getTravelMode(): ?string
     {
         return $this->travelMode;
     }
 
-    /**
-     * @param string|null $travelMode
-     */
-    public function setTravelMode($travelMode = null)
+    public function setTravelMode(string $travelMode = null): void
     {
         $this->travelMode = $travelMode;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasAvoid()
+    public function hasAvoid(): bool
     {
         return null !== $this->avoid;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getAvoid()
+    public function getAvoid(): ?string
     {
         return $this->avoid;
     }
 
-    /**
-     * @param string|null $avoid
-     */
-    public function setAvoid($avoid = null)
+    public function setAvoid(string $avoid = null): void
     {
         $this->avoid = $avoid;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasTrafficModel()
+    public function hasTrafficModel(): bool
     {
         return null !== $this->trafficModel;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getTrafficModel()
+    public function getTrafficModel(): ?string
     {
         return $this->trafficModel;
     }
 
-    /**
-     * @param string|null $trafficModel
-     */
-    public function setTrafficModel($trafficModel)
+    public function setTrafficModel(?string $trafficModel): void
     {
         $this->trafficModel = $trafficModel;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasTransitModes()
+    public function hasTransitModes(): bool
     {
         return !empty($this->transitModes);
     }
 
-    /**
-     * @return string[]
-     */
-    public function getTransitModes()
+    /** @return string[] */
+    public function getTransitModes(): array
     {
         return $this->transitModes;
     }
 
-    /**
-     * @param string[] $transitModes
-     */
-    public function setTransitModes(array $transitModes)
+    /** @param string[] $transitModes */
+    public function setTransitModes(array $transitModes): void
     {
         $this->transitModes = [];
         $this->addTransitModes($transitModes);
     }
 
-    /**
-     * @param string[] $transitModes
-     */
-    public function addTransitModes(array $transitModes)
+    /** @param string[] $transitModes */
+    public function addTransitModes(array $transitModes): void
     {
         foreach ($transitModes as $transitMode) {
             $this->addTransitMode($transitMode);
         }
     }
 
-    /**
-     * @param string $transitMode
-     *
-     * @return bool
-     */
-    public function hasTransitMode($transitMode)
+    public function hasTransitMode(string $transitMode): bool
     {
         return in_array($transitMode, $this->transitModes, true);
     }
 
-    /**
-     * @param string $transitMode
-     */
-    public function addTransitMode($transitMode)
+    public function addTransitMode(string $transitMode): void
     {
         if (!$this->hasTransitMode($transitMode)) {
             $this->transitModes[] = $transitMode;
         }
     }
 
-    /**
-     * @param string $transitMode
-     */
-    public function removeTransitMode($transitMode)
+    public function removeTransitMode(string $transitMode): void
     {
         unset($this->transitModes[array_search($transitMode, $this->transitModes, true)]);
         $this->transitModes = empty($this->transitModes) ? [] : array_values($this->transitModes);
     }
 
-    /**
-     * @return bool
-     */
-    public function hasTransitRoutingPreference()
+    public function hasTransitRoutingPreference(): bool
     {
         return null !== $this->transitRoutingPreference;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getTransitRoutingPreference()
+    public function getTransitRoutingPreference(): ?string
     {
         return $this->transitRoutingPreference;
     }
 
-    /**
-     * @param string|null $transitRoutingPreference
-     */
-    public function setTransitRoutingPreference($transitRoutingPreference)
+    public function setTransitRoutingPreference(?string $transitRoutingPreference): void
     {
         $this->transitRoutingPreference = $transitRoutingPreference;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasRegion()
+    public function hasRegion(): bool
     {
         return null !== $this->region;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getRegion()
+    public function getRegion(): ?string
     {
         return $this->region;
     }
 
-    /**
-     * @param string|null $region
-     */
-    public function setRegion($region = null)
+    public function setRegion(string $region = null): void
     {
         $this->region = $region;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasUnitSystem()
+    public function hasUnitSystem(): bool
     {
         return null !== $this->unitSystem;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getUnitSystem()
+    public function getUnitSystem(): ?string
     {
         return $this->unitSystem;
     }
 
-    /**
-     * @param string|null $unitSystem
-     */
-    public function setUnitSystem($unitSystem = null)
+    public function setUnitSystem(string $unitSystem = null): void
     {
         $this->unitSystem = $unitSystem;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasLanguage()
+    public function hasLanguage(): bool
     {
         return null !== $this->language;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getLanguage()
+    public function getLanguage(): ?string
     {
         return $this->language;
     }
 
-    /**
-     * @param string|null $language
-     */
-    public function setLanguage($language = null)
+    public function setLanguage(string $language = null): void
     {
         $this->language = $language;
     }

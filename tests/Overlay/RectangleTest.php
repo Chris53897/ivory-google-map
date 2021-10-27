@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -19,24 +21,15 @@ use Ivory\GoogleMap\Utility\VariableAwareInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class RectangleTest extends TestCase
 {
-    /**
-     * @var Rectangle
-     */
+    /** @var Rectangle */
     private $rectangle;
 
-    /**
-     * @var Bound
-     */
+    /** @var Bound */
     private $bound;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->rectangle = new Rectangle($this->bound = $this->createBoundMock());
@@ -72,9 +65,7 @@ class RectangleTest extends TestCase
         $this->assertSame($bound, $this->rectangle->getBound());
     }
 
-    /**
-     * @return MockObject|Bound
-     */
+    /** @return MockObject|Bound */
     private function createBoundMock()
     {
         return $this->createMock(Bound::class);

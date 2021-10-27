@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,7 +13,6 @@
 
 namespace Ivory\Tests\GoogleMap\Service\Place\Detail;
 
-use Http\Client\Common\Exception\ClientErrorException;
 use Ivory\GoogleMap\Service\Place\Detail\PlaceDetailService;
 use Ivory\GoogleMap\Service\Place\Detail\Request\PlaceDetailRequest;
 use Ivory\GoogleMap\Service\Place\Detail\Request\PlaceDetailRequestInterface;
@@ -19,19 +20,12 @@ use Ivory\GoogleMap\Service\Place\Detail\Response\PlaceDetailResponse;
 use Ivory\GoogleMap\Service\Place\Detail\Response\PlaceDetailStatus;
 use Ivory\Tests\GoogleMap\Service\Place\AbstractPlaceSerializableServiceTest;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class PlaceDetailServiceTest extends AbstractPlaceSerializableServiceTest
 {
-    /**
-     * @var PlaceDetailService
-     */
+    /** @var PlaceDetailService */
     private $service;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         if (!isset($_SERVER['API_KEY'])) {
@@ -82,17 +76,15 @@ class PlaceDetailServiceTest extends AbstractPlaceSerializableServiceTest
      */
     public function testErrorRequest($format)
     {
-        $this->expectException(ClientErrorException::class);
-
         $this->service->setFormat($format);
         $this->service->setKey('invalid');
 
-        $this->service->process($this->createRequest());
+        $response = $this->service->process($this->createRequest());
+
+        $this->assertSame(PlaceDetailStatus::REQUEST_DENIED, $response->getStatus());
     }
 
-    /**
-     * @return PlaceDetailRequest
-     */
+    /** @return PlaceDetailRequest */
     private function createRequest()
     {
         return new PlaceDetailRequest('ChIJN1t_tDeuEmsRUsoyG83frY4');
@@ -105,9 +97,9 @@ class PlaceDetailServiceTest extends AbstractPlaceSerializableServiceTest
     private function assertPlaceDetailResponse($response, $request)
     {
         $options = array_merge([
-            'result'            => [],
+            'result' => [],
             'html_attributions' => [],
-        ], self::$journal->getData());
+        ], $this->journal->getData());
 
         $options['status'] = PlaceDetailStatus::OK;
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -16,24 +18,15 @@ use Ivory\GoogleMap\Service\Direction\Request\DirectionWaypoint;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class DirectionWaypointTest extends TestCase
 {
-    /**
-     * @var DirectionWaypoint
-     */
+    /** @var DirectionWaypoint */
     private $waypoint;
 
-    /**
-     * @var LocationInterface|MockObject
-     */
+    /** @var LocationInterface|MockObject */
     private $location;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->location = $this->createLocationMock();
@@ -80,9 +73,7 @@ class DirectionWaypointTest extends TestCase
         $this->assertNull($this->waypoint->getStopover());
     }
 
-    /**
-     * @return MockObject|LocationInterface
-     */
+    /** @return MockObject|LocationInterface */
     private function createLocationMock()
     {
         return $this->createMock(LocationInterface::class);

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -21,19 +23,12 @@ use Ivory\GoogleMap\Service\RequestInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class PlaceSearchRequestTest extends TestCase
 {
-    /**
-     * @var AbstractPlaceSearchRequest|MockObject
-     */
+    /** @var AbstractPlaceSearchRequest|MockObject */
     private $request;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->request = $this->createRequestMock();
@@ -74,7 +69,7 @@ class PlaceSearchRequestTest extends TestCase
 
     public function testRadius()
     {
-        $this->request->setRadius($radius = 1234);
+        $this->request->setRadius($radius = 1234.0);
 
         $this->assertTrue($this->request->hasRadius());
         $this->assertSame($radius, $this->request->getRadius());
@@ -145,7 +140,7 @@ class PlaceSearchRequestTest extends TestCase
 
     public function testBuildQueryWithRadius()
     {
-        $this->request->setRadius($radius = 1234);
+        $this->request->setRadius($radius = 1234.0);
 
         $this->assertSame(['radius' => $radius], $this->request->buildQuery());
     }
@@ -178,17 +173,13 @@ class PlaceSearchRequestTest extends TestCase
         $this->assertSame(['language' => $language], $this->request->buildQuery());
     }
 
-    /**
-     * @return MockObject|AbstractPlaceSearchRequest
-     */
+    /** @return MockObject|AbstractPlaceSearchRequest */
     private function createRequestMock()
     {
         return $this->getMockForAbstractClass(AbstractPlaceSearchRequest::class);
     }
 
-    /**
-     * @return MockObject|Coordinate
-     */
+    /** @return MockObject|Coordinate */
     private function createCoordinateMock()
     {
         return $this->createMock(Coordinate::class);

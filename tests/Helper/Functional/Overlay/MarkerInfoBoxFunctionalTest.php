@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -14,15 +16,11 @@ namespace Ivory\Tests\GoogleMap\Helper\Functional\Overlay;
 use Ivory\GoogleMap\Overlay\InfoWindowType;
 
 /**
- * @author GeLo <geloen.eric@gmail.com>
- *
  * @group functional
  */
 class MarkerInfoBoxFunctionalTest extends AbstractMarkerInfoWindowFunctionalTest
 {
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function createInfoWindowMarker()
     {
         $infoWindow = parent::createInfoWindowMarker();

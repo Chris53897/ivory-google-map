@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -17,19 +19,12 @@ use Ivory\GoogleMap\Helper\Renderer\MapContainerRenderer;
 use Ivory\JsonBuilder\JsonBuilder;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class MapContainerRendererTest extends TestCase
 {
-    /**
-     * @var MapContainerRenderer
-     */
+    /** @var MapContainerRenderer */
     private $mapContainerRenderer;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->mapContainerRenderer = new MapContainerRenderer(new Formatter(), new JsonBuilder());

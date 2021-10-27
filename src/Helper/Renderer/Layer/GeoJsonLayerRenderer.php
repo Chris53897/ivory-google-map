@@ -21,7 +21,7 @@ class GeoJsonLayerRenderer extends AbstractJsonRenderer
 {
     public function render(GeoJsonLayer $geoJsonLayer, Map $map): string
     {
-        $formatter = $this->getFormatter();
+        $formatter   = $this->getFormatter();
         $jsonBuilder = $this->getJsonBuilder()->setValues($geoJsonLayer->getOptions());
 
         return $formatter->renderObjectCall($map, $formatter->renderProperty('data', 'loadGeoJson'), [

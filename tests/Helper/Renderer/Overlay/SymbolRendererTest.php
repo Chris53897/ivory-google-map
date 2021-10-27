@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -21,19 +23,12 @@ use Ivory\GoogleMap\Overlay\SymbolPath;
 use Ivory\JsonBuilder\JsonBuilder;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class SymbolRendererTest extends TestCase
 {
-    /**
-     * @var SymbolRenderer
-     */
+    /** @var SymbolRenderer */
     private $symbolRenderer;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->symbolRenderer = new SymbolRenderer(

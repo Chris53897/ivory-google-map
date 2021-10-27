@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,7 +13,6 @@
 
 namespace Ivory\Tests\GoogleMap\Service\Place\Autocomplete;
 
-use Http\Client\Common\Exception\ClientErrorException;
 use Ivory\GoogleMap\Base\Coordinate;
 use Ivory\GoogleMap\Place\AutocompleteComponentType;
 use Ivory\GoogleMap\Place\AutocompleteType;
@@ -26,19 +27,12 @@ use Ivory\GoogleMap\Service\Place\Autocomplete\Response\PlaceAutocompleteStatus;
 use Ivory\GoogleMap\Service\Place\Autocomplete\Response\PlaceAutocompleteTerm;
 use Ivory\Tests\GoogleMap\Service\Place\AbstractPlaceSerializableServiceTest;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class PlaceAutocompleteServiceTest extends AbstractPlaceSerializableServiceTest
 {
-    /**
-     * @var PlaceAutocompleteService
-     */
+    /** @var PlaceAutocompleteService */
     private $service;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         if (!isset($_SERVER['API_KEY'])) {
@@ -252,25 +246,21 @@ class PlaceAutocompleteServiceTest extends AbstractPlaceSerializableServiceTest
      */
     public function testErrorRequest($format)
     {
-        $this->expectException(ClientErrorException::class);
-
         $this->service->setFormat($format);
         $this->service->setKey('invalid');
 
-        $this->service->process($this->createPlaceAutocompleteRequest());
+        $response = $this->service->process($this->createPlaceAutocompleteRequest());
+
+        $this->assertSame(PlaceAutocompleteStatus::REQUEST_DENIED, $response->getStatus());
     }
 
-    /**
-     * @return PlaceAutocompleteRequest
-     */
+    /** @return PlaceAutocompleteRequest */
     private function createPlaceAutocompleteRequest()
     {
         return new PlaceAutocompleteRequest('Paris');
     }
 
-    /**
-     * @return PlaceAutocompleteQueryRequest
-     */
+    /** @return PlaceAutocompleteQueryRequest */
     private function createPlaceAutocompleteQueryRequest()
     {
         return new PlaceAutocompleteQueryRequest('Paris');
@@ -282,7 +272,7 @@ class PlaceAutocompleteServiceTest extends AbstractPlaceSerializableServiceTest
      */
     private function assertPlaceAutocompleteResponse($response, $request)
     {
-        $options = array_merge(['predictions' => []], self::$journal->getData());
+        $options = array_merge(['predictions' => []], $this->journal->getData());
         $options['status'] = PlaceAutocompleteStatus::OK;
 
         $this->assertInstanceOf(PlaceAutocompleteResponse::class, $response);
@@ -303,10 +293,10 @@ class PlaceAutocompleteServiceTest extends AbstractPlaceSerializableServiceTest
     private function assertPlaceAutocompletePrediction($prediction, array $options = [])
     {
         $options = array_merge([
-            'place_id'           => null,
-            'description'        => null,
-            'types'              => [],
-            'terms'              => [],
+            'place_id' => null,
+            'description' => null,
+            'types' => [],
+            'terms' => [],
             'matched_substrings' => [],
         ], $options);
 
@@ -338,7 +328,7 @@ class PlaceAutocompleteServiceTest extends AbstractPlaceSerializableServiceTest
     private function assertPlaceAutocompleteTerm($term, array $options = [])
     {
         $options = array_merge([
-            'value'  => null,
+            'value' => null,
             'offset' => null,
         ], $options);
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -19,19 +21,12 @@ use Ivory\GoogleMap\Overlay\ExtendableInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class ExtendableRendererTest extends TestCase
 {
-    /**
-     * @var ExtendableRenderer
-     */
+    /** @var ExtendableRenderer */
     private $extendableRenderer;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->extendableRenderer = new ExtendableRenderer();
@@ -57,7 +52,7 @@ class ExtendableRendererTest extends TestCase
 
     public function testAddRenderers()
     {
-        $firstRenderers = ['foo' => $this->createExtendableRendererMock()];
+        $firstRenderers  = ['foo' => $this->createExtendableRendererMock()];
         $secondRenderers = ['bar' => $this->createExtendableRendererMock()];
 
         $this->extendableRenderer->setRenderers($firstRenderers);
@@ -112,25 +107,19 @@ class ExtendableRendererTest extends TestCase
         $this->extendableRenderer->render($this->createExtendableMock(), $this->createBoundMock());
     }
 
-    /**
-     * @return MockObject|ExtendableRendererInterface
-     */
+    /** @return MockObject|ExtendableRendererInterface */
     private function createExtendableRendererMock()
     {
         return $this->createMock(ExtendableRendererInterface::class);
     }
 
-    /**
-     * @return MockObject|ExtendableInterface
-     */
+    /** @return MockObject|ExtendableInterface */
     private function createExtendableMock()
     {
         return $this->createMock(ExtendableInterface::class);
     }
 
-    /**
-     * @return MockObject|Bound
-     */
+    /** @return MockObject|Bound */
     private function createBoundMock()
     {
         return $this->createMock(Bound::class);

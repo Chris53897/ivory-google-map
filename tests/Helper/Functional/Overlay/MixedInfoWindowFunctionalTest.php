@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,8 +20,6 @@ use Ivory\GoogleMap\Overlay\InfoWindowType;
 use Ivory\Tests\GoogleMap\Helper\Functional\AbstractMapFunctionalTest;
 
 /**
- * @author GeLo <geloen.eric@gmail.com>
- *
  * @group functional
  */
 class MixedInfoWindowFunctionalTest extends AbstractMapFunctionalTest
@@ -45,9 +45,7 @@ class MixedInfoWindowFunctionalTest extends AbstractMapFunctionalTest
         $this->assertMap($map);
     }
 
-    /**
-     * @return InfoWindow
-     */
+    /** @return InfoWindow */
     private function createInfoWindow()
     {
         $infoWindow = new InfoWindow('content');
@@ -57,9 +55,7 @@ class MixedInfoWindowFunctionalTest extends AbstractMapFunctionalTest
         return $infoWindow;
     }
 
-    /**
-     * @return InfoWindow
-     */
+    /** @return InfoWindow */
     private function createInfoBox()
     {
         $infoBox = $this->createInfoWindow();

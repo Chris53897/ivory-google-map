@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -16,19 +18,12 @@ use Ivory\GoogleMap\Utility\VariableAwareInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class FormatterTest extends TestCase
 {
-    /**
-     * @var Formatter
-     */
+    /** @var Formatter */
     private $formatter;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->formatter = new Formatter();
@@ -427,9 +422,7 @@ class FormatterTest extends TestCase
         $this->assertSame($expected, $this->formatter->renderSeparator());
     }
 
-    /**
-     * @return mixed[][]
-     */
+    /** @return mixed[][] */
     public function classProvider()
     {
         return [
@@ -441,9 +434,7 @@ class FormatterTest extends TestCase
         ];
     }
 
-    /**
-     * @return string[][]
-     */
+    /** @return string[][] */
     public function constantProvider()
     {
         return [
@@ -452,9 +443,7 @@ class FormatterTest extends TestCase
         ];
     }
 
-    /**
-     * @return mixed[][]
-     */
+    /** @return mixed[][] */
     public function objectProvider()
     {
         return [
@@ -476,9 +465,7 @@ class FormatterTest extends TestCase
         ];
     }
 
-    /**
-     * @return string[][]
-     */
+    /** @return string[][] */
     public function propertyProvider()
     {
         return [
@@ -487,9 +474,7 @@ class FormatterTest extends TestCase
         ];
     }
 
-    /**
-     * @return mixed[][]
-     */
+    /** @return mixed[][] */
     public function objectCallProvider()
     {
         return [
@@ -509,9 +494,7 @@ class FormatterTest extends TestCase
         ];
     }
 
-    /**
-     * @return mixed[][]
-     */
+    /** @return mixed[][] */
     public function callProvider()
     {
         return [
@@ -531,9 +514,7 @@ class FormatterTest extends TestCase
         ];
     }
 
-    /**
-     * @return mixed[][]
-     */
+    /** @return mixed[][] */
     public function closureProvider()
     {
         return [
@@ -557,9 +538,7 @@ class FormatterTest extends TestCase
         ];
     }
 
-    /**
-     * @return mixed[][]
-     */
+    /** @return mixed[][] */
     public function objectAssignmentProvider()
     {
         return [
@@ -577,9 +556,7 @@ class FormatterTest extends TestCase
         ];
     }
 
-    /**
-     * @return mixed[][]
-     */
+    /** @return mixed[][] */
     public function containerAssignmentProvider()
     {
         return [
@@ -601,9 +578,7 @@ class FormatterTest extends TestCase
         ];
     }
 
-    /**
-     * @return mixed[]
-     */
+    /** @return mixed[] */
     public function containerVariableProvider()
     {
         return [
@@ -614,9 +589,7 @@ class FormatterTest extends TestCase
         ];
     }
 
-    /**
-     * @return mixed[]
-     */
+    /** @return mixed[] */
     public function assignmentProvider()
     {
         return [
@@ -634,9 +607,7 @@ class FormatterTest extends TestCase
         ];
     }
 
-    /**
-     * @return mixed[][]
-     */
+    /** @return mixed[][] */
     public function statementProvider()
     {
         return [
@@ -652,9 +623,7 @@ class FormatterTest extends TestCase
         ];
     }
 
-    /**
-     * @return mixed[]
-     */
+    /** @return mixed[] */
     public function codeProvider()
     {
         return [
@@ -670,9 +639,7 @@ class FormatterTest extends TestCase
         ];
     }
 
-    /**
-     * @return mixed[][]
-     */
+    /** @return mixed[][] */
     public function indentationProvider()
     {
         return [
@@ -686,9 +653,7 @@ class FormatterTest extends TestCase
         ];
     }
 
-    /**
-     * @return mixed[][]
-     */
+    /** @return mixed[][] */
     public function linesProvider()
     {
         return [
@@ -708,9 +673,7 @@ class FormatterTest extends TestCase
         ];
     }
 
-    /**
-     * @return mixed[][]
-     */
+    /** @return mixed[][] */
     public function lineProvider()
     {
         return [
@@ -726,9 +689,7 @@ class FormatterTest extends TestCase
         ];
     }
 
-    /**
-     * @return mixed[][]
-     */
+    /** @return mixed[][] */
     public function escapeProvider()
     {
         return [
@@ -743,9 +704,7 @@ class FormatterTest extends TestCase
         ];
     }
 
-    /**
-     * @return mixed[][]
-     */
+    /** @return mixed[][] */
     public function separatorProvider()
     {
         return [

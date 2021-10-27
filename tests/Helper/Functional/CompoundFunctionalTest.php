@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -21,31 +23,23 @@ use Ivory\GoogleMap\Map;
 use Ivory\GoogleMap\Place\Autocomplete;
 
 /**
- * @author GeLo <geloen.eric@gmail.com>
- *
  * @group functional
  */
 class CompoundFunctionalTest extends AbstractApiFunctionalTest
 {
-    /**
-     * @var PlaceAutocompleteHelper
-     */
+    /** @var PlaceAutocompleteHelper */
     private $placeAutocompleteHelper;
 
-    /**
-     * @var MapHelper
-     */
+    /** @var MapHelper */
     private $mapHelper;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         parent::setUp();
 
         $this->placeAutocompleteHelper = $this->createPlaceAutocompleteHelper();
-        $this->mapHelper = $this->createMapHelper();
+        $this->mapHelper               = $this->createMapHelper();
     }
 
     public function testRender()
@@ -87,17 +81,13 @@ class CompoundFunctionalTest extends AbstractApiFunctionalTest
         $this->assertSame([], $this->log('browser'));
     }
 
-    /**
-     * @return PlaceAutocompleteHelper
-     */
+    /** @return PlaceAutocompleteHelper */
     protected function createPlaceAutocompleteHelper()
     {
         return PlaceAutocompleteHelperBuilder::create($_SERVER['API_KEY'] ?? null)->build();
     }
 
-    /**
-     * @return MapHelper
-     */
+    /** @return MapHelper */
     protected function createMapHelper()
     {
         return MapHelperBuilder::create($_SERVER['API_KEY'] ?? null)->build();

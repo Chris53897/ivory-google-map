@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -19,221 +21,149 @@ use Ivory\GoogleMap\Service\Direction\Response\Transit\DirectionTransitDetails;
 
 /**
  * @see http://code.google.com/apis/maps/documentation/javascript/reference.html#DirectionStep
- *
- * @author GeLo <geloen.eric@gmail.com>
  */
 class DirectionStep
 {
-    /**
-     * @var Distance|null
-     */
+    /** @var Distance|null */
     private $distance;
 
-    /**
-     * @var Duration|null
-     */
+    /** @var Duration|null */
     private $duration;
 
-    /**
-     * @var Coordinate|null
-     */
+    /** @var Coordinate|null */
     private $endLocation;
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $instructions;
 
-    /**
-     * @var EncodedPolyline|null
-     */
+    /** @var EncodedPolyline|null */
     private $encodedPolyline;
 
-    /**
-     * @var Coordinate|null
-     */
+    /** @var Coordinate|null */
     private $startLocation;
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $travelMode;
 
-    /**
-     * @var DirectionTransitDetails|null
-     */
+    /** @var DirectionTransitDetails|null */
     private $transitDetails;
 
-    /**
-     * @return bool
-     */
-    public function hasDistance()
+    public function hasDistance(): bool
     {
         return null !== $this->distance;
     }
 
-    /**
-     * @return Distance|null
-     */
-    public function getDistance()
+    public function getDistance(): ?Distance
     {
         return $this->distance;
     }
 
-    public function setDistance(Distance $distance = null)
+    public function setDistance(Distance $distance = null): void
     {
         $this->distance = $distance;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasDuration()
+    public function hasDuration(): bool
     {
         return null !== $this->duration;
     }
 
-    /**
-     * @return Duration|null
-     */
-    public function getDuration()
+    public function getDuration(): ?Duration
     {
         return $this->duration;
     }
 
-    public function setDuration(Duration $duration = null)
+    public function setDuration(Duration $duration = null): void
     {
         $this->duration = $duration;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasEndLocation()
+    public function hasEndLocation(): bool
     {
         return null !== $this->endLocation;
     }
 
-    /**
-     * @return Coordinate|null
-     */
-    public function getEndLocation()
+    public function getEndLocation(): ?Coordinate
     {
         return $this->endLocation;
     }
 
-    public function setEndLocation(Coordinate $endLocation = null)
+    public function setEndLocation(Coordinate $endLocation = null): void
     {
         $this->endLocation = $endLocation;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasInstructions()
+    public function hasInstructions(): bool
     {
         return null !== $this->instructions;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getInstructions()
+    public function getInstructions(): ?string
     {
         return $this->instructions;
     }
 
-    /**
-     * @param string|null $instructions
-     */
-    public function setInstructions($instructions = null)
+    public function setInstructions(string $instructions = null): void
     {
         $this->instructions = $instructions;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasEncodedPolyline()
+    public function hasEncodedPolyline(): bool
     {
         return null !== $this->encodedPolyline;
     }
 
-    /**
-     * @return EncodedPolyline|null
-     */
-    public function getEncodedPolyline()
+    public function getEncodedPolyline(): ?EncodedPolyline
     {
         return $this->encodedPolyline;
     }
 
-    public function setEncodedPolyline(EncodedPolyline $encodedPolyline = null)
+    public function setEncodedPolyline(EncodedPolyline $encodedPolyline = null): void
     {
         $this->encodedPolyline = $encodedPolyline;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasStartLocation()
+    public function hasStartLocation(): bool
     {
         return null !== $this->startLocation;
     }
 
-    /**
-     * @return Coordinate|null
-     */
-    public function getStartLocation()
+    public function getStartLocation(): ?Coordinate
     {
         return $this->startLocation;
     }
 
-    public function setStartLocation(Coordinate $startLocation = null)
+    public function setStartLocation(Coordinate $startLocation = null): void
     {
         $this->startLocation = $startLocation;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasTravelMode()
+    public function hasTravelMode(): bool
     {
         return null !== $this->travelMode;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getTravelMode()
+    public function getTravelMode(): ?string
     {
         return $this->travelMode;
     }
 
-    /**
-     * @param string|null $travelMode
-     */
-    public function setTravelMode($travelMode = null)
+    public function setTravelMode(string $travelMode = null): void
     {
         $this->travelMode = $travelMode;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasTransitDetails()
+    public function hasTransitDetails(): bool
     {
         return null !== $this->transitDetails;
     }
 
-    /**
-     * @return DirectionTransitDetails|null
-     */
-    public function getTransitDetails()
+    public function getTransitDetails(): ?DirectionTransitDetails
     {
         return $this->transitDetails;
     }
 
-    public function setTransitDetails(DirectionTransitDetails $transitDetails = null)
+    public function setTransitDetails(DirectionTransitDetails $transitDetails = null): void
     {
         $this->transitDetails = $transitDetails;
     }

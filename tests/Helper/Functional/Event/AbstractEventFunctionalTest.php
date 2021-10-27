@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -15,19 +17,12 @@ use Ivory\GoogleMap\Event\Event;
 use Ivory\GoogleMap\Event\MouseEvent;
 use Ivory\Tests\GoogleMap\Helper\Functional\AbstractMapFunctionalTest;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 abstract class AbstractEventFunctionalTest extends AbstractMapFunctionalTest
 {
-    /**
-     * @var string
-     */
+    /** @var string */
     private $spyCount;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         parent::setUp();
@@ -35,9 +30,7 @@ abstract class AbstractEventFunctionalTest extends AbstractMapFunctionalTest
         $this->spyCount = 'spy_count';
     }
 
-    /**
-     * @param int $count
-     */
+    /** @param int $count */
     protected function assertSpyCount($count)
     {
         $this->assertSameVariable($count, $this->spyCount);

@@ -52,9 +52,7 @@ class AutocompleteSubscriber extends AbstractSubscriber
         ));
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     public static function getSubscribedEvents(): array
     {
         return [PlaceAutocompleteEvents::JAVASCRIPT_AUTOCOMPLETE => 'handleAutocomplete'];

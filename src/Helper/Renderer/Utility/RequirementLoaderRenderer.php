@@ -18,18 +18,17 @@ use Ivory\GoogleMap\Helper\Renderer\AbstractRenderer;
 class RequirementLoaderRenderer extends AbstractRenderer
 {
     public function render(
-        string  $name,
+        string $name,
         ?string $intervalVariable = null,
         ?string $callbackVariable = null,
         ?string $requirementVariable = null,
-        int     $interval = 10,
-        bool    $newLine = true
-    ): string
-    {
+        int $interval = 10,
+        bool $newLine = true
+    ): string {
         $formatter = $this->getFormatter();
 
-        $intervalVariable = $intervalVariable ?: 'i';
-        $callbackVariable = $callbackVariable ?: 'c';
+        $intervalVariable    = $intervalVariable ?: 'i';
+        $callbackVariable    = $callbackVariable ?: 'c';
         $requirementVariable = $requirementVariable ?: 'r';
 
         return $formatter->renderClosure($this->renderRequirement(
@@ -55,10 +54,9 @@ class RequirementLoaderRenderer extends AbstractRenderer
         string $callbackVariable,
         string $requirementVariable,
         ?string $nextStatement = null
-    ): string
-    {
+    ): string {
         $formatter = $this->getFormatter();
-        $codes = [$formatter->renderCall($callbackVariable, [], true)];
+        $codes     = [$formatter->renderCall($callbackVariable, [], true)];
 
         if (empty($nextStatement)) {
             array_unshift($codes, $formatter->renderCall('clearInterval', [$intervalVariable], true));

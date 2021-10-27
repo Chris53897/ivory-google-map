@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,88 +13,57 @@
 
 namespace Ivory\GoogleMap\Service\Direction\Request;
 
+use DateTime;
 use Ivory\GoogleMap\Service\Base\Location\LocationInterface;
 
 /**
  * @see http://code.google.com/apis/maps/documentation/javascript/reference.html#DirectionRequest
- *
- * @author GeLo <geloen.eric@gmail.com>
  */
 class DirectionRequest implements DirectionRequestInterface
 {
-    /**
-     * @var LocationInterface
-     */
+    /** @var LocationInterface */
     private $origin;
 
-    /**
-     * @var LocationInterface
-     */
+    /** @var LocationInterface */
     private $destination;
 
-    /**
-     * @var \DateTime|null
-     */
+    /** @var DateTime|null */
     private $departureTime;
 
-    /**
-     * @var \DateTime|null
-     */
+    /** @var DateTime|null */
     private $arrivalTime;
 
-    /**
-     * @var DirectionWaypoint[]
-     */
+    /** @var DirectionWaypoint[] */
     private $waypoints = [];
 
-    /**
-     * @var bool|null
-     */
+    /** @var bool|null */
     private $optimizeWaypoints;
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $travelMode;
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $avoid;
 
-    /**
-     * @var bool|null
-     */
+    /** @var bool|null */
     private $provideRouteAlternatives;
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $trafficModel;
 
-    /**
-     * @var string[]
-     */
+    /** @var string[] */
     private $transitModes = [];
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $transitRoutingPreference;
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $region;
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $unitSystem;
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $language;
 
     public function __construct(LocationInterface $origin, LocationInterface $destination)
@@ -101,414 +72,280 @@ class DirectionRequest implements DirectionRequestInterface
         $this->setDestination($destination);
     }
 
-    /**
-     * @return LocationInterface
-     */
-    public function getOrigin()
+    public function getOrigin(): LocationInterface
     {
         return $this->origin;
     }
 
-    public function setOrigin(LocationInterface $origin)
+    public function setOrigin(LocationInterface $origin): void
     {
         $this->origin = $origin;
     }
 
-    /**
-     * @return LocationInterface
-     */
-    public function getDestination()
+    public function getDestination(): LocationInterface
     {
         return $this->destination;
     }
 
-    public function setDestination(LocationInterface $destination)
+    public function setDestination(LocationInterface $destination): void
     {
         $this->destination = $destination;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasDepartureTime()
+    public function hasDepartureTime(): bool
     {
         return null !== $this->departureTime;
     }
 
-    /**
-     * @return \DateTime|null
-     */
-    public function getDepartureTime()
+    public function getDepartureTime(): ?DateTime
     {
         return $this->departureTime;
     }
 
-    public function setDepartureTime(\DateTime $departureTime = null)
+    public function setDepartureTime(DateTime $departureTime = null): void
     {
         $this->departureTime = $departureTime;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasArrivalTime()
+    public function hasArrivalTime(): bool
     {
         return null !== $this->arrivalTime;
     }
 
-    /**
-     * @return \DateTime|null
-     */
-    public function getArrivalTime()
+    public function getArrivalTime(): ?DateTime
     {
         return $this->arrivalTime;
     }
 
-    public function setArrivalTime(\DateTime $arrivalTime = null)
+    public function setArrivalTime(DateTime $arrivalTime = null): void
     {
         $this->arrivalTime = $arrivalTime;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasWaypoints()
+    public function hasWaypoints(): bool
     {
         return !empty($this->waypoints);
     }
 
-    /**
-     * @return DirectionWaypoint[]
-     */
-    public function getWaypoints()
+    /** @return DirectionWaypoint[] */
+    public function getWaypoints(): array
     {
         return $this->waypoints;
     }
 
-    /**
-     * @param DirectionWaypoint[] $waypoints
-     */
-    public function setWaypoints(array $waypoints)
+    /** @param DirectionWaypoint[] $waypoints */
+    public function setWaypoints(array $waypoints): void
     {
         $this->waypoints = [];
         $this->addWaypoints($waypoints);
     }
 
-    /**
-     * @param DirectionWaypoint[] $waypoints
-     */
-    public function addWaypoints(array $waypoints)
+    /** @param DirectionWaypoint[] $waypoints */
+    public function addWaypoints(array $waypoints): void
     {
         foreach ($waypoints as $waypoint) {
             $this->addWaypoint($waypoint);
         }
     }
 
-    /**
-     * @return bool
-     */
-    public function hasWaypoint(DirectionWaypoint $waypoint)
+    public function hasWaypoint(DirectionWaypoint $waypoint): bool
     {
         return in_array($waypoint, $this->waypoints, true);
     }
 
-    public function addWaypoint(DirectionWaypoint $waypoint)
+    public function addWaypoint(DirectionWaypoint $waypoint): void
     {
         if (!$this->hasWaypoint($waypoint)) {
             $this->waypoints[] = $waypoint;
         }
     }
 
-    public function removeWaypoint(DirectionWaypoint $waypoint)
+    public function removeWaypoint(DirectionWaypoint $waypoint): void
     {
         unset($this->waypoints[array_search($waypoint, $this->waypoints, true)]);
         $this->waypoints = empty($this->waypoints) ? [] : array_values($this->waypoints);
     }
 
-    /**
-     * @return bool
-     */
-    public function hasOptimizeWaypoints()
+    public function hasOptimizeWaypoints(): bool
     {
         return null !== $this->optimizeWaypoints;
     }
 
-    /**
-     * @return bool|null
-     */
-    public function getOptimizeWaypoints()
+    public function getOptimizeWaypoints(): ?bool
     {
         return $this->optimizeWaypoints;
     }
 
-    /**
-     * @param bool|null $optimizeWaypoints
-     */
-    public function setOptimizeWaypoints($optimizeWaypoints = null)
+    public function setOptimizeWaypoints(?bool $optimizeWaypoints = null): void
     {
         $this->optimizeWaypoints = $optimizeWaypoints;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasTravelMode()
+    public function hasTravelMode(): bool
     {
         return null !== $this->travelMode;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getTravelMode()
+    public function getTravelMode(): ?string
     {
         return $this->travelMode;
     }
 
-    /**
-     * @param string|null $travelMode
-     */
-    public function setTravelMode($travelMode = null)
+    public function setTravelMode(?string $travelMode = null): void
     {
         $this->travelMode = $travelMode;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasAvoid()
+    public function hasAvoid(): bool
     {
         return null !== $this->avoid;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getAvoid()
+    public function getAvoid(): ?string
     {
         return $this->avoid;
     }
 
-    /**
-     * @param string|null $avoid
-     */
-    public function setAvoid($avoid = null)
+    public function setAvoid(?string $avoid = null): void
     {
         $this->avoid = $avoid;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasProvideRouteAlternatives()
+    public function hasProvideRouteAlternatives(): bool
     {
         return null !== $this->provideRouteAlternatives;
     }
 
-    /**
-     * @return bool|null
-     */
-    public function getProvideRouteAlternatives()
+    public function getProvideRouteAlternatives(): ?bool
     {
         return $this->provideRouteAlternatives;
     }
 
-    /**
-     * @param bool|null $provideRouteAlternatives
-     */
-    public function setProvideRouteAlternatives($provideRouteAlternatives = null)
+    public function setProvideRouteAlternatives(?bool $provideRouteAlternatives = null): void
     {
         $this->provideRouteAlternatives = $provideRouteAlternatives;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasTrafficModel()
+    public function hasTrafficModel(): bool
     {
         return null !== $this->trafficModel;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getTrafficModel()
+    public function getTrafficModel(): ?string
     {
         return $this->trafficModel;
     }
 
-    /**
-     * @param string|null $trafficModel
-     */
-    public function setTrafficModel($trafficModel)
+    public function setTrafficModel(?string $trafficModel): void
     {
         $this->trafficModel = $trafficModel;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasTransitModes()
+    public function hasTransitModes(): bool
     {
         return !empty($this->transitModes);
     }
 
-    /**
-     * @return string[]
-     */
-    public function getTransitModes()
+    /** @return string[] */
+    public function getTransitModes(): array
     {
         return $this->transitModes;
     }
 
-    /**
-     * @param string[] $transitModes
-     */
-    public function setTransitModes(array $transitModes)
+    /** @param string[] $transitModes */
+    public function setTransitModes(array $transitModes): void
     {
         $this->transitModes = [];
         $this->addTransitModes($transitModes);
     }
 
-    /**
-     * @param string[] $transitModes
-     */
-    public function addTransitModes(array $transitModes)
+    /** @param string[] $transitModes */
+    public function addTransitModes(array $transitModes): void
     {
         foreach ($transitModes as $transitMode) {
             $this->addTransitMode($transitMode);
         }
     }
 
-    /**
-     * @param string $transitMode
-     *
-     * @return bool
-     */
-    public function hasTransitMode($transitMode)
+    public function hasTransitMode(string $transitMode): bool
     {
         return in_array($transitMode, $this->transitModes, true);
     }
 
-    /**
-     * @param string $transitMode
-     */
-    public function addTransitMode($transitMode)
+    public function addTransitMode(string $transitMode): void
     {
         if (!$this->hasTransitMode($transitMode)) {
             $this->transitModes[] = $transitMode;
         }
     }
 
-    /**
-     * @param string $transitMode
-     */
-    public function removeTransitMode($transitMode)
+    public function removeTransitMode(string $transitMode): void
     {
         unset($this->transitModes[array_search($transitMode, $this->transitModes, true)]);
         $this->transitModes = empty($this->transitModes) ? [] : array_values($this->transitModes);
     }
 
-    /**
-     * @return bool
-     */
-    public function hasTransitRoutingPreference()
+    public function hasTransitRoutingPreference(): bool
     {
         return null !== $this->transitRoutingPreference;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getTransitRoutingPreference()
+    public function getTransitRoutingPreference(): ?string
     {
         return $this->transitRoutingPreference;
     }
 
-    /**
-     * @param string|null $transitRoutingPreference
-     */
-    public function setTransitRoutingPreference($transitRoutingPreference)
+    public function setTransitRoutingPreference(?string $transitRoutingPreference): void
     {
         $this->transitRoutingPreference = $transitRoutingPreference;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasRegion()
+    public function hasRegion(): bool
     {
         return null !== $this->region;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getRegion()
+    public function getRegion(): ?string
     {
         return $this->region;
     }
 
-    /**
-     * @param string|null $region
-     */
-    public function setRegion($region = null)
+    public function setRegion(?string $region = null): void
     {
         $this->region = $region;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasUnitSystem()
+    public function hasUnitSystem(): bool
     {
         return null !== $this->unitSystem;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getUnitSystem()
+    public function getUnitSystem(): ?string
     {
         return $this->unitSystem;
     }
 
-    /**
-     * @param string|null $unitSystem
-     */
-    public function setUnitSystem($unitSystem = null)
+    public function setUnitSystem(?string $unitSystem = null): void
     {
         $this->unitSystem = $unitSystem;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasLanguage()
+    public function hasLanguage(): bool
     {
         return null !== $this->language;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getLanguage()
+    public function getLanguage(): ?string
     {
         return $this->language;
     }
 
-    /**
-     * @param string|null $language
-     */
-    public function setLanguage($language = null)
+    public function setLanguage(?string $language = null): void
     {
         $this->language = $language;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function buildQuery()
+    public function buildQuery(): array
     {
         $query = [
             'origin'      => $this->origin->buildQuery(),

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,8 +20,6 @@ use Ivory\GoogleMap\Place\AutocompleteComponentType;
 use Ivory\GoogleMap\Place\AutocompleteType;
 
 /**
- * @author GeLo <geloen.eric@gmail.com>
- *
  * @group functional
  */
 class AutocompleteFunctionalTest extends AbstractAutocompleteFunctionalTest
@@ -84,9 +84,7 @@ class AutocompleteFunctionalTest extends AbstractAutocompleteFunctionalTest
         $this->assertAutocomplete($autocomplete);
     }
 
-    /**
-     * @return Autocomplete
-     */
+    /** @return Autocomplete */
     private function createAutocomplete()
     {
         return new Autocomplete();

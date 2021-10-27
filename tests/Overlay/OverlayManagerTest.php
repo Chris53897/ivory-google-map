@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -26,33 +28,22 @@ use Ivory\GoogleMap\Overlay\Rectangle;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class OverlayManagerTest extends TestCase
 {
-    /**
-     * @var OverlayManager
-     */
+    /** @var OverlayManager */
     private $overlayManager;
 
-    /**
-     * @var MockObject|Map
-     */
+    /** @var MockObject|Map */
     private $map;
 
-    /**
-     * @var MockObject|Bound
-     */
+    /** @var MockObject|Bound */
     private $bound;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->bound = $this->createBoundMock();
-        $this->map = $this->createMapMock($this->bound);
+        $this->map   = $this->createMapMock($this->bound);
 
         $this->overlayManager = new OverlayManager();
         $this->overlayManager->setMap($this->map);
@@ -1100,9 +1091,7 @@ class OverlayManagerTest extends TestCase
         $this->assertEmpty($this->overlayManager->getGroundOverlays());
     }
 
-    /**
-     * @return MockObject|Map
-     */
+    /** @return MockObject|Map */
     private function createMapMock(Bound $bound = null)
     {
         $map = $this->createMock(Map::class);
@@ -1114,81 +1103,61 @@ class OverlayManagerTest extends TestCase
         return $map;
     }
 
-    /**
-     * @return MockObject|Bound
-     */
+    /** @return MockObject|Bound */
     private function createBoundMock()
     {
         return $this->createMock(Bound::class);
     }
 
-    /**
-     * @return MockObject|MarkerCluster
-     */
+    /** @return MockObject|MarkerCluster */
     private function createMarkerClusterMock()
     {
         return $this->createMock(MarkerCluster::class);
     }
 
-    /**
-     * @return MockObject|Marker
-     */
+    /** @return MockObject|Marker */
     private function createMarkerMock()
     {
         return $this->createMock(Marker::class);
     }
 
-    /**
-     * @return MockObject|InfoWindow
-     */
+    /** @return MockObject|InfoWindow */
     private function createInfoWindowMock()
     {
         return $this->createMock(InfoWindow::class);
     }
 
-    /**
-     * @return MockObject|Polyline
-     */
+    /** @return MockObject|Polyline */
     private function createPolylineMock()
     {
         return $this->createMock(Polyline::class);
     }
 
-    /**
-     * @return MockObject|EncodedPolyline
-     */
+    /** @return MockObject|EncodedPolyline */
     private function createEncodedPolylineMock()
     {
         return $this->createMock(EncodedPolyline::class);
     }
 
-    /**
-     * @return MockObject|Polygon
-     */
+    /** @return MockObject|Polygon */
     private function createPolygonMock()
     {
         return $this->createMock(Polygon::class);
     }
 
-    /**
-     * @return MockObject|Rectangle
-     */
+    /** @return MockObject|Rectangle */
     private function createRectangleMock()
     {
         return $this->createMock(Rectangle::class);
     }
 
-    /**
-     * @return MockObject|Circle
-     */
+    /** @return MockObject|Circle */
     private function createCircleMock()
     {
         return $this->createMock(Circle::class);
     }
 
-    /**
-     * @return MockObject|GroundOverlay
-     */
+    /** @return MockObject|GroundOverlay */
     private function createGroundOverlayMock()
     {
         return $this->createMock(GroundOverlay::class);

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,29 +20,18 @@ use Ivory\GoogleMap\Service\Place\Search\Request\PlaceSearchRankBy;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class NearbyPlaceSearchRequestTest extends TestCase
 {
-    /**
-     * @var NearbyPlaceSearchRequest
-     */
+    /** @var NearbyPlaceSearchRequest */
     private $request;
 
-    /**
-     * @var Coordinate|MockObject
-     */
+    /** @var Coordinate|MockObject */
     private $location;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $rankBy;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->request = new NearbyPlaceSearchRequest(
@@ -91,9 +82,7 @@ class NearbyPlaceSearchRequestTest extends TestCase
         ], $this->request->buildQuery());
     }
 
-    /**
-     * @return MockObject|Coordinate
-     */
+    /** @return MockObject|Coordinate */
     private function createCoordinateMock()
     {
         return $this->createMock(Coordinate::class);

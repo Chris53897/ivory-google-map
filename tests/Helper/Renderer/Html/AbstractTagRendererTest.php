@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,28 +20,19 @@ use Ivory\GoogleMap\Helper\Renderer\Html\TagRenderer;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class AbstractTagRendererTest extends TestCase
 {
-    /**
-     * @var AbstractTagRenderer|MockObject
-     */
+    /** @var AbstractTagRenderer|MockObject */
     private $tagRenderer;
 
-    /**
-     * @var TagRenderer|MockObject
-     */
+    /** @var TagRenderer|MockObject */
     private $innerTagRenderer;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->innerTagRenderer = $this->createTagRendererMock();
-        $this->tagRenderer = $this->createAbstractTagRendererMock($this->innerTagRenderer);
+        $this->tagRenderer      = $this->createAbstractTagRendererMock($this->innerTagRenderer);
     }
 
     public function testInheritance()
@@ -59,9 +52,7 @@ class AbstractTagRendererTest extends TestCase
         $this->assertSame($tagRenderer, $this->tagRenderer->getTagRenderer());
     }
 
-    /**
-     * @return MockObject|AbstractTagRenderer
-     */
+    /** @return MockObject|AbstractTagRenderer */
     private function createAbstractTagRendererMock(TagRenderer $tagRenderer = null)
     {
         return $this->getMockBuilder(AbstractTagRenderer::class)
@@ -69,17 +60,13 @@ class AbstractTagRendererTest extends TestCase
             ->getMockForAbstractClass();
     }
 
-    /**
-     * @return MockObject|Formatter
-     */
+    /** @return MockObject|Formatter */
     private function createFormatterMock()
     {
         return $this->createMock(Formatter::class);
     }
 
-    /**
-     * @return MockObject|TagRenderer
-     */
+    /** @return MockObject|TagRenderer */
     private function createTagRendererMock()
     {
         return $this->createMock(TagRenderer::class);

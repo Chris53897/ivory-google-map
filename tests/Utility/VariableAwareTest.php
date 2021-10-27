@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -15,19 +17,12 @@ use Ivory\GoogleMap\Utility\VariableAwareInterface;
 use Ivory\GoogleMap\Utility\VariableAwareTrait;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class VariableAwareTest extends TestCase
 {
-    /**
-     * @var VariableAwareTrait
-     */
+    /** @var VariableAwareTrait */
     private $variableAware;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->variableAware = new VariableAwareMock();
@@ -47,9 +42,6 @@ class VariableAwareTest extends TestCase
     }
 }
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class VariableAwareMock implements VariableAwareInterface
 {
     use VariableAwareTrait;

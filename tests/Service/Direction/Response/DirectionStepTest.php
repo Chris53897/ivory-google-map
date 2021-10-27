@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -21,19 +23,12 @@ use Ivory\GoogleMap\Service\Direction\Response\Transit\DirectionTransitDetails;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class DirectionStepTest extends TestCase
 {
-    /**
-     * @var DirectionStep
-     */
+    /** @var DirectionStep */
     private $step;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->step = new DirectionStep();
@@ -195,41 +190,31 @@ class DirectionStepTest extends TestCase
         $this->assertNull($this->step->getTransitDetails());
     }
 
-    /**
-     * @return MockObject|Distance
-     */
+    /** @return MockObject|Distance */
     private function createDistanceMock()
     {
         return $this->createMock(Distance::class);
     }
 
-    /**
-     * @return MockObject|Duration
-     */
+    /** @return MockObject|Duration */
     private function createDurationMock()
     {
         return $this->createMock(Duration::class);
     }
 
-    /**
-     * @return MockObject|Coordinate
-     */
+    /** @return MockObject|Coordinate */
     private function createCoordinateMock()
     {
         return $this->createMock(Coordinate::class);
     }
 
-    /**
-     * @return MockObject|EncodedPolyline
-     */
+    /** @return MockObject|EncodedPolyline */
     private function createEncodedPolylineMock()
     {
         return $this->createMock(EncodedPolyline::class);
     }
 
-    /**
-     * @return MockObject|DirectionTransitDetails
-     */
+    /** @return MockObject|DirectionTransitDetails */
     private function createTransitDetailsMock()
     {
         return $this->createMock(DirectionTransitDetails::class);

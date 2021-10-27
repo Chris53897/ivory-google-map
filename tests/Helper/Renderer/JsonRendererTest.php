@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,32 +20,21 @@ use Ivory\JsonBuilder\JsonBuilder;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class JsonRendererTest extends TestCase
 {
-    /**
-     * @var AbstractJsonRenderer|MockObject
-     */
+    /** @var AbstractJsonRenderer|MockObject */
     private $jsonRenderer;
 
-    /**
-     * @var JsonBuilder|MockObject
-     */
+    /** @var JsonBuilder|MockObject */
     private $jsonBuilder;
 
-    /**
-     * @var Formatter|MockObject
-     */
+    /** @var Formatter|MockObject */
     private $formatter;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
-        $this->formatter = $this->createFormatterMock();
+        $this->formatter   = $this->createFormatterMock();
         $this->jsonBuilder = $this->createJsonBuilderMock();
 
         $this->jsonRenderer = $this->createAbstractJsonRendererMock($this->formatter, $this->jsonBuilder);
@@ -69,9 +60,7 @@ class JsonRendererTest extends TestCase
         $this->assertInstanceOf(JsonBuilder::class, $this->jsonRenderer->getJsonBuilder());
     }
 
-    /**
-     * @return MockObject|AbstractJsonRenderer
-     */
+    /** @return MockObject|AbstractJsonRenderer */
     private function createAbstractJsonRendererMock(Formatter $formatter = null, JsonBuilder $jsonBuilder = null)
     {
         return $this->getMockBuilder(AbstractJsonRenderer::class)
@@ -82,17 +71,13 @@ class JsonRendererTest extends TestCase
             ->getMockForAbstractClass();
     }
 
-    /**
-     * @return MockObject|Formatter
-     */
+    /** @return MockObject|Formatter */
     private function createFormatterMock()
     {
         return $this->createMock(Formatter::class);
     }
 
-    /**
-     * @return MockObject|JsonBuilder
-     */
+    /** @return MockObject|JsonBuilder */
     private function createJsonBuilderMock()
     {
         $jsonBuilder = $this->createMock(JsonBuilder::class);

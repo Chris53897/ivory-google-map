@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -20,19 +22,12 @@ use Ivory\GoogleMap\Helper\Builder\ApiHelperBuilder;
 use Ivory\GoogleMap\Utility\OptionsAwareInterface;
 use Ivory\GoogleMap\Utility\VariableAwareInterface;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 abstract class AbstractApiFunctionalTest extends AbstractFunctionalTest
 {
-    /**
-     * @var ApiHelper
-     */
+    /** @var ApiHelper */
     private $apiHelper;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         parent::setUp();
@@ -50,9 +45,7 @@ abstract class AbstractApiFunctionalTest extends AbstractFunctionalTest
         return $this->apiHelper->render($objects);
     }
 
-    /**
-     * @param string[] $libraries
-     */
+    /** @param string[] $libraries */
     protected function assertLibraries(array $libraries)
     {
         foreach ($libraries as $library) {
@@ -60,9 +53,7 @@ abstract class AbstractApiFunctionalTest extends AbstractFunctionalTest
         }
     }
 
-    /**
-     * @param string|null $expected
-     */
+    /** @param string|null $expected */
     protected function assertBound(VariableAwareInterface $object, Bound $bound, $expected = null)
     {
         $this->assertSameContainerVariable(
@@ -95,9 +86,7 @@ abstract class AbstractApiFunctionalTest extends AbstractFunctionalTest
         }
     }
 
-    /**
-     * @param string|null $expected
-     */
+    /** @param string|null $expected */
     protected function assertCoordinate(VariableAwareInterface $object, Coordinate $coordinate, $expected = null)
     {
         $this->assertSameContainerVariable($object, 'base.coordinates', $coordinate, $expected);
@@ -105,9 +94,7 @@ abstract class AbstractApiFunctionalTest extends AbstractFunctionalTest
         $this->assertSameVariable($coordinate->getVariable().'.lng()', $coordinate->getLongitude());
     }
 
-    /**
-     * @param string|null $expected
-     */
+    /** @param string|null $expected */
     protected function assertPoint(VariableAwareInterface $object, Point $point, $expected = null)
     {
         $this->assertSameContainerVariable($object, 'base.points', $point, $expected);
@@ -115,9 +102,7 @@ abstract class AbstractApiFunctionalTest extends AbstractFunctionalTest
         $this->assertSameVariable($point->getVariable().'.y', $point->getY());
     }
 
-    /**
-     * @param string|null $expected
-     */
+    /** @param string|null $expected */
     protected function assertSize(VariableAwareInterface $object, Size $size, $expected = null)
     {
         $this->assertSameContainerVariable($object, 'base.sizes', $size, $expected);
@@ -134,9 +119,7 @@ abstract class AbstractApiFunctionalTest extends AbstractFunctionalTest
         }
     }
 
-    /**
-     * @param string|null $propertyPath
-     */
+    /** @param string|null $propertyPath */
     protected function assertContainerVariableExists(VariableAwareInterface $root, $propertyPath = null)
     {
         $this->assertVariableExists($this->getContainer($root, $propertyPath));
@@ -175,9 +158,7 @@ abstract class AbstractApiFunctionalTest extends AbstractFunctionalTest
         $this->assertSameVariable($expected, $object->getVariable(), $formatter);
     }
 
-    /**
-     * @return ApiHelper
-     */
+    /** @return ApiHelper */
     protected function createApiHelper()
     {
         return ApiHelperBuilder::create($_SERVER['API_KEY'] ?? null)->build();

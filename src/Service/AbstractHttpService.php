@@ -29,7 +29,7 @@ abstract class AbstractHttpService extends AbstractService
     {
         parent::__construct($url);
 
-        $this->client = $client;
+        $this->client         = $client;
         $this->messageFactory = $messageFactory;
     }
 

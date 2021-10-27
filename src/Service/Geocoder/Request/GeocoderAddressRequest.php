@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -15,181 +17,115 @@ use Ivory\GoogleMap\Base\Bound;
 
 /**
  * @see http://code.google.com/apis/maps/documentation/javascript/reference.html#GeocoderRequest
- *
- * @author GeLo <geloen.eric@gmail.com>
  */
 class GeocoderAddressRequest extends AbstractGeocoderRequest
 {
-    /**
-     * @var string
-     */
+    /** @var string */
     private $address;
 
-    /**
-     * @var mixed[]
-     */
+    /** @var array */
     private $components = [];
 
-    /**
-     * @var Bound|null
-     */
+    /** @var Bound|null */
     private $bound;
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $region;
 
-    /**
-     * @param string $address
-     */
-    public function __construct($address)
+    public function __construct(string $address)
     {
         $this->setAddress($address);
     }
 
-    /**
-     * @return string
-     */
-    public function getAddress()
+    public function getAddress(): string
     {
         return $this->address;
     }
 
-    /**
-     * @param string $address
-     */
-    public function setAddress($address)
+    public function setAddress(string $address): void
     {
         $this->address = $address;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasComponents()
+    public function hasComponents(): bool
     {
         return !empty($this->components);
     }
 
-    /**
-     * @return mixed[]
-     */
-    public function getComponents()
+    public function getComponents(): array
     {
         return $this->components;
     }
 
-    /**
-     * @param mixed[] $components
-     */
-    public function setComponents(array $components)
+    public function setComponents(array $components): void
     {
         $this->components = [];
         $this->addComponents($components);
     }
 
-    /**
-     * @param mixed[] $components
-     */
-    public function addComponents(array $components)
+    public function addComponents(array $components): void
     {
         foreach ($components as $type => $value) {
             $this->setComponent($type, $value);
         }
     }
 
-    /**
-     * @param string $type
-     *
-     * @return bool
-     */
-    public function hasComponent($type)
+    public function hasComponent(string $type): bool
     {
         return isset($this->components[$type]);
     }
 
-    /**
-     * @param string $type
-     *
-     * @return mixed
-     */
-    public function getComponent($type)
+    public function getComponent(string $type)
     {
         return $this->hasComponent($type) ? $this->components[$type] : null;
     }
 
-    /**
-     * @param string $type
-     * @param mixed  $value
-     */
-    public function setComponent($type, $value)
+    public function setComponent(string $type, $value): void
     {
         $this->components[$type] = $value;
     }
 
-    /**
-     * @param string $type
-     */
-    public function removeComponent($type)
+    public function removeComponent(string $type): void
     {
         unset($this->components[$type]);
     }
 
-    /**
-     * @return bool
-     */
-    public function hasBound()
+    public function hasBound(): bool
     {
         return null !== $this->bound;
     }
 
-    /**
-     * @return Bound|null
-     */
-    public function getBound()
+    public function getBound(): ?Bound
     {
         return $this->bound;
     }
 
-    public function setBound(Bound $bound = null)
+    public function setBound(Bound $bound = null): void
     {
         $this->bound = $bound;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasRegion()
+    public function hasRegion(): bool
     {
         return null !== $this->region;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getRegion()
+    public function getRegion(): ?string
     {
         return $this->region;
     }
 
-    /**
-     * @param string|null $region
-     */
-    public function setRegion($region = null)
+    public function setRegion(string $region = null): void
     {
         $this->region = $region;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function buildQuery()
+    public function buildQuery(): array
     {
         $query = ['address' => $this->address];
 
         if ($this->hasComponents()) {
-            $query['components'] = implode('|', array_map(function ($type, $value) {
+            $query['components'] = implode('|', array_map(static function ($type, $value) {
                 return $type.':'.$value;
             }, array_keys($this->components), $this->components));
         }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,19 +20,12 @@ use Ivory\GoogleMap\Service\Place\Detail\Response\PlaceDetailStatus;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class PlaceDetailResponseTest extends TestCase
 {
-    /**
-     * @var PlaceDetailResponse
-     */
+    /** @var PlaceDetailResponse */
     private $response;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->response = new PlaceDetailResponse();
@@ -113,17 +108,13 @@ class PlaceDetailResponseTest extends TestCase
         $this->assertEmpty($this->response->getHtmlAttributions());
     }
 
-    /**
-     * @return MockObject|PlaceDetailRequestInterface
-     */
+    /** @return MockObject|PlaceDetailRequestInterface */
     private function createRequestMock()
     {
         return $this->createMock(PlaceDetailRequestInterface::class);
     }
 
-    /**
-     * @return MockObject|Place
-     */
+    /** @return MockObject|Place */
     private function createPlaceMock()
     {
         return $this->createMock(Place::class);

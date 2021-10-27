@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -13,14 +15,9 @@ namespace Ivory\GoogleMap\Service\Base\Location;
 
 use Ivory\GoogleMap\Base\Coordinate;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class CoordinateLocation implements LocationInterface
 {
-    /**
-     * @var Coordinate
-     */
+    /** @var Coordinate */
     private $coordinate;
 
     public function __construct(Coordinate $coordinate)
@@ -28,23 +25,18 @@ class CoordinateLocation implements LocationInterface
         $this->setCoordinate($coordinate);
     }
 
-    /**
-     * @return Coordinate
-     */
-    public function getCoordinate()
+    public function getCoordinate(): Coordinate
     {
         return $this->coordinate;
     }
 
-    public function setCoordinate(Coordinate $coordinate)
+    public function setCoordinate(Coordinate $coordinate): void
     {
         $this->coordinate = $coordinate;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function buildQuery()
+    /** {@inheritdoc} */
+    public function buildQuery(): string
     {
         return $this->coordinate->getLatitude().','.$this->coordinate->getLongitude();
     }

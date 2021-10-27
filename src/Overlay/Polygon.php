@@ -29,9 +29,7 @@ class Polygon implements ExtendableInterface, OptionsAwareInterface
     /** @var Coordinate[] */
     private $coordinates = [];
 
-    /**
-     * @param Coordinate[] $coordinates
-     */
+    /** @param Coordinate[] $coordinates */
     public function __construct(array $coordinates = [], array $options = [])
     {
         $this->addCoordinates($coordinates);
@@ -43,26 +41,20 @@ class Polygon implements ExtendableInterface, OptionsAwareInterface
         return !empty($this->coordinates);
     }
 
-    /**
-     * @return Coordinate[]
-     */
+    /** @return Coordinate[] */
     public function getCoordinates(): array
     {
         return $this->coordinates;
     }
 
-    /**
-     * @param Coordinate[] $coordinates
-     */
+    /** @param Coordinate[] $coordinates */
     public function setCoordinates(array $coordinates): void
     {
         $this->coordinates = [];
         $this->addCoordinates($coordinates);
     }
 
-    /**
-     * @param Coordinate[] $coordinates
-     */
+    /** @param Coordinate[] $coordinates */
     public function addCoordinates(array $coordinates): void
     {
         foreach ($coordinates as $coordinate) {

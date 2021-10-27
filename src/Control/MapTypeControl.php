@@ -29,11 +29,9 @@ class MapTypeControl
     /** @var string */
     private $style;
 
-    /**
-     * @param string[] $ids
-     */
+    /** @param string[] $ids */
     public function __construct(
-        array  $ids = [MapTypeId::ROADMAP, MapTypeId::SATELLITE],
+        array $ids = [MapTypeId::ROADMAP, MapTypeId::SATELLITE],
         string $position = ControlPosition::TOP_RIGHT,
         string $style = MapTypeControlStyle::DEFAULT_
     ) {
@@ -47,26 +45,20 @@ class MapTypeControl
         return !empty($this->ids);
     }
 
-    /**
-     * @return string[]
-     */
+    /** @return string[] */
     public function getIds(): array
     {
         return $this->ids;
     }
 
-    /**
-     * @param string[] $ids
-     */
+    /** @param string[] $ids */
     public function setIds(array $ids): void
     {
         $this->ids = [];
         $this->addIds($ids);
     }
 
-    /**
-     * @param string[] $ids
-     */
+    /** @param string[] $ids */
     public function addIds(array $ids): void
     {
         foreach ($ids as $mapTypeId) {

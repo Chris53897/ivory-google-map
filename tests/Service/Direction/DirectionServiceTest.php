@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,7 +13,6 @@
 
 namespace Ivory\Tests\GoogleMap\Service\Direction;
 
-use Http\Client\Common\Exception\ClientErrorException;
 use Ivory\GoogleMap\Base\Coordinate;
 use Ivory\GoogleMap\Overlay\EncodedPolyline;
 use Ivory\GoogleMap\Service\Base\Avoid;
@@ -38,19 +39,12 @@ use Ivory\GoogleMap\Service\Direction\Response\Transit\DirectionTransitStop;
 use Ivory\GoogleMap\Service\Direction\Response\Transit\DirectionTransitVehicle;
 use Ivory\Tests\GoogleMap\Service\AbstractSerializableServiceTest;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class DirectionServiceTest extends AbstractSerializableServiceTest
 {
-    /**
-     * @var DirectionService
-     */
+    /** @var DirectionService */
     protected $service;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         if (!isset($_SERVER['API_KEY'])) {
@@ -336,17 +330,15 @@ class DirectionServiceTest extends AbstractSerializableServiceTest
      */
     public function testErrorRequest($format)
     {
-        $this->expectException(ClientErrorException::class);
-
         $this->service->setFormat($format);
         $this->service->setKey('invalid');
 
-        $this->service->route($this->createRequest());
+        $response = $this->service->route($this->createRequest());
+
+        $this->assertSame(DirectionStatus::REQUEST_DENIED, $response->getStatus());
     }
 
-    /**
-     * @return DirectionRequest
-     */
+    /** @return DirectionRequest */
     protected function createRequest()
     {
         return new DirectionRequest(
@@ -362,10 +354,10 @@ class DirectionServiceTest extends AbstractSerializableServiceTest
     protected function assertDirectionResponse($response, $request)
     {
         $options = array_merge([
-            'routes'                 => [],
-            'geocoded_waypoints'     => [],
+            'routes' => [],
+            'geocoded_waypoints' => [],
             'available_travel_modes' => [],
-        ], self::$journal->getData());
+        ], $this->journal->getData());
 
         $options['status'] = DirectionStatus::OK;
 
@@ -399,14 +391,14 @@ class DirectionServiceTest extends AbstractSerializableServiceTest
     private function assertDirectionRoute($route, array $options = [])
     {
         $options = array_merge([
-            'bounds'            => [],
-            'copyrights'        => null,
-            'legs'              => [],
+            'bounds' => [],
+            'copyrights' => null,
+            'legs' => [],
             'overview_polyline' => [],
-            'summary'           => null,
-            'fare'              => [],
-            'warnings'          => [],
-            'waypoint_order'    => [],
+            'summary' => null,
+            'fare' => [],
+            'warnings' => [],
+            'waypoint_order' => [],
         ], $options);
 
         $this->assertInstanceOf(DirectionRoute::class, $route);
@@ -434,17 +426,17 @@ class DirectionServiceTest extends AbstractSerializableServiceTest
     private function assertDirectionLeg($leg, array $options = [])
     {
         $options = array_merge([
-            'distance'            => [],
-            'duration'            => [],
+            'distance' => [],
+            'duration' => [],
             'duration_in_traffic' => [],
-            'arrival_time'        => [],
-            'departure_time'      => [],
-            'end_address'         => null,
-            'end_location'        => [],
-            'start_address'       => null,
-            'start_location'      => [],
-            'steps'               => [],
-            'via_waypoint'        => [],
+            'arrival_time' => [],
+            'departure_time' => [],
+            'end_address' => null,
+            'end_location' => [],
+            'start_address' => null,
+            'start_location' => [],
+            'steps' => [],
+            'via_waypoint' => [],
         ], $options);
 
         $this->assertInstanceOf(DirectionLeg::class, $leg);
@@ -481,14 +473,14 @@ class DirectionServiceTest extends AbstractSerializableServiceTest
     private function assertDirectionStep($step, array $options = [])
     {
         $options = array_merge([
-            'distance'          => [],
-            'duration'          => [],
-            'start_location'    => [],
-            'end_location'      => [],
+            'distance' => [],
+            'duration' => [],
+            'start_location' => [],
+            'end_location' => [],
             'html_instructions' => null,
-            'polyline'          => [],
-            'travel_mode'       => null,
-            'transit_details'   => [],
+            'polyline' => [],
+            'travel_mode' => null,
+            'transit_details' => [],
         ], $options);
 
         $this->assertInstanceOf(DirectionStep::class, $step);
@@ -512,8 +504,8 @@ class DirectionServiceTest extends AbstractSerializableServiceTest
     {
         $options = array_merge([
             'partial_match' => null,
-            'place_id'      => null,
-            'types'         => [],
+            'place_id' => null,
+            'types' => [],
         ], $options);
 
         $options['status'] = DirectionGeocodedStatus::OK;
@@ -533,8 +525,8 @@ class DirectionServiceTest extends AbstractSerializableServiceTest
     private function assertDirectionWaypoint($waypoint, array $options = [])
     {
         $options = array_merge([
-            'location'           => [],
-            'step_index'         => null,
+            'location' => [],
+            'step_index' => null,
             'step_interpolation' => null,
         ], $options);
 
@@ -557,13 +549,13 @@ class DirectionServiceTest extends AbstractSerializableServiceTest
 
         $options = array_merge([
             'departure_stop' => [],
-            'arrival_stop'   => [],
+            'arrival_stop' => [],
             'departure_time' => [],
-            'arrival_time'   => [],
-            'headsign'       => null,
-            'headway'        => null,
-            'line'           => [],
-            'num_stops'      => null,
+            'arrival_time' => [],
+            'headsign' => null,
+            'headway' => null,
+            'line' => [],
+            'num_stops' => null,
         ], $options);
 
         $this->assertInstanceOf(DirectionTransitDetails::class, $details);
@@ -586,7 +578,7 @@ class DirectionServiceTest extends AbstractSerializableServiceTest
     private function assertDirectionTransitStop($stop, array $options = [])
     {
         $options = array_merge([
-            'name'     => null,
+            'name' => null,
             'location' => [],
         ], $options);
 
@@ -603,14 +595,14 @@ class DirectionServiceTest extends AbstractSerializableServiceTest
     private function assertDirectionTransitLine($line, array $options = [])
     {
         $options = array_merge([
-            'name'       => null,
+            'name' => null,
             'short_name' => null,
-            'color'      => null,
-            'url'        => null,
-            'icon'       => null,
+            'color' => null,
+            'url' => null,
+            'icon' => null,
             'text_color' => null,
-            'vehicle'    => [],
-            'agencies'   => [],
+            'vehicle' => [],
+            'agencies' => [],
         ], $options);
 
         $this->assertInstanceOf(DirectionTransitLine::class, $line);
@@ -637,9 +629,9 @@ class DirectionServiceTest extends AbstractSerializableServiceTest
     private function assertDirectionTransitVehicle($vehicle, array $options = [])
     {
         $options = array_merge([
-            'name'       => null,
-            'icon'       => null,
-            'type'       => null,
+            'name' => null,
+            'icon' => null,
+            'type' => null,
             'local_icon' => null,
         ], $options);
 
@@ -658,9 +650,9 @@ class DirectionServiceTest extends AbstractSerializableServiceTest
     private function assertDirectionTransitAgency($agency, array $options = [])
     {
         $options = array_merge([
-            'name'  => null,
+            'name' => null,
             'phone' => null,
-            'url'   => null,
+            'url' => null,
         ], $options);
 
         $this->assertInstanceOf(DirectionTransitAgency::class, $agency);
@@ -682,17 +674,13 @@ class DirectionServiceTest extends AbstractSerializableServiceTest
         $this->assertSame($options['points'], $encodedPolyline->getValue());
     }
 
-    /**
-     * @return \DateTime
-     */
+    /** @return \DateTime */
     private function getDepartureTime()
     {
         return $this->getDateTime('departure', '+12 hours');
     }
 
-    /**
-     * @return \DateTime
-     */
+    /** @return \DateTime */
     private function getArrivalTime()
     {
         return $this->getDateTime('arrival', '+15 hours');

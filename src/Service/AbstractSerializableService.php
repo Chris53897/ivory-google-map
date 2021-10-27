@@ -24,7 +24,7 @@ use Psr\Http\Message\ResponseInterface;
 abstract class AbstractSerializableService extends AbstractHttpService
 {
     public const FORMAT_JSON = Format::JSON;
-    public const FORMAT_XML = Format::XML;
+    public const FORMAT_XML  = Format::XML;
 
     /** @var SerializerInterface */
     private $serializer;

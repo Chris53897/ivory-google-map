@@ -91,9 +91,7 @@ class AutocompleteJavascriptSubscriber extends AbstractDelegateSubscriber
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     public static function getDelegatedSubscribedEvents(): array
     {
         return [

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,19 +20,12 @@ use Ivory\GoogleMap\Service\DistanceMatrix\Response\DistanceMatrixStatus;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class DistanceMatrixResponseTest extends TestCase
 {
-    /**
-     * @var DistanceMatrixResponse
-     */
+    /** @var DistanceMatrixResponse */
     private $response;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->response = new DistanceMatrixResponse();
@@ -189,17 +184,13 @@ class DistanceMatrixResponseTest extends TestCase
         $this->assertEmpty($this->response->getRows());
     }
 
-    /**
-     * @return MockObject|DistanceMatrixRequestInterface
-     */
+    /** @return MockObject|DistanceMatrixRequestInterface */
     private function createRequestMock()
     {
         return $this->createMock(DistanceMatrixRequestInterface::class);
     }
 
-    /**
-     * @return MockObject|DistanceMatrixRow
-     */
+    /** @return MockObject|DistanceMatrixRow */
     private function createRowMock()
     {
         return $this->createMock(DistanceMatrixRow::class);

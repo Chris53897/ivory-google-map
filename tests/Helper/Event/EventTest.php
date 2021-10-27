@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -16,19 +18,12 @@ use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Contracts\EventDispatcher\Event;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class EventTest extends TestCase
 {
-    /**
-     * @var AbstractEvent
-     */
+    /** @var AbstractEvent */
     private $event;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->event = $this->createAbstractEventMock();
@@ -63,9 +58,7 @@ class EventTest extends TestCase
         $this->assertSame($firstCode.$secondCode, $this->event->getCode());
     }
 
-    /**
-     * @return MockObject|AbstractEvent
-     */
+    /** @return MockObject|AbstractEvent */
     private function createAbstractEventMock()
     {
         return $this->getMockForAbstractClass(AbstractEvent::class);

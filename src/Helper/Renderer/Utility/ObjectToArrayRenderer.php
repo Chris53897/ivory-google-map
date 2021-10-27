@@ -21,9 +21,9 @@ class ObjectToArrayRenderer extends AbstractRenderer
     {
         $formatter = $this->getFormatter();
 
-        $arrayVariable = $arrayVariable ?: 'a';
+        $arrayVariable  = $arrayVariable ?: 'a';
         $objectVariable = $objectVariable ?: 'o';
-        $keyVariable = $keyVariable ?: 'k';
+        $keyVariable    = $keyVariable ?: 'k';
 
         return $formatter->renderClosure($formatter->renderLines([
             $formatter->renderAssignment('var '.$arrayVariable, '[]', true),

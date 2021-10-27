@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -17,19 +19,12 @@ use Ivory\GoogleMap\Service\TimeZone\Response\TimeZoneStatus;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class TimeZoneResponseTest extends TestCase
 {
-    /**
-     * @var TimeZoneResponse
-     */
+    /** @var TimeZoneResponse */
     private $response;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->response = new TimeZoneResponse();
@@ -99,9 +94,7 @@ class TimeZoneResponseTest extends TestCase
         $this->assertSame($timeZoneName, $this->response->getTimeZoneName());
     }
 
-    /**
-     * @return MockObject|TimeZoneRequestInterface
-     */
+    /** @return MockObject|TimeZoneRequestInterface */
     private function createRequestMock()
     {
         return $this->createMock(TimeZoneRequestInterface::class);

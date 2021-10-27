@@ -96,13 +96,12 @@ class ApiRenderer extends AbstractRenderer
         SplObjectStorage $requirements,
         array $sources = [],
         array $libraries = []
-    ): string
-    {
+    ): string {
         $formatter = $this->getFormatter();
 
-        $loadCallback = $this->getCallbackName('load');
-        $initCallback = $this->getCallbackName('init');
-        $initSourceCallback = $this->getCallbackName('init_source');
+        $loadCallback            = $this->getCallbackName('load');
+        $initCallback            = $this->getCallbackName('init');
+        $initSourceCallback      = $this->getCallbackName('init_source');
         $initRequirementCallback = $this->getCallbackName('init_requirement');
 
         return $formatter->renderLines([

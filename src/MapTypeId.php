@@ -18,14 +18,12 @@ namespace Ivory\GoogleMap;
  */
 final class MapTypeId
 {
-    public const HYBRID = 'hybrid';
-    public const ROADMAP = 'roadmap';
+    public const HYBRID    = 'hybrid';
+    public const ROADMAP   = 'roadmap';
     public const SATELLITE = 'satellite';
-    public const TERRAIN = 'terrain';
+    public const TERRAIN   = 'terrain';
 
-    /**
-     * @codeCoverageIgnore
-     */
+    /** @codeCoverageIgnore */
     private function __construct()
     {
     }

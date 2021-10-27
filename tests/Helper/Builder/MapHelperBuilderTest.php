@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -16,19 +18,12 @@ use Ivory\GoogleMap\Helper\Builder\MapHelperBuilder;
 use Ivory\GoogleMap\Helper\MapHelper;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class MapHelperBuilderTest extends TestCase
 {
-    /**
-     * @var MapHelperBuilder
-     */
+    /** @var MapHelperBuilder */
     private $mapHelperBuilder;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->mapHelperBuilder = MapHelperBuilder::create($_SERVER['API_KEY'] ?? null);

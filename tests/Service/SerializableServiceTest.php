@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,48 +13,33 @@
 
 namespace Ivory\Tests\GoogleMap\Service;
 
-use Http\Client\HttpClient;
-use Http\Message\MessageFactory;
 use Ivory\GoogleMap\Service\AbstractHttpService;
 use Ivory\GoogleMap\Service\AbstractSerializableService;
 use Ivory\GoogleMap\Service\BusinessAccount;
 use Ivory\Serializer\SerializerInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use Psr\Http\Client\ClientInterface;
+use Psr\Http\Message\RequestFactoryInterface;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class SerializableServiceTest extends TestCase
 {
-    /**
-     * @var AbstractSerializableService|MockObject
-     */
+    /** @var AbstractSerializableService|MockObject */
     private $service;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $url;
 
-    /**
-     * @var HttpClient|MockObject
-     */
+    /** @var ClientInterface|MockObject */
     private $client;
 
-    /**
-     * @var MessageFactory|MockObject
-     */
+    /** @var RequestFactoryInterface|MockObject */
     private $messageFactory;
 
-    /**
-     * @var SerializerInterface|MockObject
-     */
+    /** @var SerializerInterface|MockObject */
     private $serializer;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->service = $this->getMockBuilder(AbstractSerializableService::class)
@@ -150,33 +137,25 @@ class SerializableServiceTest extends TestCase
         $this->assertNull($this->service->getBusinessAccount());
     }
 
-    /**
-     * @return MockObject|HttpClient
-     */
+    /** @return MockObject|ClientInterface */
     private function createHttpClientMock()
     {
-        return $this->createMock(HttpClient::class);
+        return $this->createMock(ClientInterface::class);
     }
 
-    /**
-     * @return MockObject|MessageFactory
-     */
+    /** @return MockObject|RequestFactoryInterface */
     private function createMessageFactoryMock()
     {
-        return $this->createMock(MessageFactory::class);
+        return $this->createMock(RequestFactoryInterface::class);
     }
 
-    /**
-     * @return MockObject|SerializerInterface
-     */
+    /** @return MockObject|SerializerInterface */
     private function createSerializerMock()
     {
         return $this->createMock(SerializerInterface::class);
     }
 
-    /**
-     * @return MockObject|BusinessAccount
-     */
+    /** @return MockObject|BusinessAccount */
     private function createBusinessAccountMock()
     {
         return $this->createMock(BusinessAccount::class);

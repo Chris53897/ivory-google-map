@@ -13,8 +13,6 @@ declare(strict_types=1);
 
 namespace Ivory\GoogleMap\Helper\Renderer\Image\Overlay;
 
-use Ivory\GoogleMap\Overlay\Marker;
-
 class MarkerRenderer
 {
     /** @var MarkerStyleRenderer */
@@ -27,7 +25,7 @@ class MarkerRenderer
         MarkerStyleRenderer $markerStyleRenderer,
         MarkerLocationRenderer $markerLocationRenderer
     ) {
-        $this->markerStyleRenderer = $markerStyleRenderer;
+        $this->markerStyleRenderer    = $markerStyleRenderer;
         $this->markerLocationRenderer = $markerLocationRenderer;
     }
 
@@ -35,7 +33,7 @@ class MarkerRenderer
     {
         $result = [];
         $marker = current($markers);
-        $style = $this->markerStyleRenderer->render($marker);
+        $style  = $this->markerStyleRenderer->render($marker);
 
         if (!empty($style)) {
             $result[] = $style;

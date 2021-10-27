@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -35,19 +37,12 @@ use Ivory\GoogleMap\Overlay\Rectangle;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class CoordinateCollectorTest extends TestCase
 {
-    /**
-     * @var CoordinateCollector
-     */
+    /** @var CoordinateCollector */
     private $coordinateCollector;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->coordinateCollector = new CoordinateCollector(
@@ -190,57 +185,43 @@ class CoordinateCollectorTest extends TestCase
         $this->assertSame(array_merge([$map->getCenter()], $coordinates), $this->coordinateCollector->collect($map));
     }
 
-    /**
-     * @return MockObject|BoundCollector
-     */
+    /** @return MockObject|BoundCollector */
     private function createBoundCollectorMock()
     {
         return $this->createMock(BoundCollector::class);
     }
 
-    /**
-     * @return MockObject|CircleCollector
-     */
+    /** @return MockObject|CircleCollector */
     private function createCircleCollectorMock()
     {
         return $this->createMock(CircleCollector::class);
     }
 
-    /**
-     * @return MockObject|InfoWindowCollector
-     */
+    /** @return MockObject|InfoWindowCollector */
     private function createInfoWindowCollectorMock()
     {
         return $this->createMock(InfoWindowCollector::class);
     }
 
-    /**
-     * @return MockObject|MarkerCollector
-     */
+    /** @return MockObject|MarkerCollector */
     private function createMarkerCollectorMock()
     {
         return $this->createMock(MarkerCollector::class);
     }
 
-    /**
-     * @return MockObject|PolygonCollector
-     */
+    /** @return MockObject|PolygonCollector */
     private function createPolygonCollectorMock()
     {
         return $this->createMock(PolygonCollector::class);
     }
 
-    /**
-     * @return MockObject|PolylineCollector
-     */
+    /** @return MockObject|PolylineCollector */
     private function createPolylineCollectorMock()
     {
         return $this->createMock(PolylineCollector::class);
     }
 
-    /**
-     * @return MockObject|HeatmapLayerCollector
-     */
+    /** @return MockObject|HeatmapLayerCollector */
     private function createHeatmapLayerCollector()
     {
         return $this->createMock(HeatmapLayerCollector::class);

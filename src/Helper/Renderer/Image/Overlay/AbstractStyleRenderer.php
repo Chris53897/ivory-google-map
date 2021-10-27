@@ -15,10 +15,10 @@ namespace Ivory\GoogleMap\Helper\Renderer\Image\Overlay;
 
 abstract class AbstractStyleRenderer
 {
-    public function renderStyle(array $styles): string
+    public function renderStyle(array $styles): ?string
     {
         if (empty($styles)) {
-            return '';
+            return null;
         }
 
         $result = [];

@@ -19,12 +19,10 @@ namespace Ivory\GoogleMap\Control;
 final class ZoomControlStyle
 {
     public const DEFAULT_ = 'default';
-    public const LARGE = 'large';
-    public const SMALL = 'small';
+    public const LARGE    = 'large';
+    public const SMALL    = 'small';
 
-    /**
-     * @codeCoverageIgnore
-     */
+    /** @codeCoverageIgnore */
     private function __construct()
     {
     }

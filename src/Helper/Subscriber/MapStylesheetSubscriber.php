@@ -49,9 +49,7 @@ class MapStylesheetSubscriber extends AbstractSubscriber
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     public static function getSubscribedEvents(): array
     {
         return [MapEvents::STYLESHEET => 'handleMap'];

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,8 +13,6 @@
 
 namespace Ivory\GoogleMap\Service\Direction;
 
-use Http\Client\HttpClient;
-use Http\Message\MessageFactory;
 use Ivory\GoogleMap\Service\AbstractSerializableService;
 use Ivory\GoogleMap\Service\Direction\Request\DirectionRequestInterface;
 use Ivory\GoogleMap\Service\Direction\Response\DirectionResponse;
@@ -20,27 +20,21 @@ use Ivory\Serializer\Context\Context;
 use Ivory\Serializer\Naming\SnakeCaseNamingStrategy;
 use Ivory\Serializer\SerializerInterface;
 use Psr\Http\Client\ClientInterface;
-use Psr\Http\Message\MessageInterface;
+use Psr\Http\Message\RequestFactoryInterface;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class DirectionService extends AbstractSerializableService
 {
     public function __construct(
         ClientInterface $client,
-        MessageInterface $messageFactory,
+        RequestFactoryInterface $messageFactory,
         SerializerInterface $serializer = null
     ) {
         parent::__construct('https://maps.googleapis.com/maps/api/directions', $client, $messageFactory, $serializer);
     }
 
-    /**
-     * @return DirectionResponse
-     */
-    public function route(DirectionRequestInterface $request)
+    public function route(DirectionRequestInterface $request): DirectionResponse
     {
-        $httpRequest = $this->createRequest($request);
+        $httpRequest  = $this->createRequest($request);
         $httpResponse = $this->getClient()->sendRequest($httpRequest);
 
         $response = $this->deserialize(

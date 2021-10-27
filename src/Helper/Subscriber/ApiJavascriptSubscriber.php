@@ -69,9 +69,7 @@ class ApiJavascriptSubscriber extends AbstractDelegateSubscriber
         }
     }
 
-    /**
-     * @return string[][]
-     */
+    /** @return string[][] */
     public static function getDelegatedSubscribedEvents(): array
     {
         return [

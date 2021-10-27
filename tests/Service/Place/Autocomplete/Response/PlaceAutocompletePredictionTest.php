@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,19 +20,12 @@ use Ivory\GoogleMap\Service\Place\Autocomplete\Response\PlaceAutocompleteTerm;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class PlaceAutocompletePredictionTest extends TestCase
 {
-    /**
-     * @var PlaceAutocompletePrediction
-     */
+    /** @var PlaceAutocompletePrediction */
     private $prediction;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->prediction = new PlaceAutocompletePrediction();
@@ -180,17 +175,13 @@ class PlaceAutocompletePredictionTest extends TestCase
         $this->assertEmpty($this->prediction->getMatches());
     }
 
-    /**
-     * @return MockObject|PlaceAutocompleteTerm
-     */
+    /** @return MockObject|PlaceAutocompleteTerm */
     private function createTermMock()
     {
         return $this->createMock(PlaceAutocompleteTerm::class);
     }
 
-    /**
-     * @return MockObject|PlaceAutocompleteMatch
-     */
+    /** @return MockObject|PlaceAutocompleteMatch */
     private function createMatchMock()
     {
         return $this->createMock(PlaceAutocompleteMatch::class);

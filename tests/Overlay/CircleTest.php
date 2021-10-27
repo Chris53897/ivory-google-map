@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -19,24 +21,15 @@ use Ivory\GoogleMap\Utility\VariableAwareInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class CircleTest extends TestCase
 {
-    /**
-     * @var \Ivory\GoogleMap\Overlay\Circle
-     */
+    /** @var \Ivory\GoogleMap\Overlay\Circle */
     private $circle;
 
-    /**
-     * @var Coordinate|MockObject
-     */
+    /** @var Coordinate|MockObject */
     private $center;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->circle = new Circle($this->center = $this->createCoordinateMock());
@@ -81,9 +74,7 @@ class CircleTest extends TestCase
         $this->assertSame($radius, $this->circle->getRadius());
     }
 
-    /**
-     * @return MockObject|Coordinate
-     */
+    /** @return MockObject|Coordinate */
     private function createCoordinateMock()
     {
         return $this->createMock(Coordinate::class);

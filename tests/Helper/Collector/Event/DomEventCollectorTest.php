@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -16,19 +18,12 @@ use Ivory\GoogleMap\Helper\Collector\Event\DomEventCollector;
 use Ivory\GoogleMap\Map;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class DomEventCollectorTest extends TestCase
 {
-    /**
-     * @var DomEventCollector
-     */
+    /** @var DomEventCollector */
     private $domEventCollector;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->domEventCollector = new DomEventCollector();

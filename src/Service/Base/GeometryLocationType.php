@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -13,19 +15,15 @@ namespace Ivory\GoogleMap\Service\Base;
 
 /**
  * @see http://code.google.com/apis/maps/documentation/javascript/reference.html#GeocoderLocationType
- *
- * @author GeLo <geloen.eric@gmail.com>
  */
 final class GeometryLocationType
 {
-    const APPROXIMATE = 'APPROXIMATE';
-    const GEOMETRIC_CENTER = 'GEOMETRIC_CENTER';
-    const RANGE_INTERPOLATED = 'RANGE_INTERPOLATED';
-    const ROOFTOP = 'ROOFTOP';
+    public const APPROXIMATE        = 'APPROXIMATE';
+    public const GEOMETRIC_CENTER   = 'GEOMETRIC_CENTER';
+    public const RANGE_INTERPOLATED = 'RANGE_INTERPOLATED';
+    public const ROOFTOP            = 'ROOFTOP';
 
-    /**
-     * @codeCoverageIgnore
-     */
+    /** @codeCoverageIgnore */
     private function __construct()
     {
     }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -21,19 +23,12 @@ use Ivory\GoogleMap\Overlay\MarkerShapeType;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class MarkerShapeCollectorTest extends TestCase
 {
-    /**
-     * @var MarkerShapeCollector
-     */
+    /** @var MarkerShapeCollector */
     private $markerShapeCollector;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->markerShapeCollector = new MarkerShapeCollector(new MarkerCollector());
@@ -57,9 +52,7 @@ class MarkerShapeCollectorTest extends TestCase
         $this->assertSame([$markerShape], $this->markerShapeCollector->collect($map));
     }
 
-    /**
-     * @return MockObject|MarkerCollector
-     */
+    /** @return MockObject|MarkerCollector */
     private function createMarkerCollectorMock()
     {
         return $this->createMock(MarkerCollector::class);

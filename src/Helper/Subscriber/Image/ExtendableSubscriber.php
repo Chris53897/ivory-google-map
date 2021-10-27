@@ -30,7 +30,7 @@ class ExtendableSubscriber implements EventSubscriberInterface
     public function __construct(ExtendableCollector $extendableCollector, ExtendableRenderer $extendableRenderer)
     {
         $this->extendableCollector = $extendableCollector;
-        $this->extendableRenderer = $extendableRenderer;
+        $this->extendableRenderer  = $extendableRenderer;
     }
 
     public function handleMap(StaticMapEvent $event): void
@@ -54,9 +54,7 @@ class ExtendableSubscriber implements EventSubscriberInterface
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     public static function getSubscribedEvents(): array
     {
         return [StaticMapEvents::EXTENDABLE => 'handleMap'];

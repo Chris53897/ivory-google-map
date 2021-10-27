@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -15,19 +17,12 @@ use Ivory\GoogleMap\Service\Direction\Response\Transit\DirectionTransitVehicle;
 use Ivory\GoogleMap\Service\Direction\Response\Transit\DirectionTransitVehicleType;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class DirectionTransitVehicleTest extends TestCase
 {
-    /**
-     * @var DirectionTransitVehicle
-     */
+    /** @var DirectionTransitVehicle */
     private $transitVehicle;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->transitVehicle = new DirectionTransitVehicle();

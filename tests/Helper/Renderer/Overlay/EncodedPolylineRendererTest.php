@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -21,19 +23,12 @@ use Ivory\JsonBuilder\JsonBuilder;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class EncodedPolylineRendererTest extends TestCase
 {
-    /**
-     * @var EncodedPolylineRenderer
-     */
+    /** @var EncodedPolylineRenderer */
     private $encodedPolylineRenderer;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->encodedPolylineRenderer = new EncodedPolylineRenderer(
@@ -69,9 +64,7 @@ class EncodedPolylineRendererTest extends TestCase
         );
     }
 
-    /**
-     * @return MockObject|EncodingRenderer
-     */
+    /** @return MockObject|EncodingRenderer */
     private function createEncodingRendererMock()
     {
         return $this->createMock(EncodingRenderer::class);

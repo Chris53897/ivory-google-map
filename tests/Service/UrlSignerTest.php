@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -14,9 +16,6 @@ namespace Ivory\Tests\GoogleMap\Service;
 use Ivory\GoogleMap\Service\UrlSigner;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class UrlSignerTest extends TestCase
 {
     /**
@@ -43,9 +42,7 @@ class UrlSignerTest extends TestCase
         $this->assertSame($signedUrl.'&signature='.$expected, UrlSigner::sign($url, $secret, $clientId, $channel));
     }
 
-    /**
-     * @return mixed[]
-     */
+    /** @return mixed[] */
     public function signatureProvider()
     {
         $url = 'http://maps.googleapis.com/maps/api/staticmap?center=%E4%B8%8A%E6%B5%B7+%E4%B8%AD%E5%9C%8B&size=640x640&zoom=10&sensor=false';

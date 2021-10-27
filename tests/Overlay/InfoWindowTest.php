@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -22,24 +24,15 @@ use Ivory\GoogleMap\Utility\VariableAwareInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class InfoWindowTest extends TestCase
 {
-    /**
-     * @var InfoWindow
-     */
+    /** @var InfoWindow */
     private $infoWindow;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $content;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->infoWindow = new InfoWindow($this->content = '<p>content</p>');
@@ -143,17 +136,13 @@ class InfoWindowTest extends TestCase
         $this->assertFalse($this->infoWindow->isAutoClose());
     }
 
-    /**
-     * @return MockObject|Coordinate
-     */
+    /** @return MockObject|Coordinate */
     private function createCoordinateMock()
     {
         return $this->createMock(Coordinate::class);
     }
 
-    /**
-     * @return MockObject|Size
-     */
+    /** @return MockObject|Size */
     private function createSizeMock()
     {
         return $this->createMock(Size::class);

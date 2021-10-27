@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,65 +13,40 @@
 
 namespace Ivory\GoogleMap\Service\Place\Autocomplete\Response;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class PlaceAutocompleteTerm
 {
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $value;
 
-    /**
-     * @var int|null
-     */
+    /** @var int|null */
     private $offset;
 
-    /**
-     * @return bool
-     */
-    public function hasValue()
+    public function hasValue(): bool
     {
         return null !== $this->value;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getValue()
+    public function getValue(): ?string
     {
         return $this->value;
     }
 
-    /**
-     * @param string|null $value
-     */
-    public function setValue($value)
+    public function setValue(?string $value): void
     {
         $this->value = $value;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasOffset()
+    public function hasOffset(): bool
     {
         return null !== $this->offset;
     }
 
-    /**
-     * @return int|null
-     */
-    public function getOffset()
+    public function getOffset(): ?int
     {
         return $this->offset;
     }
 
-    /**
-     * @param int|null $offset
-     */
-    public function setOffset($offset)
+    public function setOffset(?int $offset): void
     {
         $this->offset = $offset;
     }

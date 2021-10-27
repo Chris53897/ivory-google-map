@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -16,19 +18,12 @@ use Ivory\GoogleMap\Map;
 use Ivory\GoogleMap\Overlay\Polyline;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class PolylineCollectorTest extends TestCase
 {
-    /**
-     * @var PolylineCollector
-     */
+    /** @var PolylineCollector */
     private $polylineCollector;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->polylineCollector = new PolylineCollector();

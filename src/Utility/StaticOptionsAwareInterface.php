@@ -16,11 +16,18 @@ namespace Ivory\GoogleMap\Utility;
 interface StaticOptionsAwareInterface
 {
     public function hasStaticOptions(): bool;
+
     public function getStaticOptions(): array;
+
     public function setStaticOptions(array $options): void;
+
     public function addStaticOptions(array $options): void;
+
     public function hasStaticOption(string $option): bool;
+
     public function getStaticOption(string $option);
+
     public function setStaticOption(string $option, $value): void;
+
     public function removeStaticOption(string $option);
 }

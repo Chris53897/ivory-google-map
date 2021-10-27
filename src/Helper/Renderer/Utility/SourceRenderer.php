@@ -20,8 +20,8 @@ class SourceRenderer extends AbstractRenderer
     public function render(string $name, ?string $source = null, ?string $variable = null, bool $newLine = true): string
     {
         $formatter = $this->getFormatter();
-        $source = $source ?: 'src';
-        $variable = $variable ?: 'script';
+        $source    = $source ?: 'src';
+        $variable  = $variable ?: 'script';
 
         return $formatter->renderClosure($formatter->renderLines([
             $formatter->renderAssignment(

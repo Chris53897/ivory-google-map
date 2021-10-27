@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,18 +13,15 @@
 
 namespace Ivory\GoogleMap\Service\Place\Detail;
 
-use Http\Client\HttpClient;
-use Http\Message\MessageFactory;
 use Ivory\GoogleMap\Service\AbstractSerializableService;
 use Ivory\GoogleMap\Service\Place\Detail\Request\PlaceDetailRequestInterface;
 use Ivory\GoogleMap\Service\Place\Detail\Response\PlaceDetailResponse;
 use Ivory\Serializer\Context\Context;
 use Ivory\Serializer\Naming\SnakeCaseNamingStrategy;
 use Ivory\Serializer\SerializerInterface;
+use Psr\Http\Client\ClientInterface as HttpClient;
+use Psr\Http\Message\RequestFactoryInterface as MessageFactory;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class PlaceDetailService extends AbstractSerializableService
 {
     public function __construct(
@@ -38,10 +37,7 @@ class PlaceDetailService extends AbstractSerializableService
         );
     }
 
-    /**
-     * @return PlaceDetailResponse
-     */
-    public function process(PlaceDetailRequestInterface $request)
+    public function process(PlaceDetailRequestInterface $request): PlaceDetailResponse
     {
         $httpRequest = $this->createRequest($request);
         $httpResponse = $this->getClient()->sendRequest($httpRequest);

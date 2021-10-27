@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -14,19 +16,12 @@ namespace Ivory\Tests\GoogleMap\Service\Place\Base;
 use Ivory\GoogleMap\Service\Place\Base\Photo;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class PhotoTest extends TestCase
 {
-    /**
-     * @var Photo
-     */
+    /** @var Photo */
     private $photo;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->photo = new Photo();

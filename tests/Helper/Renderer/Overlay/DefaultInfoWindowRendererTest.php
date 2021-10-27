@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -22,19 +24,12 @@ use Ivory\JsonBuilder\JsonBuilder;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class DefaultInfoWindowRendererTest extends TestCase
 {
-    /**
-     * @var DefaultInfoWindowRenderer|MockObject
-     */
+    /** @var DefaultInfoWindowRenderer|MockObject */
     private $defaultInfoWindowRenderer;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->defaultInfoWindowRenderer = new DefaultInfoWindowRenderer(new Formatter(), new JsonBuilder());

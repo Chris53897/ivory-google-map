@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -17,19 +19,12 @@ use Ivory\GoogleMap\Map;
 use Ivory\GoogleMap\Overlay\Rectangle;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class RectangleCollectorTest extends TestCase
 {
-    /**
-     * @var RectangleCollector
-     */
+    /** @var RectangleCollector */
     private $rectangleCollector;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->rectangleCollector = new RectangleCollector();

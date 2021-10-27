@@ -28,7 +28,7 @@ class MarkerStyleRenderer extends AbstractStyleRenderer
         $this->pointRenderer = $pointRenderer;
     }
 
-    public function render(Marker $marker): string
+    public function render(Marker $marker): ?string
     {
         $options = $marker->hasStaticOption('styles') ? $marker->getStaticOption('styles') : [];
 

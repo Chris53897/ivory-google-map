@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -17,19 +19,12 @@ use Ivory\GoogleMap\Helper\Renderer\MapBoundRenderer;
 use Ivory\GoogleMap\Map;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class MapBoundRendererTest extends TestCase
 {
-    /**
-     * @var MapBoundRenderer
-     */
+    /** @var MapBoundRenderer */
     private $mapBoundRenderer;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->mapBoundRenderer = new MapBoundRenderer(new Formatter());

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -16,24 +18,15 @@ use Ivory\GoogleMap\Service\BusinessAccount;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class ServiceTest extends TestCase
 {
-    /**
-     * @var AbstractService|MockObject
-     */
+    /** @var AbstractService|MockObject */
     private $service;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $url;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->service = $this->getMockBuilder(AbstractService::class)
@@ -89,9 +82,7 @@ class ServiceTest extends TestCase
         $this->assertNull($this->service->getBusinessAccount());
     }
 
-    /**
-     * @return MockObject|BusinessAccount
-     */
+    /** @return MockObject|BusinessAccount */
     private function createBusinessAccountMock()
     {
         return $this->createMock(BusinessAccount::class);

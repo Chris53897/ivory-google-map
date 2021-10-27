@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -19,19 +21,12 @@ use Ivory\GoogleMap\Service\RequestInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class GeocoderReverseRequestTest extends TestCase
 {
-    /**
-     * @var AbstractGeocoderReverseRequest|MockObject
-     */
+    /** @var AbstractGeocoderReverseRequest|MockObject */
     private $request;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->request = $this->createAbstractReverseRequestMock();
@@ -155,9 +150,7 @@ class GeocoderReverseRequestTest extends TestCase
         $this->assertSame(['location_type' => implode('|', $locationTypes)], $this->request->buildQuery());
     }
 
-    /**
-     * @return MockObject|AbstractGeocoderReverseRequest
-     */
+    /** @return MockObject|AbstractGeocoderReverseRequest */
     private function createAbstractReverseRequestMock()
     {
         return $this->getMockForAbstractClass(AbstractGeocoderReverseRequest::class);

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,65 +13,40 @@
 
 namespace Ivory\GoogleMap\Service\Place\Base;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class AlternatePlaceId
 {
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $placeId;
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $scope;
 
-    /**
-     * @return bool
-     */
-    public function hasPlaceId()
+    public function hasPlaceId(): bool
     {
         return null !== $this->placeId;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getPlaceId()
+    public function getPlaceId(): ?string
     {
         return $this->placeId;
     }
 
-    /**
-     * @param string|null $placeId
-     */
-    public function setPlaceId($placeId)
+    public function setPlaceId(?string $placeId): void
     {
         $this->placeId = $placeId;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasScope()
+    public function hasScope(): bool
     {
         return null !== $this->scope;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getScope()
+    public function getScope(): ?string
     {
         return $this->scope;
     }
 
-    /**
-     * @param string|null $scope
-     */
-    public function setScope($scope)
+    public function setScope(?string $scope): void
     {
         $this->scope = $scope;
     }

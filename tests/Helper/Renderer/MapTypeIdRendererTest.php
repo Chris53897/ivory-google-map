@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -16,19 +18,12 @@ use Ivory\GoogleMap\Helper\Renderer\MapTypeIdRenderer;
 use Ivory\GoogleMap\MapTypeId;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class MapTypeIdRendererTest extends TestCase
 {
-    /**
-     * @var MapTypeIdRenderer
-     */
+    /** @var MapTypeIdRenderer */
     private $mapTypeIdRenderer;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->mapTypeIdRenderer = new MapTypeIdRenderer(new Formatter());

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -16,8 +18,6 @@ use Ivory\GoogleMap\Map;
 use Ivory\Tests\GoogleMap\Helper\Functional\AbstractMapFunctionalTest;
 
 /**
- * @author GeLo <geloen.eric@gmail.com>
- *
  * @group functional
  */
 class KmlLayerFunctionalTest extends AbstractMapFunctionalTest
@@ -31,9 +31,7 @@ class KmlLayerFunctionalTest extends AbstractMapFunctionalTest
         $this->assertMap($map);
     }
 
-    /**
-     * @return KmlLayer
-     */
+    /** @return KmlLayer */
     private function createKmlLayer()
     {
         return new KmlLayer('https://googlemaps.github.io/js-v2-samples/ggeoxml/cta.kml');

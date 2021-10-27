@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -17,15 +19,9 @@ use Ivory\GoogleMap\Service\Place\Autocomplete\Response\PlaceAutocompleteRespons
 use Ivory\Serializer\Context\Context;
 use Ivory\Serializer\Naming\SnakeCaseNamingStrategy;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class PlaceAutocompleteService extends AbstractPlaceSerializableService
 {
-    /**
-     * @return PlaceAutocompleteResponse
-     */
-    public function process(PlaceAutocompleteRequestInterface $request)
+    public function process(PlaceAutocompleteRequestInterface $request): PlaceAutocompleteResponse
     {
         $httpRequest = $this->createRequest($request);
         $httpResponse = $this->getClient()->sendRequest($httpRequest);

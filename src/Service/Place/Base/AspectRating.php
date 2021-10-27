@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,65 +13,40 @@
 
 namespace Ivory\GoogleMap\Service\Place\Base;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class AspectRating
 {
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $type;
 
-    /**
-     * @var float|null
-     */
+    /** @var float|null */
     private $rating;
 
-    /**
-     * @return bool
-     */
-    public function hasType()
+    public function hasType(): bool
     {
         return null !== $this->type;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getType()
+    public function getType(): ?string
     {
         return $this->type;
     }
 
-    /**
-     * @param string|null $type
-     */
-    public function setType($type)
+    public function setType(?string $type): void
     {
         $this->type = $type;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasRating()
+    public function hasRating(): bool
     {
         return null !== $this->rating;
     }
 
-    /**
-     * @return float|null
-     */
-    public function getRating()
+    public function getRating(): ?float
     {
         return $this->rating;
     }
 
-    /**
-     * @param float|null $rating
-     */
-    public function setRating($rating)
+    public function setRating(?float $rating): void
     {
         $this->rating = $rating;
     }

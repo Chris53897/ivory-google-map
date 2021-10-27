@@ -62,7 +62,7 @@ class BoundSubscriber extends AbstractSubscriber
     public function handleMap(MapEvent $event): void
     {
         $formatter = $this->getFormatter();
-        $map = $event->getMap();
+        $map       = $event->getMap();
 
         foreach ($this->boundCollector->collect($map) as $bound) {
             $event->addCode($formatter->renderContainerAssignment(
@@ -74,9 +74,7 @@ class BoundSubscriber extends AbstractSubscriber
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     public static function getSubscribedEvents(): array
     {
         return [MapEvents::JAVASCRIPT_BASE_BOUND => 'handleMap'];

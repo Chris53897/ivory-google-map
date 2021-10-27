@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -21,19 +23,12 @@ use Ivory\GoogleMap\Overlay\Marker;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class InfoWindowCollectorTest extends TestCase
 {
-    /**
-     * @var InfoWindowCollector
-     */
+    /** @var InfoWindowCollector */
     private $infoWindowCollector;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->infoWindowCollector = new InfoWindowCollector(new MarkerCollector());
@@ -67,12 +62,10 @@ class InfoWindowCollectorTest extends TestCase
         $this->assertSame($expected, $this->infoWindowCollector->collect($map, [], $strategy));
     }
 
-    /**
-     * @return mixed[][]
-     */
+    /** @return mixed[][] */
     public function collectProvider()
     {
-        $infoWindow = new InfoWindow('content');
+        $infoWindow       = new InfoWindow('content');
         $markerInfoWindow = new InfoWindow('content');
 
         $infoBox = new InfoWindow('content');
@@ -106,9 +99,7 @@ class InfoWindowCollectorTest extends TestCase
         ];
     }
 
-    /**
-     * @return MockObject|MarkerCollector
-     */
+    /** @return MockObject|MarkerCollector */
     private function createMarkerCollectorMock()
     {
         return $this->createMock(MarkerCollector::class);

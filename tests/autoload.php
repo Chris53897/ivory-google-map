@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -21,4 +23,4 @@ if (isset($_SERVER['CACHE_PATH'])) {
 
 require_once __DIR__.'/../vendor/autoload.php';
 
-Selenium2TestCase::shareSession(true);
+Selenium2TestCase::shareSession(false);

@@ -27,26 +27,20 @@ class ExtendableRenderer implements ExtendableRendererInterface
         return !empty($this->renderers);
     }
 
-    /**
-     * @return ExtendableRendererInterface[]
-     */
+    /** @return ExtendableRendererInterface[] */
     public function getRenderers(): array
     {
         return $this->renderers;
     }
 
-    /**
-     * @param ExtendableRendererInterface[] $renderers
-     */
+    /** @param ExtendableRendererInterface[] $renderers */
     public function setRenderers(array $renderers): void
     {
         $this->renderers = [];
         $this->addRenderers($renderers);
     }
 
-    /**
-     * @param ExtendableRendererInterface[] $renderers
-     */
+    /** @param ExtendableRendererInterface[] $renderers */
     public function addRenderers(array $renderers): void
     {
         foreach ($renderers as $name => $renderer) {
@@ -74,9 +68,7 @@ class ExtendableRenderer implements ExtendableRendererInterface
         unset($this->renderers[$name]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     public function render(ExtendableInterface $extendable, Bound $bound): string
     {
         $renderer = $this->getRenderer(get_class($extendable));

@@ -29,9 +29,7 @@ class MarkerShape implements VariableAwareInterface
     /** @var float[] */
     private $coordinates = [];
 
-    /**
-     * @param float[] $coordinates
-     */
+    /** @param float[] $coordinates */
     public function __construct(string $type, array $coordinates)
     {
         $this->setType($type);
@@ -53,26 +51,20 @@ class MarkerShape implements VariableAwareInterface
         return !empty($this->coordinates);
     }
 
-    /**
-     * @return float[]
-     */
+    /** @return float[] */
     public function getCoordinates(): array
     {
         return $this->coordinates;
     }
 
-    /**
-     * @param float[] $coordinates
-     */
+    /** @param float[] $coordinates */
     public function setCoordinates(array $coordinates): void
     {
         $this->coordinates = [];
         $this->addCoordinates($coordinates);
     }
 
-    /**
-     * @param float[] $coordinates
-     */
+    /** @param float[] $coordinates */
     public function addCoordinates(array $coordinates): void
     {
         foreach ($coordinates as $coordinate) {

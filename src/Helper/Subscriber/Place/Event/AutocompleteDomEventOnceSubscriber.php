@@ -61,7 +61,7 @@ class AutocompleteDomEventOnceSubscriber extends AbstractSubscriber
 
     public function handleAutocomplete(PlaceAutocompleteEvent $event): void
     {
-        $formatter = $this->getFormatter();
+        $formatter    = $this->getFormatter();
         $autocomplete = $event->getAutocomplete();
 
         foreach ($this->domEventOnceCollector->collect($autocomplete) as $domEventOnce) {
@@ -74,9 +74,7 @@ class AutocompleteDomEventOnceSubscriber extends AbstractSubscriber
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     public static function getSubscribedEvents(): array
     {
         return [PlaceAutocompleteEvents::JAVASCRIPT_EVENT_DOM_EVENT_ONCE => 'handleAutocomplete'];

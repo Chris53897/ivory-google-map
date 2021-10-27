@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -16,19 +18,12 @@ use Ivory\GoogleMap\Helper\Renderer\AbstractRenderer;
 use Ivory\GoogleMap\Helper\Renderer\ApiInitRenderer;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class ApiInitRendererTest extends TestCase
 {
-    /**
-     * @var ApiInitRenderer
-     */
+    /** @var ApiInitRenderer */
     private $apiInitRenderer;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->apiInitRenderer = new ApiInitRenderer(new Formatter());
@@ -86,7 +81,7 @@ EOF;
      */
     private function createCallbacks($object)
     {
-        $callbacks = new \SplObjectStorage();
+        $callbacks          = new \SplObjectStorage();
         $callbacks[$object] = 'main_callback';
 
         return $callbacks;
@@ -99,7 +94,7 @@ EOF;
      */
     private function createRequirements($object)
     {
-        $requirements = new \SplObjectStorage();
+        $requirements          = new \SplObjectStorage();
         $requirements[$object] = ['requirement1', 'requirement2'];
 
         return $requirements;

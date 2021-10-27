@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -13,178 +15,112 @@ namespace Ivory\GoogleMap\Service\TimeZone\Response;
 
 use Ivory\GoogleMap\Service\TimeZone\Request\TimeZoneRequestInterface;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class TimeZoneResponse
 {
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $status;
 
-    /**
-     * @var TimeZoneRequestInterface|null
-     */
+    /** @var TimeZoneRequestInterface|null */
     private $request;
 
-    /**
-     * @var int|null
-     */
+    /** @var int|null */
     private $dstOffset;
 
-    /**
-     * @var int|null
-     */
+    /** @var int|null */
     private $rawOffset;
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $timeZoneId;
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $timeZoneName;
 
-    /**
-     * @return bool
-     */
-    public function hasStatus()
+    public function hasStatus(): bool
     {
         return null !== $this->status;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
-    /**
-     * @param string|null $status
-     */
-    public function setStatus($status)
+    public function setStatus($status): void
     {
         $this->status = $status;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasRequest()
+    public function hasRequest(): bool
     {
         return null !== $this->request;
     }
 
-    /**
-     * @return TimeZoneRequestInterface|null
-     */
-    public function getRequest()
+    public function getRequest(): ?TimeZoneRequestInterface
     {
         return $this->request;
     }
 
-    public function setRequest(TimeZoneRequestInterface $request = null)
+    public function setRequest(TimeZoneRequestInterface $request = null): void
     {
         $this->request = $request;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasDstOffset()
+    public function hasDstOffset(): bool
     {
         return null !== $this->dstOffset;
     }
 
-    /**
-     * @return int|null
-     */
-    public function getDstOffset()
+    public function getDstOffset(): ?int
     {
         return $this->dstOffset;
     }
 
-    /**
-     * @param int|null $dstOffset
-     */
-    public function setDstOffset($dstOffset)
+    public function setDstOffset(?int $dstOffset): void
     {
         $this->dstOffset = $dstOffset;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasRawOffset()
+    public function hasRawOffset(): bool
     {
         return null !== $this->rawOffset;
     }
 
-    /**
-     * @return int|null
-     */
-    public function getRawOffset()
+    public function getRawOffset(): ?int
     {
         return $this->rawOffset;
     }
 
-    /**
-     * @param int|null $rawOffset
-     */
-    public function setRawOffset($rawOffset)
+    public function setRawOffset(?int $rawOffset): void
     {
         $this->rawOffset = $rawOffset;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasTimeZoneId()
+    public function hasTimeZoneId(): bool
     {
         return null !== $this->timeZoneId;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getTimeZoneId()
+    public function getTimeZoneId(): ?string
     {
         return $this->timeZoneId;
     }
 
-    /**
-     * @param string|null $timeZoneId
-     */
-    public function setTimeZoneId($timeZoneId)
+    public function setTimeZoneId(?string $timeZoneId): void
     {
         $this->timeZoneId = $timeZoneId;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasTimeZoneName()
+    public function hasTimeZoneName(): bool
     {
         return null !== $this->timeZoneName;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getTimeZoneName()
+    public function getTimeZoneName(): ?string
     {
         return $this->timeZoneName;
     }
 
-    /**
-     * @param string|null $timeZoneName
-     */
-    public function setTimeZoneName($timeZoneName)
+    public function setTimeZoneName(?string $timeZoneName): void
     {
         $this->timeZoneName = $timeZoneName;
     }

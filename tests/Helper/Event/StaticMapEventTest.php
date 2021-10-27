@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -17,27 +19,18 @@ use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Contracts\EventDispatcher\Event;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class StaticMapEventTest extends TestCase
 {
-    /**
-     * @var StaticMapEvent
-     */
+    /** @var StaticMapEvent */
     private $staticMapEvent;
 
-    /**
-     * @var Map|MockObject
-     */
+    /** @var Map|MockObject */
     private $map;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
-        $this->map = $this->createMapMock();
+        $this->map            = $this->createMapMock();
         $this->staticMapEvent = new StaticMapEvent($this->map);
     }
 
@@ -105,9 +98,7 @@ class StaticMapEventTest extends TestCase
         $this->assertNull($this->staticMapEvent->getParameter('foo'));
     }
 
-    /**
-     * @return MockObject|Map
-     */
+    /** @return MockObject|Map */
     private function createMapMock()
     {
         return $this->createMock(Map::class);

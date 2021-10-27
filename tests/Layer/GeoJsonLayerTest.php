@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -15,24 +17,15 @@ use Ivory\GoogleMap\Layer\GeoJsonLayer;
 use Ivory\GoogleMap\Utility\OptionsAwareInterface;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class GeoJsonLayerTest extends TestCase
 {
-    /**
-     * @var GeoJsonLayer
-     */
+    /** @var GeoJsonLayer */
     private $geoJsonLayer;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $url;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->geoJsonLayer = new GeoJsonLayer($this->url = 'https://storage.googleapis.com/mapsdevsite/json/google.json');

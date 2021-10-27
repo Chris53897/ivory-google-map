@@ -25,9 +25,9 @@ class UrlSigner
             $url .= '&channel='.$channel;
         }
 
-        $urlParts = parse_url($url);
-        $data = $urlParts['path'].'?'.$urlParts['query'];
-        $key = base64_decode(str_replace(['-', '_'], ['+', '/'], $secret));
+        $urlParts  = parse_url($url);
+        $data      = $urlParts['path'].'?'.$urlParts['query'];
+        $key       = base64_decode(str_replace(['-', '_'], ['+', '/'], $secret));
         $signature = base64_encode(hash_hmac('sha1', $data, $key, true));
 
         return $url.'&signature='.str_replace(['+', '/'], ['-', '_'], $signature);

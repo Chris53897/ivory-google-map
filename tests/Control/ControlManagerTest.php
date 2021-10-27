@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -22,19 +24,12 @@ use Ivory\GoogleMap\Control\ZoomControl;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class ControlManagerTest extends TestCase
 {
-    /**
-     * @var ControlManager
-     */
+    /** @var ControlManager */
     private $controlManager;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->controlManager = new ControlManager();
@@ -201,57 +196,43 @@ class ControlManagerTest extends TestCase
         $this->assertEmpty($this->controlManager->getCustomControls());
     }
 
-    /**
-     * @return MockObject|FullscreenControl
-     */
+    /** @return MockObject|FullscreenControl */
     private function createFullscreenControlMock()
     {
         return $this->createMock(FullscreenControl::class);
     }
 
-    /**
-     * @return MockObject|MapTypeControl
-     */
+    /** @return MockObject|MapTypeControl */
     private function createMapTypeControlMock()
     {
         return $this->createMock(MapTypeControl::class);
     }
 
-    /**
-     * @return MockObject|RotateControl
-     */
+    /** @return MockObject|RotateControl */
     private function createRotateControlMock()
     {
         return $this->createMock(RotateControl::class);
     }
 
-    /**
-     * @return MockObject|ScaleControl
-     */
+    /** @return MockObject|ScaleControl */
     private function createScaleControlMock()
     {
         return $this->createMock(ScaleControl::class);
     }
 
-    /**
-     * @return MockObject|StreetViewControl
-     */
+    /** @return MockObject|StreetViewControl */
     private function createStreetViewControlMock()
     {
         return $this->createMock(StreetViewControl::class);
     }
 
-    /**
-     * @return MockObject|ZoomControl
-     */
+    /** @return MockObject|ZoomControl */
     private function createZoomControlMock()
     {
         return $this->createMock(ZoomControl::class);
     }
 
-    /**
-     * @return MockObject|CustomControl
-     */
+    /** @return MockObject|CustomControl */
     private function createCustomControlMock()
     {
         return $this->createMock(CustomControl::class);

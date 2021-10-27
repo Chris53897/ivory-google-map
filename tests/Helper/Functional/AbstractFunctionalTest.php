@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -13,24 +15,15 @@ namespace Ivory\Tests\GoogleMap\Helper\Functional;
 
 use PHPUnit\Extensions\Selenium2TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 abstract class AbstractFunctionalTest extends Selenium2TestCase
 {
-    /**
-     * @var string
-     */
+    /** @var string */
     private static $directory;
 
-    /**
-     * @var bool
-     */
+    /** @var bool */
     private static $hasDirectory;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     public static function setUpBeforeClass(): void
     {
         self::$directory = sys_get_temp_dir().'/ivory-google-map';
@@ -41,9 +34,7 @@ abstract class AbstractFunctionalTest extends Selenium2TestCase
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     public static function tearDownAfterClass(): void
     {
         if (!self::$hasDirectory) {
@@ -51,22 +42,18 @@ abstract class AbstractFunctionalTest extends Selenium2TestCase
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         if (isset($_SERVER['SELENIUM_HOST'])) {
             $this->setHost($_SERVER['SELENIUM_HOST']);
         }
 
-        $this->setBrowser(isset($_SERVER['BROWSER_NAME']) ? $_SERVER['BROWSER_NAME'] : 'chrome');
+        $this->setBrowser($_SERVER['BROWSER_NAME'] ?? 'chrome');
         $this->setBrowserUrl('file://'.self::$directory);
     }
 
-    /**
-     * @param string|string[] $html
-     */
+    /** @param string|string[] $html */
     protected function renderHtml($html): void
     {
         if (false === ($name = @tempnam(self::$directory, 'ivory-google-map').'.html')) {
@@ -98,9 +85,7 @@ abstract class AbstractFunctionalTest extends Selenium2TestCase
         }
     }
 
-    /**
-     * @param string $variable
-     */
+    /** @param string $variable */
     protected function assertVariableExists($variable): void
     {
         self::assertTrue($this->executeJavascript($script = 'typeof '.$variable.' !== typeof undefined'), $script);
@@ -130,8 +115,6 @@ abstract class AbstractFunctionalTest extends Selenium2TestCase
     /**
      * @param string  $script
      * @param mixed[] $args
-     *
-     * @return mixed
      */
     private function executeJavascript($script, array $args = [])
     {

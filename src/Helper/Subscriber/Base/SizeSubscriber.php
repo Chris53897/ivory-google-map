@@ -62,7 +62,7 @@ class SizeSubscriber extends AbstractSubscriber
     public function handleMap(MapEvent $event): void
     {
         $formatter = $this->getFormatter();
-        $map = $event->getMap();
+        $map       = $event->getMap();
 
         foreach ($this->sizeCollector->collect($map) as $size) {
             $event->addCode($formatter->renderContainerAssignment(
@@ -74,9 +74,7 @@ class SizeSubscriber extends AbstractSubscriber
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     public static function getSubscribedEvents(): array
     {
         return [MapEvents::JAVASCRIPT_BASE_SIZE => 'handleMap'];

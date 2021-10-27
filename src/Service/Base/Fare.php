@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,82 +13,50 @@
 
 namespace Ivory\GoogleMap\Service\Base;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class Fare
 {
-    /**
-     * @var float
-     */
+    /** @var float */
     private $value;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $currency;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $text;
 
-    /**
-     * @param float  $value
-     * @param string $currency
-     * @param string $text
-     */
-    public function __construct($value, $currency, $text)
+    public function __construct(float $value, string $currency, string $text)
     {
         $this->setValue($value);
         $this->setCurrency($currency);
         $this->setText($text);
     }
 
-    /**
-     * @return float
-     */
-    public function getValue()
+    public function getValue(): float
     {
         return $this->value;
     }
 
-    /**
-     * @param float $value
-     */
-    public function setValue($value)
+    public function setValue(float $value): void
     {
         $this->value = $value;
     }
 
-    /**
-     * @return string
-     */
-    public function getCurrency()
+    public function getCurrency(): string
     {
         return $this->currency;
     }
 
-    /**
-     * @param string $currency
-     */
-    public function setCurrency($currency)
+    public function setCurrency(string $currency): void
     {
         $this->currency = $currency;
     }
 
-    /**
-     * @return string
-     */
-    public function getText()
+    public function getText(): string
     {
         return $this->text;
     }
 
-    /**
-     * @param string $text
-     */
-    public function setText($text)
+    public function setText(string $text): void
     {
         $this->text = $text;
     }

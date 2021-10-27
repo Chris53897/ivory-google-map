@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,44 +13,28 @@
 
 namespace Ivory\GoogleMap\Service\Base\Location;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class AddressLocation implements LocationInterface
 {
-    /**
-     * @var string
-     */
+    /** @var string */
     private $address;
 
-    /**
-     * @param string $address
-     */
-    public function __construct($address)
+    public function __construct(string $address)
     {
         $this->setAddress($address);
     }
 
-    /**
-     * @return string
-     */
-    public function getAddress()
+    public function getAddress(): string
     {
         return $this->address;
     }
 
-    /**
-     * @param string $address
-     */
-    public function setAddress($address)
+    public function setAddress(string $address): void
     {
         $this->address = $address;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function buildQuery()
+    /** {@inheritdoc} */
+    public function buildQuery(): string
     {
         return $this->address;
     }

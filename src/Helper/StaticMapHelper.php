@@ -38,9 +38,9 @@ class StaticMapHelper extends AbstractHelper
     ) {
         parent::__construct($eventDispatcher);
 
-        $this->secret = $secret;
+        $this->secret   = $secret;
         $this->clientId = $clientId;
-        $this->channel = $channel;
+        $this->channel  = $channel;
     }
 
     public function hasSecret(): bool
@@ -93,7 +93,7 @@ class StaticMapHelper extends AbstractHelper
         $this->getEventDispatcher()->dispatch($event = new StaticMapEvent($map), StaticMapEvents::HTML);
 
         $query = preg_replace('/(%5B[0-9]+%5D)+=/', '=', http_build_query($event->getParameters(), '', '&'));
-        $url = 'https://maps.googleapis.com/maps/api/staticmap?'.$query;
+        $url   = 'https://maps.googleapis.com/maps/api/staticmap?'.$query;
 
         if ($this->hasSecret()) {
             $url = UrlSigner::sign($url, $this->secret, $this->clientId, $this->channel);

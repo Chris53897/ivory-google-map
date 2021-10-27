@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,19 +20,12 @@ use Ivory\Serializer\Context\Context;
 use Ivory\Tests\GoogleMap\Service\AbstractUnitServiceTest;
 use PHPUnit\Framework\MockObject\MockObject;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class DistanceMatrixServiceUnitTest extends AbstractUnitServiceTest
 {
-    /**
-     * @var DistanceMatrixService
-     */
+    /** @var DistanceMatrixService */
     private $service;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         parent::setUp();
@@ -105,17 +100,13 @@ class DistanceMatrixServiceUnitTest extends AbstractUnitServiceTest
         $this->assertSame($response, $this->service->process($request));
     }
 
-    /**
-     * @return MockObject|DistanceMatrixRequestInterface
-     */
+    /** @return MockObject|DistanceMatrixRequestInterface */
     private function createDistanceMatrixRequestMock()
     {
         return $this->createMock(DistanceMatrixRequestInterface::class);
     }
 
-    /**
-     * @return MockObject|DistanceMatrixResponse
-     */
+    /** @return MockObject|DistanceMatrixResponse */
     private function createDistanceMatrixResponseMock()
     {
         return $this->createMock(DistanceMatrixResponse::class);

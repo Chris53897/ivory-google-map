@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -21,14 +23,9 @@ use Ivory\Serializer\Type\ObjectType;
 use Ivory\Serializer\Type\Type;
 use Psr\Cache\CacheItemPoolInterface;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class SerializerBuilder
 {
-    /**
-     * @return Serializer
-     */
+    /** @return Serializer */
     public static function create(CacheItemPoolInterface $pool = null)
     {
         $classMetadataFactory = new ClassMetadataFactory(new DirectoryClassMetadataLoader(__DIR__));

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -16,19 +18,12 @@ use Ivory\GoogleMap\Control\ScaleControl;
 use Ivory\GoogleMap\Control\ScaleControlStyle;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class ScaleControlTest extends TestCase
 {
-    /**
-     * @var ScaleControl
-     */
+    /** @var ScaleControl */
     private $scaleControl;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->scaleControl = new ScaleControl();

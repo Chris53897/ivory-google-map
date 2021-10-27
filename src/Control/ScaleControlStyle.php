@@ -20,9 +20,7 @@ final class ScaleControlStyle
 {
     public const DEFAULT_ = 'default';
 
-    /**
-     * @codeCoverageIgnore
-     */
+    /** @codeCoverageIgnore */
     private function __construct()
     {
     }

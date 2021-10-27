@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -15,14 +17,9 @@ use Ivory\GoogleMap\Service\Base\Location\EncodedPolylineLocation;
 use Ivory\GoogleMap\Service\Base\Location\PlaceIdLocation;
 use Ivory\GoogleMap\Service\DistanceMatrix\Request\DistanceMatrixRequest;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class DistanceMatrixServiceApiKeyTest extends DistanceMatrixServiceTest
 {
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         if (!isset($_SERVER['API_KEY'])) {

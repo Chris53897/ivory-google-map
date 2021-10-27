@@ -16,11 +16,18 @@ namespace Ivory\GoogleMap\Utility;
 interface OptionsAwareInterface
 {
     public function hasOptions(): bool;
+
     public function getOptions(): array;
+
     public function setOptions(array $options): void;
+
     public function addOptions(array $options): void;
+
     public function hasOption(string $option): bool;
+
     public function getOption(string $option);
+
     public function setOption(string $option, $value);
+
     public function removeOption(string $option): void;
 }

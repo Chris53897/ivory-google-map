@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -20,19 +22,12 @@ use Ivory\GoogleMap\Overlay\GroundOverlay;
 use Ivory\JsonBuilder\JsonBuilder;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class GroundOverlayRendererTest extends TestCase
 {
-    /**
-     * @var GroundOverlayRenderer
-     */
+    /** @var GroundOverlayRenderer */
     private $groundOverlayRenderer;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->groundOverlayRenderer = new GroundOverlayRenderer(new Formatter(), new JsonBuilder());

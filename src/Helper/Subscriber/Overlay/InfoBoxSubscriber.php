@@ -65,7 +65,7 @@ class InfoBoxSubscriber extends AbstractInfoWindowSubscriber
 
     public function handleMap(MapEvent $event): void
     {
-        $map = $event->getMap();
+        $map       = $event->getMap();
         $collector = $this->getInfoWindowCollector();
 
         foreach ($collector->collect($map, [], InfoWindowCollector::STRATEGY_MAP) as $infoWindow) {
@@ -77,9 +77,7 @@ class InfoBoxSubscriber extends AbstractInfoWindowSubscriber
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     public static function getSubscribedEvents(): array
     {
         return [

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,19 +20,12 @@ use Ivory\Serializer\Context\Context;
 use Ivory\Tests\GoogleMap\Service\AbstractUnitServiceTest;
 use PHPUnit\Framework\MockObject\MockObject;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class PlaceAutocompleteServiceUnitTest extends AbstractUnitServiceTest
 {
-    /**
-     * @var PlaceAutocompleteService
-     */
+    /** @var PlaceAutocompleteService */
     private $service;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         parent::setUp();
@@ -110,17 +105,13 @@ class PlaceAutocompleteServiceUnitTest extends AbstractUnitServiceTest
         $this->assertSame($response, $this->service->process($request));
     }
 
-    /**
-     * @return MockObject|PlaceAutocompleteRequestInterface
-     */
+    /** @return MockObject|PlaceAutocompleteRequestInterface */
     private function createPlaceAutocompleteRequestMock()
     {
         return $this->createMock(PlaceAutocompleteRequestInterface::class);
     }
 
-    /**
-     * @return MockObject|PlaceAutocompleteResponse
-     */
+    /** @return MockObject|PlaceAutocompleteResponse */
     private function createPlaceAutocompleteResponseMock()
     {
         return $this->createMock(PlaceAutocompleteResponse::class);

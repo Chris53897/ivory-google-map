@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -16,19 +18,12 @@ use Ivory\GoogleMap\Helper\Renderer\AbstractRenderer;
 use Ivory\GoogleMap\Helper\Renderer\Utility\ObjectToArrayRenderer;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class ObjectToArrayRendererTest extends TestCase
 {
-    /**
-     * @var ObjectToArrayRenderer
-     */
+    /** @var ObjectToArrayRenderer */
     private $objectToArrayRenderer;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->objectToArrayRenderer = new ObjectToArrayRenderer(new Formatter());

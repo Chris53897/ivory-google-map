@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -16,24 +18,15 @@ use Ivory\GoogleMap\Service\Place\Detail\Request\PlaceDetailRequestInterface;
 use Ivory\GoogleMap\Service\RequestInterface;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class PlaceDetailRequestTest extends TestCase
 {
-    /**
-     * @var PlaceDetailRequest
-     */
+    /** @var PlaceDetailRequest */
     private $request;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $placeId;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->request = new PlaceDetailRequest($this->placeId = 'place');

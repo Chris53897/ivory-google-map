@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -13,19 +15,15 @@ namespace Ivory\GoogleMap\Service\Base;
 
 /**
  * @see http://code.google.com/apis/maps/documentation/javascript/reference.html#TravelMode
- *
- * @author GeLo <geloen.eric@gmail.com>
  */
 final class TravelMode
 {
-    const BICYCLING = 'BICYCLING';
-    const DRIVING = 'DRIVING';
-    const WALKING = 'WALKING';
-    const TRANSIT = 'TRANSIT';
+    public const BICYCLING = 'BICYCLING';
+    public const DRIVING   = 'DRIVING';
+    public const WALKING   = 'WALKING';
+    public const TRANSIT   = 'TRANSIT';
 
-    /**
-     * @codeCoverageIgnore
-     */
+    /** @codeCoverageIgnore */
     private function __construct()
     {
     }

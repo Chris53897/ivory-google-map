@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -17,19 +19,12 @@ use Ivory\GoogleMap\Service\RequestInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class GeocoderRequestTest extends TestCase
 {
-    /**
-     * @var AbstractGeocoderRequest|MockObject
-     */
+    /** @var AbstractGeocoderRequest|MockObject */
     private $request;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->request = $this->createAbstractRequestMock();
@@ -76,9 +71,7 @@ class GeocoderRequestTest extends TestCase
         $this->assertSame(['language' => $language], $this->request->buildQuery());
     }
 
-    /**
-     * @return MockObject|AbstractGeocoderRequest
-     */
+    /** @return MockObject|AbstractGeocoderRequest */
     private function createAbstractRequestMock()
     {
         return $this->getMockForAbstractClass(AbstractGeocoderRequest::class);

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -20,19 +22,12 @@ use Ivory\GoogleMap\Map;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class MapHtmlRendererTest extends TestCase
 {
-    /**
-     * @var MapHtmlRenderer
-     */
+    /** @var MapHtmlRenderer */
     private $mapHtmlRenderer;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->mapHtmlRenderer = new MapHtmlRenderer(
@@ -95,9 +90,7 @@ class MapHtmlRendererTest extends TestCase
         );
     }
 
-    /**
-     * @return MockObject|StylesheetRenderer
-     */
+    /** @return MockObject|StylesheetRenderer */
     private function createStylesheetRendererMock()
     {
         return $this->createMock(StylesheetRenderer::class);

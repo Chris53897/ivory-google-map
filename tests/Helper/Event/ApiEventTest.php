@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -16,27 +18,18 @@ use Ivory\GoogleMap\Helper\Event\ApiEvent;
 use Ivory\GoogleMap\Map;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class ApiEventTest extends TestCase
 {
-    /**
-     * @var ApiEvent
-     */
+    /** @var ApiEvent */
     private $apiEvent;
 
-    /**
-     * @var object[]
-     */
+    /** @var object[] */
     private $objects;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
-        $this->objects = [new \stdClass(), new \stdClass()];
+        $this->objects  = [new \stdClass(), new \stdClass()];
         $this->apiEvent = new ApiEvent($this->objects);
     }
 

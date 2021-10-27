@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -23,19 +25,12 @@ use Ivory\JsonBuilder\JsonBuilder;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class AutocompleteRendererTest extends TestCase
 {
-    /**
-     * @var AutocompleteRenderer
-     */
+    /** @var AutocompleteRenderer */
     private $autocompleteRenderer;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->autocompleteRenderer = new AutocompleteRenderer(
@@ -94,9 +89,7 @@ class AutocompleteRendererTest extends TestCase
         );
     }
 
-    /**
-     * @return MockObject|RequirementRenderer
-     */
+    /** @return MockObject|RequirementRenderer */
     private function createRequirementRendererMock()
     {
         return $this->createMock(RequirementRenderer::class);

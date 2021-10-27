@@ -131,26 +131,20 @@ class ControlManager
         return !empty($this->customControls);
     }
 
-    /**
-     * @return CustomControl[]
-     */
+    /** @return CustomControl[] */
     public function getCustomControls(): array
     {
         return $this->customControls;
     }
 
-    /**
-     * @param CustomControl[] $customControls
-     */
+    /** @param CustomControl[] $customControls */
     public function setCustomControls(array $customControls): void
     {
         $this->customControls = [];
         $this->addCustomControls($customControls);
     }
 
-    /**
-     * @param CustomControl[] $customControls
-     */
+    /** @param CustomControl[] $customControls */
     public function addCustomControls(array $customControls): void
     {
         foreach ($customControls as $customControl) {

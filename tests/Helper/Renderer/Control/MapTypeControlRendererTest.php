@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,7 +13,6 @@
 
 namespace Ivory\Tests\GoogleMap\Helper\Renderer\Control;
 
-use InvalidArgumentException;
 use Ivory\GoogleMap\Control\MapTypeControl;
 use Ivory\GoogleMap\Helper\Formatter\Formatter;
 use Ivory\GoogleMap\Helper\Renderer\AbstractJsonRenderer;
@@ -24,19 +25,12 @@ use Ivory\JsonBuilder\JsonBuilder;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class MapTypeControlRendererTest extends TestCase
 {
-    /**
-     * @var MapTypeControlRenderer
-     */
+    /** @var MapTypeControlRenderer */
     private $mapTypeControlRenderer;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->mapTypeControlRenderer = new MapTypeControlRenderer(
@@ -91,30 +85,24 @@ class MapTypeControlRendererTest extends TestCase
 
     public function testRenderWithInvalidControl()
     {
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(\TypeError::class);
 
         $this->mapTypeControlRenderer->render('foo');
     }
 
-    /**
-     * @return MockObject|MapTypeIdRenderer
-     */
+    /** @return MockObject|MapTypeIdRenderer */
     private function createMapTypeIdRendererMock()
     {
         return $this->createMock(MapTypeIdRenderer::class);
     }
 
-    /**
-     * @return MockObject|ControlPositionRenderer
-     */
+    /** @return MockObject|ControlPositionRenderer */
     private function createControlPositionRendererMock()
     {
         return $this->createMock(ControlPositionRenderer::class);
     }
 
-    /**
-     * @return MockObject|MapTypeControlStyleRenderer
-     */
+    /** @return MockObject|MapTypeControlStyleRenderer */
     private function createMapTypeControlStyleRendererMock()
     {
         return $this->createMock(MapTypeControlStyleRenderer::class);

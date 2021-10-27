@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -15,140 +17,94 @@ use Ivory\GoogleMap\Service\Base\Distance;
 use Ivory\GoogleMap\Service\Base\Duration;
 use Ivory\GoogleMap\Service\Base\Fare;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class DistanceMatrixElement
 {
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $status;
 
-    /**
-     * @var Distance|null
-     */
+    /** @var Distance|null */
     private $distance;
 
-    /**
-     * @var Duration|null
-     */
+    /** @var Duration|null */
     private $duration;
 
-    /**
-     * @var Duration|null
-     */
+    /** @var Duration|null */
     private $durationInTraffic;
 
-    /**
-     * @var Fare|null
-     */
+    /** @var Fare|null */
     private $fare;
 
-    /**
-     * @return bool
-     */
-    public function hasStatus()
+    public function hasStatus(): bool
     {
-        return  null !== $this->status;
+        return null !== $this->status;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
-    /**
-     * @param string|null $status
-     */
-    public function setStatus($status)
+    public function setStatus(?string $status): void
     {
         $this->status = $status;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasDistance()
+    public function hasDistance(): bool
     {
         return null !== $this->distance;
     }
 
-    /**
-     * @return Distance|null
-     */
-    public function getDistance()
+    public function getDistance(): ?Distance
     {
         return $this->distance;
     }
 
-    public function setDistance(Distance $distance = null)
+    public function setDistance(Distance $distance = null): void
     {
         $this->distance = $distance;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasDuration()
+    public function hasDuration(): bool
     {
         return null !== $this->duration;
     }
 
-    /**
-     * @return Duration|null
-     */
-    public function getDuration()
+    public function getDuration(): ?Duration
     {
         return $this->duration;
     }
 
-    public function setDuration(Duration $duration = null)
+    public function setDuration(Duration $duration = null): void
     {
         $this->duration = $duration;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasDurationInTraffic()
+    public function hasDurationInTraffic(): bool
     {
         return null !== $this->durationInTraffic;
     }
 
-    /**
-     * @return Duration|null
-     */
-    public function getDurationInTraffic()
+    public function getDurationInTraffic(): ?Duration
     {
         return $this->durationInTraffic;
     }
 
-    public function setDurationInTraffic(Duration $durationInTraffic = null)
+    public function setDurationInTraffic(Duration $durationInTraffic = null): void
     {
         $this->durationInTraffic = $durationInTraffic;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasFare()
+    public function hasFare(): bool
     {
         return null !== $this->fare;
     }
 
-    /**
-     * @return Fare|null
-     */
-    public function getFare()
+    public function getFare(): ?Fare
     {
         return $this->fare;
     }
 
-    public function setFare(Fare $fare = null)
+    public function setFare(Fare $fare = null): void
     {
         $this->fare = $fare;
     }

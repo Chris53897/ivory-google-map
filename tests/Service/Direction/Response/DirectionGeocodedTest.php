@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -16,19 +18,12 @@ use Ivory\GoogleMap\Service\Direction\Response\DirectionGeocodedStatus;
 use Ivory\GoogleMap\Service\Direction\Response\DirectionGeocodedType;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class DirectionGeocodedTest extends TestCase
 {
-    /**
-     * @var DirectionGeocoded
-     */
+    /** @var DirectionGeocoded */
     private $geocodedWaypoint;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->geocodedWaypoint = new DirectionGeocoded();

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,24 +20,15 @@ use Ivory\GoogleMap\Utility\VariableAwareInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class IconSequenceTest extends TestCase
 {
-    /**
-     * @var IconSequence
-     */
+    /** @var IconSequence */
     private $iconSequence;
 
-    /**
-     * @var Symbol|MockObject
-     */
+    /** @var Symbol|MockObject */
     private $symbol;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->iconSequence = new IconSequence($this->symbol = $this->createSymbolMock());
@@ -70,9 +63,7 @@ class IconSequenceTest extends TestCase
         $this->assertSame($symbol, $this->iconSequence->getSymbol());
     }
 
-    /**
-     * @return MockObject|Symbol
-     */
+    /** @return MockObject|Symbol */
     private function createSymbolMock()
     {
         return $this->createMock(Symbol::class);

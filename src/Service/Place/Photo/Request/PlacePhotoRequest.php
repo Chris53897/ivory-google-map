@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,102 +13,63 @@
 
 namespace Ivory\GoogleMap\Service\Place\Photo\Request;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class PlacePhotoRequest implements PlacePhotoRequestInterface
 {
-    /**
-     * @var string
-     */
+    /** @var string */
     private $reference;
 
-    /**
-     * @var int|null
-     */
+    /** @var int|null */
     private $maxWidth;
 
-    /**
-     * @var int|null
-     */
+    /** @var int|null */
     private $maxHeight;
 
-    /**
-     * @param string $reference
-     */
-    public function __construct($reference)
+    public function __construct(string $reference)
     {
         $this->setReference($reference);
     }
 
-    /**
-     * @return string
-     */
-    public function getReference()
+    public function getReference(): string
     {
         return $this->reference;
     }
 
-    /**
-     * @param string $reference
-     */
-    public function setReference($reference)
+    public function setReference(string $reference): void
     {
         $this->reference = $reference;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasMaxWidth()
+    public function hasMaxWidth(): bool
     {
         return null !== $this->maxWidth;
     }
 
-    /**
-     * @return int|null
-     */
-    public function getMaxWidth()
+    public function getMaxWidth(): ?int
     {
         return $this->maxWidth;
     }
 
-    /**
-     * @param int|null $maxWidth
-     */
-    public function setMaxWidth($maxWidth)
+    public function setMaxWidth(?int $maxWidth): void
     {
         $this->maxWidth = $maxWidth;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasMaxHeight()
+    public function hasMaxHeight(): bool
     {
         return null !== $this->maxHeight;
     }
 
-    /**
-     * @return int|null
-     */
-    public function getMaxHeight()
+    public function getMaxHeight(): ?int
     {
         return $this->maxHeight;
     }
 
-    /**
-     * @param int|null $maxHeight
-     */
-    public function setMaxHeight($maxHeight)
+    public function setMaxHeight(?int $maxHeight): void
     {
         $this->maxHeight = $maxHeight;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function buildQuery()
+    public function buildQuery(): array
     {
         $query = ['photoreference' => $this->reference];
 

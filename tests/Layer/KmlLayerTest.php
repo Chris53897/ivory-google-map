@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -16,24 +18,15 @@ use Ivory\GoogleMap\Overlay\ExtendableInterface;
 use Ivory\GoogleMap\Utility\OptionsAwareInterface;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class KmlLayerTest extends TestCase
 {
-    /**
-     * @var KmlLayer
-     */
+    /** @var KmlLayer */
     private $kmlLayer;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $url;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->kmlLayer = new KmlLayer($this->url = 'http://googlemaps.github.io/js-v2-samples/ggeoxml/cta.kml');

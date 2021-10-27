@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -22,19 +24,12 @@ use Ivory\JsonBuilder\JsonBuilder;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class ApiRendererTest extends TestCase
 {
-    /**
-     * @var ApiRenderer
-     */
+    /** @var ApiRenderer */
     private $apiRenderer;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->apiRenderer = new ApiRenderer(
@@ -148,7 +143,7 @@ EOF;
      */
     private function createCallbacks($object)
     {
-        $callbacks = new \SplObjectStorage();
+        $callbacks          = new \SplObjectStorage();
         $callbacks[$object] = 'main_callback';
 
         return $callbacks;
@@ -161,39 +156,31 @@ EOF;
      */
     private function createRequirements($object)
     {
-        $requirements = new \SplObjectStorage();
+        $requirements          = new \SplObjectStorage();
         $requirements[$object] = ['requirement1', 'requirement2'];
 
         return $requirements;
     }
 
-    /**
-     * @return MockObject|ApiInitRenderer
-     */
+    /** @return MockObject|ApiInitRenderer */
     private function createApiInitRendererMock()
     {
         return $this->createMock(ApiInitRenderer::class);
     }
 
-    /**
-     * @return MockObject|LoaderRenderer
-     */
+    /** @return MockObject|LoaderRenderer */
     private function createLoaderRendererMock()
     {
         return $this->createMock(LoaderRenderer::class);
     }
 
-    /**
-     * @return MockObject|RequirementLoaderRenderer
-     */
+    /** @return MockObject|RequirementLoaderRenderer */
     private function createRequirementLoaderRendererMock()
     {
         return $this->createMock(RequirementLoaderRenderer::class);
     }
 
-    /**
-     * @return MockObject|SourceRenderer
-     */
+    /** @return MockObject|SourceRenderer */
     private function createSourceRendererMock()
     {
         return $this->createMock(SourceRenderer::class);

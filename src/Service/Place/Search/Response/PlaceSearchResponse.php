@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -14,221 +16,152 @@ namespace Ivory\GoogleMap\Service\Place\Search\Response;
 use Ivory\GoogleMap\Service\Place\Base\Place;
 use Ivory\GoogleMap\Service\Place\Search\Request\PlaceSearchRequestInterface;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class PlaceSearchResponse
 {
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $status;
 
-    /**
-     * @var PlaceSearchRequestInterface|null
-     */
+    /** @var PlaceSearchRequestInterface|null */
     private $request;
 
-    /**
-     * @var Place[]
-     */
+    /** @var Place[] */
     private $results = [];
 
-    /**
-     * @var string[]
-     */
+    /** @var string[] */
     private $htmlAttributions = [];
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $nextPageToken;
 
-    /**
-     * @return bool
-     */
-    public function hasStatus()
+    public function hasStatus(): bool
     {
         return null !== $this->status;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
-    /**
-     * @param string|null $status
-     */
-    public function setStatus($status)
+    public function setStatus(?string $status): void
     {
         $this->status = $status;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasRequest()
+    public function hasRequest(): bool
     {
         return null !== $this->request;
     }
 
-    /**
-     * @return PlaceSearchRequestInterface|null
-     */
-    public function getRequest()
+    public function getRequest(): ?PlaceSearchRequestInterface
     {
         return $this->request;
     }
 
-    public function setRequest(PlaceSearchRequestInterface $request = null)
+    public function setRequest(PlaceSearchRequestInterface $request = null): void
     {
         $this->request = $request;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasResults()
+    public function hasResults(): bool
     {
         return !empty($this->results);
     }
 
-    /**
-     * @return Place[]
-     */
-    public function getResults()
+    /** @return Place[] */
+    public function getResults(): array
     {
         return $this->results;
     }
 
-    /**
-     * @param Place[] $results
-     */
-    public function setResults(array $results)
+    /** @param Place[] $results */
+    public function setResults(array $results): void
     {
         $this->results = [];
         $this->addResults($results);
     }
 
-    /**
-     * @param Place[] $results
-     */
-    public function addResults(array $results)
+    /** @param Place[] $results */
+    public function addResults(array $results): void
     {
         foreach ($results as $result) {
             $this->addResult($result);
         }
     }
 
-    /**
-     * @return bool
-     */
-    public function hasResult(Place $result)
+    public function hasResult(Place $result): bool
     {
         return in_array($result, $this->results, true);
     }
 
-    public function addResult(Place $result)
+    public function addResult(Place $result): void
     {
         if (!$this->hasResult($result)) {
             $this->results[] = $result;
         }
     }
 
-    public function removeResult(Place $result)
+    public function removeResult(Place $result): void
     {
         unset($this->results[array_search($result, $this->results, true)]);
         $this->results = empty($this->results) ? [] : array_values($this->results);
     }
 
-    /**
-     * @return bool
-     */
-    public function hasHtmlAttributions()
+    public function hasHtmlAttributions(): bool
     {
         return !empty($this->htmlAttributions);
     }
 
-    /**
-     * @return string[]
-     */
-    public function getHtmlAttributions()
+    /** @return string[] */
+    public function getHtmlAttributions(): array
     {
         return $this->htmlAttributions;
     }
 
-    /**
-     * @param string[] $htmlAttributions
-     */
-    public function setHtmlAttributions(array $htmlAttributions)
+    /** @param string[] $htmlAttributions */
+    public function setHtmlAttributions(array $htmlAttributions): void
     {
         $this->htmlAttributions = [];
         $this->addHtmlAttributions($htmlAttributions);
     }
 
-    /**
-     * @param string[] $htmlAttributions
-     */
-    public function addHtmlAttributions(array $htmlAttributions)
+    /** @param string[] $htmlAttributions */
+    public function addHtmlAttributions(array $htmlAttributions): void
     {
         foreach ($htmlAttributions as $htmlAttribution) {
             $this->addHtmlAttribution($htmlAttribution);
         }
     }
 
-    /**
-     * @param string $htmlAttribution
-     *
-     * @return bool
-     */
-    public function hasHtmlAttribution($htmlAttribution)
+    public function hasHtmlAttribution(string $htmlAttribution): bool
     {
         return in_array($htmlAttribution, $this->htmlAttributions, true);
     }
 
-    /**
-     * @param string $htmlAttribution
-     */
-    public function addHtmlAttribution($htmlAttribution)
+    public function addHtmlAttribution(string $htmlAttribution): void
     {
         if (!$this->hasHtmlAttribution($htmlAttribution)) {
             $this->htmlAttributions[] = $htmlAttribution;
         }
     }
 
-    /**
-     * @param string $htmlAttribution
-     */
-    public function removeHtmlAttribution($htmlAttribution)
+    public function removeHtmlAttribution(string $htmlAttribution): void
     {
         unset($this->htmlAttributions[array_search($htmlAttribution, $this->htmlAttributions, true)]);
         $this->htmlAttributions = empty($this->htmlAttributions) ? [] : array_values($this->htmlAttributions);
     }
 
-    /**
-     * @return bool
-     */
-    public function hasNextPageToken()
+    public function hasNextPageToken(): bool
     {
         return null !== $this->nextPageToken;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getNextPageToken()
+    public function getNextPageToken(): ?string
     {
         return $this->nextPageToken;
     }
 
-    /**
-     * @param string|null $nextPageToken
-     */
-    public function setNextPageToken($nextPageToken)
+    public function setNextPageToken(?string $nextPageToken): void
     {
         $this->nextPageToken = $nextPageToken;
     }

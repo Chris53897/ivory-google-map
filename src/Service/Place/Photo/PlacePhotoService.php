@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -14,23 +16,14 @@ namespace Ivory\GoogleMap\Service\Place\Photo;
 use Ivory\GoogleMap\Service\AbstractService;
 use Ivory\GoogleMap\Service\Place\Photo\Request\PlacePhotoRequestInterface;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class PlacePhotoService extends AbstractService
 {
-    /**
-     * {@inheritdoc}
-     */
     public function __construct()
     {
         parent::__construct('https://maps.googleapis.com/maps/api/place/photo');
     }
 
-    /**
-     * @return string
-     */
-    public function process(PlacePhotoRequestInterface $request)
+    public function process(PlacePhotoRequestInterface $request): string
     {
         return $this->createUrl($request);
     }

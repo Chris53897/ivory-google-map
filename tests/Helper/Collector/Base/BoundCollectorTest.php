@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -21,19 +23,12 @@ use Ivory\GoogleMap\Overlay\Rectangle;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class BoundCollectorTest extends TestCase
 {
-    /**
-     * @var BoundCollector
-     */
+    /** @var BoundCollector */
     private $boundCollector;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->boundCollector = new BoundCollector(new GroundOverlayCollector(), new RectangleCollector());
@@ -84,17 +79,13 @@ class BoundCollectorTest extends TestCase
         $this->assertSame([$bound], $this->boundCollector->collect($map));
     }
 
-    /**
-     * @return MockObject|GroundOverlayCollector
-     */
+    /** @return MockObject|GroundOverlayCollector */
     private function createGroundOverlayCollectorMock()
     {
         return $this->createMock(GroundOverlayCollector::class);
     }
 
-    /**
-     * @return MockObject|RectangleCollector
-     */
+    /** @return MockObject|RectangleCollector */
     private function createRectangleCollectorMock()
     {
         return $this->createMock(RectangleCollector::class);

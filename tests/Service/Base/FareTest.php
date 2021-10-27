@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -14,34 +16,21 @@ namespace Ivory\Tests\GoogleMap\Service\Base;
 use Ivory\GoogleMap\Service\Base\Fare;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class FareTest extends TestCase
 {
-    /**
-     * @var Fare
-     */
+    /** @var Fare */
     private $fare;
 
-    /**
-     * @var float
-     */
+    /** @var float */
     private $value;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $currency;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $text;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->fare = new Fare(

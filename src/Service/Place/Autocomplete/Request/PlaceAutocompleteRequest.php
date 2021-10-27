@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,169 +13,110 @@
 
 namespace Ivory\GoogleMap\Service\Place\Autocomplete\Request;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class PlaceAutocompleteRequest extends AbstractPlaceAutocompleteRequest
 {
-    /**
-     * @var string[]
-     */
+    /** @var string[] */
     private $types = [];
 
-    /**
-     * @var string[]
-     */
+    /** @var string[] */
     private $components = [];
 
-    /**
-     * @return bool
-     */
-    public function hasTypes()
+    public function hasTypes(): bool
     {
         return !empty($this->types);
     }
 
-    /**
-     * @return string[]
-     */
-    public function getTypes()
+    /** @return string[] */
+    public function getTypes(): array
     {
         return $this->types;
     }
 
-    /**
-     * @param string[] $types
-     */
-    public function setTypes(array $types)
+    /** @param string[] $types */
+    public function setTypes(array $types): void
     {
         $this->types = [];
         $this->addTypes($types);
     }
 
-    /**
-     * @param string[] $types
-     */
-    public function addTypes(array $types)
+    /** @param string[] $types */
+    public function addTypes(array $types): void
     {
         foreach ($types as $type) {
             $this->addType($type);
         }
     }
 
-    /**
-     * @param string $type
-     *
-     * @return bool
-     */
-    public function hasType($type)
+    public function hasType(string $type): bool
     {
         return in_array($type, $this->types, true);
     }
 
-    /**
-     * @param string $type
-     */
-    public function addType($type)
+    public function addType(string $type): void
     {
         if (!$this->hasType($type)) {
             $this->types[] = $type;
         }
     }
 
-    /**
-     * @param string $type
-     */
-    public function removeType($type)
+    public function removeType(string $type): void
     {
         unset($this->types[array_search($type, $this->types, true)]);
         $this->types = empty($this->types) ? [] : array_values($this->types);
     }
 
-    /**
-     * @return bool
-     */
-    public function hasComponents()
+    public function hasComponents(): bool
     {
         return !empty($this->components);
     }
 
-    /**
-     * @return string[]
-     */
-    public function getComponents()
+    /** @return string[] */
+    public function getComponents(): array
     {
         return $this->components;
     }
 
-    /**
-     * @param string[] $components
-     */
-    public function setComponents(array $components)
+    /** @param string[] $components */
+    public function setComponents(array $components): void
     {
         $this->components = [];
         $this->addComponents($components);
     }
 
-    /**
-     * @param string[] $components
-     */
-    public function addComponents(array $components)
+    /** @param string[] $components */
+    public function addComponents(array $components): void
     {
         foreach ($components as $type => $value) {
             $this->setComponent($type, $value);
         }
     }
 
-    /**
-     * @param string $type
-     *
-     * @return bool
-     */
-    public function hasComponent($type)
+    public function hasComponent(string $type): bool
     {
         return isset($this->components[$type]);
     }
 
-    /**
-     * @param string $type
-     *
-     * @return string
-     */
-    public function getComponent($type)
+    public function getComponent(string $type): ?string
     {
         return $this->hasComponent($type) ? $this->components[$type] : null;
     }
 
-    /**
-     * @param string $type
-     * @param string $value
-     */
-    public function setComponent($type, $value)
+    public function setComponent(string $type, string $value): void
     {
         $this->components[$type] = $value;
     }
 
-    /**
-     * @param string $type
-     */
-    public function removeComponent($type)
+    public function removeComponent(string $type): void
     {
         unset($this->components[$type]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function buildContext()
+    public function buildContext(): string
     {
         return 'autocomplete';
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function buildQuery()
+    public function buildQuery(): array
     {
         $query = parent::buildQuery();
 
@@ -182,7 +125,7 @@ class PlaceAutocompleteRequest extends AbstractPlaceAutocompleteRequest
         }
 
         if ($this->hasComponents()) {
-            $query['components'] = implode('|', array_map(function ($key, $value) {
+            $query['components'] = implode('|', array_map(static function ($key, $value) {
                 return $key.':'.$value;
             }, array_keys($this->components), array_values($this->components)));
         }

@@ -98,9 +98,6 @@ class Map implements VariableAwareInterface, StaticOptionsAwareInterface
         $this->autoZoom = $autoZoom;
     }
 
-    /**
-     * @return Coordinate
-     */
     public function getCenter(): Coordinate
     {
         return $this->center;
@@ -141,7 +138,7 @@ class Map implements VariableAwareInterface, StaticOptionsAwareInterface
         $this->eventManager = $eventManager;
     }
 
-    public function getLayerManager(): LayerManager
+    public function getLayerManager(): ?LayerManager
     {
         return $this->layerManager;
     }
@@ -155,7 +152,7 @@ class Map implements VariableAwareInterface, StaticOptionsAwareInterface
         }
     }
 
-    public function getOverlayManager(): OverlayManager
+    public function getOverlayManager(): ?OverlayManager
     {
         return $this->overlayManager;
     }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,7 +13,6 @@
 
 namespace Ivory\Tests\GoogleMap\Service\Elevation;
 
-use Http\Client\Common\Exception\ClientErrorException;
 use Ivory\GoogleMap\Base\Coordinate;
 use Ivory\GoogleMap\Service\Base\Location\CoordinateLocation;
 use Ivory\GoogleMap\Service\Base\Location\EncodedPolylineLocation;
@@ -24,19 +25,12 @@ use Ivory\GoogleMap\Service\Elevation\Response\ElevationResult;
 use Ivory\GoogleMap\Service\Elevation\Response\ElevationStatus;
 use Ivory\Tests\GoogleMap\Service\AbstractSerializableServiceTest;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class ElevationServiceTest extends AbstractSerializableServiceTest
 {
-    /**
-     * @var ElevationService
-     */
+    /** @var ElevationService */
     protected $service;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         if (!isset($_SERVER['API_KEY'])) {
@@ -123,17 +117,15 @@ class ElevationServiceTest extends AbstractSerializableServiceTest
      */
     public function testErrorRequest($format)
     {
-        $this->expectException(ClientErrorException::class);
-
         $this->service->setFormat($format);
         $this->service->setKey('invalid');
 
-        $this->service->process($this->createRequest());
+        $response = $this->service->process($this->createRequest());
+
+        $this->assertSame(ElevationStatus::REQUEST_DENIED, $response->getStatus());
     }
 
-    /**
-     * @return PositionalElevationRequest
-     */
+    /** @return PositionalElevationRequest */
     private function createRequest()
     {
         return new PositionalElevationRequest([
@@ -148,7 +140,7 @@ class ElevationServiceTest extends AbstractSerializableServiceTest
      */
     private function assertElevationResponse($response, $request)
     {
-        $options = array_merge(['results' => []], self::$journal->getData());
+        $options = array_merge(['results' => []], $this->journal->getData());
         $options['status'] = ElevationStatus::OK;
 
         $this->assertInstanceOf(ElevationResponse::class, $response);
@@ -170,8 +162,8 @@ class ElevationServiceTest extends AbstractSerializableServiceTest
     private function assertElevationResult($result, array $options = [])
     {
         $options = array_merge([
-            'location'   => [],
-            'elevation'  => null,
+            'location' => [],
+            'elevation' => null,
             'resolution' => null,
         ], $options);
 

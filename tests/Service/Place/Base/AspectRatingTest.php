@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -15,19 +17,12 @@ use Ivory\GoogleMap\Service\Place\Base\AspectRating;
 use Ivory\GoogleMap\Service\Place\Base\AspectRatingType;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class AspectRatingTest extends TestCase
 {
-    /**
-     * @var AspectRating
-     */
+    /** @var AspectRating */
     private $aspectRating;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->aspectRating = new AspectRating();

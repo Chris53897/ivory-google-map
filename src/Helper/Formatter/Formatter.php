@@ -49,9 +49,7 @@ class Formatter
         $this->indentationStep = $indentationStep;
     }
 
-    /**
-     * @param string|false|null $namespace
-     */
+    /** @param string|false|null $namespace */
     public function renderClass(?string $name = null, $namespace = null): ?string
     {
         if (null === $namespace) {
@@ -65,25 +63,20 @@ class Formatter
         return $this->renderProperty($namespace, $name);
     }
 
-    /**
-     * @param string|false|null $namespace
-     */
+    /** @param string|false|null $namespace */
     public function renderConstant(string $class, string $value, $namespace = null): ?string
     {
         return $this->renderClass($this->renderProperty($class, strtoupper($value)), $namespace);
     }
 
-    /**
-     * @param string|false|null $namespace
-     */
+    /** @param string|false|null $namespace */
     public function renderObject(
         string $class,
-        array  $arguments = [],
+        array $arguments = [],
                $namespace = null,
-        bool   $semicolon = false,
-        bool   $newLine = false
-    ): string
-    {
+        bool $semicolon = false,
+        bool $newLine = false
+    ): string {
         return $this->renderCall(
             'new '.$this->renderClass($class, $namespace),
             $arguments,
@@ -101,17 +94,14 @@ class Formatter
         return $object.$property;
     }
 
-    /**
-     * @param string[] $arguments
-     */
+    /** @param string[] $arguments */
     public function renderObjectCall(
         VariableAwareInterface $object,
-        string                 $method,
-        array                  $arguments = [],
-        bool                   $semicolon = false,
-        bool                   $newLine = false
-    ): string
-    {
+        string $method,
+        array $arguments = [],
+        bool $semicolon = false,
+        bool $newLine = false
+    ): string {
         return $this->renderCall(
             $this->renderProperty($object->getVariable(), $method),
             $arguments,
@@ -120,16 +110,13 @@ class Formatter
         );
     }
 
-    /**
-     * @param string[] $arguments
-     */
+    /** @param string[] $arguments */
     public function renderCall(
         ?string $method,
-        array   $arguments = [],
-        bool    $semicolon = false,
-        bool    $newLine = false
-    ): string
-    {
+        array $arguments = [],
+        bool $semicolon = false,
+        bool $newLine = false
+    ): string {
         return $this->renderCode(
             $method.$this->renderArguments($arguments),
             $semicolon,
@@ -137,17 +124,14 @@ class Formatter
         );
     }
 
-    /**
-     * @param string[] $arguments
-     */
+    /** @param string[] $arguments */
     public function renderClosure(
         string $code = null,
-        array  $arguments = [],
+        array $arguments = [],
         string $name = null,
-        bool   $semicolon = false,
-        bool   $newLine = false
-    ): string
-    {
+        bool $semicolon = false,
+        bool $newLine = false
+    ): string {
         $separator = $this->renderSeparator();
 
         if (null !== $name) {
@@ -163,23 +147,21 @@ class Formatter
 
     public function renderObjectAssignment(
         VariableAwareInterface $object,
-        string                 $declaration,
-        bool                   $semicolon = false,
-        bool                   $newLine = false
-    ): string
-    {
+        string $declaration,
+        bool $semicolon = false,
+        bool $newLine = false
+    ): string {
         return $this->renderAssignment($object->getVariable(), $declaration, $semicolon, $newLine);
     }
 
     public function renderContainerAssignment(
         VariableAwareInterface $root,
-        string                 $declaration,
-        string                 $propertyPath = null,
+        string $declaration,
+        string $propertyPath = null,
         VariableAwareInterface $object = null,
-        bool                   $semicolon = true,
-        bool                   $newLine = true
-    ): string
-    {
+        bool $semicolon = true,
+        bool $newLine = true
+    ): string {
         return $this->renderAssignment(
             $this->renderContainerVariable($root, $propertyPath, $object),
             $declaration,
@@ -190,10 +172,9 @@ class Formatter
 
     public function renderContainerVariable(
         VariableAwareInterface $root,
-        string                 $propertyPath = null,
+        string $propertyPath = null,
         VariableAwareInterface $object = null
-    ): string
-    {
+    ): string {
         $variable = $root->getVariable().'_container';
 
         if (null !== $propertyPath) {
@@ -210,23 +191,21 @@ class Formatter
     public function renderAssignment(
         string $variable,
         string $declaration,
-        bool   $semicolon = false,
-        bool   $newLine = false
-    ): string
-    {
+        bool $semicolon = false,
+        bool $newLine = false
+    ): string {
         $separator = $this->renderSeparator();
 
         return $this->renderCode($variable.$separator.'='.$separator.$declaration, $semicolon, $newLine);
     }
 
     public function renderStatement(
-        string  $statement,
-        string  $code,
+        string $statement,
+        string $code,
         ?string $condition = null,
         ?string $next = null,
-        bool    $newLine = true
-    ): string
-    {
+        bool $newLine = true
+    ): string {
         $separator = $this->renderSeparator();
         $statement .= $separator;
 
@@ -258,19 +237,17 @@ class Formatter
     {
         if ($this->debug && !empty($code)) {
             $indentation = str_repeat(' ', $this->indentationStep);
-            $code = $indentation.str_replace("\n", "\n".$indentation, $code);
+            $code        = $indentation.str_replace("\n", "\n".$indentation, $code);
         }
 
         return (string) $code;
     }
 
-    /**
-     * @param string[] $codes
-     */
+    /** @param string[] $codes */
     public function renderLines(array $codes, bool $newLine = true, bool $eolLine = true): string
     {
         $result = '';
-        $count = count($codes);
+        $count  = count($codes);
 
         for ($index = 0; $index < $count; ++$index) {
             $result .= $this->renderLine($codes[$index], $newLine && $index !== $count - 1);
@@ -288,9 +265,7 @@ class Formatter
         return (string) $code;
     }
 
-    /**
-     * @param string|bool $argument
-     */
+    /** @param string|bool $argument */
     public function renderEscape($argument): string
     {
         return json_encode($argument, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
@@ -301,9 +276,7 @@ class Formatter
         return $this->debug ? ' ' : '';
     }
 
-    /**
-     * @param string[] $arguments
-     */
+    /** @param string[] $arguments */
     private function renderArguments(array $arguments): string
     {
         return '('.implode(','.$this->renderSeparator(), $arguments).')';

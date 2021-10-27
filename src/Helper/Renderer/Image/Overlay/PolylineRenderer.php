@@ -27,14 +27,14 @@ class PolylineRenderer
         PolylineStyleRenderer $polylineStyleRenderer,
         PolylineLocationRenderer $polylineLocationRenderer
     ) {
-        $this->polylineStyleRenderer = $polylineStyleRenderer;
+        $this->polylineStyleRenderer    = $polylineStyleRenderer;
         $this->polylineLocationRenderer = $polylineLocationRenderer;
     }
 
     public function render(Polyline $polyline): string
     {
         $result = [];
-        $style = $this->polylineStyleRenderer->render($polyline);
+        $style  = $this->polylineStyleRenderer->render($polyline);
 
         if (!empty($style)) {
             $result[] = $style;

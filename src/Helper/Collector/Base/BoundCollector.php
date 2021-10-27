@@ -30,7 +30,7 @@ class BoundCollector extends AbstractCollector
     public function __construct(GroundOverlayCollector $groundOverlayCollector, RectangleCollector $rectangleCollector)
     {
         $this->groundOverlayCollector = $groundOverlayCollector;
-        $this->rectangleCollector = $rectangleCollector;
+        $this->rectangleCollector     = $rectangleCollector;
     }
 
     public function getGroundOverlayCollector(): GroundOverlayCollector

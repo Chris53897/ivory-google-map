@@ -37,9 +37,9 @@ class Size implements VariableAwareInterface
 
     public function __construct(float $width = 1.0, float $height = 1.0, ?string $widthUnit = null, ?string $heightUnit = null)
     {
-        $this->width =$width;
-        $this->height = $height;
-        $this->widthUnit = $widthUnit;
+        $this->width      = $width;
+        $this->height     = $height;
+        $this->widthUnit  = $widthUnit;
         $this->heightUnit = $heightUnit;
     }
 

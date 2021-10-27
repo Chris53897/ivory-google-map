@@ -59,10 +59,10 @@ class StaticMapHelperBuilder extends AbstractHelperBuilder
 
     public function __construct(?string $key = null, ?string $secret = null, ?string $clientId = null, ?string $channel = null)
     {
-        $this->key = $key;
-        $this->secret = $secret;
+        $this->key      = $key;
+        $this->secret   = $secret;
         $this->clientId = $clientId;
-        $this->channel = $channel;
+        $this->channel  = $channel;
     }
 
     public function hasSecret(): bool
@@ -126,34 +126,32 @@ class StaticMapHelperBuilder extends AbstractHelperBuilder
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function createSubscribers(): array
     {
         // Pre-loaded Renderers
-        $pointRenderer = new PointRenderer();
+        $pointRenderer       = new PointRenderer();
         $markerStyleRenderer = new MarkerStyleRenderer($pointRenderer);
 
         // Collectors
         $encodedPolylineCollector = new EncodedPolylineCollector();
-        $extendableCollector = new ExtendableCollector();
-        $markerCollector = new MarkerCollector($markerStyleRenderer);
-        $polylineCollector = new PolylineCollector();
+        $extendableCollector      = new ExtendableCollector();
+        $markerCollector          = new MarkerCollector($markerStyleRenderer);
+        $polylineCollector        = new PolylineCollector();
 
         // Renderers
-        $coordinateRenderer = new CoordinateRenderer();
-        $sizeRenderer = new SizeRenderer();
-        $styleRenderer = new StyleRenderer();
+        $coordinateRenderer           = new CoordinateRenderer();
+        $sizeRenderer                 = new SizeRenderer();
+        $styleRenderer                = new StyleRenderer();
         $encodedPolylineValueRenderer = new EncodedPolylineValueRenderer();
         $encodedPolylineStyleRenderer = new EncodedPolylineStyleRenderer();
-        $encodedPolylineRenderer = new EncodedPolylineRenderer($encodedPolylineStyleRenderer, $encodedPolylineValueRenderer);
-        $markerLocationRenderer = new MarkerLocationRenderer($coordinateRenderer);
-        $markerRenderer = new MarkerRenderer($markerStyleRenderer, $markerLocationRenderer);
-        $polylineLocationRenderer = new PolylineLocationRenderer($coordinateRenderer);
-        $polylineStyleRenderer = new PolylineStyleRenderer();
-        $polylineRenderer = new PolylineRenderer($polylineStyleRenderer, $polylineLocationRenderer);
-        $extendableRenderer = new ExtendableRenderer(
+        $encodedPolylineRenderer      = new EncodedPolylineRenderer($encodedPolylineStyleRenderer, $encodedPolylineValueRenderer);
+        $markerLocationRenderer       = new MarkerLocationRenderer($coordinateRenderer);
+        $markerRenderer               = new MarkerRenderer($markerStyleRenderer, $markerLocationRenderer);
+        $polylineLocationRenderer     = new PolylineLocationRenderer($coordinateRenderer);
+        $polylineStyleRenderer        = new PolylineStyleRenderer();
+        $polylineRenderer             = new PolylineRenderer($polylineStyleRenderer, $polylineLocationRenderer);
+        $extendableRenderer           = new ExtendableRenderer(
             $coordinateRenderer,
             $markerLocationRenderer,
             $polylineLocationRenderer

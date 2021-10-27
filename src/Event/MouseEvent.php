@@ -15,16 +15,14 @@ namespace Ivory\GoogleMap\Event;
 
 final class MouseEvent
 {
-    public const CLICK = 'click';
-    public const DBLCLICK = 'dblclick';
-    public const MOUSEUP = 'mouseup';
+    public const CLICK     = 'click';
+    public const DBLCLICK  = 'dblclick';
+    public const MOUSEUP   = 'mouseup';
     public const MOUSEDOWN = 'mousedown';
     public const MOUSEOVER = 'mouseover';
-    public const MOUSEOUT = 'mouseout';
+    public const MOUSEOUT  = 'mouseout';
 
-    /**
-     * @codeCoverageIgnore
-     */
+    /** @codeCoverageIgnore */
     private function __construct()
     {
     }

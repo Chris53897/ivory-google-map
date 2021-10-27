@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -19,19 +21,12 @@ use Ivory\GoogleMap\Service\Direction\Response\DirectionRoute;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class DirectionRouteTest extends TestCase
 {
-    /**
-     * @var DirectionRoute
-     */
+    /** @var DirectionRoute */
     private $route;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->route = new DirectionRoute();
@@ -237,33 +232,25 @@ class DirectionRouteTest extends TestCase
         $this->assertSame([$waypointOrder], $this->route->getWaypointOrders());
     }
 
-    /**
-     * @return MockObject|Bound
-     */
+    /** @return MockObject|Bound */
     private function createBoundMock()
     {
         return $this->createMock(Bound::class);
     }
 
-    /**
-     * @return MockObject|DirectionLeg
-     */
+    /** @return MockObject|DirectionLeg */
     private function createLegMock()
     {
         return $this->createMock(DirectionLeg::class);
     }
 
-    /**
-     * @return MockObject|Fare
-     */
+    /** @return MockObject|Fare */
     private function createFareMock()
     {
         return $this->createMock(Fare::class);
     }
 
-    /**
-     * @return MockObject|EncodedPolyline
-     */
+    /** @return MockObject|EncodedPolyline */
     private function createEncodedPolylineMock()
     {
         return $this->createMock(EncodedPolyline::class);

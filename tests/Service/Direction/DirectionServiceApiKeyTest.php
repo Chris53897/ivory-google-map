@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -14,14 +16,9 @@ namespace Ivory\Tests\GoogleMap\Service\Direction;
 use Ivory\GoogleMap\Service\Base\Location\PlaceIdLocation;
 use Ivory\GoogleMap\Service\Direction\Request\DirectionWaypoint;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class DirectionServiceApiKeyTest extends DirectionServiceTest
 {
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         if (!isset($_SERVER['API_KEY'])) {

@@ -18,12 +18,10 @@ use Ivory\GoogleMap\Overlay\InfoWindow;
 
 abstract class AbstractInfoWindowRenderer extends AbstractJsonRenderer implements InfoWindowRendererInterface
 {
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     public function render(InfoWindow $infoWindow, bool $position = true): string
     {
-        $formatter = $this->getFormatter();
+        $formatter   = $this->getFormatter();
         $jsonBuilder = $this->getJsonBuilder();
 
         if ($position) {
@@ -45,9 +43,7 @@ abstract class AbstractInfoWindowRenderer extends AbstractJsonRenderer implement
 
     abstract protected function getClass(): string;
 
-    /**
-     * @return string|false|null
-     */
+    /** @return string|false|null */
     protected function getNamespace()
     {
     }

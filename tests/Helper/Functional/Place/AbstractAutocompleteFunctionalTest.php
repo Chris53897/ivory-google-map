@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -16,19 +18,12 @@ use Ivory\GoogleMap\Helper\PlaceAutocompleteHelper;
 use Ivory\GoogleMap\Place\Autocomplete;
 use Ivory\Tests\GoogleMap\Helper\Functional\AbstractApiFunctionalTest;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 abstract class AbstractAutocompleteFunctionalTest extends AbstractApiFunctionalTest
 {
-    /**
-     * @var PlaceAutocompleteHelper
-     */
+    /** @var PlaceAutocompleteHelper */
     private $placeAutocompleteHelper;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         parent::setUp();
@@ -36,9 +31,7 @@ abstract class AbstractAutocompleteFunctionalTest extends AbstractApiFunctionalT
         $this->placeAutocompleteHelper = $this->createPlaceAutocompleteHelper();
     }
 
-    /**
-     * @param string|null $html
-     */
+    /** @param string|null $html */
     protected function renderAutocomplete(Autocomplete $autocomplete, $html = null)
     {
         $this->renderHtml(implode('', [
@@ -96,17 +89,13 @@ abstract class AbstractAutocompleteFunctionalTest extends AbstractApiFunctionalT
         $this->assertSameContainerVariable($autocomplete, 'autocomplete');
     }
 
-    /**
-     * @return PlaceAutocompleteHelper
-     */
+    /** @return PlaceAutocompleteHelper */
     protected function createPlaceAutocompleteHelper()
     {
         return PlaceAutocompleteHelperBuilder::create($_SERVER['API_KEY'] ?? null)->build();
     }
 
-    /**
-     * @return string[]
-     */
+    /** @return string[] */
     private function getContainerPropertyPaths()
     {
         return [

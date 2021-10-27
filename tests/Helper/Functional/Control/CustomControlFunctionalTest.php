@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -17,8 +19,6 @@ use Ivory\GoogleMap\Map;
 use Ivory\Tests\GoogleMap\Helper\Functional\AbstractMapFunctionalTest;
 
 /**
- * @author GeLo <geloen.eric@gmail.com>
- *
  * @group functional
  */
 class CustomControlFunctionalTest extends AbstractMapFunctionalTest
@@ -35,9 +35,7 @@ class CustomControlFunctionalTest extends AbstractMapFunctionalTest
         $this->assertMap($map);
     }
 
-    /**
-     * @return string
-     */
+    /** @return string */
     private function getControl()
     {
         return <<<'EOF'

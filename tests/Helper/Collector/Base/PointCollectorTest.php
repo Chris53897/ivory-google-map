@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -21,19 +23,12 @@ use Ivory\GoogleMap\Overlay\Marker;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class PointCollectorTest extends TestCase
 {
-    /**
-     * @var PointCollector
-     */
+    /** @var PointCollector */
     private $pointCollector;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->pointCollector = new PointCollector(new MarkerCollector());
@@ -65,9 +60,7 @@ class PointCollectorTest extends TestCase
         );
     }
 
-    /**
-     * @return Icon
-     */
+    /** @return Icon */
     private function createIcon()
     {
         $icon = new Icon();
@@ -77,9 +70,7 @@ class PointCollectorTest extends TestCase
         return $icon;
     }
 
-    /**
-     * @return MockObject|MarkerCollector
-     */
+    /** @return MockObject|MarkerCollector */
     private function createMarkerCollectorMock()
     {
         return $this->createMock(MarkerCollector::class);

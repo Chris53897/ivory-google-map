@@ -48,9 +48,7 @@ class CenterSubscriber implements EventSubscriberInterface
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     public static function getSubscribedEvents(): array
     {
         return [StaticMapEvents::CENTER => 'handleMap'];

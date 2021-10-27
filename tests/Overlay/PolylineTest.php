@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -21,19 +23,12 @@ use Ivory\GoogleMap\Utility\VariableAwareInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class PolylineTest extends TestCase
 {
-    /**
-     * @var Polyline
-     */
+    /** @var Polyline */
     private $polyline;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->polyline = new Polyline();
@@ -149,17 +144,13 @@ class PolylineTest extends TestCase
         $this->assertEmpty($this->polyline->getIconSequences());
     }
 
-    /**
-     * @return MockObject|Coordinate
-     */
+    /** @return MockObject|Coordinate */
     private function createCoordinateMock()
     {
         return $this->createMock(Coordinate::class);
     }
 
-    /**
-     * @return MockObject|IconSequence
-     */
+    /** @return MockObject|IconSequence */
     private function createIconSequenceMock()
     {
         return $this->createMock(IconSequence::class);

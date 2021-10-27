@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -16,28 +18,19 @@ use Ivory\GoogleMap\Helper\Renderer\AbstractRenderer;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class RendererTest extends TestCase
 {
-    /**
-     * @var AbstractRenderer
-     */
+    /** @var AbstractRenderer */
     private $renderer;
 
-    /**
-     * @var Formatter
-     */
+    /** @var Formatter */
     private $formatter;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->formatter = $this->createFormatterMock();
-        $this->renderer = $this->createAbstractRendererMock($this->formatter);
+        $this->renderer  = $this->createAbstractRendererMock($this->formatter);
     }
 
     public function testDefaultState()
@@ -52,9 +45,7 @@ class RendererTest extends TestCase
         $this->assertSame($formatter, $this->renderer->getFormatter());
     }
 
-    /**
-     * @return MockObject|AbstractRenderer
-     */
+    /** @return MockObject|AbstractRenderer */
     private function createAbstractRendererMock(Formatter $formatter = null)
     {
         return $this->getMockBuilder(AbstractRenderer::class)
@@ -62,9 +53,7 @@ class RendererTest extends TestCase
             ->getMockForAbstractClass();
     }
 
-    /**
-     * @return MockObject|Formatter
-     */
+    /** @return MockObject|Formatter */
     private function createFormatterMock()
     {
         return $this->createMock(Formatter::class);

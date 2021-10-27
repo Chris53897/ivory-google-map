@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -15,14 +17,10 @@ use Ivory\GoogleMap\Base\Coordinate;
 
 /**
  * @see http://code.google.com/apis/maps/documentation/javascript/reference.html#GeocoderRequest
- *
- * @author GeLo <geloen.eric@gmail.com>
  */
 class GeocoderCoordinateRequest extends AbstractGeocoderReverseRequest
 {
-    /**
-     * @var Coordinate
-     */
+    /** @var Coordinate */
     private $coordinate;
 
     public function __construct(Coordinate $coordinate)
@@ -30,23 +28,17 @@ class GeocoderCoordinateRequest extends AbstractGeocoderReverseRequest
         $this->setCoordinate($coordinate);
     }
 
-    /**
-     * @return Coordinate
-     */
-    public function getCoordinate()
+    public function getCoordinate(): Coordinate
     {
         return $this->coordinate;
     }
 
-    public function setCoordinate(Coordinate $coordinate)
+    public function setCoordinate(Coordinate $coordinate): void
     {
         $this->coordinate = $coordinate;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function buildQuery()
+    public function buildQuery(): array
     {
         return array_merge(['latlng' => $this->buildCoordinate($this->coordinate)], parent::buildQuery());
     }

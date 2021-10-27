@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,24 +13,18 @@
 
 namespace Ivory\GoogleMap\Service\Place;
 
-use Http\Client\HttpClient;
-use Http\Message\MessageFactory;
 use Ivory\GoogleMap\Service\AbstractSerializableService;
 use Ivory\Serializer\SerializerInterface;
+use Psr\Http\Client\ClientInterface as HttpClient;
+use Psr\Http\Message\RequestFactoryInterface as MessageFactory;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 abstract class AbstractPlaceSerializableService extends AbstractSerializableService
 {
-    /**
-     * @param string|null $context
-     */
     public function __construct(
         HttpClient $client,
         MessageFactory $messageFactory,
         SerializerInterface $serializer = null,
-        $context = null
+        string $context = null
     ) {
         if (null !== $context) {
             $context = '/'.$context;

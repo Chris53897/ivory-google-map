@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -21,19 +23,12 @@ use Ivory\JsonBuilder\JsonBuilder;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class MarkerClustererRendererTest extends TestCase
 {
-    /**
-     * @var MarkerClustererRenderer
-     */
+    /** @var MarkerClustererRenderer */
     private $markerClustererRenderer;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->markerClustererRenderer = new MarkerClustererRenderer(
@@ -87,9 +82,7 @@ class MarkerClustererRendererTest extends TestCase
         );
     }
 
-    /**
-     * @return MockObject|RequirementRenderer
-     */
+    /** @return MockObject|RequirementRenderer */
     private function createRequirementRendererMock()
     {
         return $this->createMock(RequirementRenderer::class);

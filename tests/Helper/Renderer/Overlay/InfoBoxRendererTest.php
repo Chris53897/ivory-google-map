@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -23,19 +25,12 @@ use Ivory\JsonBuilder\JsonBuilder;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class InfoBoxRendererTest extends TestCase
 {
-    /**
-     * @var InfoBoxRenderer
-     */
+    /** @var InfoBoxRenderer */
     private $infoBoxRenderer;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->infoBoxRenderer = new InfoBoxRenderer(
@@ -100,9 +95,7 @@ class InfoBoxRendererTest extends TestCase
         $this->assertSame('typeof InfoBox!==typeof undefined', $this->infoBoxRenderer->renderRequirement());
     }
 
-    /**
-     * @return MockObject|RequirementRenderer
-     */
+    /** @return MockObject|RequirementRenderer */
     private function createRequirementRendererMock()
     {
         return $this->createMock(RequirementRenderer::class);

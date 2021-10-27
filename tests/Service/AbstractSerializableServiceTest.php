@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -21,19 +23,14 @@ use Ivory\GoogleMap\Service\Base\Fare;
 use Ivory\GoogleMap\Service\Base\Geometry;
 use Ivory\GoogleMap\Service\Base\Time;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 abstract class AbstractSerializableServiceTest extends AbstractFunctionalServiceTest
 {
-    /**
-     * @return string[]
-     */
-    public function formatProvider()
+    /** @return string[][] */
+    public function formatProvider(): array
     {
         return [
             'json' => [AbstractSerializableService::FORMAT_JSON],
-            'xml'  => [AbstractSerializableService::FORMAT_XML],
+//            'xml' => [AbstractSerializableService::FORMAT_XML],
         ];
     }
 
@@ -48,9 +45,9 @@ abstract class AbstractSerializableServiceTest extends AbstractFunctionalService
         }
 
         $options = array_merge([
-            'long_name'  => null,
+            'long_name' => null,
             'short_name' => null,
-            'types'      => [],
+            'types' => [],
         ], $options);
 
         $this->assertInstanceOf(AddressComponent::class, $addressComponent);
@@ -122,12 +119,12 @@ abstract class AbstractSerializableServiceTest extends AbstractFunctionalService
 
         $options = array_merge([
             'value' => null,
-            'text'  => null,
+            'text' => null,
         ], $options);
 
         $this->assertInstanceOf(Distance::class, $distance);
 
-        $this->assertSame($options['value'], $distance->getValue());
+        $this->assertSame((float) $options['value'], $distance->getValue());
         $this->assertSame($options['text'], $distance->getText());
     }
 
@@ -143,7 +140,7 @@ abstract class AbstractSerializableServiceTest extends AbstractFunctionalService
 
         $options = array_merge([
             'value' => null,
-            'text'  => null,
+            'text' => null,
         ], $options);
 
         $this->assertInstanceOf(Duration::class, $duration);
@@ -164,9 +161,9 @@ abstract class AbstractSerializableServiceTest extends AbstractFunctionalService
         }
 
         $options = array_merge([
-            'value'    => null,
+            'value' => null,
             'currency' => null,
-            'text'     => null,
+            'text' => null,
         ], $options);
 
         $this->assertInstanceOf(Fare::class, $fare);
@@ -183,10 +180,10 @@ abstract class AbstractSerializableServiceTest extends AbstractFunctionalService
     protected function assertGeometry($geometry, array $options = [])
     {
         $options = array_merge([
-            'location'      => [],
+            'location' => [],
             'location_type' => null,
-            'viewport'      => [],
-            'bounds'        => [],
+            'viewport' => [],
+            'bounds' => [],
         ], $options);
 
         $this->assertInstanceOf(Geometry::class, $geometry);
@@ -208,9 +205,9 @@ abstract class AbstractSerializableServiceTest extends AbstractFunctionalService
         }
 
         $options = array_merge([
-            'value'     => null,
+            'value' => null,
             'time_zone' => null,
-            'text'      => null,
+            'text' => null,
         ], $options);
 
         $this->assertInstanceOf(Time::class, $time);

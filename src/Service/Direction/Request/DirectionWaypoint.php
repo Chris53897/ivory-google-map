@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -15,63 +17,42 @@ use Ivory\GoogleMap\Service\Base\Location\LocationInterface;
 
 /**
  * @see http://code.google.com/apis/maps/documentation/javascript/reference.html#DirectionWaypoint
- *
- * @author GeLo <geloen.eric@gmail.com>
  */
 class DirectionWaypoint
 {
-    /**
-     * @var LocationInterface
-     */
+    /** @var LocationInterface */
     private $location;
 
-    /**
-     * @var bool|null
-     */
+    /** @var bool|null */
     private $stopover;
 
-    /**
-     * @param bool|null $stopover
-     */
-    public function __construct(LocationInterface $location, $stopover = null)
+    public function __construct(LocationInterface $location, ?bool $stopover = null)
     {
         $this->setLocation($location);
         $this->setStopover($stopover);
     }
 
-    /**
-     * @return LocationInterface
-     */
-    public function getLocation()
+    public function getLocation(): LocationInterface
     {
         return $this->location;
     }
 
-    public function setLocation(LocationInterface $location)
+    public function setLocation(LocationInterface $location): void
     {
         $this->location = $location;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasStopover()
+    public function hasStopover(): bool
     {
         return null !== $this->stopover;
     }
 
-    /**
-     * @return bool|null
-     */
-    public function getStopover()
+    public function getStopover(): ?bool
     {
         return $this->stopover;
     }
 
-    /**
-     * @param bool|null $stopover
-     */
-    public function setStopover($stopover = null)
+    public function setStopover(?bool $stopover = null): void
     {
         $this->stopover = $stopover;
     }

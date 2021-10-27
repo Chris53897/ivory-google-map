@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -19,19 +21,12 @@ use Ivory\GoogleMap\Helper\Renderer\Html\TagRenderer;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class StylesheetTagRendererTest extends TestCase
 {
-    /**
-     * @var StylesheetTagRenderer
-     */
+    /** @var StylesheetTagRenderer */
     private $stylesheetTagRenderer;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->stylesheetTagRenderer = new StylesheetTagRenderer(
@@ -77,9 +72,7 @@ class StylesheetTagRendererTest extends TestCase
         $this->assertSame($expected, $this->stylesheetTagRenderer->render($name, $stylesheets, $attributes, $newLine));
     }
 
-    /**
-     * @return mixed[][]
-     */
+    /** @return mixed[][] */
     public function renderProvider()
     {
         return [
@@ -99,9 +92,7 @@ class StylesheetTagRendererTest extends TestCase
         ];
     }
 
-    /**
-     * @return MockObject|StylesheetRenderer
-     */
+    /** @return MockObject|StylesheetRenderer */
     private function createStylesheetRendererMock()
     {
         return $this->createMock(StylesheetRenderer::class);

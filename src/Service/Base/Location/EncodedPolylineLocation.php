@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,44 +13,28 @@
 
 namespace Ivory\GoogleMap\Service\Base\Location;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class EncodedPolylineLocation implements LocationInterface
 {
-    /**
-     * @var string
-     */
+    /** @var string */
     private $encodedPolyline;
 
-    /**
-     * @param string $encodedPolyline
-     */
-    public function __construct($encodedPolyline)
+    public function __construct(string $encodedPolyline)
     {
         $this->setEncodedPolyline($encodedPolyline);
     }
 
-    /**
-     * @return string
-     */
-    public function getEncodedPolyline()
+    public function getEncodedPolyline(): string
     {
         return $this->encodedPolyline;
     }
 
-    /**
-     * @param string $encodedPolyline
-     */
-    public function setEncodedPolyline($encodedPolyline)
+    public function setEncodedPolyline(string $encodedPolyline): void
     {
         $this->encodedPolyline = $encodedPolyline;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function buildQuery()
+    /** {@inheritdoc} */
+    public function buildQuery(): string
     {
         return 'enc:'.$this->encodedPolyline;
     }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -13,44 +15,28 @@ namespace Ivory\GoogleMap\Service\Geocoder\Request;
 
 /**
  * @see http://code.google.com/apis/maps/documentation/javascript/reference.html#GeocoderRequest
- *
- * @author GeLo <geloen.eric@gmail.com>
  */
 class GeocoderPlaceIdRequest extends AbstractGeocoderReverseRequest
 {
-    /**
-     * @var string
-     */
+    /** @var string */
     private $placeId;
 
-    /**
-     * @param string $placeId
-     */
-    public function __construct($placeId)
+    public function __construct(string $placeId)
     {
         $this->setPlaceId($placeId);
     }
 
-    /**
-     * @return string
-     */
-    public function getPlaceId()
+    public function getPlaceId(): string
     {
         return $this->placeId;
     }
 
-    /**
-     * @param string $placeId
-     */
-    public function setPlaceId($placeId)
+    public function setPlaceId(string $placeId): void
     {
         $this->placeId = $placeId;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function buildQuery()
+    public function buildQuery(): array
     {
         return array_merge(['place_id' => $this->placeId], parent::buildQuery());
     }

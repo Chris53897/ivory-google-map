@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -15,19 +17,12 @@ use Ivory\GoogleMap\Utility\OptionsAwareInterface;
 use Ivory\GoogleMap\Utility\OptionsAwareTrait;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class OptionsAwareTest extends TestCase
 {
-    /**
-     * @var OptionsAwareTrait
-     */
+    /** @var OptionsAwareTrait */
     private $optionsAware;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->optionsAware = new OptionsAwareMock();
@@ -83,9 +78,6 @@ class OptionsAwareTest extends TestCase
     }
 }
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class OptionsAwareMock implements OptionsAwareInterface
 {
     use OptionsAwareTrait;

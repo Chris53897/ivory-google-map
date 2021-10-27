@@ -19,14 +19,12 @@ namespace Ivory\GoogleMap\Overlay;
 final class SymbolPath
 {
     public const BACKWARD_CLOSED_ARROW = 'backward_closed_arrow';
-    public const BACKWARD_OPEN_ARROW = 'backward_open_arrow';
-    public const CIRCLE = 'circle';
-    public const FORWARD_CLOSED_ARROW = 'forward_closed_arrow';
-    public const FORWARD_OPEN_ARROW = 'forward_open_arrow';
+    public const BACKWARD_OPEN_ARROW   = 'backward_open_arrow';
+    public const CIRCLE                = 'circle';
+    public const FORWARD_CLOSED_ARROW  = 'forward_closed_arrow';
+    public const FORWARD_OPEN_ARROW    = 'forward_open_arrow';
 
-    /**
-     * @codeCoverageIgnore
-     */
+    /** @codeCoverageIgnore */
     private function __construct()
     {
     }

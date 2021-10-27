@@ -26,7 +26,7 @@ abstract class AbstractJavascriptHelperBuilder extends AbstractHelperBuilder
 
     public function __construct(Formatter $formatter = null, JsonBuilder $jsonBuilder = null)
     {
-        $this->formatter = $formatter ?: new Formatter();
+        $this->formatter   = $formatter ?: new Formatter();
         $this->jsonBuilder = $jsonBuilder ?: new JsonBuilder();
     }
 

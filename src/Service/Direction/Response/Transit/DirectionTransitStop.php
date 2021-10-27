@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -13,62 +15,40 @@ namespace Ivory\GoogleMap\Service\Direction\Response\Transit;
 
 use Ivory\GoogleMap\Base\Coordinate;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class DirectionTransitStop
 {
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $name;
 
-    /**
-     * @var Coordinate|null
-     */
+    /** @var Coordinate|null */
     private $location;
 
-    /**
-     * @return bool
-     */
-    public function hasName()
+    public function hasName(): bool
     {
         return null !== $this->name;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param string|null $name
-     */
-    public function setName($name)
+    public function setName(?string $name): void
     {
         $this->name = $name;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasLocation()
+    public function hasLocation(): bool
     {
         return null !== $this->location;
     }
 
-    /**
-     * @return Coordinate|null
-     */
-    public function getLocation()
+    public function getLocation(): ?Coordinate
     {
         return $this->location;
     }
 
-    public function setLocation(Coordinate $location = null)
+    public function setLocation(Coordinate $location = null): void
     {
         $this->location = $location;
     }

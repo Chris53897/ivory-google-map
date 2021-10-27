@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,23 +13,18 @@
 
 namespace Ivory\GoogleMap\Service\Place\Base;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 final class AspectRatingType
 {
-    const APPEAL = 'appeal';
-    const ATMOSPHERE = 'atmosphere';
-    const DECOR = 'decor';
-    const FACILITIES = 'facilities';
-    const FOOD = 'food';
-    const OVERALL = 'overall';
-    const QUALITY = 'quality';
-    const SERVICE = 'service';
+    public const APPEAL     = 'appeal';
+    public const ATMOSPHERE = 'atmosphere';
+    public const DECOR      = 'decor';
+    public const FACILITIES = 'facilities';
+    public const FOOD       = 'food';
+    public const OVERALL    = 'overall';
+    public const QUALITY    = 'quality';
+    public const SERVICE    = 'service';
 
-    /**
-     * @codeCoverageIgnore
-     */
+    /** @codeCoverageIgnore */
     private function __construct()
     {
     }

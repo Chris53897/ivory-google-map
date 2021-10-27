@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -15,19 +17,12 @@ use Ivory\GoogleMap\Utility\StaticOptionsAwareInterface;
 use Ivory\GoogleMap\Utility\StaticOptionsAwareTrait;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class StaticOptionsAwareTest extends TestCase
 {
-    /**
-     * @var StaticOptionsAwareTrait
-     */
+    /** @var StaticOptionsAwareTrait */
     private $staticOptionsAware;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->staticOptionsAware = new StaticOptionsAwareMock();
@@ -86,9 +81,6 @@ class StaticOptionsAwareTest extends TestCase
     }
 }
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class StaticOptionsAwareMock implements StaticOptionsAwareInterface
 {
     use StaticOptionsAwareTrait;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -15,19 +17,12 @@ use Ivory\GoogleMap\Control\ControlPosition;
 use Ivory\GoogleMap\Control\StreetViewControl;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class StreetViewControlTest extends TestCase
 {
-    /**
-     * @var StreetViewControl
-     */
+    /** @var StreetViewControl */
     private $streetViewControl;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->streetViewControl = new StreetViewControl();

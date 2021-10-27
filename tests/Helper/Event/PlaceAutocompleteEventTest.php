@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -17,27 +19,18 @@ use Ivory\GoogleMap\Place\Autocomplete;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class PlaceAutocompleteEventTest extends TestCase
 {
-    /**
-     * @var PlaceAutocompleteEvent
-     */
+    /** @var PlaceAutocompleteEvent */
     private $placeAutocompleteEvent;
 
-    /**
-     * @var Autocomplete|MockObject
-     */
+    /** @var Autocomplete|MockObject */
     private $autocomplete;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
-        $this->autocomplete = $this->createAutocompleteMock();
+        $this->autocomplete           = $this->createAutocompleteMock();
         $this->placeAutocompleteEvent = new PlaceAutocompleteEvent($this->autocomplete);
     }
 
@@ -51,9 +44,7 @@ class PlaceAutocompleteEventTest extends TestCase
         $this->assertSame($this->autocomplete, $this->placeAutocompleteEvent->getAutocomplete());
     }
 
-    /**
-     * @return MockObject|Autocomplete
-     */
+    /** @return MockObject|Autocomplete */
     private function createAutocompleteMock()
     {
         return $this->createMock(Autocomplete::class);

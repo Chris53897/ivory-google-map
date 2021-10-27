@@ -15,13 +15,11 @@ namespace Ivory\GoogleMap\Helper\Event;
 
 final class ApiEvents
 {
-    public const JAVASCRIPT = 'api.javascript';
-    public const JAVASCRIPT_MAP = 'api.javascript.map';
+    public const JAVASCRIPT              = 'api.javascript';
+    public const JAVASCRIPT_MAP          = 'api.javascript.map';
     public const JAVASCRIPT_AUTOCOMPLETE = 'api.javascript.autocomplete';
 
-    /**
-     * @codeCoverageIgnore
-     */
+    /** @codeCoverageIgnore */
     private function __construct()
     {
     }

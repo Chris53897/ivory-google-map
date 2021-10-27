@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -14,29 +16,18 @@ namespace Ivory\Tests\GoogleMap\Service;
 use Ivory\GoogleMap\Service\BusinessAccount;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class BusinessAccountTest extends TestCase
 {
-    /**
-     * @var BusinessAccount
-     */
+    /** @var BusinessAccount */
     private $businessAccount;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $clientId;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $secret;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->businessAccount = new BusinessAccount(
@@ -113,9 +104,7 @@ class BusinessAccountTest extends TestCase
         $this->assertSame($expected.'&signature='.$signature, $this->businessAccount->signUrl($url));
     }
 
-    /**
-     * @return string[][]
-     */
+    /** @return string[][] */
     public function signatureProvider()
     {
         $url = 'http://maps.googleapis.com/maps/api/staticmap?center=%E4%B8%8A%E6%B5%B7+%E4%B8%AD%E5%9C%8B&size=640x640&zoom=10&sensor=false';

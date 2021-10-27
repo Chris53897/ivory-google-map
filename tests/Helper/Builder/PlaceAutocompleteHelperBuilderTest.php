@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -16,19 +18,12 @@ use Ivory\GoogleMap\Helper\Builder\PlaceAutocompleteHelperBuilder;
 use Ivory\GoogleMap\Helper\PlaceAutocompleteHelper;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class PlaceAutocompleteHelperBuilderTest extends TestCase
 {
-    /**
-     * @var PlaceAutocompleteHelperBuilder
-     */
+    /** @var PlaceAutocompleteHelperBuilder */
     private $placeAutocompleteHelperBuilder;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->placeAutocompleteHelperBuilder = PlaceAutocompleteHelperBuilder::create($_SERVER['API_KEY'] ?? null);

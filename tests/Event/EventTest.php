@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -16,34 +18,21 @@ use Ivory\GoogleMap\Event\MouseEvent;
 use Ivory\GoogleMap\Utility\VariableAwareInterface;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class EventTest extends TestCase
 {
-    /**
-     * @var Event
-     */
+    /** @var Event */
     private $event;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $instance;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $trigger;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $handle;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->event = new Event(

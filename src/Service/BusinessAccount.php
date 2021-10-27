@@ -27,8 +27,8 @@ class BusinessAccount
     public function __construct(string $clientId, string $secret, ?string $channel = null)
     {
         $this->clientId = $clientId;
-        $this->secret =$secret;
-        $this->channel = $channel;
+        $this->secret   = $secret;
+        $this->channel  = $channel;
     }
 
     public function getClientId(): string

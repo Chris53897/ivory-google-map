@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -15,19 +17,12 @@ use Ivory\GoogleMap\Service\Place\Base\AlternatePlaceId;
 use Ivory\GoogleMap\Service\Place\Base\PlaceScope;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class AlternatePlaceIdTest extends TestCase
 {
-    /**
-     * @var AlternatePlaceId
-     */
+    /** @var AlternatePlaceId */
     private $alternatePlaceId;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->alternatePlaceId = new AlternatePlaceId();

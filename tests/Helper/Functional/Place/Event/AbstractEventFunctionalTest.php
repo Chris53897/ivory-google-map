@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -15,19 +17,12 @@ use Ivory\GoogleMap\Event\Event;
 use Ivory\Tests\GoogleMap\Helper\Functional\Place\AbstractAutocompleteFunctionalTest;
 use PHPUnit\Extensions\Selenium2TestCase\Keys;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 abstract class AbstractEventFunctionalTest extends AbstractAutocompleteFunctionalTest
 {
-    /**
-     * @var string
-     */
+    /** @var string */
     private $spyCount;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         parent::setUp();
@@ -45,17 +40,13 @@ abstract class AbstractEventFunctionalTest extends AbstractAutocompleteFunctiona
         sleep(1);
     }
 
-    /**
-     * @param int $count
-     */
+    /** @param int $count */
     protected function assertSpyCount($count): void
     {
         $this->assertSameVariable($count, $this->spyCount);
     }
 
-    /**
-     * @param string $instance
-     */
+    /** @param string $instance */
     protected function createEvent($instance): Event
     {
         return new Event(

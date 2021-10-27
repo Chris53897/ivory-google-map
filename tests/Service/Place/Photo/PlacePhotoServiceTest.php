@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -17,24 +19,15 @@ use Ivory\GoogleMap\Service\Place\Photo\Request\PlacePhotoRequest;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class PlacePhotoServiceTest extends TestCase
 {
-    /**
-     * @var PlacePhotoService
-     */
+    /** @var PlacePhotoService */
     private $service;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $key;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->service = new PlacePhotoService();
@@ -81,17 +74,13 @@ class PlacePhotoServiceTest extends TestCase
         $this->assertSame($signedUrl, $this->service->process($request));
     }
 
-    /**
-     * @return PlacePhotoRequest
-     */
+    /** @return PlacePhotoRequest */
     private function createRequest()
     {
         return new PlacePhotoRequest('bar');
     }
 
-    /**
-     * @return MockObject|BusinessAccount
-     */
+    /** @return MockObject|BusinessAccount */
     private function createBusinessAccountMock()
     {
         return $this->createMock(BusinessAccount::class);

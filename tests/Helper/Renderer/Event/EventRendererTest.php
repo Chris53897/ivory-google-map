@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -17,19 +19,12 @@ use Ivory\GoogleMap\Helper\Renderer\Event\AbstractEventRenderer;
 use Ivory\GoogleMap\Helper\Renderer\Event\EventRenderer;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class EventRendererTest extends TestCase
 {
-    /**
-     * @var EventRenderer
-     */
+    /** @var EventRenderer */
     private $domEventRenderer;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->domEventRenderer = new EventRenderer(new Formatter());

@@ -34,9 +34,9 @@ class Coordinate implements VariableAwareInterface
 
     public function __construct(float $latitude = 0.0, float $longitude = 0.0, bool $noWrap = true)
     {
-        $this->latitude =$latitude;
+        $this->latitude  = $latitude;
         $this->longitude = $longitude;
-        $this->noWrap = $noWrap;
+        $this->noWrap    = $noWrap;
     }
 
     public function getLatitude(): float

@@ -61,7 +61,7 @@ class AutocompleteCoordinateSubscriber extends AbstractSubscriber
 
     public function handleAutocomplete(PlaceAutocompleteEvent $event): void
     {
-        $formatter = $this->getFormatter();
+        $formatter    = $this->getFormatter();
         $autocomplete = $event->getAutocomplete();
 
         foreach ($this->coordinateCollector->collect($autocomplete) as $coordinate) {
@@ -74,9 +74,7 @@ class AutocompleteCoordinateSubscriber extends AbstractSubscriber
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     public static function getSubscribedEvents(): array
     {
         return [PlaceAutocompleteEvents::JAVASCRIPT_BASE_COORDINATE => 'handleAutocomplete'];

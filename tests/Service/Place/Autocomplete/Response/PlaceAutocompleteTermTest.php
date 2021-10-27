@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -14,19 +16,12 @@ namespace Ivory\Tests\GoogleMap\Service\Place\Autocomplete\Response;
 use Ivory\GoogleMap\Service\Place\Autocomplete\Response\PlaceAutocompleteTerm;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class PlaceAutocompleteTermTest extends TestCase
 {
-    /**
-     * @var PlaceAutocompleteTerm
-     */
+    /** @var PlaceAutocompleteTerm */
     private $match;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->match = new PlaceAutocompleteTerm();

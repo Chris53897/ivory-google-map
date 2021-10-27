@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,14 +13,9 @@
 
 namespace Ivory\Tests\GoogleMap\Service\Elevation;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class ElevationServiceApiKeyTest extends ElevationServiceTest
 {
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         if (!isset($_SERVER['API_KEY'])) {

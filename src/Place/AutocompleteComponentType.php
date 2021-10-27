@@ -15,15 +15,13 @@ namespace Ivory\GoogleMap\Place;
 
 final class AutocompleteComponentType
 {
-    public const ROUTE = 'route';
-    public const LOCALITY = 'locality';
+    public const ROUTE               = 'route';
+    public const LOCALITY            = 'locality';
     public const ADMINISTRATIVE_AREA = 'administrative_area';
-    public const POSTAL_CODE = 'postal_code';
-    public const COUNTRY = 'country';
+    public const POSTAL_CODE         = 'postal_code';
+    public const COUNTRY             = 'country';
 
-    /**
-     * @codeCoverageIgnore
-     */
+    /** @codeCoverageIgnore */
     private function __construct()
     {
     }

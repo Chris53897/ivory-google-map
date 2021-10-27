@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,19 +20,12 @@ use Ivory\GoogleMap\Helper\Renderer\Event\AbstractEventRenderer;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class AbstractEventRendererTest extends TestCase
 {
-    /**
-     * @var AbstractEventRenderer|MockObject
-     */
+    /** @var AbstractEventRenderer|MockObject */
     private $eventRenderer;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->eventRenderer = $this->createAbstractEventRendererMock();
@@ -52,9 +47,7 @@ class AbstractEventRendererTest extends TestCase
         );
     }
 
-    /**
-     * @return MockObject|AbstractEventRenderer
-     */
+    /** @return MockObject|AbstractEventRenderer */
     private function createAbstractEventRendererMock()
     {
         $eventRenderer = $this->getMockBuilder(AbstractEventRenderer::class)

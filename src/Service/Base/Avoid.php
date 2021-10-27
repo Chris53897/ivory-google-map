@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,19 +13,14 @@
 
 namespace Ivory\GoogleMap\Service\Base;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 final class Avoid
 {
-    const TOLLS = 'tolls';
-    const HIGHWAYS = 'highways';
-    const FERRIES = 'ferries';
-    const INDOOR = 'indoor';
+    public const TOLLS    = 'tolls';
+    public const HIGHWAYS = 'highways';
+    public const FERRIES  = 'ferries';
+    public const INDOOR   = 'indoor';
 
-    /**
-     * @codeCoverageIgnore
-     */
+    /** @codeCoverageIgnore */
     private function __construct()
     {
     }

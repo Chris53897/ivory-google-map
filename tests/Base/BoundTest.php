@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,19 +20,12 @@ use Ivory\GoogleMap\Utility\VariableAwareInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class BoundTest extends TestCase
 {
-    /**
-     * @var Bound
-     */
+    /** @var Bound */
     private $bound;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->bound = new Bound();
@@ -154,17 +149,13 @@ class BoundTest extends TestCase
         $this->assertFalse($this->bound->hasExtendable($extendable));
     }
 
-    /**
-     * @return MockObject|Coordinate
-     */
+    /** @return MockObject|Coordinate */
     private function createCoordinateMock()
     {
         return $this->createMock(Coordinate::class);
     }
 
-    /**
-     * @return MockObject|ExtendableInterface
-     */
+    /** @return MockObject|ExtendableInterface */
     private function createExtendableMock()
     {
         return $this->createMock(ExtendableInterface::class);

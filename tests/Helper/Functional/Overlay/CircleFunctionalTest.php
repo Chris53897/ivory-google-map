@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -17,8 +19,6 @@ use Ivory\GoogleMap\Overlay\Circle;
 use Ivory\Tests\GoogleMap\Helper\Functional\AbstractMapFunctionalTest;
 
 /**
- * @author GeLo <geloen.eric@gmail.com>
- *
  * @group functional
  */
 class CircleFunctionalTest extends AbstractMapFunctionalTest
@@ -42,9 +42,7 @@ class CircleFunctionalTest extends AbstractMapFunctionalTest
         $this->assertMap($map);
     }
 
-    /**
-     * @return Circle
-     */
+    /** @return Circle */
     private function createCircle()
     {
         return new Circle(new Coordinate());

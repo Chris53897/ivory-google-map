@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,67 +13,50 @@
 
 namespace Ivory\GoogleMap\Service\DistanceMatrix\Response;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class DistanceMatrixRow
 {
-    /**
-     * @var DistanceMatrixElement[]
-     */
+    /** @var DistanceMatrixElement[] */
     private $elements = [];
 
-    /**
-     * @return bool
-     */
-    public function hasElements()
+    public function hasElements(): bool
     {
         return !empty($this->elements);
     }
 
-    /**
-     * @return DistanceMatrixElement[]
-     */
-    public function getElements()
+    /** @return DistanceMatrixElement[] */
+    public function getElements(): array
     {
         return $this->elements;
     }
 
-    /**
-     * @param DistanceMatrixElement[] $elements
-     */
-    public function setElements(array $elements)
+    /** @param DistanceMatrixElement[] $elements */
+    public function setElements(array $elements): void
     {
         $this->elements = [];
         $this->addElements($elements);
     }
 
-    /**
-     * @param DistanceMatrixElement[] $elements
-     */
-    public function addElements(array $elements)
+    /** @param DistanceMatrixElement[] $elements */
+    public function addElements(array $elements): void
     {
         foreach ($elements as $element) {
             $this->addElement($element);
         }
     }
 
-    /**
-     * @return bool
-     */
-    public function hasElement(DistanceMatrixElement $element)
+    public function hasElement(DistanceMatrixElement $element): bool
     {
         return in_array($element, $this->elements, true);
     }
 
-    public function addElement(DistanceMatrixElement $element)
+    public function addElement(DistanceMatrixElement $element): void
     {
         if (!$this->hasElement($element)) {
             $this->elements[] = $element;
         }
     }
 
-    public function removeElement(DistanceMatrixElement $element)
+    public function removeElement(DistanceMatrixElement $element): void
     {
         unset($this->elements[array_search($element, $this->elements, true)]);
         $this->elements = empty($this->elements) ? [] : array_values($this->elements);

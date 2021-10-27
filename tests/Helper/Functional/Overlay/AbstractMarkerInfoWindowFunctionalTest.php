@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -17,9 +19,6 @@ use Ivory\GoogleMap\Overlay\InfoWindow;
 use Ivory\GoogleMap\Overlay\Marker;
 use Ivory\Tests\GoogleMap\Helper\Functional\AbstractMapFunctionalTest;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 abstract class AbstractMarkerInfoWindowFunctionalTest extends AbstractMapFunctionalTest
 {
     public function testRender()
@@ -41,9 +40,7 @@ abstract class AbstractMarkerInfoWindowFunctionalTest extends AbstractMapFunctio
         $this->assertMap($map);
     }
 
-    /**
-     * @return Marker
-     */
+    /** @return Marker */
     protected function createMarker()
     {
         $marker = new Marker(new Coordinate());
@@ -52,9 +49,7 @@ abstract class AbstractMarkerInfoWindowFunctionalTest extends AbstractMapFunctio
         return $marker;
     }
 
-    /**
-     * @return InfoWindow
-     */
+    /** @return InfoWindow */
     protected function createInfoWindowMarker()
     {
         return new InfoWindow('content');

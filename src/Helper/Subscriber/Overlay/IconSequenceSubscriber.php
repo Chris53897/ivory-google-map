@@ -62,7 +62,7 @@ class IconSequenceSubscriber extends AbstractSubscriber
     public function handleMap(MapEvent $event): void
     {
         $formatter = $this->getFormatter();
-        $map = $event->getMap();
+        $map       = $event->getMap();
 
         foreach ($this->getIconSequenceCollector()->collect($map) as $iconSequence) {
             $event->addCode($formatter->renderContainerAssignment(
@@ -74,9 +74,7 @@ class IconSequenceSubscriber extends AbstractSubscriber
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     public static function getSubscribedEvents(): array
     {
         return [MapEvents::JAVASCRIPT_OVERLAY_ICON_SEQUENCE => 'handleMap'];

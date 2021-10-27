@@ -35,26 +35,20 @@ class EventManager
         return !empty($this->domEvents);
     }
 
-    /**
-     * @return Event[]
-     */
+    /** @return Event[] */
     public function getDomEvents(): array
     {
         return $this->domEvents;
     }
 
-    /**
-     * @param Event[] $domEvents
-     */
+    /** @param Event[] $domEvents */
     public function setDomEvents(array $domEvents): void
     {
         $this->domEvents = [];
         $this->addDomEvents($domEvents);
     }
 
-    /**
-     * @param Event[] $domEvents
-     */
+    /** @param Event[] $domEvents */
     public function addDomEvents(array $domEvents): void
     {
         foreach ($domEvents as $domEvent) {
@@ -85,26 +79,20 @@ class EventManager
         return !empty($this->domEventsOnce);
     }
 
-    /**
-     * @return Event[]
-     */
+    /** @return Event[] */
     public function getDomEventsOnce(): array
     {
         return $this->domEventsOnce;
     }
 
-    /**
-     * @param Event[] $domEventsOnce
-     */
+    /** @param Event[] $domEventsOnce */
     public function setDomEventsOnce(array $domEventsOnce): void
     {
         $this->domEventsOnce = [];
         $this->addDomEventsOnce($domEventsOnce);
     }
 
-    /**
-     * @param Event[] $domEventsOnce
-     */
+    /** @param Event[] $domEventsOnce */
     public function addDomEventsOnce(array $domEventsOnce): void
     {
         foreach ($domEventsOnce as $domEventOnce) {
@@ -135,26 +123,20 @@ class EventManager
         return !empty($this->events);
     }
 
-    /**
-     * @return Event[]
-     */
+    /** @return Event[] */
     public function getEvents(): array
     {
         return $this->events;
     }
 
-    /**
-     * @param Event[] $events
-     */
+    /** @param Event[] $events */
     public function setEvents(array $events): void
     {
         $this->events = [];
         $this->addEvents($events);
     }
 
-    /**
-     * @param Event[] $events
-     */
+    /** @param Event[] $events */
     public function addEvents(array $events): void
     {
         foreach ($events as $event) {
@@ -185,26 +167,20 @@ class EventManager
         return !empty($this->eventsOnce);
     }
 
-    /**
-     * @return Event[]
-     */
+    /** @return Event[] */
     public function getEventsOnce(): array
     {
         return $this->eventsOnce;
     }
 
-    /**
-     * @param Event[] $eventsOnce
-     */
+    /** @param Event[] $eventsOnce */
     public function setEventsOnce(array $eventsOnce): void
     {
         $this->eventsOnce = [];
         $this->addEventsOnce($eventsOnce);
     }
 
-    /**
-     * @param Event[] $eventsOnce
-     */
+    /** @param Event[] $eventsOnce */
     public function addEventsOnce(array $eventsOnce): void
     {
         foreach ($eventsOnce as $eventOnce) {

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -20,19 +22,12 @@ use Ivory\GoogleMap\Overlay\ExtendableInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class BoundsExtendableRendererTest extends TestCase
 {
-    /**
-     * @var BoundsExtendableRenderer
-     */
+    /** @var BoundsExtendableRenderer */
     private $boundsExtendableRenderer;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->boundsExtendableRenderer = new BoundsExtendableRenderer(new Formatter());
@@ -64,17 +59,13 @@ class BoundsExtendableRendererTest extends TestCase
         );
     }
 
-    /**
-     * @return MockObject|ExtendableInterface
-     */
+    /** @return MockObject|ExtendableInterface */
     private function createExtendableMock()
     {
         return $this->createMock(ExtendableInterface::class);
     }
 
-    /**
-     * @return MockObject|Bound
-     */
+    /** @return MockObject|Bound */
     private function createBoundMock()
     {
         return $this->createMock(Bound::class);

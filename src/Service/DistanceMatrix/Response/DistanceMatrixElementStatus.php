@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -13,18 +15,14 @@ namespace Ivory\GoogleMap\Service\DistanceMatrix\Response;
 
 /**
  * @see http://code.google.com/apis/maps/documentation/javascript/reference.html#DistanceMatrixElementStatus
- *
- * @author GeLo <geloen.eric@gmail.com>
  */
 final class DistanceMatrixElementStatus
 {
-    const NOT_FOUND = 'NOT_FOUND';
-    const OK = 'OK';
-    const ZERO_RESULTS = 'ZERO_RESULTS';
+    public const NOT_FOUND    = 'NOT_FOUND';
+    public const OK           = 'OK';
+    public const ZERO_RESULTS = 'ZERO_RESULTS';
 
-    /**
-     * @codeCoverageIgnore
-     */
+    /** @codeCoverageIgnore */
     private function __construct()
     {
     }

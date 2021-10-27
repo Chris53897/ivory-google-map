@@ -17,7 +17,7 @@ use Ivory\GoogleMap\Overlay\EncodedPolyline;
 
 class EncodedPolylineStyleRenderer extends AbstractPolylineStyleRenderer
 {
-    public function render(EncodedPolyline $encodedPolyline): string
+    public function render(EncodedPolyline $encodedPolyline): ?string
     {
         return $this->renderPolylineStyle(
             $encodedPolyline->hasStaticOption('styles') ? $encodedPolyline->getStaticOption('styles') : [],

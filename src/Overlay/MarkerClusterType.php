@@ -15,12 +15,10 @@ namespace Ivory\GoogleMap\Overlay;
 
 final class MarkerClusterType
 {
-    public const DEFAULT_ = 'default';
+    public const DEFAULT_         = 'default';
     public const MARKER_CLUSTERER = 'marker_clusterer';
 
-    /**
-     * @codeCoverageIgnore
-     */
+    /** @codeCoverageIgnore */
     private function __construct()
     {
     }

@@ -34,9 +34,7 @@ class ZoomSubscriber implements EventSubscriberInterface
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     public static function getSubscribedEvents(): array
     {
         return [StaticMapEvents::ZOOM => 'handleMap'];

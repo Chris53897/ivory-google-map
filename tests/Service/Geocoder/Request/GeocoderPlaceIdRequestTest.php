@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -15,24 +17,15 @@ use Ivory\GoogleMap\Service\Geocoder\Request\AbstractGeocoderReverseRequest;
 use Ivory\GoogleMap\Service\Geocoder\Request\GeocoderPlaceIdRequest;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class GeocoderPlaceIdRequestTest extends TestCase
 {
-    /**
-     * @var GeocoderPlaceIdRequest
-     */
+    /** @var GeocoderPlaceIdRequest */
     private $request;
 
-    /**
-     * @var
-     */
+    /** @var */
     private $placeId;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->request = new GeocoderPlaceIdRequest($this->placeId = 'ChIJLU7jZClu5kcR4PcOOO6p3I0');

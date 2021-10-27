@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -34,19 +36,12 @@ use Ivory\JsonBuilder\JsonBuilder;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class ControlManagerRendererTest extends TestCase
 {
-    /**
-     * @var ControlManagerRenderer
-     */
+    /** @var ControlManagerRenderer */
     private $controlManagerRenderer;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->controlManagerRenderer = new ControlManagerRenderer();
@@ -147,9 +142,7 @@ class ControlManagerRendererTest extends TestCase
         $this->assertSame('[]', $jsonBuilder->build());
     }
 
-    /**
-     * @return MockObject|ControlRendererInterface
-     */
+    /** @return MockObject|ControlRendererInterface */
     private function createControlRendererMock()
     {
         return $this->createMock(ControlRendererInterface::class);

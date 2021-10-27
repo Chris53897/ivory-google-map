@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -14,29 +16,18 @@ namespace Ivory\Tests\GoogleMap\Service\Base;
 use Ivory\GoogleMap\Service\Base\Duration;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class DurationTest extends TestCase
 {
-    /**
-     * @var Duration
-     */
+    /** @var Duration */
     private $duration;
 
-    /**
-     * @var float
-     */
+    /** @var float */
     private $value;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $text;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->duration = new Duration($this->value = 2.3, $this->text = 'foo');

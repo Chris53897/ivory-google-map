@@ -17,8 +17,6 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 interface DelegateSubscriberInterface extends EventSubscriberInterface
 {
-    /**
-     * @return string[][]
-     */
+    /** @return string[][] */
     public static function getDelegatedSubscribedEvents(): array;
 }

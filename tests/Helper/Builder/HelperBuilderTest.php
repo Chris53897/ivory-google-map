@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -16,19 +18,12 @@ use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class HelperBuilderTest extends TestCase
 {
-    /**
-     * @var AbstractHelperBuilder
-     */
+    /** @var AbstractHelperBuilder */
     private $helperBuilder;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->helperBuilder = $this->createAbstractHelperBuilder();
@@ -94,17 +89,13 @@ class HelperBuilderTest extends TestCase
         $this->assertEmpty($this->helperBuilder->getSubscribers());
     }
 
-    /**
-     * @return MockObject|AbstractHelperBuilder
-     */
+    /** @return MockObject|AbstractHelperBuilder */
     private function createAbstractHelperBuilder()
     {
         return $this->getMockForAbstractClass(AbstractHelperBuilder::class);
     }
 
-    /**
-     * @return MockObject|EventSubscriberInterface
-     */
+    /** @return MockObject|EventSubscriberInterface */
     private function createEventSubscriberMock()
     {
         return $this->createMock(EventSubscriberInterface::class);

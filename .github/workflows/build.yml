@@ -4,68 +4,73 @@ on:
     push: ~
     pull_request: ~
     release:
-        types: [created]
+        types:
+          - created
     schedule:
-        -
-            cron: "0 1 * * 6" # Run at 1am every Saturday
+        - cron: '0 1 * * 6'
     workflow_dispatch: ~
 
 jobs:
     tests:
         runs-on: ubuntu-latest
-
-        name: "PHP ${{ matrix.php }}"
-
         strategy:
             fail-fast: false
             matrix:
-                php: [7.2, 7.3, 7.4, 8.0]
+                php-versions:
+                  - php-version: 7.2
+                    coverage: xdebug
+                  - php-version: 7.3
+                    coverage: xdebug
+                  - php-version: 7.4
+                    coverage: xdebug
+                  - php-version: 8.0
+                    coverage: none
+
+        name: "PHP ${{ matrix.php-versions.php-version }}"
 
         env:
             APP_ENV: test
 
         steps:
-            -
-                uses: actions/checkout@v2
+            - name: Checkout
+              uses: actions/checkout@v2
 
-            -
-                name: Setup PHP
-                uses: shivammathur/setup-php@v2
-                with:
-                    php-version: "${{ matrix.php }}"
-                    extensions: intl
-                    tools: symfony
-                    coverage: none
+            - name: Setup PHP
+              uses: shivammathur/setup-php@v2
+              with:
+                php-version: "${{ matrix.php-versions.php-version }}"
+                extensions: intl, xdebug
+                tools: symfony
+                coverage: "${{ matrix.php-versions.coverage }}"
 
-            -
-                name: Get Composer cache directory
-                id: composer-cache
-                run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+            - name: Get Composer cache directory
+              id: composer-cache
+              run: echo "::set-output name=dir::$(composer config cache-files-dir)"
 
-            -
-                name: Cache Composer
-                uses: actions/cache@v2
-                with:
-                    path: ${{ steps.composer-cache.outputs.dir }}
-                    key: ${{ runner.os }}-php-${{ matrix.php }}-composer-${{ hashFiles('**/composer.json **/composer.lock') }}
-                    restore-keys: |
-                        ${{ runner.os }}-php-${{ matrix.php }}-composer-
+            - name: Cache Composer
+              uses: actions/cache@v2
+              with:
+                path: ${{ steps.composer-cache.outputs.dir }}
+                key: ${{ runner.os }}-php-${{ matrix.php-versions.php-version }}-composer-${{ hashFiles('**/composer.json **/composer.lock') }}
+                restore-keys: |
+                  ${{ runner.os }}-php-${{ matrix.php-versions.php-version }}-composer-
 
-            -
-                name: Install PHP dependencies
-                run: composer install --no-interaction --prefer-source
+            - name: Install PHP dependencies
+              run: composer install --no-interaction --prefer-source
 
-            -
-                name: Run analysis
-                run: composer validate --strict
+            - name: Run analysis
+              run: composer validate --strict
 
-            -
-                name: Run PHPUnit
-                run: vendor/bin/phpunit --configuration phpunit.ci.xml --coverage-clover clover.xml
+            - name: Run PHPUnit with coverage
+              if: ${{ matrix.php-versions.coverage == 'xdebug' }}
+              run: vendor/bin/phpunit --configuration phpunit.ci.xml --coverage-clover clover.xml
 
-            -
-                name: Send coverage report
-                if: github.repository == 'bresam/ivory-google-map'
-                run: |
-                    wget https://scrutinizer-ci.com/ocular.phar
-                    php ocular.phar code-coverage:upload --format=php-clover clover.xml
+            - name: Run PHPUnit without coverage
+              if: ${{ matrix.php-versions.coverage != 'xdebug' }}
+              run: vendor/bin/phpunit --configuration phpunit.ci.xml
+
+            - name: Send coverage report
+              if: ${{ matrix.php-versions.coverage == 'xdebug' }}
+              run: |
+                wget https://scrutinizer-ci.com/ocular.phar
+                php ocular.phar code-coverage:upload --format=php-clover clover.xml

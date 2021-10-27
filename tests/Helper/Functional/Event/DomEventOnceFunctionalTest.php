@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -14,8 +16,6 @@ namespace Ivory\Tests\GoogleMap\Helper\Functional\Event;
 use Ivory\GoogleMap\Map;
 
 /**
- * @author GeLo <geloen.eric@gmail.com>
- *
  * @group functional
  */
 class DomEventOnceFunctionalTest extends AbstractDomEventFunctionalTest

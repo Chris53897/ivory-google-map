@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,94 +13,58 @@
 
 namespace Ivory\GoogleMap\Service\Direction\Response\Transit;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class DirectionTransitAgency
 {
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $name;
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $phone;
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $url;
 
-    /**
-     * @return bool
-     */
-    public function hasName()
+    public function hasName(): bool
     {
         return null !== $this->name;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param string|null $name
-     */
-    public function setName($name)
+    public function setName(?string $name): void
     {
         $this->name = $name;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasPhone()
+    public function hasPhone(): bool
     {
         return null !== $this->phone;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getPhone()
+    public function getPhone(): ?string
     {
         return $this->phone;
     }
 
-    /**
-     * @param string|null $phone
-     */
-    public function setPhone($phone)
+    public function setPhone(?string $phone): void
     {
         $this->phone = $phone;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasUrl()
+    public function hasUrl(): bool
     {
         return null !== $this->url;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getUrl()
+    public function getUrl(): ?string
     {
         return $this->url;
     }
 
-    /**
-     * @param string|null $url
-     */
-    public function setUrl($url)
+    public function setUrl(?string $url): void
     {
         $this->url = $url;
     }

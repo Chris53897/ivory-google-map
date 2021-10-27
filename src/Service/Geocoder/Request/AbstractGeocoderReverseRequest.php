@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -13,153 +15,103 @@ namespace Ivory\GoogleMap\Service\Geocoder\Request;
 
 /**
  * @see http://code.google.com/apis/maps/documentation/javascript/reference.html#GeocoderRequest
- *
- * @author GeLo <geloen.eric@gmail.com>
  */
 abstract class AbstractGeocoderReverseRequest extends AbstractGeocoderRequest
 {
-    /**
-     * @var string[]
-     */
+    /** @var string[] */
     private $resultTypes = [];
 
-    /**
-     * @var string[]
-     */
+    /** @var string[] */
     private $locationTypes = [];
 
-    /**
-     * @return bool
-     */
-    public function hasResultTypes()
+    public function hasResultTypes(): bool
     {
         return !empty($this->resultTypes);
     }
 
-    /**
-     * @return string[]
-     */
-    public function getResultTypes()
+    public function getResultTypes(): array
     {
         return $this->resultTypes;
     }
 
-    /**
-     * @param string[] $resultTypes
-     */
-    public function setResultTypes(array $resultTypes)
+    /** @param string[] $resultTypes */
+    public function setResultTypes(array $resultTypes): void
     {
         $this->resultTypes = [];
         $this->addResultTypes($resultTypes);
     }
 
-    /**
-     * @param string[] $resultTypes
-     */
-    public function addResultTypes(array $resultTypes)
+    /** @param string[] $resultTypes */
+    public function addResultTypes(array $resultTypes): void
     {
         foreach ($resultTypes as $resultType) {
             $this->addResultType($resultType);
         }
     }
 
-    /**
-     * @param string $resultType
-     *
-     * @return bool
-     */
-    public function hasResultType($resultType)
+    public function hasResultType(string $resultType): bool
     {
         return in_array($resultType, $this->resultTypes, true);
     }
 
-    /**
-     * @param string $resultType
-     */
-    public function addResultType($resultType)
+    public function addResultType(string $resultType): void
     {
         if (!$this->hasResultType($resultType)) {
             $this->resultTypes[] = $resultType;
         }
     }
 
-    /**
-     * @param string $resultType
-     */
-    public function removeResultType($resultType)
+    public function removeResultType(string $resultType): void
     {
         unset($this->resultTypes[array_search($resultType, $this->resultTypes, true)]);
         $this->resultTypes = empty($this->resultTypes) ? [] : array_values($this->resultTypes);
     }
 
-    /**
-     * @return bool
-     */
-    public function hasLocationTypes()
+    public function hasLocationTypes(): bool
     {
         return !empty($this->locationTypes);
     }
 
-    /**
-     * @return string[]
-     */
-    public function getLocationTypes()
+    /** @return string[] */
+    public function getLocationTypes(): array
     {
         return $this->locationTypes;
     }
 
-    /**
-     * @param string[] $locationTypes
-     */
-    public function setLocationTypes(array $locationTypes)
+    /** @param string[] $locationTypes */
+    public function setLocationTypes(array $locationTypes): void
     {
         $this->locationTypes = [];
         $this->addLocationTypes($locationTypes);
     }
 
-    /**
-     * @param string[] $locationTypes
-     */
-    public function addLocationTypes(array $locationTypes)
+    /** @param string[] $locationTypes */
+    public function addLocationTypes(array $locationTypes): void
     {
         foreach ($locationTypes as $locationType) {
             $this->addLocationType($locationType);
         }
     }
 
-    /**
-     * @param string $locationType
-     *
-     * @return bool
-     */
-    public function hasLocationType($locationType)
+    public function hasLocationType(string $locationType): bool
     {
         return in_array($locationType, $this->locationTypes, true);
     }
 
-    /**
-     * @param string $locationType
-     */
-    public function addLocationType($locationType)
+    public function addLocationType(string $locationType): void
     {
         if (!$this->hasLocationType($locationType)) {
             $this->locationTypes[] = $locationType;
         }
     }
 
-    /**
-     * @param string $locationType
-     */
-    public function removeLocationType($locationType)
+    public function removeLocationType(string $locationType): void
     {
         unset($this->locationTypes[array_search($locationType, $this->locationTypes, true)]);
         $this->locationTypes = empty($this->locationTypes) ? [] : array_values($this->locationTypes);
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function buildQuery()
+    public function buildQuery(): array
     {
         $query = [];
 

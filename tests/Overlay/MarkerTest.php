@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -25,24 +27,15 @@ use Ivory\GoogleMap\Utility\VariableAwareInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class MarkerTest extends TestCase
 {
-    /**
-     * @var Marker
-     */
+    /** @var Marker */
     private $marker;
 
-    /**
-     * @var Coordinate|MockObject
-     */
+    /** @var Coordinate|MockObject */
     private $position;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->marker = new Marker($this->position = $this->createCoordinateMock());
@@ -239,41 +232,31 @@ class MarkerTest extends TestCase
         $this->assertNull($this->marker->getInfoWindow());
     }
 
-    /**
-     * @return MockObject|Coordinate
-     */
+    /** @return MockObject|Coordinate */
     private function createCoordinateMock()
     {
         return $this->createMock(Coordinate::class);
     }
 
-    /**
-     * @return MockObject|Icon
-     */
+    /** @return MockObject|Icon */
     private function createIconMock()
     {
         return $this->createMock(Icon::class);
     }
 
-    /**
-     * @return MockObject|MarkerShape
-     */
+    /** @return MockObject|MarkerShape */
     private function createMarkerShapeMock()
     {
         return $this->createMock(MarkerShape::class);
     }
 
-    /**
-     * @return MockObject|InfoWindow
-     */
+    /** @return MockObject|InfoWindow */
     private function createInfoWindowMock()
     {
         return $this->createMock(InfoWindow::class);
     }
 
-    /**
-     * @return MockObject|Symbol
-     */
+    /** @return MockObject|Symbol */
     private function createSymbolMock()
     {
         return $this->createMock(Symbol::class);

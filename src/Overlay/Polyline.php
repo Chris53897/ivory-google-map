@@ -51,26 +51,20 @@ class Polyline implements ExtendableInterface, OptionsAwareInterface, StaticOpti
         return !empty($this->coordinates);
     }
 
-    /**
-     * @return Coordinate[]
-     */
+    /** @return Coordinate[] */
     public function getCoordinates(): array
     {
         return $this->coordinates;
     }
 
-    /**
-     * @param Coordinate[] $coordinates
-     */
+    /** @param Coordinate[] $coordinates */
     public function setCoordinates(array $coordinates): void
     {
         $this->coordinates = [];
         $this->addCoordinates($coordinates);
     }
 
-    /**
-     * @param Coordinate[] $coordinates
-     */
+    /** @param Coordinate[] $coordinates */
     public function addCoordinates(array $coordinates): void
     {
         foreach ($coordinates as $coordinate) {
@@ -99,26 +93,20 @@ class Polyline implements ExtendableInterface, OptionsAwareInterface, StaticOpti
         return !empty($this->iconSequences);
     }
 
-    /**
-     * @return IconSequence[]
-     */
+    /** @return IconSequence[] */
     public function getIconSequences(): array
     {
         return $this->iconSequences;
     }
 
-    /**
-     * @param IconSequence[] $iconSequences
-     */
+    /** @param IconSequence[] $iconSequences */
     public function setIconSequences(array $iconSequences): void
     {
         $this->iconSequences = [];
         $this->addIconSequences($iconSequences);
     }
 
-    /**
-     * @param IconSequence[] $iconSequences
-     */
+    /** @param IconSequence[] $iconSequences */
     public function addIconSequences(array $iconSequences): void
     {
         foreach ($iconSequences as $iconSequence) {

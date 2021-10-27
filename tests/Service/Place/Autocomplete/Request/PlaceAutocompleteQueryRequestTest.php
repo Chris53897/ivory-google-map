@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -15,24 +17,15 @@ use Ivory\GoogleMap\Service\Place\Autocomplete\Request\AbstractPlaceAutocomplete
 use Ivory\GoogleMap\Service\Place\Autocomplete\Request\PlaceAutocompleteQueryRequest;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class PlaceAutocompleteQueryRequestTest extends TestCase
 {
-    /**
-     * @var PlaceAutocompleteQueryRequest
-     */
+    /** @var PlaceAutocompleteQueryRequest */
     private $request;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $input;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->request = new PlaceAutocompleteQueryRequest($this->input = 'input');

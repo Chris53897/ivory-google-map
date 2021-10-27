@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -15,24 +17,15 @@ use Ivory\GoogleMap\Service\Base\Location\AddressLocation;
 use Ivory\GoogleMap\Service\Base\Location\LocationInterface;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class AddressLocationTest extends TestCase
 {
-    /**
-     * @var AddressLocation
-     */
+    /** @var AddressLocation */
     private $addressLocation;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $address;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->addressLocation = new AddressLocation($this->address = 'address');

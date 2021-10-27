@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -16,19 +18,12 @@ use Ivory\GoogleMap\Helper\Collector\Place\Event\AutocompleteDomEventOnceCollect
 use Ivory\GoogleMap\Place\Autocomplete;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class AutocompleteDomEventOnceCollectorTest extends TestCase
 {
-    /**
-     * @var AutocompleteDomEventOnceCollector
-     */
+    /** @var AutocompleteDomEventOnceCollector */
     private $domEventOnceCollector;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->domEventOnceCollector = new AutocompleteDomEventOnceCollector();

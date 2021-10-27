@@ -16,5 +16,6 @@ namespace Ivory\GoogleMap\Utility;
 interface VariableAwareInterface
 {
     public function getVariable(): ?string;
+
     public function setVariable(string $variable): void;
 }

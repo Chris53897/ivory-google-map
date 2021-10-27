@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -13,110 +15,79 @@ namespace Ivory\GoogleMap\Service\Elevation\Request;
 
 use Ivory\GoogleMap\Service\Base\Location\LocationInterface;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class PathElevationRequest implements ElevationRequestInterface
 {
-    /**
-     * @var LocationInterface[]
-     */
+    /** @var LocationInterface[] */
     private $paths = [];
 
-    /**
-     * @var int
-     */
+    /** @var int */
     private $samples;
 
-    /**
-     * @param LocationInterface[] $paths
-     * @param int                 $samples
-     */
-    public function __construct(array $paths, $samples = 3)
+    /** @param LocationInterface[] $paths */
+    public function __construct(array $paths, int $samples = 3)
     {
         $this->setPaths($paths);
         $this->setSamples($samples);
     }
 
-    /**
-     * @return bool
-     */
-    public function hasPaths()
+    public function hasPaths(): bool
     {
         return !empty($this->paths);
     }
 
-    /**
-     * @return LocationInterface[]
-     */
-    public function getPaths()
+    /** @return LocationInterface[] */
+    public function getPaths(): array
     {
         return $this->paths;
     }
 
-    /**
-     * @param LocationInterface[] $paths
-     */
-    public function setPaths(array $paths)
+    /** @param LocationInterface[] $paths */
+    public function setPaths(array $paths): void
     {
         $this->paths = [];
         $this->addPaths($paths);
     }
 
-    /**
-     * @param LocationInterface[] $paths
-     */
-    public function addPaths(array $paths)
+    /** @param LocationInterface[] $paths */
+    public function addPaths(array $paths): void
     {
         foreach ($paths as $path) {
             $this->addPath($path);
         }
     }
 
-    /**
-     * @return bool
-     */
-    public function hasPath(LocationInterface $path)
+    public function hasPath(LocationInterface $path): bool
     {
         return in_array($path, $this->paths, true);
     }
 
-    public function addPath(LocationInterface $path)
+    public function addPath(LocationInterface $path): void
     {
         if (!$this->hasPath($path)) {
             $this->paths[] = $path;
         }
     }
 
-    public function removePath(LocationInterface $path)
+    public function removePath(LocationInterface $path): void
     {
         unset($this->paths[array_search($path, $this->paths, true)]);
         $this->paths = empty($this->paths) ? [] : array_values($this->paths);
     }
 
-    /**
-     * @return int
-     */
-    public function getSamples()
+    public function getSamples(): int
     {
         return $this->samples;
     }
 
-    /**
-     * @param int $samples
-     */
-    public function setSamples($samples)
+    public function setSamples(int $samples): void
     {
         $this->samples = $samples;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function buildQuery()
+    public function buildQuery(): array
     {
         return [
-            'path' => implode('|', array_map(function (LocationInterface $path) {
+            'path' => implode('|', array_map(static function (LocationInterface $path) {
                 return $path->buildQuery();
             }, $this->paths)),
             'samples' => $this->samples,

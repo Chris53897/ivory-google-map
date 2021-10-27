@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,17 +13,12 @@
 
 namespace Ivory\GoogleMap\Service\Place\Base;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 final class PlaceScope
 {
-    const APP = 'APP';
-    const GOOGLE = 'GOOGLE';
+    public const APP    = 'APP';
+    public const GOOGLE = 'GOOGLE';
 
-    /**
-     * @codeCoverageIgnore
-     */
+    /** @codeCoverageIgnore */
     private function __construct()
     {
     }

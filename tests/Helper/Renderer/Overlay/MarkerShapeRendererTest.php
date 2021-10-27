@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -19,19 +21,12 @@ use Ivory\GoogleMap\Overlay\MarkerShapeType;
 use Ivory\JsonBuilder\JsonBuilder;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class MarkerShapeRendererTest extends TestCase
 {
-    /**
-     * @var MarkerShapeRenderer
-     */
+    /** @var MarkerShapeRenderer */
     private $markerShapeRenderer;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->markerShapeRenderer = new MarkerShapeRenderer(new Formatter(), new JsonBuilder());

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -14,34 +16,21 @@ namespace Ivory\Tests\GoogleMap\Service\Base;
 use Ivory\GoogleMap\Service\Base\Time;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class TimeTest extends TestCase
 {
-    /**
-     * @var Time
-     */
+    /** @var Time */
     private $time;
 
-    /**
-     * @var \DateTime
-     */
+    /** @var \DateTime */
     private $value;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $timeZone;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $text;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->time = new Time(

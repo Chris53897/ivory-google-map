@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,78 +13,52 @@
 
 namespace Ivory\GoogleMap\Service\Base;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
+use DateTime;
+
 class Time
 {
-    /**
-     * @var \DateTime
-     */
+    /** @var DateTime */
     private $value;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $timeZone;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $text;
 
-    /**
-     * @param string $timeZone
-     * @param string $text
-     */
-    public function __construct(\DateTime $value, $timeZone, $text)
+    public function __construct(DateTime $value, string $timeZone, string $text)
     {
         $this->setValue($value);
         $this->setTimeZone($timeZone);
         $this->setText($text);
     }
 
-    /**
-     * @return \DateTime
-     */
-    public function getValue()
+    public function getValue(): DateTime
     {
         return $this->value;
     }
 
-    public function setValue(\DateTime $value)
+    public function setValue(DateTime $value): void
     {
         $this->value = $value;
     }
 
-    /**
-     * @return string
-     */
-    public function getTimeZone()
+    public function getTimeZone(): string
     {
         return $this->timeZone;
     }
 
-    /**
-     * @param string $timeZone
-     */
-    public function setTimeZone($timeZone)
+    public function setTimeZone(string $timeZone): void
     {
         $this->timeZone = $timeZone;
     }
 
-    /**
-     * @return string
-     */
-    public function getText()
+    public function getText(): string
     {
         return $this->text;
     }
 
-    /**
-     * @param string $text
-     */
-    public function setText($text)
+    public function setText(string $text): void
     {
         $this->text = $text;
     }

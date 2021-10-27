@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -20,19 +22,12 @@ use Ivory\GoogleMap\Utility\VariableAwareInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class AutocompleteTest extends TestCase
 {
-    /**
-     * @var Autocomplete
-     */
+    /** @var Autocomplete */
     private $autocomplete;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->autocomplete = new Autocomplete();
@@ -259,17 +254,13 @@ class AutocompleteTest extends TestCase
         $this->assertEmpty($this->autocomplete->getLibraries());
     }
 
-    /**
-     * @return MockObject|EventManager
-     */
+    /** @return MockObject|EventManager */
     private function createEventManagerMock()
     {
         return $this->createMock(EventManager::class);
     }
 
-    /**
-     * @return MockObject|Bound
-     */
+    /** @return MockObject|Bound */
     private function createBoundMock()
     {
         return $this->createMock(Bound::class);

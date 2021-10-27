@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -12,8 +14,6 @@
 namespace Ivory\Tests\GoogleMap\Helper\Functional\Overlay;
 
 /**
- * @author GeLo <geloen.eric@gmail.com>
- *
  * @group functional
  */
 class MarkerInfoWindowFunctionalTest extends AbstractMarkerInfoWindowFunctionalTest

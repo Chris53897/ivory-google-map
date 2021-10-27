@@ -62,7 +62,7 @@ class CoordinateSubscriber extends AbstractSubscriber
     public function handleMap(MapEvent $event): void
     {
         $formatter = $this->getFormatter();
-        $map = $event->getMap();
+        $map       = $event->getMap();
 
         foreach ($this->coordinateCollector->collect($map) as $coordinate) {
             $event->addCode($formatter->renderContainerAssignment(
@@ -74,9 +74,7 @@ class CoordinateSubscriber extends AbstractSubscriber
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     public static function getSubscribedEvents(): array
     {
         return [MapEvents::JAVASCRIPT_BASE_COORDINATE => 'handleMap'];

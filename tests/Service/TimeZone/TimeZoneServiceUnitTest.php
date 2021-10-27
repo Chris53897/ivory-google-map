@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,19 +20,12 @@ use Ivory\Serializer\Context\Context;
 use Ivory\Tests\GoogleMap\Service\AbstractUnitServiceTest;
 use PHPUnit\Framework\MockObject\MockObject;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class TimeZoneServiceUnitTest extends AbstractUnitServiceTest
 {
-    /**
-     * @var TimeZoneService
-     */
+    /** @var TimeZoneService */
     private $service;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         parent::setUp();
@@ -105,17 +100,13 @@ class TimeZoneServiceUnitTest extends AbstractUnitServiceTest
         $this->assertSame($response, $this->service->process($request));
     }
 
-    /**
-     * @return MockObject|TimeZoneRequest
-     */
+    /** @return MockObject|TimeZoneRequest */
     private function createTimeZoneRequestMock()
     {
         return $this->createMock(TimeZoneRequest::class);
     }
 
-    /**
-     * @return MockObject|TimeZoneResponse
-     */
+    /** @return MockObject|TimeZoneResponse */
     private function createTimeZoneResponseMock()
     {
         return $this->createMock(TimeZoneResponse::class);

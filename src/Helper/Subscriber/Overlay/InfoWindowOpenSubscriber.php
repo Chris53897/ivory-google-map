@@ -47,7 +47,7 @@ class InfoWindowOpenSubscriber extends AbstractInfoWindowSubscriber
     public function handleMap(MapEvent $event): void
     {
         $formatter = $this->getFormatter();
-        $map = $event->getMap();
+        $map       = $event->getMap();
 
         foreach ($this->getInfoWindowCollector()->collect($map) as $infoWindow) {
             if ($infoWindow->isOpen()) {
@@ -56,9 +56,7 @@ class InfoWindowOpenSubscriber extends AbstractInfoWindowSubscriber
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     public static function getSubscribedEvents(): array
     {
         return [MapEvents::JAVASCRIPT_FINISH => 'handleMap'];

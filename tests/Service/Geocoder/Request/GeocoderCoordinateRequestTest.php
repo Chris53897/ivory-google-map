@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -17,24 +19,15 @@ use Ivory\GoogleMap\Service\Geocoder\Request\GeocoderCoordinateRequest;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class GeocoderCoordinateRequestTest extends TestCase
 {
-    /**
-     * @var GeocoderCoordinateRequest
-     */
+    /** @var GeocoderCoordinateRequest */
     private $request;
 
-    /**
-     * @var Coordinate|MockObject
-     */
+    /** @var Coordinate|MockObject */
     private $coordinate;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->request = new GeocoderCoordinateRequest($this->coordinate = $this->createCoordinateMock());
@@ -72,9 +65,7 @@ class GeocoderCoordinateRequestTest extends TestCase
         $this->assertSame(['latlng' => implode(',', [$latitude, $longitude])], $this->request->buildQuery());
     }
 
-    /**
-     * @return MockObject|Coordinate
-     */
+    /** @return MockObject|Coordinate */
     private function createCoordinateMock()
     {
         return $this->createMock(Coordinate::class);

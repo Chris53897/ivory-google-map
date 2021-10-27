@@ -48,7 +48,7 @@ class MarkerSubscriber extends AbstractMarkerSubscriber
     public function handleMap(MapEvent $event): void
     {
         $formatter = $this->getFormatter();
-        $map = $event->getMap();
+        $map       = $event->getMap();
         $markerMap = null;
 
         if (MarkerClusterType::DEFAULT_ === $map->getOverlayManager()->getMarkerCluster()->getType()) {
@@ -65,9 +65,7 @@ class MarkerSubscriber extends AbstractMarkerSubscriber
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     public static function getSubscribedEvents(): array
     {
         return [MapEvents::JAVASCRIPT_OVERLAY_MARKER => 'handleMap'];

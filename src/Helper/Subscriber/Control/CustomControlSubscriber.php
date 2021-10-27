@@ -62,16 +62,14 @@ class CustomControlSubscriber extends AbstractSubscriber
     public function handleMap(MapEvent $event): void
     {
         $formatter = $this->getFormatter();
-        $map = $event->getMap();
+        $map       = $event->getMap();
 
         foreach ($this->customControlCollector->collect($map) as $customControl) {
             $event->addCode($formatter->renderCode($this->customControlRenderer->render($customControl, $map)));
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     public static function getSubscribedEvents(): array
     {
         return [MapEvents::JAVASCRIPT_CONTROL_CUSTOM => 'handleMap'];

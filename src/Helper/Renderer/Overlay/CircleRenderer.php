@@ -21,7 +21,7 @@ class CircleRenderer extends AbstractJsonRenderer
 {
     public function render(Circle $circle, Map $map): string
     {
-        $formatter = $this->getFormatter();
+        $formatter   = $this->getFormatter();
         $jsonBuilder = $this->getJsonBuilder()
             ->setValue('[map]', $map->getVariable(), false)
             ->setValue('[center]', $circle->getCenter()->getVariable(), false)

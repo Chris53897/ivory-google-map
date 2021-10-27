@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -25,29 +27,18 @@ use Ivory\GoogleMap\Service\DistanceMatrix\Request\DistanceMatrixRequestInterfac
 use Ivory\GoogleMap\Service\RequestInterface;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <gelon.eric@gmail.com>
- */
 class DistanceMatrixRequestTest extends TestCase
 {
-    /**
-     * @var DistanceMatrixRequest
-     */
+    /** @var DistanceMatrixRequest */
     private $request;
 
-    /**
-     * @var string[]
-     */
+    /** @var string[] */
     private $origins;
 
-    /**
-     * @var string[]
-     */
+    /** @var string[] */
     private $destinations;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->request = new DistanceMatrixRequest(

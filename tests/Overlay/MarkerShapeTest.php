@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -16,29 +18,18 @@ use Ivory\GoogleMap\Overlay\MarkerShapeType;
 use Ivory\GoogleMap\Utility\VariableAwareInterface;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class MarkerShapeTest extends TestCase
 {
-    /**
-     * @var MarkerShape
-     */
+    /** @var MarkerShape */
     private $markerShape;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $type;
 
-    /**
-     * @var float[]
-     */
+    /** @var float[] */
     private $coordinates;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->markerShape = new MarkerShape(
@@ -80,9 +71,7 @@ class MarkerShapeTest extends TestCase
         }
     }
 
-    /**
-     * @return mixed[][]
-     */
+    /** @return mixed[][] */
     public function coordinatesProvider()
     {
         return [

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,15 +20,9 @@ use Ivory\GoogleMap\Service\Place\Search\Response\PlaceSearchResponseIterator;
 use Ivory\Serializer\Context\Context;
 use Ivory\Serializer\Naming\SnakeCaseNamingStrategy;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class PlaceSearchService extends AbstractPlaceSerializableService
 {
-    /**
-     * @return PlaceSearchResponseIterator
-     */
-    public function process(PlaceSearchRequestInterface $request)
+    public function process(PlaceSearchRequestInterface $request): PlaceSearchResponseIterator
     {
         $httpRequest = $this->createRequest($request);
         $httpResponse = $this->getClient()->sendRequest($httpRequest);

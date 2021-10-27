@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,65 +13,40 @@
 
 namespace Ivory\GoogleMap\Service\Place\Base;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class OpenClosePeriod
 {
-    /**
-     * @var int|null
-     */
+    /** @var int|null */
     private $day;
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $time;
 
-    /**
-     * @return bool
-     */
-    public function hasDay()
+    public function hasDay(): bool
     {
         return null !== $this->day;
     }
 
-    /**
-     * @return int|null
-     */
-    public function getDay()
+    public function getDay(): ?int
     {
         return $this->day;
     }
 
-    /**
-     * @param int|null $day
-     */
-    public function setDay($day)
+    public function setDay(?int $day): void
     {
         $this->day = $day;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasTime()
+    public function hasTime(): bool
     {
         return null !== $this->time;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getTime()
+    public function getTime(): ?string
     {
         return $this->time;
     }
 
-    /**
-     * @param string $time
-     */
-    public function setTime($time)
+    public function setTime(string $time): void
     {
         $this->time = $time;
     }

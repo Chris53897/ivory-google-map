@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -13,122 +15,87 @@ namespace Ivory\GoogleMap\Service\Place\Autocomplete\Response;
 
 use Ivory\GoogleMap\Service\Place\Autocomplete\Request\PlaceAutocompleteRequestInterface;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class PlaceAutocompleteResponse
 {
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $status;
 
-    /**
-     * @var PlaceAutocompleteRequestInterface|null
-     */
+    /** @var PlaceAutocompleteRequestInterface|null */
     private $request;
 
-    /**
-     * @var PlaceAutocompletePrediction[]
-     */
+    /** @var PlaceAutocompletePrediction[] */
     private $predictions = [];
 
-    /**
-     * @return bool
-     */
-    public function hasStatus()
+    public function hasStatus(): bool
     {
         return null !== $this->status;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getStatus()
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
-    /**
-     * @param string|null $status
-     */
-    public function setStatus($status)
+    public function setStatus(?string $status): void
     {
         $this->status = $status;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasRequest()
+    public function hasRequest(): bool
     {
         return null !== $this->request;
     }
 
-    /**
-     * @return PlaceAutocompleteRequestInterface|null
-     */
-    public function getRequest()
+    /** @return PlaceAutocompleteRequestInterface|null */
+    public function getRequest(): ?PlaceAutocompleteRequestInterface
     {
         return $this->request;
     }
 
-    public function setRequest(PlaceAutocompleteRequestInterface $request = null)
+    public function setRequest(PlaceAutocompleteRequestInterface $request = null): void
     {
         $this->request = $request;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasPredictions()
+    public function hasPredictions(): bool
     {
         return !empty($this->predictions);
     }
 
-    /**
-     * @return PlaceAutocompletePrediction[]
-     */
-    public function getPredictions()
+    /** @return PlaceAutocompletePrediction[] */
+    public function getPredictions(): array
     {
         return $this->predictions;
     }
 
-    /**
-     * @param PlaceAutocompletePrediction[] $predictions
-     */
-    public function setPredictions(array $predictions)
+    /** @param PlaceAutocompletePrediction[] $predictions */
+    public function setPredictions(array $predictions): void
     {
         $this->predictions = [];
         $this->addPredictions($predictions);
     }
 
-    /**
-     * @param PlaceAutocompletePrediction[] $predictions
-     */
-    public function addPredictions(array $predictions)
+    /** @param PlaceAutocompletePrediction[] $predictions */
+    public function addPredictions(array $predictions): void
     {
         foreach ($predictions as $prediction) {
             $this->addPrediction($prediction);
         }
     }
 
-    /**
-     * @return bool
-     */
-    public function hasPrediction(PlaceAutocompletePrediction $prediction)
+    public function hasPrediction(PlaceAutocompletePrediction $prediction): bool
     {
         return in_array($prediction, $this->predictions, true);
     }
 
-    public function addPrediction(PlaceAutocompletePrediction $prediction)
+    public function addPrediction(PlaceAutocompletePrediction $prediction): void
     {
         if (!$this->hasPrediction($prediction)) {
             $this->predictions[] = $prediction;
         }
     }
 
-    public function removePrediction(PlaceAutocompletePrediction $prediction)
+    public function removePrediction(PlaceAutocompletePrediction $prediction): void
     {
         unset($this->predictions[array_search($prediction, $this->predictions, true)]);
         $this->predictions = empty($this->predictions) ? [] : array_values($this->predictions);

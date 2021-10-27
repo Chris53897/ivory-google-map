@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,17 +13,12 @@
 
 namespace Ivory\GoogleMap\Service\Place\Search\Request;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 final class PlaceSearchRankBy
 {
-    const PROMINENCE = 'prominence';
-    const DISTANCE = 'distance';
+    public const PROMINENCE = 'prominence';
+    public const DISTANCE   = 'distance';
 
-    /**
-     * @codeCoverageIgnore
-     */
+    /** @codeCoverageIgnore */
     private function __construct()
     {
     }

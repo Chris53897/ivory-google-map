@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,7 +13,6 @@
 
 namespace Ivory\Tests\GoogleMap\Service\DistanceMatrix;
 
-use Http\Client\Common\Exception\ClientErrorException;
 use Ivory\GoogleMap\Base\Coordinate;
 use Ivory\GoogleMap\Service\Base\Avoid;
 use Ivory\GoogleMap\Service\Base\Location\AddressLocation;
@@ -28,19 +29,12 @@ use Ivory\GoogleMap\Service\DistanceMatrix\Response\DistanceMatrixRow;
 use Ivory\GoogleMap\Service\DistanceMatrix\Response\DistanceMatrixStatus;
 use Ivory\Tests\GoogleMap\Service\AbstractSerializableServiceTest;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class DistanceMatrixServiceTest extends AbstractSerializableServiceTest
 {
-    /**
-     * @var DistanceMatrixService
-     */
+    /** @var DistanceMatrixService */
     protected $service;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         if (!isset($_SERVER['API_KEY'])) {
@@ -205,17 +199,15 @@ class DistanceMatrixServiceTest extends AbstractSerializableServiceTest
      */
     public function testErrorRequest($format)
     {
-        $this->expectException(ClientErrorException::class);
-
         $this->service->setFormat($format);
         $this->service->setKey('invalid');
 
-        $this->service->process($this->createRequest());
+        $response = $this->service->process($this->createRequest());
+
+        $this->assertSame(DistanceMatrixStatus::REQUEST_DENIED, $response->getStatus());
     }
 
-    /**
-     * @return DistanceMatrixRequest
-     */
+    /** @return DistanceMatrixRequest */
     private function createRequest()
     {
         return new DistanceMatrixRequest(
@@ -231,10 +223,10 @@ class DistanceMatrixServiceTest extends AbstractSerializableServiceTest
     protected function assertDistanceMatrixResponse($response, $request)
     {
         $options = array_merge([
-            'origin_addresses'      => [],
+            'origin_addresses' => [],
             'destination_addresses' => [],
-            'rows'                  => [],
-        ], self::$journal->getData());
+            'rows' => [],
+        ], $this->journal->getData());
 
         $options['status'] = DistanceMatrixStatus::OK;
 
@@ -275,11 +267,11 @@ class DistanceMatrixServiceTest extends AbstractSerializableServiceTest
     private function assertDistanceMatrixElement($element, array $options = [])
     {
         $options = array_merge([
-            'status'              => DistanceMatrixElementStatus::OK,
-            'distance'            => [],
-            'duration'            => [],
+            'status' => DistanceMatrixElementStatus::OK,
+            'distance' => [],
+            'duration' => [],
             'duration_in_traffic' => [],
-            'fare'                => [],
+            'fare' => [],
         ], $options);
 
         $this->assertInstanceOf(DistanceMatrixElement::class, $element);
@@ -291,17 +283,13 @@ class DistanceMatrixServiceTest extends AbstractSerializableServiceTest
         $this->assertFare($element->getFare(), $options['fare']);
     }
 
-    /**
-     * @return \DateTime
-     */
+    /** @return \DateTime */
     private function getDepartureTime()
     {
         return $this->getDateTime('departure', '+1 hour');
     }
 
-    /**
-     * @return \DateTime
-     */
+    /** @return \DateTime */
     private function getArrivalTime()
     {
         return $this->getDateTime('arrival', '+4 hours');

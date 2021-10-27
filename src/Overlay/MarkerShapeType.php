@@ -15,13 +15,11 @@ namespace Ivory\GoogleMap\Overlay;
 
 final class MarkerShapeType
 {
-    public const POLY = 'poly';
-    public const CIRCLE = 'circle';
+    public const POLY      = 'poly';
+    public const CIRCLE    = 'circle';
     public const RECTANGLE = 'rect';
 
-    /**
-     * @codeCoverageIgnore
-     */
+    /** @codeCoverageIgnore */
     private function __construct()
     {
     }

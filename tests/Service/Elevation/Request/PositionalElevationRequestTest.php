@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,24 +20,15 @@ use Ivory\GoogleMap\Service\RequestInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class PositionalElevationRequestTest extends TestCase
 {
-    /**
-     * @var PositionalElevationRequest
-     */
+    /** @var PositionalElevationRequest */
     private $request;
 
-    /**
-     * @var LocationInterface[]|MockObject[]
-     */
+    /** @var LocationInterface[]|MockObject[] */
     private $locations;
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function setUp(): void
     {
         $this->locations = [$this->createLocationMock('first'), $this->createLocationMock('second')];
