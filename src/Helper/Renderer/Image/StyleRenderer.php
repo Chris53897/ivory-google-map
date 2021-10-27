@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,17 +13,9 @@
 
 namespace Ivory\GoogleMap\Helper\Renderer\Image;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class StyleRenderer
 {
-    /**
-     * @param mixed[] $style
-     *
-     * @return string
-     */
-    public function render(array $style)
+    public function render(array $style): string
     {
         $result = [];
 
@@ -40,13 +34,7 @@ class StyleRenderer
         return implode('|', $result);
     }
 
-    /**
-     * @param string $name
-     * @param string $value
-     *
-     * @return string
-     */
-    private function renderStyle($name, $value)
+    private function renderStyle(string $name, string $value): string
     {
         return $name.':'.$value;
     }

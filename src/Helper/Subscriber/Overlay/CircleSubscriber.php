@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,19 +20,12 @@ use Ivory\GoogleMap\Helper\Formatter\Formatter;
 use Ivory\GoogleMap\Helper\Renderer\Overlay\CircleRenderer;
 use Ivory\GoogleMap\Helper\Subscriber\AbstractSubscriber;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class CircleSubscriber extends AbstractSubscriber
 {
-    /**
-     * @var CircleCollector
-     */
+    /** @var CircleCollector */
     private $circleCollector;
 
-    /**
-     * @var CircleRenderer
-     */
+    /** @var CircleRenderer */
     private $circleRenderer;
 
     public function __construct(
@@ -44,33 +39,27 @@ class CircleSubscriber extends AbstractSubscriber
         $this->setCircleRenderer($circleRenderer);
     }
 
-    /**
-     * @return CircleCollector
-     */
-    public function getCircleCollector()
+    public function getCircleCollector(): CircleCollector
     {
         return $this->circleCollector;
     }
 
-    public function setCircleCollector(CircleCollector $circleCollector)
+    public function setCircleCollector(CircleCollector $circleCollector): void
     {
         $this->circleCollector = $circleCollector;
     }
 
-    /**
-     * @return CircleRenderer
-     */
-    public function getCircleRenderer()
+    public function getCircleRenderer(): CircleRenderer
     {
         return $this->circleRenderer;
     }
 
-    public function setCircleRenderer(CircleRenderer $circleRenderer)
+    public function setCircleRenderer(CircleRenderer $circleRenderer): void
     {
         $this->circleRenderer = $circleRenderer;
     }
 
-    public function handleMap(MapEvent $event)
+    public function handleMap(MapEvent $event): void
     {
         $formatter = $this->getFormatter();
         $map = $event->getMap();
@@ -88,7 +77,7 @@ class CircleSubscriber extends AbstractSubscriber
     /**
      * {@inheritdoc}
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [MapEvents::JAVASCRIPT_OVERLAY_CIRCLE => 'handleMap'];
     }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,36 +13,22 @@
 
 namespace Ivory\GoogleMap\Control;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class FullscreenControl
 {
-    /**
-     * @var string
-     */
+    /** @var string */
     private $position;
 
-    /**
-     * @param string $position
-     */
-    public function __construct($position = ControlPosition::RIGHT_TOP)
+    public function __construct(string $position = ControlPosition::RIGHT_TOP)
     {
         $this->setPosition($position);
     }
 
-    /**
-     * @return string
-     */
-    public function getPosition()
+    public function getPosition(): string
     {
         return $this->position;
     }
 
-    /**
-     * @param string $position
-     */
-    public function setPosition($position)
+    public function setPosition($position): void
     {
         $this->position = $position;
     }

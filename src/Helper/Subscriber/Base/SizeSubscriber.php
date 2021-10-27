@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,19 +20,12 @@ use Ivory\GoogleMap\Helper\Formatter\Formatter;
 use Ivory\GoogleMap\Helper\Renderer\Base\SizeRenderer;
 use Ivory\GoogleMap\Helper\Subscriber\AbstractSubscriber;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class SizeSubscriber extends AbstractSubscriber
 {
-    /**
-     * @var SizeCollector
-     */
+    /** @var SizeCollector */
     private $sizeCollector;
 
-    /**
-     * @var SizeRenderer
-     */
+    /** @var SizeRenderer */
     private $sizeRenderer;
 
     public function __construct(
@@ -44,33 +39,27 @@ class SizeSubscriber extends AbstractSubscriber
         $this->setSizeRenderer($sizeRenderer);
     }
 
-    /**
-     * @return SizeCollector
-     */
-    public function getSizeCollector()
+    public function getSizeCollector(): SizeCollector
     {
         return $this->sizeCollector;
     }
 
-    public function setSizeCollector(SizeCollector $sizeCollector)
+    public function setSizeCollector(SizeCollector $sizeCollector): void
     {
         $this->sizeCollector = $sizeCollector;
     }
 
-    /**
-     * @return SizeRenderer
-     */
-    public function getSizeRenderer()
+    public function getSizeRenderer(): SizeRenderer
     {
         return $this->sizeRenderer;
     }
 
-    public function setSizeRenderer(SizeRenderer $sizeRenderer)
+    public function setSizeRenderer(SizeRenderer $sizeRenderer): void
     {
         $this->sizeRenderer = $sizeRenderer;
     }
 
-    public function handleMap(MapEvent $event)
+    public function handleMap(MapEvent $event): void
     {
         $formatter = $this->getFormatter();
         $map = $event->getMap();
@@ -88,7 +77,7 @@ class SizeSubscriber extends AbstractSubscriber
     /**
      * {@inheritdoc}
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [MapEvents::JAVASCRIPT_BASE_SIZE => 'handleMap'];
     }

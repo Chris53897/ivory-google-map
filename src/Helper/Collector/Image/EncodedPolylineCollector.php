@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -15,17 +17,14 @@ use Ivory\GoogleMap\Helper\Collector\AbstractCollector;
 use Ivory\GoogleMap\Map;
 use Ivory\GoogleMap\Overlay\EncodedPolyline;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class EncodedPolylineCollector extends AbstractCollector
 {
     /**
      * @param EncodedPolyline[] $encodedPolylines
      *
-     * @return EncodedPolyline[][]
+     * @return EncodedPolyline[]
      */
-    public function collect(Map $map, array $encodedPolylines = [])
+    public function collect(Map $map, array $encodedPolylines = []): array
     {
         return $this->collectValues($map->getOverlayManager()->getEncodedPolylines(), $encodedPolylines);
     }

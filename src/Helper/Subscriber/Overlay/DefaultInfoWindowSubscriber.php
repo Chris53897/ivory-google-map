@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -20,14 +22,9 @@ use Ivory\GoogleMap\Helper\Renderer\Overlay\DefaultInfoWindowRenderer;
 use Ivory\GoogleMap\Map;
 use Ivory\GoogleMap\Overlay\InfoWindow;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class DefaultInfoWindowSubscriber extends AbstractInfoWindowSubscriber
 {
-    /**
-     * @var DefaultInfoWindowRenderer
-     */
+    /** @var DefaultInfoWindowRenderer */
     private $infoWindowRenderer;
 
     public function __construct(
@@ -40,20 +37,17 @@ class DefaultInfoWindowSubscriber extends AbstractInfoWindowSubscriber
         $this->setInfoWindowRenderer($infoWindowRenderer);
     }
 
-    /**
-     * @return DefaultInfoWindowRenderer
-     */
-    public function getInfoWindowRenderer()
+    public function getInfoWindowRenderer(): DefaultInfoWindowRenderer
     {
         return $this->infoWindowRenderer;
     }
 
-    public function setInfoWindowRenderer(DefaultInfoWindowRenderer $infoWindowRenderer)
+    public function setInfoWindowRenderer(DefaultInfoWindowRenderer $infoWindowRenderer): void
     {
         $this->infoWindowRenderer = $infoWindowRenderer;
     }
 
-    public function handleMap(MapEvent $event)
+    public function handleMap(MapEvent $event): void
     {
         $map = $event->getMap();
         $collector = $this->getInfoWindowCollector();
@@ -70,17 +64,12 @@ class DefaultInfoWindowSubscriber extends AbstractInfoWindowSubscriber
     /**
      * {@inheritdoc}
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [MapEvents::JAVASCRIPT_OVERLAY_INFO_WINDOW => 'handleMap'];
     }
 
-    /**
-     * @param bool $position
-     *
-     * @return string
-     */
-    private function renderInfoWindow(Map $map, InfoWindow $infoWindow, $position = true)
+    private function renderInfoWindow(Map $map, InfoWindow $infoWindow, bool $position = true): string
     {
         return $this->getFormatter()->renderContainerAssignment(
             $map,

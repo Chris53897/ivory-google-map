@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -14,40 +16,25 @@ namespace Ivory\GoogleMap\Layer;
 use Ivory\GoogleMap\Utility\OptionsAwareInterface;
 use Ivory\GoogleMap\Utility\OptionsAwareTrait;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class GeoJsonLayer implements OptionsAwareInterface
 {
     use OptionsAwareTrait;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $url;
 
-    /**
-     * @param string  $url
-     * @param mixed[] $options
-     */
-    public function __construct($url, array $options = [])
+    public function __construct(string $url, array $options = [])
     {
         $this->setUrl($url);
         $this->setOptions($options);
     }
 
-    /**
-     * @return string
-     */
-    public function getUrl()
+    public function getUrl(): string
     {
         return $this->url;
     }
 
-    /**
-     * @param string $url
-     */
-    public function setUrl($url)
+    public function setUrl(string $url): void
     {
         $this->url = $url;
     }

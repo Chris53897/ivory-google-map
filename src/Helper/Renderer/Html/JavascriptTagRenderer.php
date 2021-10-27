@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,19 +13,12 @@
 
 namespace Ivory\GoogleMap\Helper\Renderer\Html;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class JavascriptTagRenderer extends AbstractTagRenderer
 {
     /**
-     * @param string|null $code
      * @param string[]    $attributes
-     * @param bool        $newLine
-     *
-     * @return string
      */
-    public function render($code = null, array $attributes = [], $newLine = true)
+    public function render(string $code = null, array $attributes = [], bool $newLine = true): string
     {
         return $this->getTagRenderer()->render(
             'script',

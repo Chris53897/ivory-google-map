@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,102 +13,63 @@
 
 namespace Ivory\GoogleMap\Service;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 abstract class AbstractService
 {
-    /**
-     * @var string
-     */
+    /** @var string */
     private $url;
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $key;
 
-    /**
-     * @var BusinessAccount|null
-     */
+    /** @var BusinessAccount|null */
     private $businessAccount;
 
-    /**
-     * @param string $url
-     */
-    public function __construct($url)
+    public function __construct(string $url)
     {
         $this->setUrl($url);
     }
 
-    /**
-     * @return string
-     */
-    public function getUrl()
+    public function getUrl(): string
     {
         return $this->url;
     }
 
-    /**
-     * @param string $url
-     */
-    public function setUrl($url)
+    public function setUrl(string $url): void
     {
         $this->url = $url;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasKey()
+    public function hasKey(): bool
     {
         return null !== $this->key;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getKey()
+    public function getKey(): ?string
     {
         return $this->key;
     }
 
-    /**
-     * @param string|null $key
-     */
-    public function setKey($key)
+    public function setKey(?string $key): void
     {
         $this->key = $key;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasBusinessAccount()
+    public function hasBusinessAccount(): bool
     {
         return null !== $this->businessAccount;
     }
 
-    /**
-     * @return BusinessAccount
-     */
-    public function getBusinessAccount()
+    public function getBusinessAccount(): ?BusinessAccount
     {
         return $this->businessAccount;
     }
 
-    /**
-     * @param BusinessAccount $businessAccount
-     */
-    public function setBusinessAccount(BusinessAccount $businessAccount = null)
+    public function setBusinessAccount(BusinessAccount $businessAccount = null): void
     {
         $this->businessAccount = $businessAccount;
     }
 
-    /**
-     * @return string
-     */
-    protected function createUrl(RequestInterface $request)
+    protected function createUrl(RequestInterface $request): string
     {
         $query = $request->buildQuery();
 
@@ -123,10 +86,7 @@ abstract class AbstractService
         return $url;
     }
 
-    /**
-     * @return string
-     */
-    protected function createBaseUrl(RequestInterface $request)
+    protected function createBaseUrl(RequestInterface $request): string
     {
         $url = $this->getUrl();
 

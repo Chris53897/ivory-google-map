@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,29 +13,23 @@
 
 namespace Ivory\GoogleMap\Helper\Renderer;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
+use SplObjectStorage;
+
 class ApiInitRenderer extends AbstractRenderer
 {
     /**
-     * @param string   $name
      * @param string[] $sources
-     * @param string   $sourceCallback
-     * @param string   $requirementCallback
-     * @param bool     $newLine
-     *
-     * @return string
      */
     public function render(
-        $name,
-        \SplObjectStorage $callbacks,
-        \SplObjectStorage $requirements,
-        array $sources,
-        $sourceCallback,
-        $requirementCallback,
-        $newLine = true
-    ) {
+        string           $name,
+        SplObjectStorage $callbacks,
+        SplObjectStorage $requirements,
+        array            $sources,
+        string           $sourceCallback,
+        string           $requirementCallback,
+        bool             $newLine = true
+    ): string
+    {
         $formatter = $this->getFormatter();
         $separator = $formatter->renderSeparator();
         $codes = [];

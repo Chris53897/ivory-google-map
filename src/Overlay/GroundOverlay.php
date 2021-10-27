@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,60 +20,41 @@ use Ivory\GoogleMap\Utility\VariableAwareTrait;
 
 /**
  * @see http://code.google.com/apis/maps/documentation/javascript/reference.html#GroundOverlay
- *
- * @author GeLo <geloen.eric@gmail.com>
  */
 class GroundOverlay implements ExtendableInterface, OptionsAwareInterface
 {
     use OptionsAwareTrait;
     use VariableAwareTrait;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $url;
 
-    /**
-     * @var Bound
-     */
+    /** @var Bound */
     private $bound;
 
-    /**
-     * @param string  $url
-     * @param mixed[] $options
-     */
-    public function __construct($url, Bound $bound, array $options = [])
+    public function __construct(string $url, Bound $bound, array $options = [])
     {
         $this->setUrl($url);
         $this->setBound($bound);
         $this->addOptions($options);
     }
 
-    /**
-     * @return string
-     */
-    public function getUrl()
+    public function getUrl(): string
     {
         return $this->url;
     }
 
-    /**
-     * @param string $url
-     */
-    public function setUrl($url)
+    public function setUrl(string $url): void
     {
         $this->url = $url;
     }
 
-    /**
-     * @return Bound
-     */
-    public function getBound()
+    public function getBound(): Bound
     {
         return $this->bound;
     }
 
-    public function setBound(Bound $bound)
+    public function setBound(Bound $bound): void
     {
         $this->bound = $bound;
     }

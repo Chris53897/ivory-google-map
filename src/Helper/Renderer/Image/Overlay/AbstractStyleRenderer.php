@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,20 +13,12 @@
 
 namespace Ivory\GoogleMap\Helper\Renderer\Image\Overlay;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 abstract class AbstractStyleRenderer
 {
-    /**
-     * @param mixed[] $styles
-     *
-     * @return string
-     */
-    public function renderStyle(array $styles)
+    public function renderStyle(array $styles): string
     {
         if (empty($styles)) {
-            return;
+            return '';
         }
 
         $result = [];

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -16,15 +18,9 @@ use Ivory\GoogleMap\Map;
 use Ivory\GoogleMap\Overlay\InfoWindow;
 use Ivory\GoogleMap\Overlay\Marker;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class InfoWindowOpenRenderer extends AbstractRenderer
 {
-    /**
-     * @return string
-     */
-    public function render(InfoWindow $infoWindow, Map $map, Marker $marker = null)
+    public function render(InfoWindow $infoWindow, Map $map, Marker $marker = null): string
     {
         $arguments = [$map->getVariable()];
 

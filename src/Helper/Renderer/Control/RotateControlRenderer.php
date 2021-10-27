@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,19 +13,15 @@
 
 namespace Ivory\GoogleMap\Helper\Renderer\Control;
 
+use InvalidArgumentException;
 use Ivory\GoogleMap\Control\RotateControl;
 use Ivory\GoogleMap\Helper\Formatter\Formatter;
 use Ivory\GoogleMap\Helper\Renderer\AbstractJsonRenderer;
 use Ivory\JsonBuilder\JsonBuilder;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class RotateControlRenderer extends AbstractJsonRenderer implements ControlRendererInterface
 {
-    /**
-     * @var ControlPositionRenderer
-     */
+    /** @var ControlPositionRenderer */
     private $controlPositionRenderer;
 
     public function __construct(
@@ -36,26 +34,20 @@ class RotateControlRenderer extends AbstractJsonRenderer implements ControlRende
         $this->setControlPositionRenderer($controlPositionRenderer);
     }
 
-    /**
-     * @return ControlPositionRenderer
-     */
-    public function getControlPositionRenderer()
+    public function getControlPositionRenderer(): ControlPositionRenderer
     {
         return $this->controlPositionRenderer;
     }
 
-    public function setControlPositionRenderer(ControlPositionRenderer $controlPositionRenderer)
+    public function setControlPositionRenderer(ControlPositionRenderer $controlPositionRenderer): void
     {
         $this->controlPositionRenderer = $controlPositionRenderer;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function render($control)
+    public function render(object $control): string
     {
         if (!$control instanceof RotateControl) {
-            throw new \InvalidArgumentException(sprintf('Expected a "%s", got "%s".', RotateControl::class, is_object($control) ? get_class($control) : gettype($control)));
+            throw new InvalidArgumentException(sprintf('Expected a "%s", got "%s".', RotateControl::class, is_object($control) ? get_class($control) : gettype($control)));
         }
 
         return $this->getJsonBuilder()

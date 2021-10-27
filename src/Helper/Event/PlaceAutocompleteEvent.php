@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -13,14 +15,9 @@ namespace Ivory\GoogleMap\Helper\Event;
 
 use Ivory\GoogleMap\Place\Autocomplete;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class PlaceAutocompleteEvent extends AbstractEvent
 {
-    /**
-     * @var Autocomplete
-     */
+    /** @var Autocomplete */
     private $autocomplete;
 
     public function __construct(Autocomplete $autocomplete)
@@ -28,10 +25,7 @@ class PlaceAutocompleteEvent extends AbstractEvent
         $this->autocomplete = $autocomplete;
     }
 
-    /**
-     * @return Autocomplete
-     */
-    public function getAutocomplete()
+    public function getAutocomplete(): Autocomplete
     {
         return $this->autocomplete;
     }

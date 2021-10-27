@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -13,17 +15,9 @@ namespace Ivory\GoogleMap\Helper\Renderer\Image\Overlay;
 
 use Ivory\GoogleMap\Utility\OptionsAwareInterface;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 abstract class AbstractPolylineStyleRenderer extends AbstractStyleRenderer
 {
-    /**
-     * @param mixed[] $styles
-     *
-     * @return string
-     */
-    public function renderPolylineStyle(array $styles, OptionsAwareInterface $polyline)
+    public function renderPolylineStyle(array $styles, OptionsAwareInterface $polyline): string
     {
         if (!isset($styles['geodesic']) && $polyline->hasOption('geodisc')) {
             $styles['geodesic'] = $polyline->getOption('geodisc');

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,19 +20,12 @@ use Ivory\GoogleMap\Helper\Formatter\Formatter;
 use Ivory\GoogleMap\Helper\Renderer\Layer\KmlLayerRenderer;
 use Ivory\GoogleMap\Helper\Subscriber\AbstractSubscriber;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class KmlLayerSubscriber extends AbstractSubscriber
 {
-    /**
-     * @var KmlLayerCollector
-     */
+    /** @var KmlLayerCollector */
     private $kmlLayerCollector;
 
-    /**
-     * @var KmlLayerRenderer
-     */
+    /** @var KmlLayerRenderer */
     private $kmlLayerRenderer;
 
     public function __construct(
@@ -44,33 +39,27 @@ class KmlLayerSubscriber extends AbstractSubscriber
         $this->setKmlLayerRenderer($kmlLayerRenderer);
     }
 
-    /**
-     * @return KmlLayerCollector
-     */
-    public function getKmlLayerCollector()
+    public function getKmlLayerCollector(): KmlLayerCollector
     {
         return $this->kmlLayerCollector;
     }
 
-    public function setKmlLayerCollector(KmlLayerCollector $kmlLayerCollector)
+    public function setKmlLayerCollector(KmlLayerCollector $kmlLayerCollector): void
     {
         $this->kmlLayerCollector = $kmlLayerCollector;
     }
 
-    /**
-     * @return KmlLayerRenderer
-     */
-    public function getKmlLayerRenderer()
+    public function getKmlLayerRenderer(): KmlLayerRenderer
     {
         return $this->kmlLayerRenderer;
     }
 
-    public function setKmlLayerRenderer(KmlLayerRenderer $kmlLayerRenderer)
+    public function setKmlLayerRenderer(KmlLayerRenderer $kmlLayerRenderer): void
     {
         $this->kmlLayerRenderer = $kmlLayerRenderer;
     }
 
-    public function handleMap(MapEvent $event)
+    public function handleMap(MapEvent $event): void
     {
         $formatter = $this->getFormatter();
         $map = $event->getMap();
@@ -88,7 +77,7 @@ class KmlLayerSubscriber extends AbstractSubscriber
     /**
      * {@inheritdoc}
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [MapEvents::JAVASCRIPT_LAYER_KML_LAYER => 'handleMap'];
     }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,66 +13,47 @@
 
 namespace Ivory\GoogleMap\Service;
 
-use Http\Client\HttpClient;
-use Http\Message\MessageFactory;
-use Psr\Http\Message\RequestInterface as PsrRequestInterface;
+use Psr\Http\Client\ClientInterface;
+use Psr\Http\Message\RequestFactoryInterface;
+use Psr\Http\Message\RequestInterface;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 abstract class AbstractHttpService extends AbstractService
 {
-    /**
-     * @var HttpClient
-     */
+    /** @var ClientInterface */
     private $client;
 
-    /**
-     * @var MessageFactory
-     */
+    /** @var RequestFactoryInterface */
     private $messageFactory;
 
-    /**
-     * @param string $url
-     */
-    public function __construct($url, HttpClient $client, MessageFactory $messageFactory)
+    public function __construct(string $url, ClientInterface $client, RequestFactoryInterface $messageFactory)
     {
         parent::__construct($url);
 
-        $this->setClient($client);
-        $this->setMessageFactory($messageFactory);
+        $this->client = $client;
+        $this->messageFactory = $messageFactory;
     }
 
-    /**
-     * @return HttpClient
-     */
-    public function getClient()
+    public function getClient(): ClientInterface
     {
         return $this->client;
     }
 
-    public function setClient(HttpClient $client)
+    public function setClient(ClientInterface $client): void
     {
         $this->client = $client;
     }
 
-    /**
-     * @return MessageFactory
-     */
-    public function getMessageFactory()
+    public function getMessageFactory(): RequestFactoryInterface
     {
         return $this->messageFactory;
     }
 
-    public function setMessageFactory(MessageFactory $messageFactory)
+    public function setMessageFactory(RequestFactoryInterface $messageFactory): void
     {
         $this->messageFactory = $messageFactory;
     }
 
-    /**
-     * @return PsrRequestInterface
-     */
-    protected function createRequest(RequestInterface $request)
+    protected function createRequest(\Ivory\GoogleMap\Service\RequestInterface $request): RequestInterface
     {
         return $this->messageFactory->createRequest('GET', $this->createUrl($request));
     }

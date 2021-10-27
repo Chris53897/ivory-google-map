@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,19 +20,12 @@ use Ivory\GoogleMap\Helper\Formatter\Formatter;
 use Ivory\GoogleMap\Helper\Renderer\Event\EventOnceRenderer;
 use Ivory\GoogleMap\Helper\Subscriber\AbstractSubscriber;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class AutocompleteEventOnceSubscriber extends AbstractSubscriber
 {
-    /**
-     * @var AutocompleteEventOnceCollector
-     */
+    /** @var AutocompleteEventOnceCollector */
     private $eventOnceCollector;
 
-    /**
-     * @var EventOnceRenderer
-     */
+    /** @var EventOnceRenderer */
     private $eventOnceRenderer;
 
     public function __construct(
@@ -44,33 +39,27 @@ class AutocompleteEventOnceSubscriber extends AbstractSubscriber
         $this->setEventOnceRenderer($eventOnceRenderer);
     }
 
-    /**
-     * @return AutocompleteEventOnceCollector
-     */
-    public function getEventOnceCollector()
+    public function getEventOnceCollector(): AutocompleteEventOnceCollector
     {
         return $this->eventOnceCollector;
     }
 
-    public function setEventOnceCollector(AutocompleteEventOnceCollector $eventOnceCollector)
+    public function setEventOnceCollector(AutocompleteEventOnceCollector $eventOnceCollector): void
     {
         $this->eventOnceCollector = $eventOnceCollector;
     }
 
-    /**
-     * @return EventOnceRenderer
-     */
-    public function getEventOnceRenderer()
+    public function getEventOnceRenderer(): EventOnceRenderer
     {
         return $this->eventOnceRenderer;
     }
 
-    public function setEventOnceRenderer(EventOnceRenderer $eventOnceRenderer)
+    public function setEventOnceRenderer(EventOnceRenderer $eventOnceRenderer): void
     {
         $this->eventOnceRenderer = $eventOnceRenderer;
     }
 
-    public function handleAutocomplete(PlaceAutocompleteEvent $event)
+    public function handleAutocomplete(PlaceAutocompleteEvent $event): void
     {
         $formatter = $this->getFormatter();
         $autocomplete = $event->getAutocomplete();
@@ -88,7 +77,7 @@ class AutocompleteEventOnceSubscriber extends AbstractSubscriber
     /**
      * {@inheritdoc}
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [PlaceAutocompleteEvents::JAVASCRIPT_EVENT_EVENT_ONCE => 'handleAutocomplete'];
     }

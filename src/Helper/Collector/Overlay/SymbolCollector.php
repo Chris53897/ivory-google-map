@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -15,19 +17,12 @@ use Ivory\GoogleMap\Helper\Collector\AbstractCollector;
 use Ivory\GoogleMap\Map;
 use Ivory\GoogleMap\Overlay\Symbol;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class SymbolCollector extends AbstractCollector
 {
-    /**
-     * @var MarkerCollector
-     */
+    /** @var MarkerCollector */
     private $markerCollector;
 
-    /**
-     * @var IconSequenceCollector
-     */
+    /** @var IconSequenceCollector */
     private $iconSequenceCollector;
 
     public function __construct(MarkerCollector $markerCollector, IconSequenceCollector $iconSequenceCollector)
@@ -36,28 +31,22 @@ class SymbolCollector extends AbstractCollector
         $this->setIconSequenceCollector($iconSequenceCollector);
     }
 
-    /**
-     * @return MarkerCollector
-     */
-    public function getMarkerCollector()
+    public function getMarkerCollector(): MarkerCollector
     {
         return $this->markerCollector;
     }
 
-    public function setMarkerCollector(MarkerCollector $markerCollector)
+    public function setMarkerCollector(MarkerCollector $markerCollector): void
     {
         $this->markerCollector = $markerCollector;
     }
 
-    /**
-     * @return IconSequenceCollector
-     */
-    public function getIconSequenceCollector()
+    public function getIconSequenceCollector(): IconSequenceCollector
     {
         return $this->iconSequenceCollector;
     }
 
-    public function setIconSequenceCollector(IconSequenceCollector $iconSequenceCollector)
+    public function setIconSequenceCollector(IconSequenceCollector $iconSequenceCollector): void
     {
         $this->iconSequenceCollector = $iconSequenceCollector;
     }
@@ -67,7 +56,7 @@ class SymbolCollector extends AbstractCollector
      *
      * @return Symbol[]
      */
-    public function collect(Map $map, array $symbols = [])
+    public function collect(Map $map, array $symbols = []): array
     {
         foreach ($this->markerCollector->collect($map) as $marker) {
             if ($marker->hasSymbol()) {

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -15,9 +17,6 @@ use Ivory\GoogleMap\Helper\Collector\AbstractCollector;
 use Ivory\GoogleMap\Map;
 use Ivory\GoogleMap\Overlay\GroundOverlay;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class GroundOverlayCollector extends AbstractCollector
 {
     /**
@@ -25,7 +24,7 @@ class GroundOverlayCollector extends AbstractCollector
      *
      * @return GroundOverlay[]
      */
-    public function collect(Map $map, array $groundOverlays = [])
+    public function collect(Map $map, array $groundOverlays = []): array
     {
         return $this->collectValues($map->getOverlayManager()->getGroundOverlays(), $groundOverlays);
     }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -15,14 +17,9 @@ use Ivory\GoogleMap\Helper\Formatter\Formatter;
 use Ivory\GoogleMap\Helper\Renderer\Utility\RequirementRenderer;
 use Ivory\JsonBuilder\JsonBuilder;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class InfoBoxRenderer extends AbstractInfoWindowRenderer
 {
-    /**
-     * @var RequirementRenderer
-     */
+    /** @var RequirementRenderer */
     private $requirementRenderer;
 
     public function __construct(
@@ -35,47 +32,32 @@ class InfoBoxRenderer extends AbstractInfoWindowRenderer
         $this->setRequirementRenderer($requirementRenderer);
     }
 
-    /**
-     * @return RequirementRenderer
-     */
-    public function getRequirementRenderer()
+    public function getRequirementRenderer(): RequirementRenderer
     {
         return $this->requirementRenderer;
     }
 
-    public function setRequirementRenderer(RequirementRenderer $requirementRenderer)
+    public function setRequirementRenderer(RequirementRenderer $requirementRenderer): void
     {
         $this->requirementRenderer = $requirementRenderer;
     }
 
-    /**
-     * @return string
-     */
-    public function renderSource()
+    public function renderSource(): string
     {
         return 'https://cdn.rawgit.com/googlemaps/v3-utility-library/master/infobox/src/infobox_packed.js';
     }
 
-    /**
-     * @return string
-     */
-    public function renderRequirement()
+    public function renderRequirement(): string
     {
         return $this->requirementRenderer->render($this->getClass());
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    protected function getClass()
+    protected function getClass(): string
     {
         return 'InfoBox';
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    protected function getNamespace()
+    protected function getNamespace(): bool
     {
         return false;
     }

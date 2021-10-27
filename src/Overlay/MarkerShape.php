@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -16,53 +18,37 @@ use Ivory\GoogleMap\Utility\VariableAwareTrait;
 
 /**
  * @see http://code.google.com/apis/maps/documentation/javascript/reference.html#MarkerShape
- *
- * @author GeLo <geloen.eric@gmail.com>
  */
 class MarkerShape implements VariableAwareInterface
 {
     use VariableAwareTrait;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $type;
 
-    /**
-     * @var float[]
-     */
+    /** @var float[] */
     private $coordinates = [];
 
     /**
-     * @param string  $type
      * @param float[] $coordinates
      */
-    public function __construct($type, array $coordinates)
+    public function __construct(string $type, array $coordinates)
     {
         $this->setType($type);
         $this->addCoordinates($coordinates);
     }
 
-    /**
-     * @return string
-     */
-    public function getType()
+    public function getType(): string
     {
         return $this->type;
     }
 
-    /**
-     * @param string $type
-     */
-    public function setType($type)
+    public function setType(string $type): void
     {
         $this->type = $type;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasCoordinates()
+    public function hasCoordinates(): bool
     {
         return !empty($this->coordinates);
     }
@@ -70,7 +56,7 @@ class MarkerShape implements VariableAwareInterface
     /**
      * @return float[]
      */
-    public function getCoordinates()
+    public function getCoordinates(): array
     {
         return $this->coordinates;
     }
@@ -78,7 +64,7 @@ class MarkerShape implements VariableAwareInterface
     /**
      * @param float[] $coordinates
      */
-    public function setCoordinates(array $coordinates)
+    public function setCoordinates(array $coordinates): void
     {
         $this->coordinates = [];
         $this->addCoordinates($coordinates);
@@ -87,27 +73,19 @@ class MarkerShape implements VariableAwareInterface
     /**
      * @param float[] $coordinates
      */
-    public function addCoordinates(array $coordinates)
+    public function addCoordinates(array $coordinates): void
     {
         foreach ($coordinates as $coordinate) {
             $this->addCoordinate($coordinate);
         }
     }
 
-    /**
-     * @param float $coordinate
-     *
-     * @return bool
-     */
-    public function hasCoordinate($coordinate)
+    public function hasCoordinate(float $coordinate): bool
     {
         return in_array($coordinate, $this->coordinates, true);
     }
 
-    /**
-     * @param float $coordinate
-     */
-    public function addCoordinate($coordinate)
+    public function addCoordinate(float $coordinate): void
     {
         $this->coordinates[] = $coordinate;
     }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -17,14 +19,9 @@ use Ivory\GoogleMap\Map;
 use Ivory\GoogleMap\Overlay\Marker;
 use Ivory\JsonBuilder\JsonBuilder;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class MarkerRenderer extends AbstractJsonRenderer
 {
-    /**
-     * @var AnimationRenderer
-     */
+    /** @var AnimationRenderer */
     private $animationRenderer;
 
     public function __construct(
@@ -37,23 +34,17 @@ class MarkerRenderer extends AbstractJsonRenderer
         $this->setAnimationRenderer($animationRenderer);
     }
 
-    /**
-     * @return AnimationRenderer
-     */
-    public function getAnimationRenderer()
+    public function getAnimationRenderer(): AnimationRenderer
     {
         return $this->animationRenderer;
     }
 
-    public function setAnimationRenderer(AnimationRenderer $animationRenderer)
+    public function setAnimationRenderer(AnimationRenderer $animationRenderer): void
     {
         $this->animationRenderer = $animationRenderer;
     }
 
-    /**
-     * @return string
-     */
-    public function render(Marker $marker, Map $map = null)
+    public function render(Marker $marker, Map $map = null): string
     {
         $formatter = $this->getFormatter();
         $jsonBuilder = $this->getJsonBuilder()

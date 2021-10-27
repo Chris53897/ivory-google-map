@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,14 +20,9 @@ use Ivory\GoogleMap\Map;
 use Ivory\GoogleMap\Overlay\MarkerCluster;
 use Ivory\JsonBuilder\JsonBuilder;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class MarkerClustererRenderer extends AbstractJsonRenderer
 {
-    /**
-     * @var RequirementRenderer
-     */
+    /** @var RequirementRenderer */
     private $requirementRenderer;
 
     public function __construct(
@@ -38,25 +35,17 @@ class MarkerClustererRenderer extends AbstractJsonRenderer
         $this->setRequirementRenderer($requirementRenderer);
     }
 
-    /**
-     * @return RequirementRenderer
-     */
-    public function getRequirementRenderer()
+    public function getRequirementRenderer(): RequirementRenderer
     {
         return $this->requirementRenderer;
     }
 
-    public function setRequirementRenderer(RequirementRenderer $requirementRenderer)
+    public function setRequirementRenderer(RequirementRenderer $requirementRenderer): void
     {
         $this->requirementRenderer = $requirementRenderer;
     }
 
-    /**
-     * @param string $markers
-     *
-     * @return string
-     */
-    public function render(MarkerCluster $markerCluster, Map $map, $markers)
+    public function render(MarkerCluster $markerCluster, Map $map, string $markers): string
     {
         $options = $markerCluster->getOptions();
 
@@ -74,18 +63,12 @@ class MarkerClustererRenderer extends AbstractJsonRenderer
         ], false));
     }
 
-    /**
-     * @return string
-     */
-    public function renderSource()
+    public function renderSource(): string
     {
         return 'https://cdn.rawgit.com/googlemaps/js-marker-clusterer/gh-pages/src/markerclusterer.js';
     }
 
-    /**
-     * @return string
-     */
-    public function renderRequirement()
+    public function renderRequirement(): string
     {
         return $this->requirementRenderer->render('MarkerClusterer');
     }

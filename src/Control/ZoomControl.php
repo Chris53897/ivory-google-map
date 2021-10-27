@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -13,59 +15,37 @@ namespace Ivory\GoogleMap\Control;
 
 /**
  * @see http://code.google.com/apis/maps/documentation/javascript/reference.html#ZoomControlOptions
- *
- * @author GeLo <geloen.eric@gmail.com>
  */
 class ZoomControl
 {
-    /**
-     * @var string
-     */
+    /** @var string */
     private $position;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $style;
 
-    /**
-     * @param string $position
-     * @param string $style
-     */
-    public function __construct($position = ControlPosition::TOP_LEFT, $style = ZoomControlStyle::DEFAULT_)
+    public function __construct(string $position = ControlPosition::TOP_LEFT, string $style = ZoomControlStyle::DEFAULT_)
     {
         $this->setPosition($position);
         $this->setStyle($style);
     }
 
-    /**
-     * @return string
-     */
-    public function getPosition()
+    public function getPosition(): string
     {
         return $this->position;
     }
 
-    /**
-     * @param string $position
-     */
-    public function setPosition($position)
+    public function setPosition(string $position): void
     {
         $this->position = $position;
     }
 
-    /**
-     * @return string
-     */
-    public function getStyle()
+    public function getStyle(): string
     {
         return $this->style;
     }
 
-    /**
-     * @param string $style
-     */
-    public function setStyle($style)
+    public function setStyle(string $style): void
     {
         $this->style = $style;
     }

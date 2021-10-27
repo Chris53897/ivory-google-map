@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -15,16 +17,9 @@ use Ivory\GoogleMap\Helper\Collector\Overlay\MarkerCollector;
 use Ivory\GoogleMap\Helper\Formatter\Formatter;
 use Ivory\GoogleMap\Helper\Subscriber\AbstractSubscriber;
 
-/**
- * Marker subscriber.
- *
- * @author GeLo <geloen.eric@gmail.com>
- */
 abstract class AbstractMarkerSubscriber extends AbstractSubscriber
 {
-    /**
-     * @var MarkerCollector
-     */
+    /** @var MarkerCollector */
     private $markerCollector;
 
     public function __construct(Formatter $formatter, MarkerCollector $markerCollector)
@@ -34,15 +29,12 @@ abstract class AbstractMarkerSubscriber extends AbstractSubscriber
         $this->setMarkerCollector($markerCollector);
     }
 
-    /**
-     * @return MarkerCollector
-     */
-    public function getMarkerCollector()
+    public function getMarkerCollector(): MarkerCollector
     {
         return $this->markerCollector;
     }
 
-    public function setMarkerCollector(MarkerCollector $markerCollector)
+    public function setMarkerCollector(MarkerCollector $markerCollector): void
     {
         $this->markerCollector = $markerCollector;
     }

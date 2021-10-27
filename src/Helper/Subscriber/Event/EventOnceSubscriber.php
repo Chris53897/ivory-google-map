@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,19 +20,12 @@ use Ivory\GoogleMap\Helper\Formatter\Formatter;
 use Ivory\GoogleMap\Helper\Renderer\Event\EventOnceRenderer;
 use Ivory\GoogleMap\Helper\Subscriber\AbstractSubscriber;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class EventOnceSubscriber extends AbstractSubscriber
 {
-    /**
-     * @var EventOnceCollector
-     */
+    /** @var EventOnceCollector */
     private $eventOnceCollector;
 
-    /**
-     * @var EventOnceRenderer
-     */
+    /** @var EventOnceRenderer */
     private $eventOnceRenderer;
 
     public function __construct(
@@ -44,33 +39,27 @@ class EventOnceSubscriber extends AbstractSubscriber
         $this->setEventOnceRenderer($eventOnceRenderer);
     }
 
-    /**
-     * @return EventOnceCollector
-     */
-    public function getEventOnceCollector()
+    public function getEventOnceCollector(): EventOnceCollector
     {
         return $this->eventOnceCollector;
     }
 
-    public function setEventOnceCollector(EventOnceCollector $eventOnceCollector)
+    public function setEventOnceCollector(EventOnceCollector $eventOnceCollector): void
     {
         $this->eventOnceCollector = $eventOnceCollector;
     }
 
-    /**
-     * @return EventOnceRenderer
-     */
-    public function getEventOnceRenderer()
+    public function getEventOnceRenderer(): EventOnceRenderer
     {
         return $this->eventOnceRenderer;
     }
 
-    public function setEventOnceRenderer(EventOnceRenderer $eventOnceRenderer)
+    public function setEventOnceRenderer(EventOnceRenderer $eventOnceRenderer): void
     {
         $this->eventOnceRenderer = $eventOnceRenderer;
     }
 
-    public function handleMap(MapEvent $event)
+    public function handleMap(MapEvent $event): void
     {
         $formatter = $this->getFormatter();
         $map = $event->getMap();
@@ -88,7 +77,7 @@ class EventOnceSubscriber extends AbstractSubscriber
     /**
      * {@inheritdoc}
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [MapEvents::JAVASCRIPT_EVENT_EVENT_ONCE => 'handleMap'];
     }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -15,9 +17,6 @@ use Ivory\GoogleMap\Helper\Collector\AbstractCollector;
 use Ivory\GoogleMap\Map;
 use Ivory\GoogleMap\Overlay\Rectangle;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class RectangleCollector extends AbstractCollector
 {
     /**
@@ -25,7 +24,7 @@ class RectangleCollector extends AbstractCollector
      *
      * @return Rectangle[]
      */
-    public function collect(Map $map, array $rectangles = [])
+    public function collect(Map $map, array $rectangles = []): array
     {
         return $this->collectValues($map->getOverlayManager()->getRectangles(), $rectangles);
     }

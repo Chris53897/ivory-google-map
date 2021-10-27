@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -13,15 +15,9 @@ namespace Ivory\GoogleMap\Helper\Renderer\Image\Base;
 
 use Ivory\GoogleMap\Base\Point;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class PointRenderer
 {
-    /**
-     * @return string
-     */
-    public function render(Point $point)
+    public function render(Point $point): string
     {
         return $point->getX().','.$point->getY();
     }

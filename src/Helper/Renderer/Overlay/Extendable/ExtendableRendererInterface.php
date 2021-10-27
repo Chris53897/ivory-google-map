@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -14,13 +16,7 @@ namespace Ivory\GoogleMap\Helper\Renderer\Overlay\Extendable;
 use Ivory\GoogleMap\Base\Bound;
 use Ivory\GoogleMap\Overlay\ExtendableInterface;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 interface ExtendableRendererInterface
 {
-    /**
-     * @return string
-     */
-    public function render(ExtendableInterface $extendable, Bound $bound);
+    public function render(ExtendableInterface $extendable, Bound $bound): string;
 }

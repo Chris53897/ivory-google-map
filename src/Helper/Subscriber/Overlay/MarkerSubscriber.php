@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,14 +20,9 @@ use Ivory\GoogleMap\Helper\Formatter\Formatter;
 use Ivory\GoogleMap\Helper\Renderer\Overlay\MarkerRenderer;
 use Ivory\GoogleMap\Overlay\MarkerClusterType;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class MarkerSubscriber extends AbstractMarkerSubscriber
 {
-    /**
-     * @var MarkerRenderer
-     */
+    /** @var MarkerRenderer */
     private $markerRenderer;
 
     public function __construct(
@@ -38,20 +35,17 @@ class MarkerSubscriber extends AbstractMarkerSubscriber
         $this->setMarkerRenderer($markerRenderer);
     }
 
-    /**
-     * @return MarkerRenderer
-     */
-    public function getMarkerRenderer()
+    public function getMarkerRenderer(): MarkerRenderer
     {
         return $this->markerRenderer;
     }
 
-    public function setMarkerRenderer(MarkerRenderer $markerRenderer)
+    public function setMarkerRenderer(MarkerRenderer $markerRenderer): void
     {
         $this->markerRenderer = $markerRenderer;
     }
 
-    public function handleMap(MapEvent $event)
+    public function handleMap(MapEvent $event): void
     {
         $formatter = $this->getFormatter();
         $map = $event->getMap();
@@ -74,7 +68,7 @@ class MarkerSubscriber extends AbstractMarkerSubscriber
     /**
      * {@inheritdoc}
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [MapEvents::JAVASCRIPT_OVERLAY_MARKER => 'handleMap'];
     }

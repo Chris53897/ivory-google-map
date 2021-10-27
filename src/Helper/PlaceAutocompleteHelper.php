@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -15,41 +17,24 @@ use Ivory\GoogleMap\Helper\Event\PlaceAutocompleteEvent;
 use Ivory\GoogleMap\Helper\Event\PlaceAutocompleteEvents;
 use Ivory\GoogleMap\Place\Autocomplete;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class PlaceAutocompleteHelper extends AbstractHelper
 {
-    /**
-     * @return string
-     */
-    public function render(Autocomplete $autocomplete)
+    public function render(Autocomplete $autocomplete): string
     {
         return $this->renderHtml($autocomplete).$this->renderJavascript($autocomplete);
     }
 
-    /**
-     * @return string
-     */
-    public function renderHtml(Autocomplete $autocomplete)
+    public function renderHtml(Autocomplete $autocomplete): string
     {
         return $this->doRender($autocomplete, PlaceAutocompleteEvents::HTML);
     }
 
-    /**
-     * @return string
-     */
-    public function renderJavascript(Autocomplete $autocomplete)
+    public function renderJavascript(Autocomplete $autocomplete): string
     {
         return $this->doRender($autocomplete, PlaceAutocompleteEvents::JAVASCRIPT);
     }
 
-    /**
-     * @param string $eventName
-     *
-     * @return string
-     */
-    private function doRender(Autocomplete $autocomplete, $eventName)
+    private function doRender(Autocomplete $autocomplete, string $eventName): string
     {
         $this->getEventDispatcher()->dispatch($event = new PlaceAutocompleteEvent($autocomplete), $eventName);
 

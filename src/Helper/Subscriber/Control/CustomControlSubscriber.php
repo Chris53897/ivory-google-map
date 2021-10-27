@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,19 +20,12 @@ use Ivory\GoogleMap\Helper\Formatter\Formatter;
 use Ivory\GoogleMap\Helper\Renderer\Control\CustomControlRenderer;
 use Ivory\GoogleMap\Helper\Subscriber\AbstractSubscriber;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class CustomControlSubscriber extends AbstractSubscriber
 {
-    /**
-     * @var CustomControlCollector
-     */
+    /** @var CustomControlCollector */
     private $customControlCollector;
 
-    /**
-     * @var CustomControlRenderer
-     */
+    /** @var CustomControlRenderer */
     private $customControlRenderer;
 
     public function __construct(
@@ -44,33 +39,27 @@ class CustomControlSubscriber extends AbstractSubscriber
         $this->setCustomControlRenderer($customControlRenderer);
     }
 
-    /**
-     * @return CustomControlCollector
-     */
-    public function getCustomControlCollector()
+    public function getCustomControlCollector(): CustomControlCollector
     {
         return $this->customControlCollector;
     }
 
-    public function setCustomControlCollector(CustomControlCollector $customControlCollector)
+    public function setCustomControlCollector(CustomControlCollector $customControlCollector): void
     {
         $this->customControlCollector = $customControlCollector;
     }
 
-    /**
-     * @return CustomControlRenderer
-     */
-    public function getCustomControlRenderer()
+    public function getCustomControlRenderer(): CustomControlRenderer
     {
         return $this->customControlRenderer;
     }
 
-    public function setCustomControlRenderer(CustomControlRenderer $customControlRenderer)
+    public function setCustomControlRenderer(CustomControlRenderer $customControlRenderer): void
     {
         $this->customControlRenderer = $customControlRenderer;
     }
 
-    public function handleMap(MapEvent $event)
+    public function handleMap(MapEvent $event): void
     {
         $formatter = $this->getFormatter();
         $map = $event->getMap();
@@ -83,7 +72,7 @@ class CustomControlSubscriber extends AbstractSubscriber
     /**
      * {@inheritdoc}
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [MapEvents::JAVASCRIPT_CONTROL_CUSTOM => 'handleMap'];
     }

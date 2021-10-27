@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -15,69 +17,49 @@ use Ivory\GoogleMap\Helper\Collector\AbstractCollector;
 use Ivory\GoogleMap\Map;
 use Ivory\GoogleMap\Overlay\InfoWindow;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class InfoWindowCollector extends AbstractCollector
 {
-    const STRATEGY_MAP = 1;
-    const STRATEGY_MARKER = 2;
+    public const STRATEGY_MAP = 1;
+    public const STRATEGY_MARKER = 2;
 
-    /**
-     * @var MarkerCollector
-     */
+    /** @var MarkerCollector */
     private $markerCollector;
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $type;
 
-    /**
-     * @param string|null $type
-     */
-    public function __construct(MarkerCollector $markerCollector, $type = null)
+    public function __construct(MarkerCollector $markerCollector, ?string $type = null)
     {
         $this->setMarkerCollector($markerCollector);
         $this->setType($type);
     }
 
-    /**
-     * @return MarkerCollector
-     */
-    public function getMarkerCollector()
+    public function getMarkerCollector(): MarkerCollector
     {
         return $this->markerCollector;
     }
 
-    public function setMarkerCollector(MarkerCollector $markerCollector)
+    public function setMarkerCollector(MarkerCollector $markerCollector): void
     {
         $this->markerCollector = $markerCollector;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getType()
+    public function getType(): ?string
     {
         return $this->type;
     }
 
-    /**
-     * @param string|null $type
-     */
-    public function setType($type)
+    public function setType(?string $type): void
     {
         $this->type = $type;
     }
 
     /**
      * @param InfoWindow[] $infoWindows
-     * @param int|null     $strategy
      *
      * @return InfoWindow[]
      */
-    public function collect(Map $map, array $infoWindows = [], $strategy = null)
+    public function collect(Map $map, array $infoWindows = [], ?int $strategy = null): array
     {
         if (null === $strategy) {
             $strategy = self::STRATEGY_MAP | self::STRATEGY_MARKER;
@@ -101,7 +83,7 @@ class InfoWindowCollector extends AbstractCollector
     /**
      * {@inheritdoc}
      */
-    protected function collectValue($value, array $defaults = [])
+    protected function collectValue(object $value, array $defaults = []): array
     {
         if (null !== $this->type && $value->getType() !== $this->type) {
             return $defaults;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -44,128 +46,77 @@ use Ivory\GoogleMap\Helper\Subscriber\Image\StyleSubscriber;
 use Ivory\GoogleMap\Helper\Subscriber\Image\TypeSubscriber;
 use Ivory\GoogleMap\Helper\Subscriber\Image\ZoomSubscriber;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class StaticMapHelperBuilder extends AbstractHelperBuilder
 {
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $secret;
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $clientId;
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $channel;
 
-    /**
-     * @param string|null $key
-     * @param string|null $secret
-     * @param string|null $clientId
-     * @param string|null $channel
-     */
-    public function __construct($key = null, $secret = null, $clientId = null, $channel = null)
+    public function __construct(?string $key = null, ?string $secret = null, ?string $clientId = null, ?string $channel = null)
     {
-        $this->setKey($key);
-        $this->setSecret($secret);
-        $this->setClientId($clientId);
-        $this->setChannel($channel);
+        $this->key = $key;
+        $this->secret = $secret;
+        $this->clientId = $clientId;
+        $this->channel = $channel;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasSecret()
+    public function hasSecret(): bool
     {
         return null !== $this->secret;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getSecret()
+    public function getSecret(): ?string
     {
         return $this->secret;
     }
 
-    /**
-     * @param string|null $secret
-     *
-     * @return $this
-     */
-    public function setSecret($secret)
+    public function setSecret(?string $secret): StaticMapHelperBuilder
     {
         $this->secret = $secret;
 
         return $this;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasClientId()
+    public function hasClientId(): bool
     {
         return null !== $this->clientId;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getClientId()
+    public function getClientId(): ?string
     {
         return $this->clientId;
     }
 
-    /**
-     * @param string|null $clientId
-     *
-     * @return $this
-     */
-    public function setClientId($clientId)
+    public function setClientId(?string $clientId): StaticMapHelperBuilder
     {
         $this->clientId = $clientId;
 
         return $this;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasChannel()
+    public function hasChannel(): bool
     {
         return null !== $this->channel;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getChannel()
+    public function getChannel(): ?string
     {
         return $this->channel;
     }
 
-    /**
-     * @param string|null $channel
-     *
-     * @return $this
-     */
-    public function setChannel($channel)
+    public function setChannel(?string $channel): StaticMapHelperBuilder
     {
         $this->channel = $channel;
 
         return $this;
     }
 
-    /**
-     * @return StaticMapHelper
-     */
-    public function build()
+    public function build(): StaticMapHelper
     {
         return new StaticMapHelper(
             $this->createEventDispatcher(),
@@ -178,7 +129,7 @@ class StaticMapHelperBuilder extends AbstractHelperBuilder
     /**
      * {@inheritdoc}
      */
-    protected function createSubscribers()
+    protected function createSubscribers(): array
     {
         // Pre-loaded Renderers
         $pointRenderer = new PointRenderer();

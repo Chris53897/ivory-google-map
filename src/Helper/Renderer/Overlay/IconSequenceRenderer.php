@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -14,15 +16,9 @@ namespace Ivory\GoogleMap\Helper\Renderer\Overlay;
 use Ivory\GoogleMap\Helper\Renderer\AbstractJsonRenderer;
 use Ivory\GoogleMap\Overlay\IconSequence;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class IconSequenceRenderer extends AbstractJsonRenderer
 {
-    /**
-     * @return string
-     */
-    public function render(IconSequence $icon)
+    public function render(IconSequence $icon): string
     {
         $jsonBuilder = $this->getJsonBuilder()
             ->setValue('[icon]', $icon->getSymbol()->getVariable(), false)

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,19 +20,12 @@ use Ivory\GoogleMap\Helper\Formatter\Formatter;
 use Ivory\GoogleMap\Helper\Renderer\Overlay\IconRenderer;
 use Ivory\GoogleMap\Helper\Subscriber\AbstractSubscriber;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class IconSubscriber extends AbstractSubscriber
 {
-    /**
-     * @var IconCollector
-     */
+    /** @var IconCollector */
     private $iconCollector;
 
-    /**
-     * @var IconRenderer
-     */
+    /** @var IconRenderer */
     private $iconRenderer;
 
     public function __construct(
@@ -44,33 +39,27 @@ class IconSubscriber extends AbstractSubscriber
         $this->setIconRenderer($iconRenderer);
     }
 
-    /**
-     * @return IconCollector
-     */
-    public function getIconCollector()
+    public function getIconCollector(): IconCollector
     {
         return $this->iconCollector;
     }
 
-    public function setIconCollector(IconCollector $iconCollector)
+    public function setIconCollector(IconCollector $iconCollector): void
     {
         $this->iconCollector = $iconCollector;
     }
 
-    /**
-     * @return IconRenderer
-     */
-    public function getIconRenderer()
+    public function getIconRenderer(): IconRenderer
     {
         return $this->iconRenderer;
     }
 
-    public function setIconRenderer(IconRenderer $iconRenderer)
+    public function setIconRenderer(IconRenderer $iconRenderer): void
     {
         $this->iconRenderer = $iconRenderer;
     }
 
-    public function handleMap(MapEvent $event)
+    public function handleMap(MapEvent $event): void
     {
         $formatter = $this->getFormatter();
         $map = $event->getMap();
@@ -88,7 +77,7 @@ class IconSubscriber extends AbstractSubscriber
     /**
      * {@inheritdoc}
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [MapEvents::JAVASCRIPT_OVERLAY_ICON => 'handleMap'];
     }

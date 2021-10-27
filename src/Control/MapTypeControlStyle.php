@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -13,14 +15,12 @@ namespace Ivory\GoogleMap\Control;
 
 /**
  * @see http://code.google.com/apis/maps/documentation/javascript/reference.html#ControlPosition
- *
- * @author GeLo <geloen.eric@gmail.com>
  */
 final class MapTypeControlStyle
 {
-    const DEFAULT_ = 'default';
-    const DROPDOWN_MENU = 'dropdown_menu';
-    const HORIZONTAL_BAR = 'horizontal_bar';
+    public const DEFAULT_ = 'default';
+    public const DROPDOWN_MENU = 'dropdown_menu';
+    public const HORIZONTAL_BAR = 'horizontal_bar';
 
     /**
      * @codeCoverageIgnore

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -13,17 +15,9 @@ namespace Ivory\GoogleMap\Helper\Renderer\Utility;
 
 use Ivory\GoogleMap\Helper\Renderer\AbstractRenderer;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class RequirementRenderer extends AbstractRenderer
 {
-    /**
-     * @param string $class
-     *
-     * @return string
-     */
-    public function render($class)
+    public function render(string $class): string
     {
         $separator = $this->getFormatter()->renderSeparator();
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,13 +13,10 @@
 
 namespace Ivory\GoogleMap\Overlay;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 final class MarkerClusterType
 {
-    const DEFAULT_ = 'default';
-    const MARKER_CLUSTERER = 'marker_clusterer';
+    public const DEFAULT_ = 'default';
+    public const MARKER_CLUSTERER = 'marker_clusterer';
 
     /**
      * @codeCoverageIgnore

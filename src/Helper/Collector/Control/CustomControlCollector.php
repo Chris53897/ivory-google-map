@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -15,9 +17,6 @@ use Ivory\GoogleMap\Control\CustomControl;
 use Ivory\GoogleMap\Helper\Collector\AbstractCollector;
 use Ivory\GoogleMap\Map;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class CustomControlCollector extends AbstractCollector
 {
     /**
@@ -25,7 +24,7 @@ class CustomControlCollector extends AbstractCollector
      *
      * @return CustomControl[]
      */
-    public function collect(Map $map, array $customControls = [])
+    public function collect(Map $map, array $customControls = []): array
     {
         return $this->collectValues($map->getControlManager()->getCustomControls(), $customControls);
     }

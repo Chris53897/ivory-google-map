@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -44,56 +46,36 @@ use Ivory\GoogleMap\Helper\Subscriber\Overlay\MarkerClustererSubscriber;
 use Ivory\GoogleMap\Helper\Subscriber\Place\AutocompleteJavascriptSubscriber;
 use Ivory\JsonBuilder\JsonBuilder;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class ApiHelperBuilder extends AbstractJavascriptHelperBuilder
 {
-    /**
-     * @var string
-     */
+    /** @var string */
     private $language;
 
-    /**
-     * @param string      $language
-     * @param string|null $key
-     */
     public function __construct(
         Formatter $formatter = null,
         JsonBuilder $jsonBuilder = null,
-        $language = 'en',
-        $key = null
+        string $language = 'en',
+        ?string $key = null
     ) {
         parent::__construct($formatter, $jsonBuilder);
 
-        $this->setLanguage($language);
-        $this->setKey($key);
+        $this->language = $language;
+        $this->key = $key;
     }
 
-    /**
-     * @return string
-     */
-    public function getLanguage()
+    public function getLanguage(): string
     {
         return $this->language;
     }
 
-    /**
-     * @param string $language
-     *
-     * @return $this
-     */
-    public function setLanguage($language)
+    public function setLanguage(string $language): ApiHelperBuilder
     {
         $this->language = $language;
 
         return $this;
     }
 
-    /**
-     * @return ApiHelper
-     */
-    public function build()
+    public function build(): ApiHelper
     {
         return new ApiHelper($this->createEventDispatcher());
     }
@@ -101,7 +83,7 @@ class ApiHelperBuilder extends AbstractJavascriptHelperBuilder
     /**
      * {@inheritdoc}
      */
-    protected function createSubscribers()
+    protected function createSubscribers(): array
     {
         $formatter = $this->getFormatter();
         $jsonBuilder = $this->getJsonBuilder();

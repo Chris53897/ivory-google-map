@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -16,15 +18,9 @@ use Ivory\GoogleMap\Helper\Subscriber\DelegateSubscriberInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Contracts\EventDispatcher\Event;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class StaticSubscriber implements DelegateSubscriberInterface
 {
-    /**
-     * @param string $eventName
-     */
-    public function handle(Event $event, $eventName, EventDispatcherInterface $eventDispatcher)
+    public function handle(Event $event, string $eventName, EventDispatcherInterface $eventDispatcher): void
     {
         $delegates = static::getDelegatedSubscribedEvents();
 
@@ -38,7 +34,7 @@ class StaticSubscriber implements DelegateSubscriberInterface
     /**
      * {@inheritdoc}
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         $events = [];
 
@@ -52,7 +48,7 @@ class StaticSubscriber implements DelegateSubscriberInterface
     /**
      * {@inheritdoc}
      */
-    public static function getDelegatedSubscribedEvents()
+    public static function getDelegatedSubscribedEvents(): array
     {
         return [
             StaticMapEvents::HTML => [

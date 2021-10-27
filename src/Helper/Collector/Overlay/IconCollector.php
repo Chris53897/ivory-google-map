@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -15,14 +17,9 @@ use Ivory\GoogleMap\Helper\Collector\AbstractCollector;
 use Ivory\GoogleMap\Map;
 use Ivory\GoogleMap\Overlay\Icon;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class IconCollector extends AbstractCollector
 {
-    /**
-     * @var MarkerCollector
-     */
+    /** @var MarkerCollector */
     private $markerCollector;
 
     public function __construct(MarkerCollector $markerCollector)
@@ -30,15 +27,12 @@ class IconCollector extends AbstractCollector
         $this->setMarkerCollector($markerCollector);
     }
 
-    /**
-     * @return MarkerCollector
-     */
-    public function getMarkerCollector()
+    public function getMarkerCollector(): MarkerCollector
     {
         return $this->markerCollector;
     }
 
-    public function setMarkerCollector(MarkerCollector $markerCollector)
+    public function setMarkerCollector(MarkerCollector $markerCollector): void
     {
         $this->markerCollector = $markerCollector;
     }
@@ -48,7 +42,7 @@ class IconCollector extends AbstractCollector
      *
      * @return Icon[]
      */
-    public function collect(Map $map, array $icons = [])
+    public function collect(Map $map, array $icons = []): array
     {
         foreach ($this->markerCollector->collect($map) as $marker) {
             if ($marker->hasIcon()) {

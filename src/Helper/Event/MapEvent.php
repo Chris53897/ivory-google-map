@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -13,14 +15,9 @@ namespace Ivory\GoogleMap\Helper\Event;
 
 use Ivory\GoogleMap\Map;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class MapEvent extends AbstractEvent
 {
-    /**
-     * @var Map
-     */
+    /** @var Map */
     private $map;
 
     public function __construct(Map $map)
@@ -28,10 +25,7 @@ class MapEvent extends AbstractEvent
         $this->map = $map;
     }
 
-    /**
-     * @return Map
-     */
-    public function getMap()
+    public function getMap(): Map
     {
         return $this->map;
     }

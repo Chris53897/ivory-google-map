@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -14,15 +16,9 @@ namespace Ivory\GoogleMap\Helper\Renderer\Base;
 use Ivory\GoogleMap\Base\Coordinate;
 use Ivory\GoogleMap\Helper\Renderer\AbstractRenderer;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class CoordinateRenderer extends AbstractRenderer
 {
-    /**
-     * @return string
-     */
-    public function render(Coordinate $coordinate)
+    public function render(Coordinate $coordinate): string
     {
         $formatter = $this->getFormatter();
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,19 +20,12 @@ use Ivory\GoogleMap\Helper\Formatter\Formatter;
 use Ivory\GoogleMap\Helper\Renderer\Base\PointRenderer;
 use Ivory\GoogleMap\Helper\Subscriber\AbstractSubscriber;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class PointSubscriber extends AbstractSubscriber
 {
-    /**
-     * @var PointCollector
-     */
+    /** @var PointCollector */
     private $pointCollector;
 
-    /**
-     * @var PointRenderer
-     */
+    /** @var PointRenderer */
     private $pointRenderer;
 
     public function __construct(
@@ -44,36 +39,27 @@ class PointSubscriber extends AbstractSubscriber
         $this->setPointRenderer($pointRenderer);
     }
 
-    /**
-     * @return PointCollector
-     */
-    public function getPointCollector()
+    public function getPointCollector(): PointCollector
     {
         return $this->pointCollector;
     }
 
-    public function setPointCollector(PointCollector $pointCollector)
+    public function setPointCollector(PointCollector $pointCollector): void
     {
         $this->pointCollector = $pointCollector;
     }
 
-    /**
-     * @return PointRenderer
-     */
-    public function getPointRenderer()
+    public function getPointRenderer(): PointRenderer
     {
         return $this->pointRenderer;
     }
 
-    public function setPointRenderer(PointRenderer $pointRenderer)
+    public function setPointRenderer(PointRenderer $pointRenderer): void
     {
         $this->pointRenderer = $pointRenderer;
     }
 
-    /***
-     * @param MapEvent $event
-     */
-    public function handleMap(MapEvent $event)
+    public function handleMap(MapEvent $event): void
     {
         $formatter = $this->getFormatter();
         $map = $event->getMap();
@@ -91,7 +77,7 @@ class PointSubscriber extends AbstractSubscriber
     /**
      * {@inheritdoc}
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [MapEvents::JAVASCRIPT_BASE_POINT => 'handleMap'];
     }

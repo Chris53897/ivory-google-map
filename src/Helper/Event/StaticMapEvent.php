@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -14,106 +16,63 @@ namespace Ivory\GoogleMap\Helper\Event;
 use Ivory\GoogleMap\Map;
 use Symfony\Contracts\EventDispatcher\Event;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class StaticMapEvent extends Event
 {
-    /**
-     * @var Map
-     */
+    /** @var Map */
     private $map;
 
-    /**
-     * @var mixed[]
-     */
     private $parameters = [];
 
-    /**
-     * @param mixed[] $parameters
-     */
     public function __construct(Map $map, array $parameters = [])
     {
         $this->map = $map;
         $this->setParameters($parameters);
     }
 
-    /**
-     * @return Map
-     */
-    public function getMap()
+    public function getMap(): Map
     {
         return $this->map;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasParameters()
+    public function hasParameters(): bool
     {
         return !empty($this->parameters);
     }
 
-    /**
-     * @return mixed[]
-     */
-    public function getParameters()
+    public function getParameters(): array
     {
         return $this->parameters;
     }
 
-    /**
-     * @param mixed[] $parameters
-     */
-    public function setParameters(array $parameters)
+    public function setParameters(array $parameters): void
     {
         $this->parameters = [];
         $this->addParameters($parameters);
     }
 
-    /**
-     * @param mixed[] $parameters
-     */
-    public function addParameters(array $parameters)
+    public function addParameters(array $parameters): void
     {
         foreach ($parameters as $parameter => $value) {
             $this->setParameter($parameter, $value);
         }
     }
 
-    /**
-     * @param string $parameter
-     *
-     * @return bool
-     */
-    public function hasParameter($parameter)
+    public function hasParameter(string $parameter): bool
     {
         return isset($this->parameters[$parameter]);
     }
 
-    /**
-     * @param string $parameter
-     *
-     * @return mixed
-     */
-    public function getParameter($parameter)
+    public function getParameter(string $parameter)
     {
         return $this->hasParameter($parameter) ? $this->parameters[$parameter] : null;
     }
 
-    /**
-     * @param string $parameter
-     * @param mixed  $value
-     */
-    public function setParameter($parameter, $value)
+    public function setParameter(string $parameter, $value): void
     {
         $this->parameters[$parameter] = $value;
     }
 
-    /**
-     * @param string $parameter
-     */
-    public function removeParameter($parameter)
+    public function removeParameter(string $parameter): void
     {
         unset($this->parameters[$parameter]);
     }

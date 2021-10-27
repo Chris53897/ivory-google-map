@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -19,19 +21,12 @@ use Ivory\GoogleMap\Helper\Renderer\Html\JavascriptTagRenderer;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Contracts\EventDispatcher\Event;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class ApiJavascriptSubscriber extends AbstractDelegateSubscriber
 {
-    /**
-     * @var ApiRenderer
-     */
+    /** @var ApiRenderer */
     private $apiRenderer;
 
-    /**
-     * @var JavascriptTagRenderer
-     */
+    /** @var JavascriptTagRenderer */
     private $javascriptTagRenderer;
 
     public function __construct(
@@ -45,36 +40,27 @@ class ApiJavascriptSubscriber extends AbstractDelegateSubscriber
         $this->setJavascriptTagRenderer($javascriptTagRenderer);
     }
 
-    /**
-     * @return ApiRenderer
-     */
-    public function getApiRenderer()
+    public function getApiRenderer(): ApiRenderer
     {
         return $this->apiRenderer;
     }
 
-    public function setApiRenderer(ApiRenderer $apiRenderer)
+    public function setApiRenderer(ApiRenderer $apiRenderer): void
     {
         $this->apiRenderer = $apiRenderer;
     }
 
-    /**
-     * @return JavascriptTagRenderer
-     */
-    public function getJavascriptTagRenderer()
+    public function getJavascriptTagRenderer(): JavascriptTagRenderer
     {
         return $this->javascriptTagRenderer;
     }
 
-    public function setJavascriptTagRenderer(JavascriptTagRenderer $javascriptTagRenderer)
+    public function setJavascriptTagRenderer(JavascriptTagRenderer $javascriptTagRenderer): void
     {
         $this->javascriptTagRenderer = $javascriptTagRenderer;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function handle(Event $event, $eventName, EventDispatcherInterface $eventDispatcher)
+    public function handle(Event $event, string $eventName, EventDispatcherInterface $eventDispatcher): void
     {
         parent::handle($event, $eventName, $eventDispatcher);
 
@@ -86,7 +72,7 @@ class ApiJavascriptSubscriber extends AbstractDelegateSubscriber
     /**
      * @return string[][]
      */
-    public static function getDelegatedSubscribedEvents()
+    public static function getDelegatedSubscribedEvents(): array
     {
         return [
             ApiEvents::JAVASCRIPT => [

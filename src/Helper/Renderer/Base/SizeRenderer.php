@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -14,15 +16,9 @@ namespace Ivory\GoogleMap\Helper\Renderer\Base;
 use Ivory\GoogleMap\Base\Size;
 use Ivory\GoogleMap\Helper\Renderer\AbstractRenderer;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class SizeRenderer extends AbstractRenderer
 {
-    /**
-     * @return string
-     */
-    public function render(Size $size)
+    public function render(Size $size): string
     {
         $formatter = $this->getFormatter();
         $arguments = [

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -24,72 +26,46 @@ use Ivory\GoogleMap\Utility\VariableAwareTrait;
 
 /**
  * @see http://code.google.com/apis/maps/documentation/javascript/reference.html#Map
- *
- * @author GeLo <geloen.eric@gmail.com>
  */
 class Map implements VariableAwareInterface, StaticOptionsAwareInterface
 {
     use StaticOptionsAwareTrait;
     use VariableAwareTrait;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $htmlId = 'map_canvas';
 
-    /**
-     * @var bool
-     */
+    /** @var bool */
     private $autoZoom = false;
 
-    /**
-     * @var Coordinate
-     */
+    /** @var Coordinate */
     private $center;
 
-    /**
-     * @var Bound
-     */
+    /** @var Bound */
     private $bound;
 
-    /**
-     * @var ControlManager
-     */
+    /** @var ControlManager */
     private $controlManager;
 
-    /**
-     * @var EventManager
-     */
+    /** @var EventManager */
     private $eventManager;
 
-    /**
-     * @var LayerManager
-     */
+    /** @var LayerManager */
     private $layerManager;
 
-    /**
-     * @var OverlayManager
-     */
+    /** @var OverlayManager */
     private $overlayManager;
 
-    /**
-     * @var string[]
-     */
+    /** @var string[] */
     private $libraries = [];
 
-    /**
-     * @var mixed[]
-     */
+    /** @var array */
     private $mapOptions = [];
 
-    /**
-     * @var string[]
-     */
+    /** @var string[] */
     private $stylesheetOptions = [];
 
-    /**
-     * @var string[]
-     */
+    /** @var string[] */
     private $htmlAttributes = [];
 
     public function __construct()
@@ -102,34 +78,22 @@ class Map implements VariableAwareInterface, StaticOptionsAwareInterface
         $this->setLayerManager(new LayerManager());
     }
 
-    /**
-     * @return string
-     */
-    public function getHtmlId()
+    public function getHtmlId(): string
     {
         return $this->htmlId;
     }
 
-    /**
-     * @param string $htmlId
-     */
-    public function setHtmlId($htmlId)
+    public function setHtmlId(string $htmlId): void
     {
         $this->htmlId = $htmlId;
     }
 
-    /**
-     * @return bool
-     */
-    public function isAutoZoom()
+    public function isAutoZoom(): bool
     {
         return $this->autoZoom;
     }
 
-    /**
-     * @param bool $autoZoom
-     */
-    public function setAutoZoom($autoZoom)
+    public function setAutoZoom(bool $autoZoom): void
     {
         $this->autoZoom = $autoZoom;
     }
@@ -137,64 +101,52 @@ class Map implements VariableAwareInterface, StaticOptionsAwareInterface
     /**
      * @return Coordinate
      */
-    public function getCenter()
+    public function getCenter(): Coordinate
     {
         return $this->center;
     }
 
-    public function setCenter(Coordinate $center)
+    public function setCenter(Coordinate $center): void
     {
         $this->center = $center;
     }
 
-    /**
-     * @return Bound
-     */
-    public function getBound()
+    public function getBound(): Bound
     {
         return $this->bound;
     }
 
-    public function setBound(Bound $bound)
+    public function setBound(Bound $bound): void
     {
         $this->bound = $bound;
     }
 
-    /**
-     * @return ControlManager
-     */
-    public function getControlManager()
+    public function getControlManager(): ControlManager
     {
         return $this->controlManager;
     }
 
-    public function setControlManager(ControlManager $controlManager)
+    public function setControlManager(ControlManager $controlManager): void
     {
         $this->controlManager = $controlManager;
     }
 
-    /**
-     * @return EventManager
-     */
-    public function getEventManager()
+    public function getEventManager(): EventManager
     {
         return $this->eventManager;
     }
 
-    public function setEventManager(EventManager $eventManager)
+    public function setEventManager(EventManager $eventManager): void
     {
         $this->eventManager = $eventManager;
     }
 
-    /**
-     * @return LayerManager
-     */
-    public function getLayerManager()
+    public function getLayerManager(): LayerManager
     {
         return $this->layerManager;
     }
 
-    public function setLayerManager(LayerManager $layerManager)
+    public function setLayerManager(LayerManager $layerManager): void
     {
         $this->layerManager = $layerManager;
 
@@ -203,15 +155,12 @@ class Map implements VariableAwareInterface, StaticOptionsAwareInterface
         }
     }
 
-    /**
-     * @return OverlayManager
-     */
-    public function getOverlayManager()
+    public function getOverlayManager(): OverlayManager
     {
         return $this->overlayManager;
     }
 
-    public function setOverlayManager(OverlayManager $overlayManager)
+    public function setOverlayManager(OverlayManager $overlayManager): void
     {
         $this->overlayManager = $overlayManager;
 
@@ -220,282 +169,181 @@ class Map implements VariableAwareInterface, StaticOptionsAwareInterface
         }
     }
 
-    /**
-     * @return bool
-     */
-    public function hasLibraries()
+    public function hasLibraries(): bool
     {
         return !empty($this->libraries);
     }
 
-    /**
-     * @return string[]
-     */
-    public function getLibraries()
+    /** @return string[] */
+    public function getLibraries(): array
     {
         return $this->libraries;
     }
 
-    /**
-     * @param string[] $libraries
-     */
-    public function setLibraries(array $libraries)
+    /** @param string[] $libraries */
+    public function setLibraries(array $libraries): void
     {
         $this->libraries = [];
         $this->addLibraries($libraries);
     }
 
-    /**
-     * @param string[] $libraries
-     */
-    public function addLibraries(array $libraries)
+    /** @param string[] $libraries */
+    public function addLibraries(array $libraries): void
     {
         foreach ($libraries as $library) {
             $this->addLibrary($library);
         }
     }
 
-    /**
-     * @param string $library
-     *
-     * @return bool
-     */
-    public function hasLibrary($library)
+    public function hasLibrary(string $library): bool
     {
         return in_array($library, $this->libraries, true);
     }
 
-    /**
-     * @param string $library
-     */
-    public function addLibrary($library)
+    public function addLibrary(string $library): void
     {
         if (!$this->hasLibrary($library)) {
             $this->libraries[] = $library;
         }
     }
 
-    /**
-     * @param string $library
-     */
-    public function removeLibrary($library)
+    public function removeLibrary(string $library): void
     {
         unset($this->libraries[array_search($library, $this->libraries, true)]);
         $this->libraries = empty($this->libraries) ? [] : array_values($this->libraries);
     }
 
-    /**
-     * @return bool
-     */
-    public function hasMapOptions()
+    public function hasMapOptions(): bool
     {
         return !empty($this->mapOptions);
     }
 
-    /**
-     * @return mixed[]
-     */
-    public function getMapOptions()
+    public function getMapOptions(): array
     {
         return $this->mapOptions;
     }
 
-    /**
-     * @param mixed[] $mapOptions
-     */
-    public function setMapOptions(array $mapOptions)
+    public function setMapOptions(array $mapOptions): void
     {
         $this->mapOptions = [];
         $this->addMapOptions($mapOptions);
     }
 
-    /**
-     * @param mixed[] $mapOptions
-     */
-    public function addMapOptions(array $mapOptions)
+    public function addMapOptions(array $mapOptions): void
     {
         foreach ($mapOptions as $mapOption => $value) {
             $this->setMapOption($mapOption, $value);
         }
     }
 
-    /**
-     * @param string $mapOption
-     *
-     * @return bool
-     */
-    public function hasMapOption($mapOption)
+    public function hasMapOption(string $mapOption): bool
     {
         return isset($this->mapOptions[$mapOption]);
     }
 
-    /**
-     * @param string $mapOption
-     *
-     * @return mixed
-     */
-    public function getMapOption($mapOption)
+    public function getMapOption(string $mapOption)
     {
         return $this->hasMapOption($mapOption) ? $this->mapOptions[$mapOption] : null;
     }
 
-    /**
-     * @param string $mapOption
-     * @param mixed  $value
-     */
-    public function setMapOption($mapOption, $value)
+    public function setMapOption(string $mapOption, $value): void
     {
         $this->mapOptions[$mapOption] = $value;
     }
 
-    /**
-     * @param string $mapOption
-     */
-    public function removeMapOption($mapOption)
+    public function removeMapOption(string $mapOption): void
     {
         unset($this->mapOptions[$mapOption]);
     }
 
-    /**
-     * @return bool
-     */
-    public function hasStylesheetOptions()
+    public function hasStylesheetOptions(): bool
     {
         return !empty($this->stylesheetOptions);
     }
 
-    /**
-     * @return string[]
-     */
-    public function getStylesheetOptions()
+    /** @return string[] */
+    public function getStylesheetOptions(): array
     {
         return $this->stylesheetOptions;
     }
 
-    /**
-     * @param string[] $stylesheetOptions
-     */
-    public function setStylesheetOptions(array $stylesheetOptions)
+    /** @param string[] $stylesheetOptions */
+    public function setStylesheetOptions(array $stylesheetOptions): void
     {
         $this->stylesheetOptions = [];
         $this->addStylesheetOptions($stylesheetOptions);
     }
 
-    /**
-     * @param string[] $stylesheetOptions
-     */
-    public function addStylesheetOptions(array $stylesheetOptions)
+    /** @param string[] $stylesheetOptions */
+    public function addStylesheetOptions(array $stylesheetOptions): void
     {
         foreach ($stylesheetOptions as $stylesheetOption => $value) {
             $this->setStylesheetOption($stylesheetOption, $value);
         }
     }
 
-    /**
-     * @param string $stylesheetOption
-     *
-     * @return bool
-     */
-    public function hasStylesheetOption($stylesheetOption)
+    public function hasStylesheetOption(string $stylesheetOption): bool
     {
         return isset($this->stylesheetOptions[$stylesheetOption]);
     }
 
-    /**
-     * @param string $stylesheetOption
-     *
-     * @return string|null
-     */
-    public function getStylesheetOption($stylesheetOption)
+    public function getStylesheetOption(string $stylesheetOption): ?string
     {
         return $this->hasStylesheetOption($stylesheetOption) ? $this->stylesheetOptions[$stylesheetOption] : null;
     }
 
-    /**
-     * @param string $stylesheetOption
-     * @param string $value
-     */
-    public function setStylesheetOption($stylesheetOption, $value)
+    public function setStylesheetOption(string $stylesheetOption, ?string $value): void
     {
         $this->stylesheetOptions[$stylesheetOption] = $value;
     }
 
-    /**
-     * @param string $stylesheetOption
-     */
-    public function removeStylesheetOption($stylesheetOption)
+    public function removeStylesheetOption(string $stylesheetOption): void
     {
         unset($this->stylesheetOptions[$stylesheetOption]);
     }
 
-    /**
-     * @return bool
-     */
-    public function hasHtmlAttributes()
+    public function hasHtmlAttributes(): bool
     {
         return !empty($this->htmlAttributes);
     }
 
-    /**
-     * @return string[]
-     */
-    public function getHtmlAttributes()
+    /** @return string[] */
+    public function getHtmlAttributes(): array
     {
         return $this->htmlAttributes;
     }
 
-    /**
-     * @param string[] $htmlAttributes
-     */
-    public function setHtmlAttributes(array $htmlAttributes)
+    /** @param string[] $htmlAttributes */
+    public function setHtmlAttributes(array $htmlAttributes): void
     {
         $this->htmlAttributes = [];
         $this->addHtmlAttributes($htmlAttributes);
     }
 
-    /**
-     * @param string[] $htmlAttributes
-     */
-    public function addHtmlAttributes(array $htmlAttributes)
+    /** @param string[] $htmlAttributes */
+    public function addHtmlAttributes(array $htmlAttributes): void
     {
         foreach ($htmlAttributes as $htmlAttribute => $value) {
             $this->setHtmlAttribute($htmlAttribute, $value);
         }
     }
 
-    /**
-     * @param string $htmlAttribute
-     *
-     * @return bool
-     */
-    public function hasHtmlAttribute($htmlAttribute)
+    public function hasHtmlAttribute(string $htmlAttribute): bool
     {
         return isset($this->htmlAttributes[$htmlAttribute]);
     }
 
-    /**
-     * @param string $htmlAttribute
-     *
-     * @return string|null
-     */
-    public function getHtmlAttribute($htmlAttribute)
+    public function getHtmlAttribute(string $htmlAttribute): ?string
     {
         return $this->hasHtmlAttribute($htmlAttribute) ? $this->htmlAttributes[$htmlAttribute] : null;
     }
 
-    /**
-     * @param string $htmlAttribute
-     * @param string $value
-     */
-    public function setHtmlAttribute($htmlAttribute, $value)
+    public function setHtmlAttribute(string $htmlAttribute, ?string $value): void
     {
         $this->htmlAttributes[$htmlAttribute] = $value;
     }
 
-    /**
-     * @param string $htmlAttribute
-     */
-    public function removeHtmlAttribute($htmlAttribute)
+    public function removeHtmlAttribute(string $htmlAttribute): void
     {
         unset($this->htmlAttributes[$htmlAttribute]);
     }

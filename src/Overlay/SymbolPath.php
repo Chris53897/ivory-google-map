@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -13,16 +15,14 @@ namespace Ivory\GoogleMap\Overlay;
 
 /**
  * @see http://code.google.com/apis/maps/documentation/javascript/reference#Symbol
- *
- * @author GeLo <geloen.eric@gmail.com>
  */
 final class SymbolPath
 {
-    const BACKWARD_CLOSED_ARROW = 'backward_closed_arrow';
-    const BACKWARD_OPEN_ARROW = 'backward_open_arrow';
-    const CIRCLE = 'circle';
-    const FORWARD_CLOSED_ARROW = 'forward_closed_arrow';
-    const FORWARD_OPEN_ARROW = 'forward_open_arrow';
+    public const BACKWARD_CLOSED_ARROW = 'backward_closed_arrow';
+    public const BACKWARD_OPEN_ARROW = 'backward_open_arrow';
+    public const CIRCLE = 'circle';
+    public const FORWARD_CLOSED_ARROW = 'forward_closed_arrow';
+    public const FORWARD_OPEN_ARROW = 'forward_open_arrow';
 
     /**
      * @codeCoverageIgnore

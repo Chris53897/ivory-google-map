@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,19 +20,12 @@ use Ivory\GoogleMap\Helper\Formatter\Formatter;
 use Ivory\GoogleMap\Helper\Renderer\Event\DomEventOnceRenderer;
 use Ivory\GoogleMap\Helper\Subscriber\AbstractSubscriber;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class DomEventOnceSubscriber extends AbstractSubscriber
 {
-    /**
-     * @var DomEventOnceCollector
-     */
+    /** @var DomEventOnceCollector */
     private $domEventOnceCollector;
 
-    /**
-     * @var DomEventOnceRenderer
-     */
+    /** @var DomEventOnceRenderer */
     private $domEventOnceRenderer;
 
     public function __construct(
@@ -44,33 +39,27 @@ class DomEventOnceSubscriber extends AbstractSubscriber
         $this->setDomEventOnceRenderer($domEventOnceRenderer);
     }
 
-    /**
-     * @return DomEventOnceCollector
-     */
-    public function getDomEventOnceCollector()
+    public function getDomEventOnceCollector(): DomEventOnceCollector
     {
         return $this->domEventOnceCollector;
     }
 
-    public function setDomEventOnceCollector(DomEventOnceCollector $domEventOnceCollector)
+    public function setDomEventOnceCollector(DomEventOnceCollector $domEventOnceCollector): void
     {
         $this->domEventOnceCollector = $domEventOnceCollector;
     }
 
-    /**
-     * @return DomEventOnceRenderer
-     */
-    public function getDomEventOnceRenderer()
+    public function getDomEventOnceRenderer(): DomEventOnceRenderer
     {
         return $this->domEventOnceRenderer;
     }
 
-    public function setDomEventOnceRenderer(DomEventOnceRenderer $domEventOnceRenderer)
+    public function setDomEventOnceRenderer(DomEventOnceRenderer $domEventOnceRenderer): void
     {
         $this->domEventOnceRenderer = $domEventOnceRenderer;
     }
 
-    public function handleMap(MapEvent $event)
+    public function handleMap(MapEvent $event): void
     {
         $formatter = $this->getFormatter();
         $map = $event->getMap();
@@ -88,7 +77,7 @@ class DomEventOnceSubscriber extends AbstractSubscriber
     /**
      * {@inheritdoc}
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [MapEvents::JAVASCRIPT_EVENT_DOM_EVENT_ONCE => 'handleMap'];
     }

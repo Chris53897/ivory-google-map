@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -13,12 +15,10 @@ namespace Ivory\GoogleMap\Control;
 
 /**
  * @see http://code.google.com/apis/maps/documentation/javascript/reference.html#ScaleControlStyle
- *
- * @author GeLo <geloen.eric@gmail.com>
  */
 final class ScaleControlStyle
 {
-    const DEFAULT_ = 'default';
+    public const DEFAULT_ = 'default';
 
     /**
      * @codeCoverageIgnore

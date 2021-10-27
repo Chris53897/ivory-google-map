@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -15,9 +17,6 @@ use Ivory\GoogleMap\Event\Event;
 use Ivory\GoogleMap\Helper\Collector\AbstractCollector;
 use Ivory\GoogleMap\Map;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class EventOnceCollector extends AbstractCollector
 {
     /**
@@ -25,7 +24,7 @@ class EventOnceCollector extends AbstractCollector
      *
      * @return Event[]
      */
-    public function collect(Map $map, array $eventsOnce = [])
+    public function collect(Map $map, array $eventsOnce = []): array
     {
         return $this->collectValues($map->getEventManager()->getEventsOnce(), $eventsOnce);
     }

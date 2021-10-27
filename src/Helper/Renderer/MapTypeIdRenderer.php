@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,17 +13,9 @@
 
 namespace Ivory\GoogleMap\Helper\Renderer;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class MapTypeIdRenderer extends AbstractRenderer
 {
-    /**
-     * @param string $id
-     *
-     * @return string
-     */
-    public function render($id)
+    public function render(string $id): string
     {
         return $this->getFormatter()->renderConstant('MapTypeId', $id);
     }

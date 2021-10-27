@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,14 +13,11 @@
 
 namespace Ivory\GoogleMap\Helper\Event;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 final class ApiEvents
 {
-    const JAVASCRIPT = 'api.javascript';
-    const JAVASCRIPT_MAP = 'api.javascript.map';
-    const JAVASCRIPT_AUTOCOMPLETE = 'api.javascript.autocomplete';
+    public const JAVASCRIPT = 'api.javascript';
+    public const JAVASCRIPT_MAP = 'api.javascript.map';
+    public const JAVASCRIPT_AUTOCOMPLETE = 'api.javascript.autocomplete';
 
     /**
      * @codeCoverageIgnore

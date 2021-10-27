@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -20,199 +22,129 @@ use Ivory\GoogleMap\Utility\VariableAwareTrait;
 
 /**
  * @see http://code.google.com/apis/maps/documentation/javascript/reference.html#InfoWindow
- *
- * @author GeLo <geloen.eric@gmail.com>
  */
 class InfoWindow implements ExtendableInterface, OptionsAwareInterface
 {
     use OptionsAwareTrait;
     use VariableAwareTrait;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $content;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $type = InfoWindowType::DEFAULT_;
 
-    /**
-     * @var Coordinate|null
-     */
+    /** @var Coordinate|null */
     private $position;
 
-    /**
-     * @var Size|null
-     */
+    /** @var Size|null */
     private $pixedOffset;
 
-    /**
-     * @var bool
-     */
+    /** @var bool */
     private $open = false;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $openEvent = MouseEvent::CLICK;
 
-    /**
-     * @var bool
-     */
+    /** @var bool */
     private $autoOpen = true;
 
-    /**
-     * @var bool
-     */
+    /** @var bool */
     private $autoClose = true;
 
-    /**
-     * @param string $content
-     * @param string $type
-     */
-    public function __construct($content, $type = InfoWindowType::DEFAULT_, Coordinate $position = null)
+    public function __construct(string $content, string $type = InfoWindowType::DEFAULT_, Coordinate $position = null)
     {
         $this->setContent($content);
         $this->setType($type);
         $this->setPosition($position);
     }
 
-    /**
-     * @return string
-     */
-    public function getContent()
+    public function getContent(): string
     {
         return $this->content;
     }
 
-    /**
-     * @param string $content
-     */
-    public function setContent($content)
+    public function setContent(string $content): void
     {
         $this->content = $content;
     }
 
-    /**
-     * @return string
-     */
-    public function getType()
+    public function getType(): string
     {
         return $this->type;
     }
 
-    /**
-     * @param string $type
-     */
-    public function setType($type)
+    public function setType(string $type): void
     {
         $this->type = $type;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasPosition()
+    public function hasPosition(): bool
     {
         return null !== $this->position;
     }
 
-    /**
-     * @return Coordinate|null
-     */
-    public function getPosition()
+    public function getPosition(): ?Coordinate
     {
         return $this->position;
     }
 
-    public function setPosition(Coordinate $position = null)
+    public function setPosition(Coordinate $position = null): void
     {
         $this->position = $position;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasPixelOffset()
+    public function hasPixelOffset(): bool
     {
         return null !== $this->pixedOffset;
     }
 
-    /**
-     * @return Size|null
-     */
-    public function getPixelOffset()
+    public function getPixelOffset(): ?Size
     {
         return $this->pixedOffset;
     }
 
-    public function setPixelOffset(Size $pixelOffset = null)
+    public function setPixelOffset(Size $pixelOffset = null): void
     {
         $this->pixedOffset = $pixelOffset;
     }
 
-    /**
-     * @return bool
-     */
-    public function isOpen()
+    public function isOpen(): bool
     {
         return $this->open;
     }
 
-    /**
-     * @param bool $open
-     */
-    public function setOpen($open)
+    public function setOpen($open): void
     {
         $this->open = $open;
     }
 
-    /**
-     * @return bool
-     */
-    public function isAutoOpen()
+    public function isAutoOpen(): bool
     {
         return $this->autoOpen;
     }
 
-    /**
-     * @param bool $autoOpen
-     */
-    public function setAutoOpen($autoOpen)
+    public function setAutoOpen(bool $autoOpen): void
     {
         $this->autoOpen = $autoOpen;
     }
 
-    /**
-     * @return string
-     */
-    public function getOpenEvent()
+    public function getOpenEvent(): string
     {
         return $this->openEvent;
     }
 
-    /**
-     * @param string $openEvent
-     */
-    public function setOpenEvent($openEvent)
+    public function setOpenEvent(string $openEvent): void
     {
         $this->openEvent = $openEvent;
     }
 
-    /**
-     * @return bool
-     */
-    public function isAutoClose()
+    public function isAutoClose(): bool
     {
         return $this->autoClose;
     }
 
-    /**
-     * @param bool $autoClose
-     */
-    public function setAutoClose($autoClose)
+    public function setAutoClose(bool $autoClose): void
     {
         $this->autoClose = $autoClose;
     }

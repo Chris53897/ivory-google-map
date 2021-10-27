@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,59 +13,36 @@
 
 namespace Ivory\GoogleMap\Control;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class CustomControl
 {
-    /**
-     * @var string
-     */
+    /** @var string */
     private $position;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $control;
 
-    /**
-     * @param string $position
-     * @param string $control
-     */
-    public function __construct($position, $control)
+    public function __construct(string $position, string $control)
     {
         $this->setPosition($position);
         $this->setControl($control);
     }
 
-    /**
-     * @return string
-     */
-    public function getPosition()
+    public function getPosition(): string
     {
         return $this->position;
     }
 
-    /**
-     * @param string $position
-     */
-    public function setPosition($position)
+    public function setPosition(string $position): void
     {
         $this->position = $position;
     }
 
-    /**
-     * @return string
-     */
-    public function getControl()
+    public function getControl(): string
     {
         return $this->control;
     }
 
-    /**
-     * @param string $control
-     */
-    public function setControl($control)
+    public function setControl(string $control): void
     {
         $this->control = $control;
     }

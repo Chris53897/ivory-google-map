@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -17,14 +19,9 @@ use Ivory\GoogleMap\Helper\Renderer\Utility\RequirementRenderer;
 use Ivory\GoogleMap\Place\Autocomplete;
 use Ivory\JsonBuilder\JsonBuilder;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class AutocompleteRenderer extends AbstractJsonRenderer
 {
-    /**
-     * @var RequirementRenderer
-     */
+    /** @var RequirementRenderer */
     private $requirementRenderer;
 
     public function __construct(
@@ -37,23 +34,17 @@ class AutocompleteRenderer extends AbstractJsonRenderer
         $this->setRequirementRenderer($requirementRenderer);
     }
 
-    /**
-     * @return RequirementRenderer
-     */
-    public function getRequirementRenderer()
+    public function getRequirementRenderer(): RequirementRenderer
     {
         return $this->requirementRenderer;
     }
 
-    public function setRequirementRenderer(RequirementRenderer $requirementRenderer)
+    public function setRequirementRenderer(RequirementRenderer $requirementRenderer): void
     {
         $this->requirementRenderer = $requirementRenderer;
     }
 
-    /**
-     * @return string
-     */
-    public function render(Autocomplete $autocomplete)
+    public function render(Autocomplete $autocomplete): string
     {
         $formatter = $this->getFormatter();
         $jsonBuilder = $this->getJsonBuilder();
@@ -82,10 +73,7 @@ class AutocompleteRenderer extends AbstractJsonRenderer
         ], $formatter->renderClass('places')));
     }
 
-    /**
-     * @return string
-     */
-    public function renderRequirement()
+    public function renderRequirement(): string
     {
         return $this->requirementRenderer->render($this->getFormatter()->renderClass('places'));
     }

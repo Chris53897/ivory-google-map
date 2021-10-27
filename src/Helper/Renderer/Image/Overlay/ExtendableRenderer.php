@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -16,24 +18,15 @@ use Ivory\GoogleMap\Helper\Renderer\Image\Base\CoordinateRenderer;
 use Ivory\GoogleMap\Overlay\Marker;
 use Ivory\GoogleMap\Overlay\Polyline;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class ExtendableRenderer
 {
-    /**
-     * @var CoordinateRenderer
-     */
+    /** @var CoordinateRenderer */
     private $coordinateRenderer;
 
-    /**
-     * @var MarkerLocationRenderer
-     */
+    /** @var MarkerLocationRenderer */
     private $markerLocationRenderer;
 
-    /**
-     * @var PolylineLocationRenderer
-     */
+    /** @var PolylineLocationRenderer */
     private $polylineLocationRenderer;
 
     public function __construct(
@@ -46,12 +39,7 @@ class ExtendableRenderer
         $this->polylineLocationRenderer = $polylineLocationRenderer;
     }
 
-    /**
-     * @param mixed[] $extendables
-     *
-     * @return string
-     */
-    public function render(array $extendables)
+    public function render(array $extendables): string
     {
         $result = [];
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -14,20 +16,12 @@ namespace Ivory\GoogleMap\Helper\Renderer\Control;
 use Ivory\GoogleMap\Control\ControlManager;
 use Ivory\JsonBuilder\JsonBuilder;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class ControlManagerRenderer
 {
-    /**
-     * @var ControlRendererInterface[]
-     */
+    /** @var ControlRendererInterface[] */
     private $renderers = [];
 
-    /**
-     * @return bool
-     */
-    public function hasRenderers()
+    public function hasRenderers(): bool
     {
         return !empty($this->renderers);
     }
@@ -35,7 +29,7 @@ class ControlManagerRenderer
     /**
      * @return ControlRendererInterface[]
      */
-    public function getRenderers()
+    public function getRenderers(): array
     {
         return $this->renderers;
     }
@@ -43,7 +37,7 @@ class ControlManagerRenderer
     /**
      * @param ControlRendererInterface[] $renderers
      */
-    public function setRenderers(array $renderers)
+    public function setRenderers(array $renderers): void
     {
         $this->renderers = [];
         $this->addRenderers($renderers);
@@ -52,38 +46,32 @@ class ControlManagerRenderer
     /**
      * @param ControlRendererInterface[] $renderers
      */
-    public function addRenderers(array $renderers)
+    public function addRenderers(array $renderers): void
     {
         foreach ($renderers as $renderer) {
             $this->addRenderer($renderer);
         }
     }
 
-    /**
-     * @return bool
-     */
-    public function hasRenderer(ControlRendererInterface $renderer)
+    public function hasRenderer(ControlRendererInterface $renderer): bool
     {
         return in_array($renderer, $this->renderers, true);
     }
 
-    public function addRenderer(ControlRendererInterface $renderer)
+    public function addRenderer(ControlRendererInterface $renderer): void
     {
         if (!$this->hasRenderer($renderer)) {
             $this->renderers[] = $renderer;
         }
     }
 
-    public function removeRenderer(ControlRendererInterface $renderer)
+    public function removeRenderer(ControlRendererInterface $renderer): void
     {
         unset($this->renderers[array_search($renderer, $this->renderers, true)]);
         $this->renderers = empty($this->renderers) ? [] : array_values($this->renderers);
     }
 
-    /**
-     * @return string
-     */
-    public function render(ControlManager $controlManager, JsonBuilder $jsonBuilder)
+    public function render(ControlManager $controlManager, JsonBuilder $jsonBuilder): void
     {
         foreach ($this->renderers as $renderer) {
             $control = get_class($renderer);

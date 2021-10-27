@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -13,19 +15,9 @@ namespace Ivory\GoogleMap\Helper\Renderer\Utility;
 
 use Ivory\GoogleMap\Helper\Renderer\AbstractRenderer;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class ObjectToArrayRenderer extends AbstractRenderer
 {
-    /**
-     * @param string|null $arrayVariable
-     * @param string|null $objectVariable
-     * @param string|null $keyVariable
-     *
-     * @return string
-     */
-    public function render($arrayVariable = null, $objectVariable = null, $keyVariable = null)
+    public function render(?string $arrayVariable = null, ?string $objectVariable = null, ?string $keyVariable = null): string
     {
         $formatter = $this->getFormatter();
 

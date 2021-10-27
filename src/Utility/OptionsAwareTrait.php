@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,84 +13,50 @@
 
 namespace Ivory\GoogleMap\Utility;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 trait OptionsAwareTrait
 {
-    /**
-     * @var mixed[]
-     */
+    /** @var array */
     private $options = [];
 
-    /**
-     * @return bool
-     */
-    public function hasOptions()
+    public function hasOptions(): bool
     {
         return !empty($this->options);
     }
 
-    /**
-     * @return mixed[]
-     */
-    public function getOptions()
+    public function getOptions(): array
     {
         return $this->options;
     }
 
-    /**
-     * @param mixed[] $options
-     */
-    public function setOptions(array $options)
+    public function setOptions(array $options): void
     {
         $this->options = [];
         $this->addOptions($options);
     }
 
-    /**
-     * @param mixed[] $options
-     */
-    public function addOptions(array $options)
+    public function addOptions(array $options): void
     {
         foreach ($options as $option => $value) {
             $this->setOption($option, $value);
         }
     }
 
-    /**
-     * @param string $option
-     *
-     * @return bool
-     */
-    public function hasOption($option)
+    public function hasOption($option): bool
     {
         return isset($this->options[$option]);
     }
 
-    /**
-     * @param string $option
-     *
-     * @return mixed
-     */
-    public function getOption($option)
+    public function getOption(string $option)
     {
         return $this->hasOption($option) ? $this->options[$option] : null;
     }
 
-    /**
-     * @param string $option
-     * @param mixed  $value
-     */
-    public function setOption($option, $value)
+    public function setOption(string $option, $value): void
     {
         $this->options[$option] = $value;
     }
 
-    /**
-     * @param string $option
-     */
-    public function removeOption($option)
+    public function removeOption(string $option): void
     {
         unset($this->options[$option]);
     }

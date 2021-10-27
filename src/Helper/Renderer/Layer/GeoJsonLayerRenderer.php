@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -15,15 +17,9 @@ use Ivory\GoogleMap\Helper\Renderer\AbstractJsonRenderer;
 use Ivory\GoogleMap\Layer\GeoJsonLayer;
 use Ivory\GoogleMap\Map;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class GeoJsonLayerRenderer extends AbstractJsonRenderer
 {
-    /**
-     * @return string
-     */
-    public function render(GeoJsonLayer $geoJsonLayer, Map $map)
+    public function render(GeoJsonLayer $geoJsonLayer, Map $map): string
     {
         $formatter = $this->getFormatter();
         $jsonBuilder = $this->getJsonBuilder()->setValues($geoJsonLayer->getOptions());

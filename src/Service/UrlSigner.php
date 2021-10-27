@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,20 +13,9 @@
 
 namespace Ivory\GoogleMap\Service;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class UrlSigner
 {
-    /**
-     * @param string      $url
-     * @param string      $secret
-     * @param string|null $clientId
-     * @param string|null $channel
-     *
-     * @return string
-     */
-    public static function sign($url, $secret, $clientId = null, $channel = null)
+    public static function sign(string $url, string $secret, ?string $clientId = null, ?string $channel = null): string
     {
         if (null !== $clientId) {
             $url .= '&client=gme-'.$clientId;

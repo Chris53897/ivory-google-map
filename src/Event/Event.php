@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -16,40 +18,24 @@ use Ivory\GoogleMap\Utility\VariableAwareTrait;
 
 /**
  * @see http://code.google.com/apis/maps/documentation/javascript/reference.html#MapsEventListener
- *
- * @author GeLo <geloen.eric@gmail.com>
  */
 class Event implements VariableAwareInterface
 {
     use VariableAwareTrait;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $instance;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $trigger;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $handle;
 
-    /**
-     * @var bool
-     */
+    /** @var bool */
     private $capture;
 
-    /**
-     * @param string $instance
-     * @param string $trigger
-     * @param string $handle
-     * @param bool   $capture
-     */
-    public function __construct($instance, $trigger, $handle, $capture = false)
+    public function __construct(string $instance, string $trigger, string $handle, bool $capture = false)
     {
         $this->setInstance($instance);
         $this->setTrigger($trigger);
@@ -57,66 +43,42 @@ class Event implements VariableAwareInterface
         $this->setCapture($capture);
     }
 
-    /**
-     * @return string
-     */
-    public function getInstance()
+    public function getInstance(): string
     {
         return $this->instance;
     }
 
-    /**
-     * @param string $instance
-     */
-    public function setInstance($instance)
+    public function setInstance(string $instance): void
     {
         $this->instance = $instance;
     }
 
-    /**
-     * @return string
-     */
-    public function getTrigger()
+    public function getTrigger(): string
     {
         return $this->trigger;
     }
 
-    /**
-     * @param string $trigger
-     */
-    public function setTrigger($trigger)
+    public function setTrigger(string $trigger): void
     {
         $this->trigger = $trigger;
     }
 
-    /**
-     * @return string
-     */
-    public function getHandle()
+    public function getHandle(): string
     {
         return $this->handle;
     }
 
-    /**
-     * @param string $handle
-     */
-    public function setHandle($handle)
+    public function setHandle($handle): void
     {
         $this->handle = $handle;
     }
 
-    /**
-     * @return bool
-     */
-    public function isCapture()
+    public function isCapture(): bool
     {
         return $this->capture;
     }
 
-    /**
-     * @param bool $capture
-     */
-    public function setCapture($capture)
+    public function setCapture(bool $capture): void
     {
         $this->capture = $capture;
     }

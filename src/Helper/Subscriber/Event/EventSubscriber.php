@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -14,15 +16,12 @@ namespace Ivory\GoogleMap\Helper\Subscriber\Event;
 use Ivory\GoogleMap\Helper\Event\MapEvents;
 use Ivory\GoogleMap\Helper\Subscriber\AbstractDelegateSubscriber;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class EventSubscriber extends AbstractDelegateSubscriber
 {
     /**
      * {@inheritdoc}
      */
-    public static function getDelegatedSubscribedEvents()
+    public static function getDelegatedSubscribedEvents(): array
     {
         return [
             MapEvents::JAVASCRIPT_EVENT => [

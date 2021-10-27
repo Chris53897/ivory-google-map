@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,33 +13,22 @@
 
 namespace Ivory\GoogleMap\Utility;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 trait VariableAwareTrait
 {
-    /**
-     * @var string
-     */
+    /** @var string|null */
     private $variable;
 
-    /**
-     * @return string
-     */
-    public function getVariable()
+    public function getVariable(): ?string
     {
         if (null === $this->variable) {
             $prefix = strtolower(substr(strrchr(get_class($this), '\\'), 1));
-            $this->variable = $prefix.substr_replace(uniqid(null, true), '', 14, 1);
+            $this->variable = $prefix.substr_replace(uniqid('', true), '', 14, 1);
         }
 
         return $this->variable;
     }
 
-    /**
-     * @param string $variable
-     */
-    public function setVariable($variable)
+    public function setVariable(string $variable): void
     {
         $this->variable = $variable;
     }

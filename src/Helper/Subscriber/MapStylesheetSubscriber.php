@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -16,14 +18,9 @@ use Ivory\GoogleMap\Helper\Event\MapEvents;
 use Ivory\GoogleMap\Helper\Formatter\Formatter;
 use Ivory\GoogleMap\Helper\Renderer\Html\StylesheetTagRenderer;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class MapStylesheetSubscriber extends AbstractSubscriber
 {
-    /**
-     * @var StylesheetTagRenderer
-     */
+    /** @var StylesheetTagRenderer */
     private $stylesheetTagRenderer;
 
     public function __construct(Formatter $formatter, StylesheetTagRenderer $stylesheetTagRenderer)
@@ -33,20 +30,17 @@ class MapStylesheetSubscriber extends AbstractSubscriber
         $this->setStylesheetTagRenderer($stylesheetTagRenderer);
     }
 
-    /**
-     * @return StylesheetTagRenderer
-     */
-    public function getStylesheetTagRenderer()
+    public function getStylesheetTagRenderer(): StylesheetTagRenderer
     {
         return $this->stylesheetTagRenderer;
     }
 
-    public function setStylesheetTagRenderer(StylesheetTagRenderer $stylesheetTagRenderer)
+    public function setStylesheetTagRenderer(StylesheetTagRenderer $stylesheetTagRenderer): void
     {
         $this->stylesheetTagRenderer = $stylesheetTagRenderer;
     }
 
-    public function handleMap(MapEvent $event)
+    public function handleMap(MapEvent $event): void
     {
         $map = $event->getMap();
 
@@ -58,7 +52,7 @@ class MapStylesheetSubscriber extends AbstractSubscriber
     /**
      * {@inheritdoc}
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [MapEvents::STYLESHEET => 'handleMap'];
     }

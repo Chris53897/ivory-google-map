@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -16,14 +18,9 @@ use Ivory\GoogleMap\Helper\Event\StaticMapEvents;
 use Ivory\GoogleMap\Helper\Renderer\Image\StyleRenderer;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class StyleSubscriber implements EventSubscriberInterface
 {
-    /**
-     * @var StyleRenderer
-     */
+    /** @var StyleRenderer */
     private $styleRenderer;
 
     public function __construct(StyleRenderer $styleRenderer)
@@ -31,7 +28,7 @@ class StyleSubscriber implements EventSubscriberInterface
         $this->styleRenderer = $styleRenderer;
     }
 
-    public function handleMap(StaticMapEvent $event)
+    public function handleMap(StaticMapEvent $event): void
     {
         $map = $event->getMap();
 
@@ -53,7 +50,7 @@ class StyleSubscriber implements EventSubscriberInterface
     /**
      * {@inheritdoc}
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [StaticMapEvents::STYLE => 'handleMap'];
     }

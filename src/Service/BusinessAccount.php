@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,100 +13,60 @@
 
 namespace Ivory\GoogleMap\Service;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class BusinessAccount
 {
-    /**
-     * @var string
-     */
+    /** @var string */
     private $clientId;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $secret;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $channel;
 
-    /**
-     * @param string $clientId
-     * @param string $secret
-     * @param string $channel
-     */
-    public function __construct($clientId, $secret, $channel = null)
+    public function __construct(string $clientId, string $secret, ?string $channel = null)
     {
-        $this->setClientId($clientId);
-        $this->setSecret($secret);
-        $this->setChannel($channel);
+        $this->clientId = $clientId;
+        $this->secret =$secret;
+        $this->channel = $channel;
     }
 
-    /**
-     * @return string
-     */
-    public function getClientId()
+    public function getClientId(): string
     {
         return $this->clientId;
     }
 
-    /**
-     * @param string $clientId
-     */
-    public function setClientId($clientId)
+    public function setClientId(string $clientId): void
     {
         $this->clientId = $clientId;
     }
 
-    /**
-     * @return string
-     */
-    public function getSecret()
+    public function getSecret(): string
     {
         return $this->secret;
     }
 
-    /**
-     * @param string $secret
-     */
-    public function setSecret($secret)
+    public function setSecret(string $secret): void
     {
         $this->secret = $secret;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasChannel()
+    public function hasChannel(): bool
     {
         return null !== $this->channel;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getChannel()
+    public function getChannel(): ?string
     {
         return $this->channel;
     }
 
-    /**
-     * @param string|null $channel
-     */
-    public function setChannel($channel = null)
+    public function setChannel(?string $channel = null): void
     {
         $this->channel = $channel;
     }
 
-    /**
-     * @param string $url
-     *
-     * @return string
-     */
-    public function signUrl($url)
+    public function signUrl(string $url): string
     {
         return UrlSigner::sign($url, $this->secret, $this->clientId, $this->channel);
     }

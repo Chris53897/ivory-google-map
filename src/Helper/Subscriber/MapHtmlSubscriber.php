@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -16,14 +18,9 @@ use Ivory\GoogleMap\Helper\Event\MapEvents;
 use Ivory\GoogleMap\Helper\Formatter\Formatter;
 use Ivory\GoogleMap\Helper\Renderer\MapHtmlRenderer;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class MapHtmlSubscriber extends AbstractSubscriber
 {
-    /**
-     * @var MapHtmlRenderer
-     */
+    /** @var MapHtmlRenderer */
     private $mapHtmlRenderer;
 
     public function __construct(Formatter $formatter, MapHtmlRenderer $mapHtmlRenderer)
@@ -33,20 +30,17 @@ class MapHtmlSubscriber extends AbstractSubscriber
         $this->setMapHtmlRenderer($mapHtmlRenderer);
     }
 
-    /**
-     * @return MapHtmlRenderer
-     */
-    public function getMapHtmlRenderer()
+    public function getMapHtmlRenderer(): MapHtmlRenderer
     {
         return $this->mapHtmlRenderer;
     }
 
-    public function setMapHtmlRenderer(MapHtmlRenderer $mapHtmlRenderer)
+    public function setMapHtmlRenderer(MapHtmlRenderer $mapHtmlRenderer): void
     {
         $this->mapHtmlRenderer = $mapHtmlRenderer;
     }
 
-    public function handleMap(MapEvent $event)
+    public function handleMap(MapEvent $event): void
     {
         $event->addCode($this->mapHtmlRenderer->render($event->getMap()));
     }
@@ -54,7 +48,7 @@ class MapHtmlSubscriber extends AbstractSubscriber
     /**
      * {@inheritdoc}
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [MapEvents::HTML => 'handleMap'];
     }

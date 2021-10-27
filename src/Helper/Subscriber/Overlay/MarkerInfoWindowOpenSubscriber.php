@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -21,19 +23,12 @@ use Ivory\GoogleMap\Helper\Renderer\Overlay\InfoWindowOpenRenderer;
 use Ivory\GoogleMap\Map;
 use Ivory\GoogleMap\Overlay\Marker;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class MarkerInfoWindowOpenSubscriber extends AbstractMarkerSubscriber
 {
-    /**
-     * @var InfoWindowOpenRenderer
-     */
+    /** @var InfoWindowOpenRenderer */
     private $infoWindowOpenRenderer;
 
-    /**
-     * @var EventRenderer
-     */
+    /** @var EventRenderer */
     private $eventRenderer;
 
     public function __construct(
@@ -48,33 +43,27 @@ class MarkerInfoWindowOpenSubscriber extends AbstractMarkerSubscriber
         $this->setEventRenderer($eventRenderer);
     }
 
-    /**
-     * @return InfoWindowOpenRenderer
-     */
-    public function getInfoWindowOpenRenderer()
+    public function getInfoWindowOpenRenderer(): InfoWindowOpenRenderer
     {
         return $this->infoWindowOpenRenderer;
     }
 
-    public function setInfoWindowOpenRenderer(InfoWindowOpenRenderer $infoWindowOpenRenderer)
+    public function setInfoWindowOpenRenderer(InfoWindowOpenRenderer $infoWindowOpenRenderer): void
     {
         $this->infoWindowOpenRenderer = $infoWindowOpenRenderer;
     }
 
-    /**
-     * @return EventRenderer
-     */
-    public function getEventRenderer()
+    public function getEventRenderer(): EventRenderer
     {
         return $this->eventRenderer;
     }
 
-    public function setEventRenderer(EventRenderer $eventRenderer)
+    public function setEventRenderer(EventRenderer $eventRenderer): void
     {
         $this->eventRenderer = $eventRenderer;
     }
 
-    public function handleMap(MapEvent $event)
+    public function handleMap(MapEvent $event): void
     {
         $formatter = $this->getFormatter();
         $map = $event->getMap();
@@ -98,15 +87,12 @@ class MarkerInfoWindowOpenSubscriber extends AbstractMarkerSubscriber
     /**
      * {@inheritdoc}
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [MapEvents::JAVASCRIPT_EVENT => 'handleMap'];
     }
 
-    /**
-     * @return Event
-     */
-    private function createEvent(Map $map, Marker $marker)
+    private function createEvent(Map $map, Marker $marker): Event
     {
         $formatter = $this->getFormatter();
 

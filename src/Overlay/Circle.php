@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,60 +20,41 @@ use Ivory\GoogleMap\Utility\VariableAwareTrait;
 
 /**
  * @see http://code.google.com/apis/maps/documentation/javascript/reference.html#Circle
- *
- * @author GeLo <geloen.eric@gmail.com>
  */
 class Circle implements ExtendableInterface, OptionsAwareInterface
 {
     use OptionsAwareTrait;
     use VariableAwareTrait;
 
-    /**
-     * @var Coordinate
-     */
+    /** @var Coordinate */
     private $center;
 
-    /**
-     * @var float
-     */
+    /** @var float */
     private $radius;
 
-    /**
-     * @param float   $radius
-     * @param mixed[] $options
-     */
-    public function __construct(Coordinate $center, $radius = 1.0, array $options = [])
+    public function __construct(Coordinate $center, float $radius = 1.0, array $options = [])
     {
         $this->setCenter($center);
         $this->setRadius($radius);
         $this->addOptions($options);
     }
 
-    /**
-     * @return Coordinate
-     */
-    public function getCenter()
+    public function getCenter(): Coordinate
     {
         return $this->center;
     }
 
-    public function setCenter(Coordinate $center)
+    public function setCenter(Coordinate $center): void
     {
         $this->center = $center;
     }
 
-    /**
-     * @return float
-     */
-    public function getRadius()
+    public function getRadius(): float
     {
         return $this->radius;
     }
 
-    /**
-     * @param float $radius
-     */
-    public function setRadius($radius)
+    public function setRadius(float $radius): void
     {
         $this->radius = $radius;
     }

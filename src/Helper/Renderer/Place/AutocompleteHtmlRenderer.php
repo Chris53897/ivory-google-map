@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -14,15 +16,9 @@ namespace Ivory\GoogleMap\Helper\Renderer\Place;
 use Ivory\GoogleMap\Helper\Renderer\Html\AbstractTagRenderer;
 use Ivory\GoogleMap\Place\Autocomplete;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class AutocompleteHtmlRenderer extends AbstractTagRenderer
 {
-    /**
-     * @return string
-     */
-    public function render(Autocomplete $autocomplete)
+    public function render(Autocomplete $autocomplete): string
     {
         $attributes = [
             'id'           => $autocomplete->getHtmlId(),

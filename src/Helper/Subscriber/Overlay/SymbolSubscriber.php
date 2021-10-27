@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,19 +20,12 @@ use Ivory\GoogleMap\Helper\Formatter\Formatter;
 use Ivory\GoogleMap\Helper\Renderer\Overlay\SymbolRenderer;
 use Ivory\GoogleMap\Helper\Subscriber\AbstractSubscriber;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class SymbolSubscriber extends AbstractSubscriber
 {
-    /**
-     * @var SymbolCollector
-     */
+    /** @var SymbolCollector */
     private $symbolCollector;
 
-    /**
-     * @var SymbolRenderer
-     */
+    /** @var SymbolRenderer */
     private $symbolRenderer;
 
     public function __construct(
@@ -44,33 +39,27 @@ class SymbolSubscriber extends AbstractSubscriber
         $this->setSymbolRenderer($symbolRenderer);
     }
 
-    /**
-     * @return SymbolCollector
-     */
-    public function getSymbolCollector()
+    public function getSymbolCollector(): SymbolCollector
     {
         return $this->symbolCollector;
     }
 
-    public function setSymbolCollector(SymbolCollector $symbolCollector)
+    public function setSymbolCollector(SymbolCollector $symbolCollector): void
     {
         $this->symbolCollector = $symbolCollector;
     }
 
-    /**
-     * @return SymbolRenderer
-     */
-    public function getSymbolRenderer()
+    public function getSymbolRenderer(): SymbolRenderer
     {
         return $this->symbolRenderer;
     }
 
-    public function setSymbolRenderer(SymbolRenderer $symbolRenderer)
+    public function setSymbolRenderer(SymbolRenderer $symbolRenderer): void
     {
         $this->symbolRenderer = $symbolRenderer;
     }
 
-    public function handleMap(MapEvent $event)
+    public function handleMap(MapEvent $event): void
     {
         $formatter = $this->getFormatter();
         $map = $event->getMap();
@@ -88,7 +77,7 @@ class SymbolSubscriber extends AbstractSubscriber
     /**
      * {@inheritdoc}
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [MapEvents::JAVASCRIPT_OVERLAY_SYMBOL => 'handleMap'];
     }

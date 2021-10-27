@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -13,19 +15,12 @@ namespace Ivory\GoogleMap\Helper\Renderer\Image\Overlay;
 
 use Ivory\GoogleMap\Overlay\Marker;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class MarkerRenderer
 {
-    /**
-     * @var MarkerStyleRenderer
-     */
+    /** @var MarkerStyleRenderer */
     private $markerStyleRenderer;
 
-    /**
-     * @var MarkerLocationRenderer
-     */
+    /** @var MarkerLocationRenderer */
     private $markerLocationRenderer;
 
     public function __construct(
@@ -36,12 +31,7 @@ class MarkerRenderer
         $this->markerLocationRenderer = $markerLocationRenderer;
     }
 
-    /**
-     * @param Marker[] $markers
-     *
-     * @return string
-     */
-    public function render(array $markers)
+    public function render(array $markers): string
     {
         $result = [];
         $marker = current($markers);

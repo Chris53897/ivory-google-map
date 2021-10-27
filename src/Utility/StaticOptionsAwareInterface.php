@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,53 +13,14 @@
 
 namespace Ivory\GoogleMap\Utility;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 interface StaticOptionsAwareInterface
 {
-    /**
-     * @return bool
-     */
-    public function hasStaticOptions();
-
-    /**
-     * @return mixed[]
-     */
-    public function getStaticOptions();
-
-    /**
-     * @param mixed[] $options
-     */
-    public function setStaticOptions(array $options);
-
-    /**
-     * @param mixed[] $options
-     */
-    public function addStaticOptions(array $options);
-
-    /**
-     * @param string $option
-     *
-     * @return bool
-     */
-    public function hasStaticOption($option);
-
-    /**
-     * @param string $option
-     *
-     * @return mixed
-     */
-    public function getStaticOption($option);
-
-    /**
-     * @param string $option
-     * @param mixed  $value
-     */
-    public function setStaticOption($option, $value);
-
-    /**
-     * @param string $option
-     */
-    public function removeStaticOption($option);
+    public function hasStaticOptions(): bool;
+    public function getStaticOptions(): array;
+    public function setStaticOptions(array $options): void;
+    public function addStaticOptions(array $options): void;
+    public function hasStaticOption(string $option): bool;
+    public function getStaticOption(string $option);
+    public function setStaticOption(string $option, $value): void;
+    public function removeStaticOption(string $option);
 }

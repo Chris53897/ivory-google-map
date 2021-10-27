@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -15,9 +17,6 @@ use Ivory\GoogleMap\Helper\Collector\AbstractCollector;
 use Ivory\GoogleMap\Map;
 use Ivory\GoogleMap\Overlay\Polyline;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class PolylineCollector extends AbstractCollector
 {
     /**
@@ -25,7 +24,7 @@ class PolylineCollector extends AbstractCollector
      *
      * @return Polyline[]
      */
-    public function collect(Map $map, array $polylines = [])
+    public function collect(Map $map, array $polylines = []): array
     {
         return $this->collectValues($map->getOverlayManager()->getPolylines(), $polylines);
     }

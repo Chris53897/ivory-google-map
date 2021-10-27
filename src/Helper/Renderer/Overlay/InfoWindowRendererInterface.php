@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -13,15 +15,7 @@ namespace Ivory\GoogleMap\Helper\Renderer\Overlay;
 
 use Ivory\GoogleMap\Overlay\InfoWindow;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 interface InfoWindowRendererInterface
 {
-    /**
-     * @param bool $position
-     *
-     * @return string
-     */
-    public function render(InfoWindow $infoWindow, $position = true);
+    public function render(InfoWindow $infoWindow, bool $position = true): string;
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -15,15 +17,12 @@ use Ivory\GoogleMap\Base\Bound;
 use Ivory\GoogleMap\Helper\Renderer\AbstractRenderer;
 use Ivory\GoogleMap\Overlay\ExtendableInterface;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 abstract class AbstractCoordinateExtendableRenderer extends AbstractRenderer implements ExtendableRendererInterface
 {
     /**
      * {@inheritdoc}
      */
-    public function render(ExtendableInterface $extendable, Bound $bound)
+    public function render(ExtendableInterface $extendable, Bound $bound): string
     {
         $formatter = $this->getFormatter();
 
@@ -38,8 +37,5 @@ abstract class AbstractCoordinateExtendableRenderer extends AbstractRenderer imp
         );
     }
 
-    /**
-     * @return string
-     */
-    abstract protected function getMethod();
+    abstract protected function getMethod(): string;
 }

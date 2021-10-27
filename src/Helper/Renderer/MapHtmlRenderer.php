@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -17,14 +19,9 @@ use Ivory\GoogleMap\Helper\Renderer\Html\StylesheetRenderer;
 use Ivory\GoogleMap\Helper\Renderer\Html\TagRenderer;
 use Ivory\GoogleMap\Map;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class MapHtmlRenderer extends AbstractTagRenderer
 {
-    /**
-     * @var StylesheetRenderer
-     */
+    /** @var StylesheetRenderer */
     private $stylesheetRenderer;
 
     public function __construct(Formatter $formatter, TagRenderer $tagRenderer, StylesheetRenderer $stylesheetRenderer)
@@ -34,23 +31,17 @@ class MapHtmlRenderer extends AbstractTagRenderer
         $this->setStylesheetRenderer($stylesheetRenderer);
     }
 
-    /**
-     * @return StylesheetRenderer
-     */
-    public function getStylesheetRenderer()
+    public function getStylesheetRenderer(): StylesheetRenderer
     {
         return $this->stylesheetRenderer;
     }
 
-    public function setStylesheetRenderer(StylesheetRenderer $stylesheetRenderer)
+    public function setStylesheetRenderer(StylesheetRenderer $stylesheetRenderer): void
     {
         $this->stylesheetRenderer = $stylesheetRenderer;
     }
 
-    /**
-     * @return string
-     */
-    public function render(Map $map)
+    public function render(Map $map): string
     {
         $styles = [];
         $stylesheets = [

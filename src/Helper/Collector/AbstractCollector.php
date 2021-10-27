@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,18 +13,9 @@
 
 namespace Ivory\GoogleMap\Helper\Collector;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 abstract class AbstractCollector
 {
-    /**
-     * @param mixed[] $values
-     * @param mixed[] $defaults
-     *
-     * @return mixed[]
-     */
-    protected function collectValues(array $values, array $defaults = [])
+    protected function collectValues(array $values, array $defaults = []): array
     {
         foreach ($values as $value) {
             $defaults = $this->collectValue($value, $defaults);
@@ -32,12 +25,11 @@ abstract class AbstractCollector
     }
 
     /**
-     * @param object   $value
      * @param object[] $defaults
      *
      * @return object[]
      */
-    protected function collectValue($value, array $defaults = [])
+    protected function collectValue(object $value, array $defaults = []): array
     {
         if (!in_array($value, $defaults, true)) {
             $defaults[] = $value;

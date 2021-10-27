@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -13,14 +15,9 @@ namespace Ivory\GoogleMap\Helper\Renderer;
 
 use Ivory\GoogleMap\Helper\Formatter\Formatter;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 abstract class AbstractRenderer
 {
-    /**
-     * @var Formatter
-     */
+    /** @var Formatter */
     private $formatter;
 
     public function __construct(Formatter $formatter)
@@ -28,18 +25,12 @@ abstract class AbstractRenderer
         $this->setFormatter($formatter);
     }
 
-    /**
-     * @return Formatter
-     */
-    public function getFormatter()
+    public function getFormatter(): Formatter
     {
         return $this->formatter;
     }
 
-    /**
-     * @param Formatter $formatter
-     */
-    public function setFormatter($formatter)
+    public function setFormatter(Formatter $formatter): void
     {
         $this->formatter = $formatter;
     }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -16,61 +18,39 @@ use Ivory\GoogleMap\Utility\VariableAwareTrait;
 
 /**
  * @see http://code.google.com/apis/maps/documentation/javascript/reference.html#Point
- *
- * @author GeLo <geloen.eric@gmail.com>
  */
 class Point implements VariableAwareInterface
 {
     use VariableAwareTrait;
 
-    /**
-     * @var float
-     */
+    /** @var float */
     private $x;
 
-    /**
-     * @var float
-     */
+    /** @var float */
     private $y;
 
-    /**
-     * @param float $x
-     * @param float $y
-     */
-    public function __construct($x = 0.0, $y = 0.0)
+    public function __construct(float $x = 0.0, float $y = 0.0)
     {
         $this->setX($x);
         $this->setY($y);
     }
 
-    /**
-     * @return float
-     */
-    public function getX()
+    public function getX(): float
     {
         return $this->x;
     }
 
-    /**
-     * @param float $x
-     */
-    public function setX($x)
+    public function setX(float $x): void
     {
         $this->x = $x;
     }
 
-    /**
-     * @return float
-     */
-    public function getY()
+    public function getY(): float
     {
         return $this->y;
     }
 
-    /**
-     * @param float $y
-     */
-    public function setY($y)
+    public function setY(float $y): void
     {
         $this->y = $y;
     }

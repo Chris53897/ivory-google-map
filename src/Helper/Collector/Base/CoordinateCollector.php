@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -21,44 +23,27 @@ use Ivory\GoogleMap\Helper\Collector\Overlay\PolygonCollector;
 use Ivory\GoogleMap\Helper\Collector\Overlay\PolylineCollector;
 use Ivory\GoogleMap\Map;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class CoordinateCollector extends AbstractCollector
 {
-    /**
-     * @var BoundCollector
-     */
+    /** @var BoundCollector */
     private $boundCollector;
 
-    /**
-     * @var CircleCollector
-     */
+    /** @var CircleCollector */
     private $circleCollector;
 
-    /**
-     * @var InfoWindowCollector
-     */
+    /** @var InfoWindowCollector */
     private $infoWindowCollector;
 
-    /**
-     * @var MarkerCollector
-     */
+    /** @var MarkerCollector */
     private $markerCollector;
 
-    /**
-     * @var PolygonCollector
-     */
+    /** @var PolygonCollector */
     private $polygonCollector;
 
-    /**
-     * @var PolylineCollector
-     */
+    /** @var PolylineCollector */
     private $polylineCollector;
 
-    /**
-     * @var HeatmapLayerCollector
-     */
+    /** @var HeatmapLayerCollector */
     private $heatmapLayerCollector;
 
     public function __construct(
@@ -79,93 +64,72 @@ class CoordinateCollector extends AbstractCollector
         $this->setHeatmapLayerCollector($heatmapLayerCollector);
     }
 
-    /**
-     * @return BoundCollector
-     */
-    public function getBoundCollector()
+    public function getBoundCollector(): BoundCollector
     {
         return $this->boundCollector;
     }
 
-    public function setBoundCollector(BoundCollector $boundCollector)
+    public function setBoundCollector(BoundCollector $boundCollector): void
     {
         $this->boundCollector = $boundCollector;
     }
 
-    /**
-     * @return CircleCollector
-     */
-    public function getCircleCollector()
+    public function getCircleCollector(): CircleCollector
     {
         return $this->circleCollector;
     }
 
-    public function setCircleCollector(CircleCollector $circleCollector)
+    public function setCircleCollector(CircleCollector $circleCollector): void
     {
         $this->circleCollector = $circleCollector;
     }
 
-    /**
-     * @return InfoWindowCollector
-     */
-    public function getInfoWindowCollector()
+    public function getInfoWindowCollector(): InfoWindowCollector
     {
         return $this->infoWindowCollector;
     }
 
-    public function setInfoWindowCollector(InfoWindowCollector $infoWindowCollector)
+    public function setInfoWindowCollector(InfoWindowCollector $infoWindowCollector): void
     {
         $this->infoWindowCollector = $infoWindowCollector;
     }
 
-    /**
-     * @return MarkerCollector
-     */
-    public function getMarkerCollector()
+    public function getMarkerCollector(): MarkerCollector
     {
         return $this->markerCollector;
     }
 
-    public function setMarkerCollector(MarkerCollector $markerCollector)
+    public function setMarkerCollector(MarkerCollector $markerCollector): void
     {
         $this->markerCollector = $markerCollector;
     }
 
-    /**
-     * @return PolygonCollector
-     */
-    public function getPolygonCollector()
+    public function getPolygonCollector(): PolygonCollector
     {
         return $this->polygonCollector;
     }
 
-    public function setPolygonCollector(PolygonCollector $polygonCollector)
+    public function setPolygonCollector(PolygonCollector $polygonCollector): void
     {
         $this->polygonCollector = $polygonCollector;
     }
 
-    /**
-     * @return PolylineCollector
-     */
-    public function getPolylineCollector()
+    public function getPolylineCollector(): PolylineCollector
     {
         return $this->polylineCollector;
     }
 
-    public function setPolylineCollector(PolylineCollector $polylineCollector)
+    public function setPolylineCollector(PolylineCollector $polylineCollector): void
     {
         $this->polylineCollector = $polylineCollector;
     }
 
-    /**
-     * @return HeatmapLayerCollector
-     */
-    public function getHeatmapLayerCollector()
+    public function getHeatmapLayerCollector(): HeatmapLayerCollector
     {
         return $this->heatmapLayerCollector;
     }
 
-    public function setHeatmapLayerCollector(HeatmapLayerCollector $heatmapLayerCollector)
+    public function setHeatmapLayerCollector(HeatmapLayerCollector $heatmapLayerCollector): void
     {
         $this->heatmapLayerCollector = $heatmapLayerCollector;
     }
@@ -175,7 +139,7 @@ class CoordinateCollector extends AbstractCollector
      *
      * @return Coordinate[]
      */
-    public function collect(Map $map, array $coordinates = [])
+    public function collect(Map $map, array $coordinates = []): array
     {
         if (!$map->isAutoZoom()) {
             $coordinates = $this->collectValue($map->getCenter(), $coordinates);

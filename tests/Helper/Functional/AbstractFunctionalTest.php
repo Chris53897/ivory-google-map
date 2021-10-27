@@ -67,7 +67,7 @@ abstract class AbstractFunctionalTest extends Selenium2TestCase
     /**
      * @param string|string[] $html
      */
-    protected function renderHtml($html)
+    protected function renderHtml($html): void
     {
         if (false === ($name = @tempnam(self::$directory, 'ivory-google-map').'.html')) {
             throw new \RuntimeException(sprintf('Unable to generate a unique file name in "%s".', self::$directory));
@@ -101,9 +101,9 @@ abstract class AbstractFunctionalTest extends Selenium2TestCase
     /**
      * @param string $variable
      */
-    protected function assertVariableExists($variable)
+    protected function assertVariableExists($variable): void
     {
-        $this->assertTrue($this->executeJavascript($script = 'typeof '.$variable.' !== typeof undefined'), $script);
+        self::assertTrue($this->executeJavascript($script = 'typeof '.$variable.' !== typeof undefined'), $script);
     }
 
     /**
@@ -113,13 +113,13 @@ abstract class AbstractFunctionalTest extends Selenium2TestCase
      */
     protected function assertSameVariable($expected, $variable, $formatter = null)
     {
-        $defaultFormatter = function ($expected, $variable) {
+        $defaultFormatter = static function ($expected, $variable) {
             return $expected.' === '.$variable;
         };
 
         $formatter = $formatter ?: $defaultFormatter;
 
-        $this->assertTrue($this->executeJavascript($script = call_user_func(
+        self::assertTrue($this->executeJavascript($script = call_user_func(
             $formatter,
             $expected,
             $variable,

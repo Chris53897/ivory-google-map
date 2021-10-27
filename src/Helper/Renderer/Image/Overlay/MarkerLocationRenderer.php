@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -14,14 +16,9 @@ namespace Ivory\GoogleMap\Helper\Renderer\Image\Overlay;
 use Ivory\GoogleMap\Helper\Renderer\Image\Base\CoordinateRenderer;
 use Ivory\GoogleMap\Overlay\Marker;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class MarkerLocationRenderer
 {
-    /**
-     * @var CoordinateRenderer
-     */
+    /** @var CoordinateRenderer */
     private $coordinateRenderer;
 
     public function __construct(CoordinateRenderer $coordinateRenderer)
@@ -29,10 +26,7 @@ class MarkerLocationRenderer
         $this->coordinateRenderer = $coordinateRenderer;
     }
 
-    /**
-     * @return string
-     */
-    public function render(Marker $marker)
+    public function render(Marker $marker): string
     {
         return $marker->hasStaticOption('location')
             ? $marker->getStaticOption('location')

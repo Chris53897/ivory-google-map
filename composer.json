@@ -1,6 +1,6 @@
 {
     "name": "ivory/google-map",
-    "description": "Google Map API v3 integration for PHP ^7.0",
+    "description": "Google Map API v3 integration for PHP ^7.2, ^8.0",
     "keywords": [ "google", "map"],
     "license": "MIT",
     "authors": [
@@ -18,18 +18,18 @@
     "require": {
         "php": "^7.2 || ^8.0",
         "ivory/json-builder": "^3.0",
-        "symfony/event-dispatcher": "^5.0"
+        "symfony/event-dispatcher": "^4.0 || ^5.0",
+        "psr/http-factory": "^1.0",
+        "psr/http-client": "^1.0",
+        "ext-json": "*"
     },
     "require-dev": {
         "ivory/serializer": "^1.0",
-        "friendsofphp/php-cs-fixer": "^2.0",
-        "php-http/cache-plugin": "^1.4",
-        "php-http/guzzle6-adapter": "^2.0",
+        "friendsofphp/php-cs-fixer": "^3.2",
         "phpunit/phpunit": "^8.0",
         "phpunit/phpunit-selenium": "^8.0",
-        "symfony/cache": "^5.0",
-        "symfony/phpunit-bridge": "^5.0",
-        "ext-json": "*"
+        "symfony/cache": "^4.0 || ^5.0",
+        "symfony/phpunit-bridge": "^4.0 || ^5.0"
     },
     "suggest": {
         "ivory/serializer": "Allows to use http services",

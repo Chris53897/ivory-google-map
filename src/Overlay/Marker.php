@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -20,8 +22,6 @@ use Ivory\GoogleMap\Utility\VariableAwareTrait;
 
 /**
  * @see http://code.google.com/apis/maps/documentation/javascript/reference.html#Marker
- *
- * @author GeLo <geloen.eric@gmail.com>
  */
 class Marker implements ExtendableInterface, OptionsAwareInterface, StaticOptionsAwareInterface
 {
@@ -29,47 +29,31 @@ class Marker implements ExtendableInterface, OptionsAwareInterface, StaticOption
     use StaticOptionsAwareTrait;
     use VariableAwareTrait;
 
-    /**
-     * @var Coordinate
-     */
+    /** @var Coordinate */
     private $position;
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $animation;
 
-    /**
-     * @var Icon|null
-     */
+    /** @var Icon|null */
     private $icon;
 
-    /**
-     * @var Symbol|null
-     */
+    /** @var Symbol|null */
     private $symbol;
 
-    /**
-     * @var MarkerShape|null
-     */
+    /** @var MarkerShape|null */
     private $shape;
 
-    /**
-     * @var InfoWindow|null
-     */
+    /** @var InfoWindow|null */
     private $infoWindow;
 
-    /**
-     * @param string|null $animation
-     * @param mixed[]     $options
-     */
     public function __construct(
-        Coordinate $position,
-        $animation = null,
-        Icon $icon = null,
-        Symbol $symbol = null,
+        Coordinate  $position,
+        string      $animation = null,
+        Icon        $icon = null,
+        Symbol      $symbol = null,
         MarkerShape $shape = null,
-        array $options = []
+        array       $options = []
     ) {
         $this->setPosition($position);
         $this->setAnimation($animation);
@@ -83,60 +67,42 @@ class Marker implements ExtendableInterface, OptionsAwareInterface, StaticOption
         }
     }
 
-    /**
-     * @return Coordinate
-     */
-    public function getPosition()
+    public function getPosition(): Coordinate
     {
         return $this->position;
     }
 
-    public function setPosition(Coordinate $position)
+    public function setPosition(Coordinate $position): void
     {
         $this->position = $position;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasAnimation()
+    public function hasAnimation(): bool
     {
         return null !== $this->animation;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getAnimation()
+    public function getAnimation(): ?string
     {
         return $this->animation;
     }
 
-    /**
-     * @param string|null $animation
-     */
-    public function setAnimation($animation = null)
+    public function setAnimation(string $animation = null): void
     {
         $this->animation = $animation;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasIcon()
+    public function hasIcon(): bool
     {
         return null !== $this->icon;
     }
 
-    /**
-     * @return Icon|null
-     */
-    public function getIcon()
+    public function getIcon(): ?Icon
     {
         return $this->icon;
     }
 
-    public function setIcon(Icon $icon = null)
+    public function setIcon(Icon $icon = null): void
     {
         $this->icon = $icon;
 
@@ -145,23 +111,17 @@ class Marker implements ExtendableInterface, OptionsAwareInterface, StaticOption
         }
     }
 
-    /**
-     * @return bool
-     */
-    public function hasSymbol()
+    public function hasSymbol(): bool
     {
         return null !== $this->symbol;
     }
 
-    /**
-     * @return Symbol|null
-     */
-    public function getSymbol()
+    public function getSymbol(): ?Symbol
     {
         return $this->symbol;
     }
 
-    public function setSymbol(Symbol $symbol = null)
+    public function setSymbol(Symbol $symbol = null): void
     {
         $this->symbol = $symbol;
 
@@ -170,44 +130,32 @@ class Marker implements ExtendableInterface, OptionsAwareInterface, StaticOption
         }
     }
 
-    /**
-     * @return bool
-     */
-    public function hasShape()
+    public function hasShape(): bool
     {
         return null !== $this->shape;
     }
 
-    /**
-     * @return MarkerShape|null
-     */
-    public function getShape()
+    public function getShape(): ?MarkerShape
     {
         return $this->shape;
     }
 
-    public function setShape(MarkerShape $shape = null)
+    public function setShape(MarkerShape $shape = null): void
     {
         $this->shape = $shape;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasInfoWindow()
+    public function hasInfoWindow(): bool
     {
         return null !== $this->infoWindow;
     }
 
-    /**
-     * @return InfoWindow|null
-     */
-    public function getInfoWindow()
+    public function getInfoWindow(): ?InfoWindow
     {
         return $this->infoWindow;
     }
 
-    public function setInfoWindow(InfoWindow $infoWindow = null)
+    public function setInfoWindow(InfoWindow $infoWindow = null): void
     {
         $this->infoWindow = $infoWindow;
     }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -14,17 +16,9 @@ namespace Ivory\GoogleMap\Helper;
 use Ivory\GoogleMap\Helper\Event\ApiEvent;
 use Ivory\GoogleMap\Helper\Event\ApiEvents;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class ApiHelper extends AbstractHelper
 {
-    /**
-     * @param object[] $objects
-     *
-     * @return string
-     */
-    public function render(array $objects)
+    public function render(array $objects): string
     {
         $this->getEventDispatcher()->dispatch($event = new ApiEvent($objects), ApiEvents::JAVASCRIPT);
 

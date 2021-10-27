@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -15,9 +17,6 @@ use Ivory\GoogleMap\Helper\Collector\AbstractCollector;
 use Ivory\GoogleMap\Map;
 use Ivory\GoogleMap\Overlay\Marker;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class MarkerCollector extends AbstractCollector
 {
     /**
@@ -25,7 +24,7 @@ class MarkerCollector extends AbstractCollector
      *
      * @return Marker[]
      */
-    public function collect(Map $map, array $markers = [])
+    public function collect(Map $map, array $markers = []): array
     {
         return $this->collectValues($map->getOverlayManager()->getMarkers(), $markers);
     }

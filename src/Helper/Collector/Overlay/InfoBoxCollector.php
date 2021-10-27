@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -13,9 +15,6 @@ namespace Ivory\GoogleMap\Helper\Collector\Overlay;
 
 use Ivory\GoogleMap\Overlay\InfoWindowType;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class InfoBoxCollector extends InfoWindowCollector
 {
     public function __construct(MarkerCollector $markerCollector)

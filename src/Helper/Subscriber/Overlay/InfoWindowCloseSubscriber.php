@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -17,14 +19,9 @@ use Ivory\GoogleMap\Helper\Event\MapEvents;
 use Ivory\GoogleMap\Helper\Formatter\Formatter;
 use Ivory\GoogleMap\Helper\Renderer\Overlay\InfoWindowCloseRenderer;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class InfoWindowCloseSubscriber extends AbstractInfoWindowSubscriber
 {
-    /**
-     * @var InfoWindowCloseRenderer
-     */
+    /** @var InfoWindowCloseRenderer */
     private $infoWindowCloseRenderer;
 
     public function __construct(
@@ -37,20 +34,17 @@ class InfoWindowCloseSubscriber extends AbstractInfoWindowSubscriber
         $this->setInfoWindowCloseRenderer($infoWindowCloseRenderer);
     }
 
-    /**
-     * @return InfoWindowCloseRenderer
-     */
-    public function getInfoWindowCloseRenderer()
+    public function getInfoWindowCloseRenderer(): InfoWindowCloseRenderer
     {
         return $this->infoWindowCloseRenderer;
     }
 
-    public function setInfoWindowCloseRenderer(InfoWindowCloseRenderer $infoWindowCloseRenderer)
+    public function setInfoWindowCloseRenderer(InfoWindowCloseRenderer $infoWindowCloseRenderer): void
     {
         $this->infoWindowCloseRenderer = $infoWindowCloseRenderer;
     }
 
-    public function handleMap(MapEvent $event)
+    public function handleMap(MapEvent $event): void
     {
         $formatter = $this->getFormatter();
         $map = $event->getMap();
@@ -72,7 +66,7 @@ class InfoWindowCloseSubscriber extends AbstractInfoWindowSubscriber
     /**
      * {@inheritdoc}
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [MapEvents::JAVASCRIPT_INIT_FUNCTION => 'handleMap'];
     }

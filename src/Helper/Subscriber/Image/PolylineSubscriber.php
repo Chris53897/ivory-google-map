@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -17,19 +19,12 @@ use Ivory\GoogleMap\Helper\Event\StaticMapEvents;
 use Ivory\GoogleMap\Helper\Renderer\Image\Overlay\PolylineRenderer;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class PolylineSubscriber implements EventSubscriberInterface
 {
-    /**
-     * @var PolylineCollector
-     */
+    /** @var PolylineCollector */
     private $polylineCollector;
 
-    /**
-     * @var PolylineRenderer
-     */
+    /** @var PolylineRenderer */
     private $polylineRenderer;
 
     public function __construct(PolylineCollector $polylineCollector, PolylineRenderer $polylineRenderer)
@@ -38,7 +33,7 @@ class PolylineSubscriber implements EventSubscriberInterface
         $this->polylineRenderer = $polylineRenderer;
     }
 
-    public function handleMap(StaticMapEvent $event)
+    public function handleMap(StaticMapEvent $event): void
     {
         $result = [];
 

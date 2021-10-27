@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -16,131 +18,82 @@ use Ivory\GoogleMap\Utility\VariableAwareTrait;
 
 /**
  * @see http://code.google.com/apis/maps/documentation/javascript/reference.html#Size
- *
- * @author GeLo <geloen.eric@gmail.com>
  */
 class Size implements VariableAwareInterface
 {
     use VariableAwareTrait;
 
-    /**
-     * @var float
-     */
+    /** @var float */
     private $width;
 
-    /**
-     * @var float
-     */
+    /** @var float */
     private $height;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $widthUnit;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $heightUnit;
 
-    /**
-     * @param float       $width
-     * @param float       $height
-     * @param string|null $widthUnit
-     * @param string|null $heightUnit
-     */
-    public function __construct($width = 1.0, $height = 1.0, $widthUnit = null, $heightUnit = null)
+    public function __construct(float $width = 1.0, float $height = 1.0, ?string $widthUnit = null, ?string $heightUnit = null)
     {
-        $this->setWidth($width);
-        $this->setHeight($height);
-        $this->setWidthUnit($widthUnit);
-        $this->setHeightUnit($heightUnit);
+        $this->width =$width;
+        $this->height = $height;
+        $this->widthUnit = $widthUnit;
+        $this->heightUnit = $heightUnit;
     }
 
-    /**
-     * @return float
-     */
-    public function getWidth()
+    public function getWidth(): float
     {
         return $this->width;
     }
 
-    /**
-     * @param float $width
-     */
-    public function setWidth($width)
+    public function setWidth(float $width): void
     {
         $this->width = $width;
     }
 
-    /**
-     * @return float
-     */
-    public function getHeight()
+    public function getHeight(): float
     {
         return $this->height;
     }
 
-    /**
-     * @param float $height
-     */
-    public function setHeight($height)
+    public function setHeight(float $height): void
     {
         $this->height = $height;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasUnits()
+    public function hasUnits(): bool
     {
         return $this->hasWidthUnit() && $this->hasHeightUnit();
     }
 
-    /**
-     * @return bool
-     */
-    public function hasWidthUnit()
+    public function hasWidthUnit(): bool
     {
         return null !== $this->widthUnit;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getWidthUnit()
+    public function getWidthUnit(): ?string
     {
         return $this->widthUnit;
     }
 
-    /**
-     * @param string|null $widthUnit
-     */
-    public function setWidthUnit($widthUnit = null)
+    public function setWidthUnit(?string $widthUnit = null): void
     {
         $this->widthUnit = $widthUnit;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasHeightUnit()
+    public function hasHeightUnit(): bool
     {
         return null !== $this->heightUnit;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getHeightUnit()
+    public function getHeightUnit(): ?string
     {
         return $this->heightUnit;
     }
 
-    /**
-     * @param string|null $heightUnit
-     */
-    public function setHeightUnit($heightUnit = null)
+    public function setHeightUnit(?string $heightUnit = null): void
     {
         $this->heightUnit = $heightUnit;
     }

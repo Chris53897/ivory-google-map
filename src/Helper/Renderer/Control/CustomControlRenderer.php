@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -16,14 +18,9 @@ use Ivory\GoogleMap\Helper\Formatter\Formatter;
 use Ivory\GoogleMap\Helper\Renderer\AbstractRenderer;
 use Ivory\GoogleMap\Map;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class CustomControlRenderer extends AbstractRenderer
 {
-    /**
-     * @var ControlPositionRenderer
-     */
+    /** @var ControlPositionRenderer */
     private $controlPositionRenderer;
 
     public function __construct(Formatter $formatter, ControlPositionRenderer $controlPositionRenderer)
@@ -33,23 +30,17 @@ class CustomControlRenderer extends AbstractRenderer
         $this->setControlPositionRenderer($controlPositionRenderer);
     }
 
-    /**
-     * @return ControlPositionRenderer
-     */
-    public function getControlPositionRenderer()
+    public function getControlPositionRenderer(): ControlPositionRenderer
     {
         return $this->controlPositionRenderer;
     }
 
-    public function setControlPositionRenderer(ControlPositionRenderer $controlPositionRenderer)
+    public function setControlPositionRenderer(ControlPositionRenderer $controlPositionRenderer): void
     {
         $this->controlPositionRenderer = $controlPositionRenderer;
     }
 
-    /**
-     * @return string
-     */
-    public function render(CustomControl $customControl, Map $map)
+    public function render(CustomControl $customControl, Map $map): string
     {
         $formatter = $this->getFormatter();
 

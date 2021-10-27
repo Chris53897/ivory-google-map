@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -16,14 +18,9 @@ use Ivory\GoogleMap\Helper\Event\MapEvents;
 use Ivory\GoogleMap\Helper\Formatter\Formatter;
 use Ivory\GoogleMap\Helper\Renderer\MapContainerRenderer;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class MapContainerSubscriber extends AbstractSubscriber
 {
-    /**
-     * @var MapContainerRenderer
-     */
+    /** @var MapContainerRenderer */
     private $containerRenderer;
 
     public function __construct(Formatter $formatter, MapContainerRenderer $containerRenderer)
@@ -33,20 +30,17 @@ class MapContainerSubscriber extends AbstractSubscriber
         $this->setContainerRenderer($containerRenderer);
     }
 
-    /**
-     * @return MapContainerRenderer
-     */
-    public function getContainerRenderer()
+    public function getContainerRenderer(): MapContainerRenderer
     {
         return $this->containerRenderer;
     }
 
-    public function setContainerRenderer(MapContainerRenderer $containerRenderer)
+    public function setContainerRenderer(MapContainerRenderer $containerRenderer): void
     {
         $this->containerRenderer = $containerRenderer;
     }
 
-    public function handleMap(MapEvent $event)
+    public function handleMap(MapEvent $event): void
     {
         $formatter = $this->getFormatter();
         $map = $event->getMap();
@@ -60,7 +54,7 @@ class MapContainerSubscriber extends AbstractSubscriber
     /**
      * {@inheritdoc}
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [MapEvents::JAVASCRIPT_INIT_CONTAINER => 'handleMap'];
     }

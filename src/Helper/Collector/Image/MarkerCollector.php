@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -16,14 +18,9 @@ use Ivory\GoogleMap\Helper\Renderer\Image\Overlay\MarkerStyleRenderer;
 use Ivory\GoogleMap\Map;
 use Ivory\GoogleMap\Overlay\Marker;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class MarkerCollector extends AbstractCollector
 {
-    /**
-     * @var MarkerStyleRenderer
-     */
+    /** @var MarkerStyleRenderer */
     private $markerStyleRenderer;
 
     public function __construct(MarkerStyleRenderer $markerStyleRenderer)
@@ -36,13 +33,13 @@ class MarkerCollector extends AbstractCollector
      *
      * @return Marker[][]
      */
-    public function collect(Map $map, array $markers = [])
+    public function collect(Map $map, array $markers = []): array
     {
         $result = [];
 
         foreach (array_merge($markers, $map->getOverlayManager()->getMarkers()) as $marker) {
             $hash = md5($this->markerStyleRenderer->render($marker));
-            $result[$hash] = $this->collectValue($marker, isset($result[$hash]) ? $result[$hash] : []);
+            $result[$hash] = $this->collectValue($marker, $result[$hash] ?? []);
         }
 
         return array_values($result);

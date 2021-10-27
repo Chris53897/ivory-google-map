@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -15,9 +17,6 @@ use Ivory\GoogleMap\Helper\Collector\AbstractCollector;
 use Ivory\GoogleMap\Layer\GeoJsonLayer;
 use Ivory\GoogleMap\Map;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class GeoJsonLayerCollector extends AbstractCollector
 {
     /**
@@ -25,7 +24,7 @@ class GeoJsonLayerCollector extends AbstractCollector
      *
      * @return GeoJsonLayer[]
      */
-    public function collect(Map $map, array $geoJsonLayers = [])
+    public function collect(Map $map, array $geoJsonLayers = []): array
     {
         return $this->collectValues($map->getLayerManager()->getGeoJsonLayers(), $geoJsonLayers);
     }

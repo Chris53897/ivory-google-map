@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -22,14 +24,9 @@ use Ivory\GoogleMap\Map;
 use Ivory\GoogleMap\Overlay\MarkerCluster;
 use Ivory\GoogleMap\Overlay\MarkerClusterType;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class MarkerClustererSubscriber extends AbstractSubscriber
 {
-    /**
-     * @var MarkerClustererRenderer
-     */
+    /** @var MarkerClustererRenderer */
     private $markerClustererRenderer;
 
     public function __construct(Formatter $formatter, MarkerClustererRenderer $markerClustererRenderer)
@@ -39,20 +36,17 @@ class MarkerClustererSubscriber extends AbstractSubscriber
         $this->setMarkerClustererRenderer($markerClustererRenderer);
     }
 
-    /**
-     * @return MarkerClustererRenderer
-     */
-    public function getMarkerClustererRenderer()
+    public function getMarkerClustererRenderer(): MarkerClustererRenderer
     {
         return $this->markerClustererRenderer;
     }
 
-    public function setMarkerClustererRenderer(MarkerClustererRenderer $markerClustererRenderer)
+    public function setMarkerClustererRenderer(MarkerClustererRenderer $markerClustererRenderer): void
     {
         $this->markerClustererRenderer = $markerClustererRenderer;
     }
 
-    public function handleApi(ApiEvent $event)
+    public function handleApi(ApiEvent $event): void
     {
         foreach ($event->getObjects(Map::class) as $map) {
             if (null !== ($markerCluster = $this->getMarkerCluster($map))) {
@@ -64,7 +58,7 @@ class MarkerClustererSubscriber extends AbstractSubscriber
         }
     }
 
-    public function handleMap(MapEvent $event)
+    public function handleMap(MapEvent $event): void
     {
         $formatter = $this->getFormatter();
         $map = $event->getMap();
@@ -84,7 +78,7 @@ class MarkerClustererSubscriber extends AbstractSubscriber
     /**
      * {@inheritdoc}
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [
             ApiEvents::JAVASCRIPT_MAP                    => 'handleApi',
@@ -92,15 +86,14 @@ class MarkerClustererSubscriber extends AbstractSubscriber
         ];
     }
 
-    /**
-     * @return MarkerCluster|null
-     */
-    private function getMarkerCluster(Map $map)
+    private function getMarkerCluster(Map $map): ?MarkerCluster
     {
         $markerCluster = $map->getOverlayManager()->getMarkerCluster();
 
         if (MarkerClusterType::MARKER_CLUSTERER === $markerCluster->getType()) {
             return $markerCluster;
         }
+
+        return null;
     }
 }

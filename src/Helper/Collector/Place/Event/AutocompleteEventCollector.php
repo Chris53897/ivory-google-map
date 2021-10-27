@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -15,9 +17,6 @@ use Ivory\GoogleMap\Event\Event;
 use Ivory\GoogleMap\Helper\Collector\AbstractCollector;
 use Ivory\GoogleMap\Place\Autocomplete;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class AutocompleteEventCollector extends AbstractCollector
 {
     /**
@@ -25,7 +24,7 @@ class AutocompleteEventCollector extends AbstractCollector
      *
      * @return Event[]
      */
-    public function collect(Autocomplete $autocomplete, array $events = [])
+    public function collect(Autocomplete $autocomplete, array $events = []): array
     {
         return $this->collectValues($autocomplete->getEventManager()->getEvents(), $events);
     }

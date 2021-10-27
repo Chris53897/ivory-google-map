@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,19 +20,12 @@ use Ivory\GoogleMap\Helper\Formatter\Formatter;
 use Ivory\GoogleMap\Helper\Renderer\Overlay\IconSequenceRenderer;
 use Ivory\GoogleMap\Helper\Subscriber\AbstractSubscriber;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class IconSequenceSubscriber extends AbstractSubscriber
 {
-    /**
-     * @var IconSequenceCollector
-     */
+    /** @var IconSequenceCollector */
     private $iconSequenceCollector;
 
-    /**
-     * @var IconSequenceRenderer
-     */
+    /** @var IconSequenceRenderer */
     private $iconSequenceRenderer;
 
     public function __construct(
@@ -44,33 +39,27 @@ class IconSequenceSubscriber extends AbstractSubscriber
         $this->setIconSequenceRenderer($iconSequenceRenderer);
     }
 
-    /**
-     * @return IconSequenceCollector
-     */
-    public function getIconSequenceCollector()
+    public function getIconSequenceCollector(): IconSequenceCollector
     {
         return $this->iconSequenceCollector;
     }
 
-    public function setIconSequenceCollector(IconSequenceCollector $iconSequenceCollector)
+    public function setIconSequenceCollector(IconSequenceCollector $iconSequenceCollector): void
     {
         $this->iconSequenceCollector = $iconSequenceCollector;
     }
 
-    /**
-     * @return IconSequenceRenderer
-     */
-    public function getIconSequenceRenderer()
+    public function getIconSequenceRenderer(): IconSequenceRenderer
     {
         return $this->iconSequenceRenderer;
     }
 
-    public function setIconSequenceRenderer(IconSequenceRenderer $iconSequenceRenderer)
+    public function setIconSequenceRenderer(IconSequenceRenderer $iconSequenceRenderer): void
     {
         $this->iconSequenceRenderer = $iconSequenceRenderer;
     }
 
-    public function handleMap(MapEvent $event)
+    public function handleMap(MapEvent $event): void
     {
         $formatter = $this->getFormatter();
         $map = $event->getMap();
@@ -88,7 +77,7 @@ class IconSequenceSubscriber extends AbstractSubscriber
     /**
      * {@inheritdoc}
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [MapEvents::JAVASCRIPT_OVERLAY_ICON_SEQUENCE => 'handleMap'];
     }

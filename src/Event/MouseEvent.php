@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,17 +13,14 @@
 
 namespace Ivory\GoogleMap\Event;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 final class MouseEvent
 {
-    const CLICK = 'click';
-    const DBLCLICK = 'dblclick';
-    const MOUSEUP = 'mouseup';
-    const MOUSEDOWN = 'mousedown';
-    const MOUSEOVER = 'mouseover';
-    const MOUSEOUT = 'mouseout';
+    public const CLICK = 'click';
+    public const DBLCLICK = 'dblclick';
+    public const MOUSEUP = 'mouseup';
+    public const MOUSEDOWN = 'mousedown';
+    public const MOUSEOVER = 'mouseover';
+    public const MOUSEOUT = 'mouseout';
 
     /**
      * @codeCoverageIgnore

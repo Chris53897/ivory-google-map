@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,19 +20,12 @@ use Ivory\GoogleMap\Helper\Formatter\Formatter;
 use Ivory\GoogleMap\Helper\Renderer\Base\CoordinateRenderer;
 use Ivory\GoogleMap\Helper\Subscriber\AbstractSubscriber;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class AutocompleteCoordinateSubscriber extends AbstractSubscriber
 {
-    /**
-     * @var AutocompleteCoordinateCollector
-     */
+    /** @var AutocompleteCoordinateCollector */
     private $coordinateCollector;
 
-    /**
-     * @var CoordinateRenderer
-     */
+    /** @var CoordinateRenderer */
     private $coordinateRenderer;
 
     public function __construct(
@@ -44,33 +39,27 @@ class AutocompleteCoordinateSubscriber extends AbstractSubscriber
         $this->setCoordinateRenderer($coordinateRenderer);
     }
 
-    /**
-     * @return AutocompleteCoordinateCollector
-     */
-    public function getCoordinateCollector()
+    public function getCoordinateCollector(): AutocompleteCoordinateCollector
     {
         return $this->coordinateCollector;
     }
 
-    public function setCoordinateCollector(AutocompleteCoordinateCollector $coordinateCollector)
+    public function setCoordinateCollector(AutocompleteCoordinateCollector $coordinateCollector): void
     {
         $this->coordinateCollector = $coordinateCollector;
     }
 
-    /**
-     * @return CoordinateRenderer
-     */
-    public function getCoordinateRenderer()
+    public function getCoordinateRenderer(): CoordinateRenderer
     {
         return $this->coordinateRenderer;
     }
 
-    public function setCoordinateRenderer(CoordinateRenderer $coordinateRenderer)
+    public function setCoordinateRenderer(CoordinateRenderer $coordinateRenderer): void
     {
         $this->coordinateRenderer = $coordinateRenderer;
     }
 
-    public function handleAutocomplete(PlaceAutocompleteEvent $event)
+    public function handleAutocomplete(PlaceAutocompleteEvent $event): void
     {
         $formatter = $this->getFormatter();
         $autocomplete = $event->getAutocomplete();
@@ -88,7 +77,7 @@ class AutocompleteCoordinateSubscriber extends AbstractSubscriber
     /**
      * {@inheritdoc}
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [PlaceAutocompleteEvents::JAVASCRIPT_BASE_COORDINATE => 'handleAutocomplete'];
     }

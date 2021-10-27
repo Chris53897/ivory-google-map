@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -21,19 +23,12 @@ use Ivory\GoogleMap\Helper\Renderer\Layer\HeatmapLayerRenderer;
 use Ivory\GoogleMap\Helper\Subscriber\AbstractSubscriber;
 use Ivory\GoogleMap\Map;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class HeatmapLayerSubscriber extends AbstractSubscriber
 {
-    /**
-     * @var HeatmapLayerCollector
-     */
+    /** @var HeatmapLayerCollector */
     private $heatmapLayerCollector;
 
-    /**
-     * @var HeatmapLayerRenderer
-     */
+    /** @var HeatmapLayerRenderer */
     private $heatmapLayerRenderer;
 
     public function __construct(
@@ -47,33 +42,27 @@ class HeatmapLayerSubscriber extends AbstractSubscriber
         $this->setHeatmapLayerRenderer($heatmapLayerRenderer);
     }
 
-    /**
-     * @return HeatmapLayerCollector
-     */
-    public function getHeatmapLayerCollector()
+    public function getHeatmapLayerCollector(): HeatmapLayerCollector
     {
         return $this->heatmapLayerCollector;
     }
 
-    public function setHeatmapLayerCollector(HeatmapLayerCollector $heatmapLayerCollector)
+    public function setHeatmapLayerCollector(HeatmapLayerCollector $heatmapLayerCollector): void
     {
         $this->heatmapLayerCollector = $heatmapLayerCollector;
     }
 
-    /**
-     * @return HeatmapLayerRenderer
-     */
-    public function getHeatmapLayerRenderer()
+    public function getHeatmapLayerRenderer(): HeatmapLayerRenderer
     {
         return $this->heatmapLayerRenderer;
     }
 
-    public function setHeatmapLayerRenderer(HeatmapLayerRenderer $heatmapLayerRenderer)
+    public function setHeatmapLayerRenderer(HeatmapLayerRenderer $heatmapLayerRenderer): void
     {
         $this->heatmapLayerRenderer = $heatmapLayerRenderer;
     }
 
-    public function handleApi(ApiEvent $event)
+    public function handleApi(ApiEvent $event): void
     {
         foreach ($event->getObjects(Map::class) as $map) {
             $heatmapLayers = $this->heatmapLayerCollector->collect($map);
@@ -86,7 +75,7 @@ class HeatmapLayerSubscriber extends AbstractSubscriber
         }
     }
 
-    public function handleMap(MapEvent $event)
+    public function handleMap(MapEvent $event): void
     {
         $formatter = $this->getFormatter();
         $map = $event->getMap();
@@ -104,7 +93,7 @@ class HeatmapLayerSubscriber extends AbstractSubscriber
     /**
      * {@inheritdoc}
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [
             ApiEvents::JAVASCRIPT_MAP                 => 'handleApi',

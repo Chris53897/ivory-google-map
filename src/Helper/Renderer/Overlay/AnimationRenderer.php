@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -13,17 +15,9 @@ namespace Ivory\GoogleMap\Helper\Renderer\Overlay;
 
 use Ivory\GoogleMap\Helper\Renderer\AbstractRenderer;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class AnimationRenderer extends AbstractRenderer
 {
-    /**
-     * @param string $animation
-     *
-     * @return string
-     */
-    public function render($animation)
+    public function render(string $animation): string
     {
         return $this->getFormatter()->renderConstant('Animation', $animation);
     }

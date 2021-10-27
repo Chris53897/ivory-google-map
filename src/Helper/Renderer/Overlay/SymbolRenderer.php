@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -16,14 +18,9 @@ use Ivory\GoogleMap\Helper\Renderer\AbstractJsonRenderer;
 use Ivory\GoogleMap\Overlay\Symbol;
 use Ivory\JsonBuilder\JsonBuilder;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class SymbolRenderer extends AbstractJsonRenderer
 {
-    /**
-     * @var SymbolPathRenderer
-     */
+    /** @var SymbolPathRenderer */
     private $symbolPathRenderer;
 
     public function __construct(Formatter $formatter, JsonBuilder $jsonBuilder, SymbolPathRenderer $symbolPathRenderer)
@@ -33,23 +30,17 @@ class SymbolRenderer extends AbstractJsonRenderer
         $this->setSymbolPathRenderer($symbolPathRenderer);
     }
 
-    /**
-     * @return SymbolPathRenderer
-     */
-    public function getSymbolPathRenderer()
+    public function getSymbolPathRenderer(): SymbolPathRenderer
     {
         return $this->symbolPathRenderer;
     }
 
-    public function setSymbolPathRenderer(SymbolPathRenderer $symbolPathRenderer)
+    public function setSymbolPathRenderer(SymbolPathRenderer $symbolPathRenderer): void
     {
         $this->symbolPathRenderer = $symbolPathRenderer;
     }
 
-    /**
-     * @return string
-     */
-    public function render(Symbol $symbol)
+    public function render(Symbol $symbol): string
     {
         $jsonBuilder = $this->getJsonBuilder()
             ->setValue('[path]', $this->symbolPathRenderer->render($symbol->getPath()), false);

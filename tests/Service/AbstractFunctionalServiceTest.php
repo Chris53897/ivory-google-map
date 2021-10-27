@@ -11,6 +11,7 @@
 
 namespace Ivory\Tests\GoogleMap\Service;
 
+use DateTime;
 use Http\Adapter\Guzzle6\Client;
 use Http\Client\Common\Plugin\ErrorPlugin as HttpErrorPlugin;
 use Http\Client\Common\Plugin\HistoryPlugin;
@@ -92,15 +93,13 @@ abstract class AbstractFunctionalServiceTest extends TestCase
     /**
      * @param string $key
      * @param string $value
-     *
-     * @return \DateTime
      */
-    protected function getDateTime($key, $value = 'now')
+    protected function getDateTime($key, $value = 'now'): DateTime
     {
         $item = $this->pool->getItem(sha1(get_class().'::'.$key));
 
         if (!$item->isHit()) {
-            $item->set(new \DateTime($value));
+            $item->set(new DateTime($value));
             $this->pool->save($item);
         }
 

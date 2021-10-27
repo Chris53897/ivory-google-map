@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -14,30 +16,20 @@ namespace Ivory\GoogleMap\Helper\Renderer;
 use Ivory\GoogleMap\Helper\Formatter\Formatter;
 use Ivory\GoogleMap\Helper\Renderer\Utility\RequirementLoaderRenderer;
 use Ivory\GoogleMap\Helper\Renderer\Utility\SourceRenderer;
+use SplObjectStorage;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class ApiRenderer extends AbstractRenderer
 {
-    /**
-     * @var ApiInitRenderer
-     */
+    /** @var ApiInitRenderer */
     private $apiInitRenderer;
 
-    /**
-     * @var LoaderRenderer
-     */
+    /** @var LoaderRenderer */
     private $loaderRenderer;
 
-    /**
-     * @var RequirementLoaderRenderer
-     */
+    /** @var RequirementLoaderRenderer */
     private $requirementLoaderRenderer;
 
-    /**
-     * @var SourceRenderer
-     */
+    /** @var SourceRenderer */
     private $sourceRenderer;
 
     public function __construct(
@@ -55,54 +47,42 @@ class ApiRenderer extends AbstractRenderer
         $this->setSourceRenderer($sourceRenderer);
     }
 
-    /**
-     * @return ApiInitRenderer
-     */
-    public function getApiInitRenderer()
+    public function getApiInitRenderer(): ApiInitRenderer
     {
         return $this->apiInitRenderer;
     }
 
-    public function setApiInitRenderer(ApiInitRenderer $apiInitRenderer)
+    public function setApiInitRenderer(ApiInitRenderer $apiInitRenderer): void
     {
         $this->apiInitRenderer = $apiInitRenderer;
     }
 
-    /**
-     * @return LoaderRenderer
-     */
-    public function getLoaderRenderer()
+    public function getLoaderRenderer(): LoaderRenderer
     {
         return $this->loaderRenderer;
     }
 
-    public function setLoaderRenderer(LoaderRenderer $loaderRenderer)
+    public function setLoaderRenderer(LoaderRenderer $loaderRenderer): void
     {
         $this->loaderRenderer = $loaderRenderer;
     }
 
-    /**
-     * @return RequirementLoaderRenderer
-     */
-    public function getRequirementLoaderRenderer()
+    public function getRequirementLoaderRenderer(): RequirementLoaderRenderer
     {
         return $this->requirementLoaderRenderer;
     }
 
-    public function setRequirementLoaderRenderer(RequirementLoaderRenderer $requirementLoaderRenderer)
+    public function setRequirementLoaderRenderer(RequirementLoaderRenderer $requirementLoaderRenderer): void
     {
         $this->requirementLoaderRenderer = $requirementLoaderRenderer;
     }
 
-    /**
-     * @return SourceRenderer
-     */
-    public function getSourceRenderer()
+    public function getSourceRenderer(): SourceRenderer
     {
         return $this->sourceRenderer;
     }
 
-    public function setSourceRenderer(SourceRenderer $sourceRenderer)
+    public function setSourceRenderer(SourceRenderer $sourceRenderer): void
     {
         $this->sourceRenderer = $sourceRenderer;
     }
@@ -110,15 +90,14 @@ class ApiRenderer extends AbstractRenderer
     /**
      * @param string[] $sources
      * @param string[] $libraries
-     *
-     * @return string
      */
     public function render(
-        \SplObjectStorage $callbacks,
-        \SplObjectStorage $requirements,
+        SplObjectStorage $callbacks,
+        SplObjectStorage $requirements,
         array $sources = [],
         array $libraries = []
-    ) {
+    ): string
+    {
         $formatter = $this->getFormatter();
 
         $loadCallback = $this->getCallbackName('load');
@@ -145,12 +124,7 @@ class ApiRenderer extends AbstractRenderer
         ], true, false);
     }
 
-    /**
-     * @param string $callback
-     *
-     * @return string
-     */
-    private function getCallbackName($callback)
+    private function getCallbackName(string $callback): string
     {
         return 'ivory_google_map_'.$callback;
     }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -13,29 +15,17 @@ namespace Ivory\GoogleMap\Helper\Renderer\Utility;
 
 use Ivory\GoogleMap\Helper\Renderer\AbstractRenderer;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class RequirementLoaderRenderer extends AbstractRenderer
 {
-    /**
-     * @param string      $name
-     * @param string|null $intervalVariable
-     * @param string|null $callbackVariable
-     * @param string|null $requirementVariable
-     * @param int         $interval
-     * @param bool        $newLine
-     *
-     * @return string
-     */
     public function render(
-        $name,
-        $intervalVariable = null,
-        $callbackVariable = null,
-        $requirementVariable = null,
-        $interval = 10,
-        $newLine = true
-    ) {
+        string  $name,
+        ?string $intervalVariable = null,
+        ?string $callbackVariable = null,
+        ?string $requirementVariable = null,
+        int     $interval = 10,
+        bool    $newLine = true
+    ): string
+    {
         $formatter = $this->getFormatter();
 
         $intervalVariable = $intervalVariable ?: 'i';
@@ -60,20 +50,13 @@ class RequirementLoaderRenderer extends AbstractRenderer
         ), [$callbackVariable, $requirementVariable], $name, true, $newLine);
     }
 
-    /**
-     * @param string      $intervalVariable
-     * @param string      $callbackVariable
-     * @param string      $requirementVariable
-     * @param string|null $nextStatement
-     *
-     * @return string
-     */
     private function renderRequirement(
-        $intervalVariable,
-        $callbackVariable,
-        $requirementVariable,
-        $nextStatement = null
-    ) {
+        string $intervalVariable,
+        string $callbackVariable,
+        string $requirementVariable,
+        ?string $nextStatement = null
+    ): string
+    {
         $formatter = $this->getFormatter();
         $codes = [$formatter->renderCall($callbackVariable, [], true)];
 

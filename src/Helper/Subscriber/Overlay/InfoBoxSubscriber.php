@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -22,14 +24,9 @@ use Ivory\GoogleMap\Helper\Renderer\Overlay\InfoBoxRenderer;
 use Ivory\GoogleMap\Map;
 use Ivory\GoogleMap\Overlay\InfoWindow;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class InfoBoxSubscriber extends AbstractInfoWindowSubscriber
 {
-    /**
-     * @var InfoBoxRenderer
-     */
+    /** @var InfoBoxRenderer */
     private $infoBoxRenderer;
 
     public function __construct(
@@ -42,20 +39,17 @@ class InfoBoxSubscriber extends AbstractInfoWindowSubscriber
         $this->setInfoBoxRenderer($infoBoxRenderer);
     }
 
-    /**
-     * @return InfoBoxRenderer
-     */
-    public function getInfoBoxRenderer()
+    public function getInfoBoxRenderer(): InfoBoxRenderer
     {
         return $this->infoBoxRenderer;
     }
 
-    public function setInfoBoxRenderer(InfoBoxRenderer $infoBoxRenderer)
+    public function setInfoBoxRenderer(InfoBoxRenderer $infoBoxRenderer): void
     {
         $this->infoBoxRenderer = $infoBoxRenderer;
     }
 
-    public function handleApi(ApiEvent $event)
+    public function handleApi(ApiEvent $event): void
     {
         foreach ($event->getObjects(Map::class) as $map) {
             $infoBoxes = $this->getInfoWindowCollector()->collect($map);
@@ -69,7 +63,7 @@ class InfoBoxSubscriber extends AbstractInfoWindowSubscriber
         }
     }
 
-    public function handleMap(MapEvent $event)
+    public function handleMap(MapEvent $event): void
     {
         $map = $event->getMap();
         $collector = $this->getInfoWindowCollector();
@@ -86,7 +80,7 @@ class InfoBoxSubscriber extends AbstractInfoWindowSubscriber
     /**
      * {@inheritdoc}
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [
             ApiEvents::JAVASCRIPT_MAP                 => 'handleApi',
@@ -94,12 +88,7 @@ class InfoBoxSubscriber extends AbstractInfoWindowSubscriber
         ];
     }
 
-    /**
-     * @param bool $position
-     *
-     * @return string
-     */
-    private function renderInfoBox(Map $map, InfoWindow $infoWindow, $position = true)
+    private function renderInfoBox(Map $map, InfoWindow $infoWindow, bool $position = true): string
     {
         return $this->getFormatter()->renderContainerAssignment(
             $map,

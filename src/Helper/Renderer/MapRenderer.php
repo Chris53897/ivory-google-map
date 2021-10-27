@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,24 +20,15 @@ use Ivory\GoogleMap\Map;
 use Ivory\GoogleMap\MapTypeId;
 use Ivory\JsonBuilder\JsonBuilder;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class MapRenderer extends AbstractJsonRenderer
 {
-    /**
-     * @var MapTypeIdRenderer
-     */
+    /** @var MapTypeIdRenderer */
     private $mapTypeIdRenderer;
 
-    /**
-     * @var ControlManagerRenderer
-     */
+    /** @var ControlManagerRenderer */
     private $controlManagerRenderer;
 
-    /**
-     * @var RequirementRenderer
-     */
+    /** @var RequirementRenderer */
     private $requirementRenderer;
 
     public function __construct(
@@ -52,52 +45,37 @@ class MapRenderer extends AbstractJsonRenderer
         $this->setRequirementRenderer($requirementRenderer);
     }
 
-    /**
-     * @return MapTypeIdRenderer
-     */
-    public function getMapTypeIdRenderer()
+    public function getMapTypeIdRenderer(): MapTypeIdRenderer
     {
         return $this->mapTypeIdRenderer;
     }
 
-    public function setMapTypeIdRenderer(MapTypeIdRenderer $mapTypeIdRenderer)
+    public function setMapTypeIdRenderer(MapTypeIdRenderer $mapTypeIdRenderer): void
     {
         $this->mapTypeIdRenderer = $mapTypeIdRenderer;
     }
 
-    /**
-     * @return ControlManagerRenderer
-     */
-    public function getControlManagerRenderer()
+    public function getControlManagerRenderer(): ControlManagerRenderer
     {
         return $this->controlManagerRenderer;
     }
 
-    public function setControlManagerRenderer(ControlManagerRenderer $controlManagerRenderer)
+    public function setControlManagerRenderer(ControlManagerRenderer $controlManagerRenderer): void
     {
         $this->controlManagerRenderer = $controlManagerRenderer;
     }
 
-    /**
-     * @return RequirementRenderer
-     */
-    public function getRequirementRenderer()
+    public function getRequirementRenderer(): RequirementRenderer
     {
         return $this->requirementRenderer;
     }
 
-    /**
-     * @param RequirementRenderer $requirementRenderer
-     */
-    public function setRequirementRenderer($requirementRenderer)
+    public function setRequirementRenderer(RequirementRenderer $requirementRenderer): void
     {
         $this->requirementRenderer = $requirementRenderer;
     }
 
-    /**
-     * @return string
-     */
-    public function render(Map $map)
+    public function render(Map $map): string
     {
         $formatter = $this->getFormatter();
         $jsonBuilder = $this->getJsonBuilder();
@@ -132,10 +110,7 @@ class MapRenderer extends AbstractJsonRenderer
         ]));
     }
 
-    /**
-     * @return string
-     */
-    public function renderRequirement()
+    public function renderRequirement(): string
     {
         return $this->requirementRenderer->render($this->getFormatter()->renderClass());
     }

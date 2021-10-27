@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -17,19 +19,12 @@ use Ivory\GoogleMap\Helper\Event\StaticMapEvents;
 use Ivory\GoogleMap\Helper\Renderer\Image\Overlay\EncodedPolylineRenderer;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class EncodedPolylineSubscriber implements EventSubscriberInterface
 {
-    /**
-     * @var EncodedPolylineCollector
-     */
+    /** @var EncodedPolylineCollector */
     private $encodedPolylineCollector;
 
-    /**
-     * @var EncodedPolylineRenderer
-     */
+    /** @var EncodedPolylineRenderer */
     private $encodedPolylineRenderer;
 
     public function __construct(
@@ -40,7 +35,7 @@ class EncodedPolylineSubscriber implements EventSubscriberInterface
         $this->encodedPolylineRenderer = $encodedPolylineRenderer;
     }
 
-    public function handleMap(StaticMapEvent $event)
+    public function handleMap(StaticMapEvent $event): void
     {
         foreach ($this->encodedPolylineCollector->collect($event->getMap()) as $encodedPolylines) {
             $event->setParameter('path', $this->encodedPolylineRenderer->render($encodedPolylines));
@@ -50,7 +45,7 @@ class EncodedPolylineSubscriber implements EventSubscriberInterface
     /**
      * {@inheritdoc}
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [StaticMapEvents::ENCODED_POLYLINE => 'handleMap'];
     }

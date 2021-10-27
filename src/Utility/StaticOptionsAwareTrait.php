@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,84 +13,50 @@
 
 namespace Ivory\GoogleMap\Utility;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 trait StaticOptionsAwareTrait
 {
-    /**
-     * @var mixed[]
-     */
+    /** @var array */
     private $staticOptions = [];
 
-    /**
-     * @return bool
-     */
-    public function hasStaticOptions()
+    public function hasStaticOptions(): bool
     {
         return !empty($this->staticOptions);
     }
 
-    /**
-     * @return mixed[]
-     */
-    public function getStaticOptions()
+    public function getStaticOptions(): array
     {
         return $this->staticOptions;
     }
 
-    /**
-     * @param mixed[] $options
-     */
-    public function setStaticOptions(array $options)
+    public function setStaticOptions(array $options): void
     {
         $this->staticOptions = [];
         $this->addStaticOptions($options);
     }
 
-    /**
-     * @param mixed[] $options
-     */
-    public function addStaticOptions(array $options)
+    public function addStaticOptions(array $options): void
     {
         foreach ($options as $option => $value) {
             $this->setStaticOption($option, $value);
         }
     }
 
-    /**
-     * @param string $option
-     *
-     * @return bool
-     */
-    public function hasStaticOption($option)
+    public function hasStaticOption(string $option): bool
     {
         return isset($this->staticOptions[$option]);
     }
 
-    /**
-     * @param string $option
-     *
-     * @return mixed
-     */
-    public function getStaticOption($option)
+    public function getStaticOption(string $option)
     {
         return $this->hasStaticOption($option) ? $this->staticOptions[$option] : null;
     }
 
-    /**
-     * @param string $option
-     * @param mixed  $value
-     */
-    public function setStaticOption($option, $value)
+    public function setStaticOption(string $option, $value): void
     {
         $this->staticOptions[$option] = $value;
     }
 
-    /**
-     * @param string $option
-     */
-    public function removeStaticOption($option)
+    public function removeStaticOption(string $option): void
     {
         unset($this->staticOptions[$option]);
     }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -23,24 +25,15 @@ use Ivory\GoogleMap\Map;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Contracts\EventDispatcher\Event;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class MapJavascriptSubscriber extends AbstractDelegateSubscriber
 {
-    /**
-     * @var MapRenderer
-     */
+    /** @var MapRenderer */
     private $mapRenderer;
 
-    /**
-     * @var CallbackRenderer
-     */
+    /** @var CallbackRenderer */
     private $callbackRenderer;
 
-    /**
-     * @var JavascriptTagRenderer
-     */
+    /** @var JavascriptTagRenderer */
     private $javascriptTagRenderer;
 
     public function __construct(
@@ -56,49 +49,37 @@ class MapJavascriptSubscriber extends AbstractDelegateSubscriber
         $this->setJavascriptTagRenderer($javascriptTagRenderer);
     }
 
-    /**
-     * @return MapRenderer
-     */
-    public function getMapRenderer()
+    public function getMapRenderer(): MapRenderer
     {
         return $this->mapRenderer;
     }
 
-    public function setMapRenderer(MapRenderer $mapRenderer)
+    public function setMapRenderer(MapRenderer $mapRenderer): void
     {
         $this->mapRenderer = $mapRenderer;
     }
 
-    /**
-     * @return CallbackRenderer
-     */
-    public function getCallbackRenderer()
+    public function getCallbackRenderer(): CallbackRenderer
     {
         return $this->callbackRenderer;
     }
 
-    public function setCallbackRenderer(CallbackRenderer $callbackRenderer)
+    public function setCallbackRenderer(CallbackRenderer $callbackRenderer): void
     {
         $this->callbackRenderer = $callbackRenderer;
     }
 
-    /**
-     * @return JavascriptTagRenderer
-     */
-    public function getJavascriptTagRenderer()
+    public function getJavascriptTagRenderer(): JavascriptTagRenderer
     {
         return $this->javascriptTagRenderer;
     }
 
-    public function setJavascriptTagRenderer(JavascriptTagRenderer $javascriptTagRenderer)
+    public function setJavascriptTagRenderer(JavascriptTagRenderer $javascriptTagRenderer): void
     {
         $this->javascriptTagRenderer = $javascriptTagRenderer;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function handle(Event $event, $eventName, EventDispatcherInterface $eventDispatcher)
+    public function handle(Event $event, string $eventName, EventDispatcherInterface $eventDispatcher): void
     {
         parent::handle($event, $eventName, $eventDispatcher);
 
@@ -109,10 +90,7 @@ class MapJavascriptSubscriber extends AbstractDelegateSubscriber
         }
     }
 
-    /**
-     * @return array
-     */
-    public static function getDelegatedSubscribedEvents()
+    public static function getDelegatedSubscribedEvents(): array
     {
         return [
             ApiEvents::JAVASCRIPT_MAP => [],
@@ -129,7 +107,7 @@ class MapJavascriptSubscriber extends AbstractDelegateSubscriber
         ];
     }
 
-    private function handleApi(ApiEvent $event)
+    private function handleApi(ApiEvent $event): void
     {
         foreach ($event->getObjects(Map::class) as $map) {
             $event->addLibraries($map->getLibraries());
@@ -138,7 +116,7 @@ class MapJavascriptSubscriber extends AbstractDelegateSubscriber
         }
     }
 
-    private function handleMap(MapEvent $event)
+    private function handleMap(MapEvent $event): void
     {
         $formatter = $this->getFormatter();
 
@@ -149,10 +127,7 @@ class MapJavascriptSubscriber extends AbstractDelegateSubscriber
         )));
     }
 
-    /**
-     * @return string
-     */
-    private function renderCallback(Map $map)
+    private function renderCallback(Map $map): string
     {
         return $this->callbackRenderer->render($map->getVariable());
     }

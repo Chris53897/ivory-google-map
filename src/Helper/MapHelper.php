@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -15,49 +17,29 @@ use Ivory\GoogleMap\Helper\Event\MapEvent;
 use Ivory\GoogleMap\Helper\Event\MapEvents;
 use Ivory\GoogleMap\Map;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class MapHelper extends AbstractHelper
 {
-    /**
-     * @return string
-     */
-    public function render(Map $map)
+    public function render(Map $map): string
     {
         return $this->renderHtml($map).$this->renderStylesheet($map).$this->renderJavascript($map);
     }
 
-    /**
-     * @return string
-     */
-    public function renderHtml(Map $map)
+    public function renderHtml(Map $map): string
     {
         return $this->doRender($map, MapEvents::HTML);
     }
 
-    /**
-     * @return string
-     */
-    public function renderStylesheet(Map $map)
+    public function renderStylesheet(Map $map): string
     {
         return $this->doRender($map, MapEvents::STYLESHEET);
     }
 
-    /**
-     * @return string
-     */
-    public function renderJavascript(Map $map)
+    public function renderJavascript(Map $map): string
     {
         return $this->doRender($map, MapEvents::JAVASCRIPT);
     }
 
-    /**
-     * @param string $eventName
-     *
-     * @return string
-     */
-    private function doRender(Map $map, $eventName)
+    private function doRender(Map $map, string $eventName): string
     {
         $this->getEventDispatcher()->dispatch($event = new MapEvent($map), $eventName);
 

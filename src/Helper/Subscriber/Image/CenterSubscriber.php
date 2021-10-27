@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -17,14 +19,9 @@ use Ivory\GoogleMap\Helper\Event\StaticMapEvents;
 use Ivory\GoogleMap\Helper\Renderer\Image\Base\CoordinateRenderer;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class CenterSubscriber implements EventSubscriberInterface
 {
-    /**
-     * @var CoordinateRenderer
-     */
+    /** @var CoordinateRenderer */
     private $coordinateRenderer;
 
     public function __construct(CoordinateRenderer $coordinateRenderer)
@@ -32,7 +29,7 @@ class CenterSubscriber implements EventSubscriberInterface
         $this->coordinateRenderer = $coordinateRenderer;
     }
 
-    public function handleMap(StaticMapEvent $event)
+    public function handleMap(StaticMapEvent $event): void
     {
         $map = $event->getMap();
 
@@ -54,7 +51,7 @@ class CenterSubscriber implements EventSubscriberInterface
     /**
      * {@inheritdoc}
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [StaticMapEvents::CENTER => 'handleMap'];
     }

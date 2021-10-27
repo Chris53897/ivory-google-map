@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -17,9 +19,6 @@ use Ivory\GoogleMap\Overlay\ExtendableInterface;
 use Ivory\GoogleMap\Overlay\Marker;
 use Ivory\GoogleMap\Overlay\Polyline;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class ExtendableCollector extends AbstractCollector
 {
     /**
@@ -27,7 +26,7 @@ class ExtendableCollector extends AbstractCollector
      *
      * @return ExtendableInterface[]
      */
-    public function collect(Map $map, array $extendables = [])
+    public function collect(Map $map, array $extendables = []): array
     {
         foreach ($map->getBound()->getExtendables() as $extendable) {
             if ($extendable instanceof Marker || $extendable instanceof Polyline) {

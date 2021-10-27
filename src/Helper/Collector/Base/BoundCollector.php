@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -17,49 +19,36 @@ use Ivory\GoogleMap\Helper\Collector\Overlay\GroundOverlayCollector;
 use Ivory\GoogleMap\Helper\Collector\Overlay\RectangleCollector;
 use Ivory\GoogleMap\Map;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class BoundCollector extends AbstractCollector
 {
-    /**
-     * @var GroundOverlayCollector
-     */
+    /** @var GroundOverlayCollector */
     private $groundOverlayCollector;
 
-    /**
-     * @var RectangleCollector
-     */
+    /** @var RectangleCollector */
     private $rectangleCollector;
 
     public function __construct(GroundOverlayCollector $groundOverlayCollector, RectangleCollector $rectangleCollector)
     {
-        $this->setGroundOverlayCollector($groundOverlayCollector);
-        $this->setRectangleCollector($rectangleCollector);
+        $this->groundOverlayCollector = $groundOverlayCollector;
+        $this->rectangleCollector = $rectangleCollector;
     }
 
-    /**
-     * @return GroundOverlayCollector
-     */
-    public function getGroundOverlayCollector()
+    public function getGroundOverlayCollector(): GroundOverlayCollector
     {
         return $this->groundOverlayCollector;
     }
 
-    public function setGroundOverlayCollector(GroundOverlayCollector $groundOverlayCollector)
+    public function setGroundOverlayCollector(GroundOverlayCollector $groundOverlayCollector): void
     {
         $this->groundOverlayCollector = $groundOverlayCollector;
     }
 
-    /**
-     * @return RectangleCollector
-     */
-    public function getRectangleCollector()
+    public function getRectangleCollector(): RectangleCollector
     {
         return $this->rectangleCollector;
     }
 
-    public function setRectangleCollector(RectangleCollector $rectangleCollector)
+    public function setRectangleCollector(RectangleCollector $rectangleCollector): void
     {
         $this->rectangleCollector = $rectangleCollector;
     }
@@ -69,7 +58,7 @@ class BoundCollector extends AbstractCollector
      *
      * @return Bound[]
      */
-    public function collect(Map $map, array $bounds = [])
+    public function collect(Map $map, array $bounds = []): array
     {
         if ($map->isAutoZoom()) {
             $bounds = $this->collectValue($map->getBound(), $bounds);

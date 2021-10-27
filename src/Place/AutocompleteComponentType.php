@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,16 +13,13 @@
 
 namespace Ivory\GoogleMap\Place;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 final class AutocompleteComponentType
 {
-    const ROUTE = 'route';
-    const LOCALITY = 'locality';
-    const ADMINISTRATIVE_AREA = 'administrative_area';
-    const POSTAL_CODE = 'postal_code';
-    const COUNTRY = 'country';
+    public const ROUTE = 'route';
+    public const LOCALITY = 'locality';
+    public const ADMINISTRATIVE_AREA = 'administrative_area';
+    public const POSTAL_CODE = 'postal_code';
+    public const COUNTRY = 'country';
 
     /**
      * @codeCoverageIgnore

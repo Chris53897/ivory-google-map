@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -13,25 +15,14 @@ namespace Ivory\GoogleMap\Helper\Renderer\Image;
 
 use Ivory\GoogleMap\Map;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class SizeRenderer
 {
-    /**
-     * @return string
-     */
-    public function render(Map $map)
+    public function render(Map $map): string
     {
         return $this->getDimension($map, 'width').'x'.$this->getDimension($map, 'height');
     }
 
-    /**
-     * @param string $side
-     *
-     * @return string
-     */
-    private function getDimension(Map $map, $side)
+    private function getDimension(Map $map, string $side): string
     {
         return $map->hasStaticOption($side) ? $map->getStaticOption($side) : '300';
     }

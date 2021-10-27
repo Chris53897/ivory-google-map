@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,19 +20,12 @@ use Ivory\GoogleMap\Helper\Formatter\Formatter;
 use Ivory\GoogleMap\Helper\Renderer\Overlay\RectangleRenderer;
 use Ivory\GoogleMap\Helper\Subscriber\AbstractSubscriber;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class RectangleSubscriber extends AbstractSubscriber
 {
-    /**
-     * @var RectangleCollector
-     */
+    /** @var RectangleCollector */
     private $rectangleCollector;
 
-    /**
-     * @var RectangleRenderer
-     */
+    /** @var RectangleRenderer */
     private $rectangleRenderer;
 
     public function __construct(
@@ -44,33 +39,27 @@ class RectangleSubscriber extends AbstractSubscriber
         $this->setRectangleRenderer($rectangleRenderer);
     }
 
-    /**
-     * @return RectangleCollector
-     */
-    public function getRectangleCollector()
+    public function getRectangleCollector(): RectangleCollector
     {
         return $this->rectangleCollector;
     }
 
-    public function setRectangleCollector(RectangleCollector $rectangleCollector)
+    public function setRectangleCollector(RectangleCollector $rectangleCollector): void
     {
         $this->rectangleCollector = $rectangleCollector;
     }
 
-    /**
-     * @return RectangleRenderer
-     */
-    public function getRectangleRenderer()
+    public function getRectangleRenderer(): RectangleRenderer
     {
         return $this->rectangleRenderer;
     }
 
-    public function setRectangleRenderer(RectangleRenderer $rectangleRenderer)
+    public function setRectangleRenderer(RectangleRenderer $rectangleRenderer): void
     {
         $this->rectangleRenderer = $rectangleRenderer;
     }
 
-    public function handleMap(MapEvent $event)
+    public function handleMap(MapEvent $event): void
     {
         $formatter = $this->getFormatter();
         $map = $event->getMap();
@@ -88,7 +77,7 @@ class RectangleSubscriber extends AbstractSubscriber
     /**
      * {@inheritdoc}
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [MapEvents::JAVASCRIPT_OVERLAY_RECTANGLE => 'handleMap'];
     }

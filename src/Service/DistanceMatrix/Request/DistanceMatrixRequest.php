@@ -477,12 +477,9 @@ class DistanceMatrixRequest implements DistanceMatrixRequestInterface
         $this->language = $language;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function buildQuery()
+    public function buildQuery(): array
     {
-        $locationBuilder = function (LocationInterface $location) {
+        $locationBuilder = static function (LocationInterface $location) {
             $result = $location->buildQuery();
 
             if ($location instanceof EncodedPolylineLocation) {

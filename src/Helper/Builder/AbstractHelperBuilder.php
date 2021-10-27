@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -12,12 +14,8 @@
 namespace Ivory\GoogleMap\Helper\Builder;
 
 use Symfony\Component\EventDispatcher\EventDispatcher;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 abstract class AbstractHelperBuilder
 {
     /** @var EventSubscriberInterface[] */
@@ -26,36 +24,24 @@ abstract class AbstractHelperBuilder
     /** @var string|null */
     protected $key;
 
-    /**
-     * @param string|null $key
-     */
-    public static function create($key = null): AbstractHelperBuilder
+    public static function create(?string $key = null): AbstractHelperBuilder
     {
         return (new static())->setKey($key);
     }
 
-    /**
-     * @return bool
-     */
-    public function hasSubscribers()
+    public function hasSubscribers(): bool
     {
         return !empty($this->subscribers);
     }
 
-    /**
-     * @return EventSubscriberInterface[]
-     */
-    public function getSubscribers()
+    /** @return EventSubscriberInterface[] */
+    public function getSubscribers(): array
     {
         return $this->subscribers;
     }
 
-    /**
-     * @param EventSubscriberInterface[] $subscribers
-     *
-     * @return $this
-     */
-    public function setSubscribers(array $subscribers)
+    /** @param EventSubscriberInterface[] $subscribers */
+    public function setSubscribers(array $subscribers): AbstractHelperBuilder
     {
         $this->subscribers = [];
         $this->addSubscribers($subscribers);
@@ -63,12 +49,8 @@ abstract class AbstractHelperBuilder
         return $this;
     }
 
-    /**
-     * @param EventSubscriberInterface[] $subscribers
-     *
-     * @return $this
-     */
-    public function addSubscribers(array $subscribers)
+    /** @param EventSubscriberInterface[] $subscribers */
+    public function addSubscribers(array $subscribers): AbstractHelperBuilder
     {
         foreach ($subscribers as $subscriber) {
             $this->addSubscriber($subscriber);
@@ -77,18 +59,12 @@ abstract class AbstractHelperBuilder
         return $this;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasSubscriber(EventSubscriberInterface $subscriber)
+    public function hasSubscriber(EventSubscriberInterface $subscriber): bool
     {
         return in_array($subscriber, $this->subscribers, true);
     }
 
-    /**
-     * @return $this
-     */
-    public function addSubscriber(EventSubscriberInterface $subscriber)
+    public function addSubscriber(EventSubscriberInterface $subscriber): AbstractHelperBuilder
     {
         if (!$this->hasSubscriber($subscriber)) {
             $this->subscribers[] = $subscriber;
@@ -97,10 +73,7 @@ abstract class AbstractHelperBuilder
         return $this;
     }
 
-    /**
-     * @return $this
-     */
-    public function removeSubscriber(EventSubscriberInterface $subscriber)
+    public function removeSubscriber(EventSubscriberInterface $subscriber): AbstractHelperBuilder
     {
         unset($this->subscribers[array_search($subscriber, $this->subscribers, true)]);
         $this->subscribers = empty($this->subscribers) ? [] : array_values($this->subscribers);
@@ -108,10 +81,7 @@ abstract class AbstractHelperBuilder
         return $this;
     }
 
-    /**
-     * @return EventDispatcherInterface
-     */
-    protected function createEventDispatcher()
+    protected function createEventDispatcher(): EventDispatcher
     {
         $eventDispatcher = new EventDispatcher();
 
@@ -122,10 +92,8 @@ abstract class AbstractHelperBuilder
         return $eventDispatcher;
     }
 
-    /**
-     * @return EventSubscriberInterface[]
-     */
-    protected function createSubscribers()
+    /** @return EventSubscriberInterface[] */
+    protected function createSubscribers(): array
     {
         return $this->subscribers;
     }
@@ -135,20 +103,12 @@ abstract class AbstractHelperBuilder
         return null !== $this->key;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getKey()
+    public function getKey(): ?string
     {
         return $this->key;
     }
 
-    /**
-     * @param string|null $key
-     *
-     * @return $this
-     */
-    public function setKey($key)
+    public function setKey(?string $key): AbstractHelperBuilder
     {
         $this->key = $key;
 

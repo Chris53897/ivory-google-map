@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,19 +20,12 @@ use Ivory\GoogleMap\Helper\Formatter\Formatter;
 use Ivory\GoogleMap\Helper\Renderer\Event\EventRenderer;
 use Ivory\GoogleMap\Helper\Subscriber\AbstractSubscriber;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class SimpleEventSubscriber extends AbstractSubscriber
 {
-    /**
-     * @var EventCollector
-     */
+    /** @var EventCollector */
     private $eventCollector;
 
-    /**
-     * @var EventRenderer
-     */
+    /** @var EventRenderer */
     private $eventRenderer;
 
     public function __construct(
@@ -44,33 +39,27 @@ class SimpleEventSubscriber extends AbstractSubscriber
         $this->setEventRenderer($eventRenderer);
     }
 
-    /**
-     * @return EventCollector
-     */
-    public function getEventCollector()
+    public function getEventCollector(): EventCollector
     {
         return $this->eventCollector;
     }
 
-    public function setEventCollector(EventCollector $eventCollector)
+    public function setEventCollector(EventCollector $eventCollector): void
     {
         $this->eventCollector = $eventCollector;
     }
 
-    /**
-     * @return EventRenderer
-     */
-    public function getEventRenderer()
+    public function getEventRenderer(): EventRenderer
     {
         return $this->eventRenderer;
     }
 
-    public function setEventRenderer(EventRenderer $eventRenderer)
+    public function setEventRenderer(EventRenderer $eventRenderer): void
     {
         $this->eventRenderer = $eventRenderer;
     }
 
-    public function handleMap(MapEvent $event)
+    public function handleMap(MapEvent $event): void
     {
         $formatter = $this->getFormatter();
         $map = $event->getMap();
@@ -88,7 +77,7 @@ class SimpleEventSubscriber extends AbstractSubscriber
     /**
      * {@inheritdoc}
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [MapEvents::JAVASCRIPT_EVENT_EVENT => 'handleMap'];
     }

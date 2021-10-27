@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -14,26 +16,15 @@ namespace Ivory\GoogleMap\Helper\Renderer;
 use Ivory\GoogleMap\Helper\Formatter\Formatter;
 use Ivory\JsonBuilder\JsonBuilder;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class LoaderRenderer extends AbstractJsonRenderer
 {
-    /**
-     * @var string
-     */
+    /** @var string */
     private $language;
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $key;
 
-    /**
-     * @param string      $language
-     * @param string|null $key
-     */
-    public function __construct(Formatter $formatter, JsonBuilder $jsonBuilder, $language = 'en', $key = null)
+    public function __construct(Formatter $formatter, JsonBuilder $jsonBuilder, string $language = 'en', ?string $key = null)
     {
         parent::__construct($formatter, $jsonBuilder);
 
@@ -41,60 +32,41 @@ class LoaderRenderer extends AbstractJsonRenderer
         $this->setKey($key);
     }
 
-    /**
-     * @return string
-     */
-    public function getLanguage()
+    public function getLanguage(): string
     {
         return $this->language;
     }
 
-    /**
-     * @param string $language
-     */
-    public function setLanguage($language)
+    public function setLanguage(string $language): void
     {
         $this->language = $language;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasKey()
+    public function hasKey(): bool
     {
         return null !== $this->key;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getKey()
+    public function getKey(): ?string
     {
         return $this->key;
     }
 
-    /**
-     * @param string|null $key
-     */
-    public function setKey($key)
+    public function setKey(?string $key): void
     {
         $this->key = $key;
     }
 
     /**
-     * @param string   $name
-     * @param string   $callback
      * @param string[] $libraries
-     * @param bool     $newLine
-     *
-     * @return string
      */
     public function render(
-        $name,
-        $callback,
-        array $libraries = [],
-        $newLine = true
-    ) {
+        string $name,
+        string $callback,
+        array  $libraries = [],
+        bool $newLine = true
+    ): string
+    {
         $formatter = $this->getFormatter();
         $jsonBuilder = $this->getJsonBuilder();
 
@@ -119,13 +91,7 @@ class LoaderRenderer extends AbstractJsonRenderer
         ]), [], $name, true, $newLine);
     }
 
-    /**
-     * @param string     $callback
-     * @param array|null $libraries
-     *
-     * @return string
-     */
-    public function renderSource($callback, $libraries = [])
+    public function renderSource(string $callback, ?array $libraries = []): string
     {
         if ($this->hasKey()) {
             $arguments['key'] = $this->key;

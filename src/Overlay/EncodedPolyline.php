@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -19,8 +21,6 @@ use Ivory\GoogleMap\Utility\VariableAwareTrait;
 
 /**
  * @see http://code.google.com/apis/maps/documentation/utilities/polylinealgorithm.html
- *
- * @author GeLo <geloen.eric@gmail.com>
  */
 class EncodedPolyline implements ExtendableInterface, OptionsAwareInterface, StaticOptionsAwareInterface
 {
@@ -28,33 +28,21 @@ class EncodedPolyline implements ExtendableInterface, OptionsAwareInterface, Sta
     use StaticOptionsAwareTrait;
     use VariableAwareTrait;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $value;
 
-    /**
-     * @param string  $value
-     * @param mixed[] $options
-     */
-    public function __construct($value, array $options = [])
+    public function __construct(string $value, array $options = [])
     {
         $this->setValue($value);
         $this->addOptions($options);
     }
 
-    /**
-     * @return string
-     */
-    public function getValue()
+    public function getValue(): string
     {
         return $this->value;
     }
 
-    /**
-     * @param string $value
-     */
-    public function setValue($value)
+    public function setValue(string $value): void
     {
         $this->value = $value;
     }

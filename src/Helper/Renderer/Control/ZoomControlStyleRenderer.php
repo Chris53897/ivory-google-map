@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -13,17 +15,9 @@ namespace Ivory\GoogleMap\Helper\Renderer\Control;
 
 use Ivory\GoogleMap\Helper\Renderer\AbstractRenderer;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class ZoomControlStyleRenderer extends AbstractRenderer
 {
-    /**
-     * @param string $style
-     *
-     * @return string
-     */
-    public function render($style)
+    public function render(string $style): string
     {
         return $this->getFormatter()->renderConstant('ZoomControlStyle', $style);
     }

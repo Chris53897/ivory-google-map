@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -13,17 +15,9 @@ namespace Ivory\GoogleMap\Helper\Renderer\Control;
 
 use Ivory\GoogleMap\Helper\Renderer\AbstractRenderer;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class ControlPositionRenderer extends AbstractRenderer
 {
-    /**
-     * @param string $position
-     *
-     * @return string
-     */
-    public function render($position)
+    public function render(string $position): string
     {
         return $this->getFormatter()->renderConstant('ControlPosition', $position);
     }

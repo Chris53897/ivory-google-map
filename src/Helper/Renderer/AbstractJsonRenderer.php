@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -14,14 +16,9 @@ namespace Ivory\GoogleMap\Helper\Renderer;
 use Ivory\GoogleMap\Helper\Formatter\Formatter;
 use Ivory\JsonBuilder\JsonBuilder;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 abstract class AbstractJsonRenderer extends AbstractRenderer
 {
-    /**
-     * @var JsonBuilder
-     */
+    /** @var JsonBuilder */
     private $jsonBuilder;
 
     public function __construct(Formatter $formatter, JsonBuilder $jsonBuilder)
@@ -31,10 +28,7 @@ abstract class AbstractJsonRenderer extends AbstractRenderer
         $this->setJsonBuilder($jsonBuilder);
     }
 
-    /**
-     * @return JsonBuilder
-     */
-    public function getJsonBuilder()
+    public function getJsonBuilder(): JsonBuilder
     {
         $jsonEncodeOptions = $this->jsonBuilder->getJsonEncodeOptions();
 
@@ -49,7 +43,7 @@ abstract class AbstractJsonRenderer extends AbstractRenderer
             ->setJsonEncodeOptions($jsonEncodeOptions);
     }
 
-    public function setJsonBuilder(JsonBuilder $jsonBuilder)
+    public function setJsonBuilder(JsonBuilder $jsonBuilder): void
     {
         $this->jsonBuilder = $jsonBuilder;
     }

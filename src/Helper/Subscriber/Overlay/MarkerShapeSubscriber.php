@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,19 +20,12 @@ use Ivory\GoogleMap\Helper\Formatter\Formatter;
 use Ivory\GoogleMap\Helper\Renderer\Overlay\MarkerShapeRenderer;
 use Ivory\GoogleMap\Helper\Subscriber\AbstractSubscriber;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class MarkerShapeSubscriber extends AbstractSubscriber
 {
-    /**
-     * @var MarkerShapeCollector
-     */
+    /** @var MarkerShapeCollector */
     private $markerShapeCollector;
 
-    /**
-     * @var MarkerShapeRenderer
-     */
+    /** @var MarkerShapeRenderer */
     private $markerShapeRenderer;
 
     public function __construct(
@@ -44,33 +39,27 @@ class MarkerShapeSubscriber extends AbstractSubscriber
         $this->setMarkerShapeRenderer($markerShapeRenderer);
     }
 
-    /**
-     * @return MarkerShapeCollector
-     */
-    public function getMarkerShapeCollector()
+    public function getMarkerShapeCollector(): MarkerShapeCollector
     {
         return $this->markerShapeCollector;
     }
 
-    public function setMarkerShapeCollector(MarkerShapeCollector $markerShapeCollector)
+    public function setMarkerShapeCollector(MarkerShapeCollector $markerShapeCollector): void
     {
         $this->markerShapeCollector = $markerShapeCollector;
     }
 
-    /**
-     * @return MarkerShapeRenderer
-     */
-    public function getMarkerShapeRenderer()
+    public function getMarkerShapeRenderer(): MarkerShapeRenderer
     {
         return $this->markerShapeRenderer;
     }
 
-    public function setMarkerShapeRenderer(MarkerShapeRenderer $markerShapeRenderer)
+    public function setMarkerShapeRenderer(MarkerShapeRenderer $markerShapeRenderer): void
     {
         $this->markerShapeRenderer = $markerShapeRenderer;
     }
 
-    public function handleMap(MapEvent $event)
+    public function handleMap(MapEvent $event): void
     {
         $formatter = $this->getFormatter();
         $map = $event->getMap();
@@ -88,7 +77,7 @@ class MarkerShapeSubscriber extends AbstractSubscriber
     /**
      * {@inheritdoc}
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [MapEvents::JAVASCRIPT_OVERLAY_MARKER_SHAPE => 'handleMap'];
     }

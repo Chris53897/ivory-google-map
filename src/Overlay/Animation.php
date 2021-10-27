@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -13,13 +15,11 @@ namespace Ivory\GoogleMap\Overlay;
 
 /**
  * @see http://code.google.com/apis/maps/documentation/javascript/reference.html#Animation
- *
- * @author GeLo <geloen.eric@gmail.com>
  */
 final class Animation
 {
-    const BOUNCE = 'bounce';
-    const DROP = 'drop';
+    public const BOUNCE = 'bounce';
+    public const DROP = 'drop';
 
     /**
      * @codeCoverageIgnore

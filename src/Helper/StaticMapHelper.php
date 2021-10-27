@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -17,36 +19,22 @@ use Ivory\GoogleMap\Map;
 use Ivory\GoogleMap\Service\UrlSigner;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class StaticMapHelper extends AbstractHelper
 {
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $secret;
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $clientId;
 
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $channel;
 
-    /**
-     * @param string|null $secret
-     * @param string|null $clientId
-     * @param string|null $channel
-     */
     public function __construct(
         EventDispatcherInterface $eventDispatcher,
-        $secret = null,
-        $clientId = null,
-        $channel = null
+        ?string $secret = null,
+        ?string $clientId = null,
+        ?string $channel = null
     ) {
         parent::__construct($eventDispatcher);
 
@@ -55,82 +43,52 @@ class StaticMapHelper extends AbstractHelper
         $this->channel = $channel;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasSecret()
+    public function hasSecret(): bool
     {
         return null !== $this->secret;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getSecret()
+    public function getSecret(): ?string
     {
         return $this->secret;
     }
 
-    /**
-     * @param string|null $secret
-     */
-    public function setSecret($secret)
+    public function setSecret(?string $secret): void
     {
         $this->secret = $secret;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasClientId()
+    public function hasClientId(): bool
     {
         return null !== $this->clientId;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getClientId()
+    public function getClientId(): ?string
     {
         return $this->clientId;
     }
 
-    /**
-     * @param string|null $clientId
-     */
-    public function setClientId($clientId)
+    public function setClientId(?string $clientId): void
     {
         $this->clientId = $clientId;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasChannel()
+    public function hasChannel(): bool
     {
         return null !== $this->channel;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getChannel()
+    public function getChannel(): ?string
     {
         return $this->channel;
     }
 
-    /**
-     * @param string|null $channel
-     */
-    public function setChannel($channel)
+    public function setChannel($channel): void
     {
         $this->channel = $channel;
     }
 
-    /**
-     * @return string
-     */
-    public function render(Map $map)
+    public function render(Map $map): string
     {
         $this->getEventDispatcher()->dispatch($event = new StaticMapEvent($map), StaticMapEvents::HTML);
 

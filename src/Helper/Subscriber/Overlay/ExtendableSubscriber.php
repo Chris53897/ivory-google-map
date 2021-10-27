@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,19 +20,12 @@ use Ivory\GoogleMap\Helper\Formatter\Formatter;
 use Ivory\GoogleMap\Helper\Renderer\Overlay\Extendable\ExtendableRenderer;
 use Ivory\GoogleMap\Helper\Subscriber\AbstractSubscriber;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class ExtendableSubscriber extends AbstractSubscriber
 {
-    /**
-     * @var ExtendableCollector
-     */
+    /** @var ExtendableCollector */
     private $extendableCollector;
 
-    /**
-     * @var ExtendableRenderer
-     */
+    /** @var ExtendableRenderer */
     private $extendableRenderer;
 
     public function __construct(
@@ -44,33 +39,27 @@ class ExtendableSubscriber extends AbstractSubscriber
         $this->setExtendableRenderer($extendableRenderer);
     }
 
-    /**
-     * @return ExtendableCollector
-     */
-    public function getExtendableCollector()
+    public function getExtendableCollector(): ExtendableCollector
     {
         return $this->extendableCollector;
     }
 
-    public function setExtendableCollector(ExtendableCollector $extendableCollector)
+    public function setExtendableCollector(ExtendableCollector $extendableCollector): void
     {
         $this->extendableCollector = $extendableCollector;
     }
 
-    /**
-     * @return ExtendableRenderer
-     */
-    public function getExtendableRenderer()
+    public function getExtendableRenderer(): ExtendableRenderer
     {
         return $this->extendableRenderer;
     }
 
-    public function setExtendableRenderer(ExtendableRenderer $extendableRenderer)
+    public function setExtendableRenderer(ExtendableRenderer $extendableRenderer): void
     {
         $this->extendableRenderer = $extendableRenderer;
     }
 
-    public function handleMap(MapEvent $event)
+    public function handleMap(MapEvent $event): void
     {
         $formatter = $this->getFormatter();
         $map = $event->getMap();
@@ -83,7 +72,7 @@ class ExtendableSubscriber extends AbstractSubscriber
     /**
      * {@inheritdoc}
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [MapEvents::JAVASCRIPT_FINISH => 'handleMap'];
     }

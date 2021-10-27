@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -13,54 +15,33 @@ namespace Ivory\GoogleMap\Overlay;
 
 use Ivory\GoogleMap\Map;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class OverlayManager
 {
-    /**
-     * @var Map|null
-     */
+    /** @var Map|null */
     private $map;
 
-    /**
-     * @var MarkerCluster
-     */
+    /** @var MarkerCluster */
     private $markerCluster;
 
-    /**
-     * @var InfoWindow[]
-     */
+    /** @var InfoWindow[] */
     private $infoWindows = [];
 
-    /**
-     * @var Polyline[]
-     */
+    /** @var Polyline[] */
     private $polylines = [];
 
-    /**
-     * @var EncodedPolyline[]
-     */
+    /** @var EncodedPolyline[] */
     private $encodedPolylines = [];
 
-    /**
-     * @var Polygon[]
-     */
+    /** @var Polygon[] */
     private $polygons = [];
 
-    /**
-     * @var Rectangle[]
-     */
+    /** @var Rectangle[] */
     private $rectangles = [];
 
-    /**
-     * @var Circle[]
-     */
+    /** @var Circle[] */
     private $circles = [];
 
-    /**
-     * @var GroundOverlay[]
-     */
+    /** @var GroundOverlay[] */
     private $groundOverlays = [];
 
     public function __construct()
@@ -68,23 +49,17 @@ class OverlayManager
         $this->setMarkerCluster(new MarkerCluster());
     }
 
-    /**
-     * @return bool
-     */
-    public function hasMap()
+    public function hasMap(): bool
     {
         return null !== $this->map;
     }
 
-    /**
-     * @return Map|null
-     */
-    public function getMap()
+    public function getMap(): ?Map
     {
         return $this->map;
     }
 
-    public function setMap(Map $map)
+    public function setMap(Map $map): void
     {
         $this->map = $map;
 
@@ -93,15 +68,12 @@ class OverlayManager
         }
     }
 
-    /**
-     * @return MarkerCluster
-     */
-    public function getMarkerCluster()
+    public function getMarkerCluster(): MarkerCluster
     {
         return $this->markerCluster;
     }
 
-    public function setMarkerCluster(MarkerCluster $markerCluster)
+    public function setMarkerCluster(MarkerCluster $markerCluster): void
     {
         $this->markerCluster = $markerCluster;
 
@@ -110,10 +82,7 @@ class OverlayManager
         }
     }
 
-    /**
-     * @return bool
-     */
-    public function hasMarkers()
+    public function hasMarkers(): bool
     {
         return $this->markerCluster->hasMarkers();
     }
@@ -121,7 +90,7 @@ class OverlayManager
     /**
      * @return Marker[]
      */
-    public function getMarkers()
+    public function getMarkers(): array
     {
         return $this->markerCluster->getMarkers();
     }
@@ -129,7 +98,7 @@ class OverlayManager
     /**
      * @param Marker[] $markers
      */
-    public function setMarkers(array $markers)
+    public function setMarkers(array $markers): void
     {
         $this->markerCluster->setMarkers($markers);
     }
@@ -137,33 +106,27 @@ class OverlayManager
     /**
      * @param Marker[] $markers
      */
-    public function addMarkers(array $markers)
+    public function addMarkers(array $markers): void
     {
         $this->markerCluster->addMarkers($markers);
     }
 
-    /**
-     * @return bool
-     */
-    public function hasMarker(Marker $marker)
+    public function hasMarker(Marker $marker): bool
     {
         return $this->markerCluster->hasMarker($marker);
     }
 
-    public function addMarker(Marker $marker)
+    public function addMarker(Marker $marker): void
     {
         $this->markerCluster->addMarker($marker);
     }
 
-    public function removeMarker(Marker $marker)
+    public function removeMarker(Marker $marker): void
     {
         $this->markerCluster->removeMarker($marker);
     }
 
-    /**
-     * @return bool
-     */
-    public function hasInfoWindows()
+    public function hasInfoWindows(): bool
     {
         return !empty($this->infoWindows);
     }
@@ -171,7 +134,7 @@ class OverlayManager
     /**
      * @return InfoWindow[]
      */
-    public function getInfoWindows()
+    public function getInfoWindows(): array
     {
         return $this->infoWindows;
     }
@@ -179,7 +142,7 @@ class OverlayManager
     /**
      * @param InfoWindow[] $infoWindows
      */
-    public function setInfoWindows(array $infoWindows)
+    public function setInfoWindows(array $infoWindows): void
     {
         foreach ($this->infoWindows as $infoWindow) {
             $this->removeInfoWindow($infoWindow);
@@ -191,22 +154,19 @@ class OverlayManager
     /**
      * @param InfoWindow[] $infoWindows
      */
-    public function addInfoWindows(array $infoWindows)
+    public function addInfoWindows(array $infoWindows): void
     {
         foreach ($infoWindows as $infoWindow) {
             $this->addInfoWindow($infoWindow);
         }
     }
 
-    /**
-     * @return bool
-     */
-    public function hasInfoWindow(InfoWindow $infoWindow)
+    public function hasInfoWindow(InfoWindow $infoWindow): bool
     {
         return in_array($infoWindow, $this->infoWindows, true);
     }
 
-    public function addInfoWindow(InfoWindow $infoWindow)
+    public function addInfoWindow(InfoWindow $infoWindow): void
     {
         if (!$this->hasInfoWindow($infoWindow)) {
             $this->infoWindows[] = $infoWindow;
@@ -215,17 +175,14 @@ class OverlayManager
         $this->addExtendable($infoWindow);
     }
 
-    public function removeInfoWindow(InfoWindow $infoWindow)
+    public function removeInfoWindow(InfoWindow $infoWindow): void
     {
         unset($this->infoWindows[array_search($infoWindow, $this->infoWindows, true)]);
         $this->infoWindows = empty($this->infoWindows) ? [] : array_values($this->infoWindows);
         $this->removeExtendable($infoWindow);
     }
 
-    /**
-     * @return bool
-     */
-    public function hasPolylines()
+    public function hasPolylines(): bool
     {
         return !empty($this->polylines);
     }
@@ -233,7 +190,7 @@ class OverlayManager
     /**
      * @return Polyline[]
      */
-    public function getPolylines()
+    public function getPolylines(): array
     {
         return $this->polylines;
     }
@@ -241,7 +198,7 @@ class OverlayManager
     /**
      * @param Polyline[] $polylines
      */
-    public function setPolylines(array $polylines)
+    public function setPolylines(array $polylines): void
     {
         foreach ($this->polylines as $polyline) {
             $this->removePolyline($polyline);
@@ -253,22 +210,19 @@ class OverlayManager
     /**
      * @param Polyline[] $polylines
      */
-    public function addPolylines(array $polylines)
+    public function addPolylines(array $polylines): void
     {
         foreach ($polylines as $polyline) {
             $this->addPolyline($polyline);
         }
     }
 
-    /**
-     * @return bool
-     */
-    public function hasPolyline(Polyline $polyline)
+    public function hasPolyline(Polyline $polyline): bool
     {
         return in_array($polyline, $this->polylines, true);
     }
 
-    public function addPolyline(Polyline $polyline)
+    public function addPolyline(Polyline $polyline): void
     {
         if (!$this->hasPolyline($polyline)) {
             $this->polylines[] = $polyline;
@@ -277,17 +231,14 @@ class OverlayManager
         $this->addExtendable($polyline);
     }
 
-    public function removePolyline(Polyline $polyline)
+    public function removePolyline(Polyline $polyline): void
     {
         unset($this->polylines[array_search($polyline, $this->polylines, true)]);
         $this->polylines = empty($this->polylines) ? [] : array_values($this->polylines);
         $this->removeExtendable($polyline);
     }
 
-    /**
-     * @return bool
-     */
-    public function hasEncodedPolylines()
+    public function hasEncodedPolylines(): bool
     {
         return !empty($this->encodedPolylines);
     }
@@ -295,7 +246,7 @@ class OverlayManager
     /**
      * @return EncodedPolyline[]
      */
-    public function getEncodedPolylines()
+    public function getEncodedPolylines(): array
     {
         return $this->encodedPolylines;
     }
@@ -303,7 +254,7 @@ class OverlayManager
     /**
      * @param EncodedPolyline[] $encodedPolylines
      */
-    public function setEncodedPolylines(array $encodedPolylines)
+    public function setEncodedPolylines(array $encodedPolylines): void
     {
         foreach ($this->encodedPolylines as $encodedPolyline) {
             $this->removeEncodedPolyline($encodedPolyline);
@@ -315,22 +266,19 @@ class OverlayManager
     /**
      * @param EncodedPolyline[] $encodedPolylines
      */
-    public function addEncodedPolylines(array $encodedPolylines)
+    public function addEncodedPolylines(array $encodedPolylines): void
     {
         foreach ($encodedPolylines as $encodedPolyline) {
             $this->addEncodedPolyline($encodedPolyline);
         }
     }
 
-    /**
-     * @return bool
-     */
-    public function hasEncodedPolyline(EncodedPolyline $encodedPolyline)
+    public function hasEncodedPolyline(EncodedPolyline $encodedPolyline): bool
     {
         return in_array($encodedPolyline, $this->encodedPolylines, true);
     }
 
-    public function addEncodedPolyline(EncodedPolyline $encodedPolyline)
+    public function addEncodedPolyline(EncodedPolyline $encodedPolyline): void
     {
         if (!$this->hasEncodedPolyline($encodedPolyline)) {
             $this->encodedPolylines[] = $encodedPolyline;
@@ -339,17 +287,14 @@ class OverlayManager
         $this->addExtendable($encodedPolyline);
     }
 
-    public function removeEncodedPolyline(EncodedPolyline $encodedPolyline)
+    public function removeEncodedPolyline(EncodedPolyline $encodedPolyline): void
     {
         unset($this->encodedPolylines[array_search($encodedPolyline, $this->encodedPolylines, true)]);
         $this->encodedPolylines = empty($this->encodedPolylines) ? [] : array_values($this->encodedPolylines);
         $this->removeExtendable($encodedPolyline);
     }
 
-    /**
-     * @return bool
-     */
-    public function hasPolygons()
+    public function hasPolygons(): bool
     {
         return !empty($this->polygons);
     }
@@ -357,7 +302,7 @@ class OverlayManager
     /**
      * @return Polygon[]
      */
-    public function getPolygons()
+    public function getPolygons(): array
     {
         return $this->polygons;
     }
@@ -365,7 +310,7 @@ class OverlayManager
     /**
      * @param Polygon[] $polygons
      */
-    public function setPolygons(array $polygons)
+    public function setPolygons(array $polygons): void
     {
         foreach ($this->polygons as $polygon) {
             $this->removePolygon($polygon);
@@ -377,22 +322,19 @@ class OverlayManager
     /**
      * @param Polygon[] $polygons
      */
-    public function addPolygons(array $polygons)
+    public function addPolygons(array $polygons): void
     {
         foreach ($polygons as $polygon) {
             $this->addPolygon($polygon);
         }
     }
 
-    /**
-     * @return bool
-     */
-    public function hasPolygon(Polygon $polygon)
+    public function hasPolygon(Polygon $polygon): bool
     {
         return in_array($polygon, $this->polygons, true);
     }
 
-    public function addPolygon(Polygon $polygon)
+    public function addPolygon(Polygon $polygon): void
     {
         if (!$this->hasPolygon($polygon)) {
             $this->polygons[] = $polygon;
@@ -401,17 +343,14 @@ class OverlayManager
         $this->addExtendable($polygon);
     }
 
-    public function removePolygon(Polygon $polygon)
+    public function removePolygon(Polygon $polygon): void
     {
         unset($this->polygons[array_search($polygon, $this->polygons, true)]);
         $this->polygons = empty($this->polygons) ? [] : array_values($this->polygons);
         $this->removeExtendable($polygon);
     }
 
-    /**
-     * @return bool
-     */
-    public function hasRectangles()
+    public function hasRectangles(): bool
     {
         return !empty($this->rectangles);
     }
@@ -419,7 +358,7 @@ class OverlayManager
     /**
      * @return Rectangle[]
      */
-    public function getRectangles()
+    public function getRectangles(): array
     {
         return $this->rectangles;
     }
@@ -427,7 +366,7 @@ class OverlayManager
     /**
      * @param Rectangle[] $rectangles
      */
-    public function setRectangles(array $rectangles)
+    public function setRectangles(array $rectangles): void
     {
         foreach ($this->rectangles as $rectangle) {
             $this->removeRectangle($rectangle);
@@ -439,22 +378,19 @@ class OverlayManager
     /**
      * @param Rectangle[] $rectangles
      */
-    public function addRectangles(array $rectangles)
+    public function addRectangles(array $rectangles): void
     {
         foreach ($rectangles as $rectangle) {
             $this->addRectangle($rectangle);
         }
     }
 
-    /**
-     * @return bool
-     */
-    public function hasRectangle(Rectangle $rectangle)
+    public function hasRectangle(Rectangle $rectangle): bool
     {
         return in_array($rectangle, $this->rectangles, true);
     }
 
-    public function addRectangle(Rectangle $rectangle)
+    public function addRectangle(Rectangle $rectangle): void
     {
         if (!$this->hasRectangle($rectangle)) {
             $this->rectangles[] = $rectangle;
@@ -463,17 +399,14 @@ class OverlayManager
         $this->addExtendable($rectangle);
     }
 
-    public function removeRectangle(Rectangle $rectangle)
+    public function removeRectangle(Rectangle $rectangle): void
     {
         unset($this->rectangles[array_search($rectangle, $this->rectangles, true)]);
         $this->rectangles = empty($this->rectangles) ? [] : array_values($this->rectangles);
         $this->removeExtendable($rectangle);
     }
 
-    /**
-     * @return bool
-     */
-    public function hasCircles()
+    public function hasCircles(): bool
     {
         return !empty($this->circles);
     }
@@ -481,7 +414,7 @@ class OverlayManager
     /**
      * @return Circle[]
      */
-    public function getCircles()
+    public function getCircles(): array
     {
         return $this->circles;
     }
@@ -489,7 +422,7 @@ class OverlayManager
     /**
      * @param Circle[] $circles
      */
-    public function setCircles(array $circles)
+    public function setCircles(array $circles): void
     {
         foreach ($this->circles as $circle) {
             $this->removeCircle($circle);
@@ -501,22 +434,19 @@ class OverlayManager
     /**
      * @param Circle[] $circles
      */
-    public function addCircles(array $circles)
+    public function addCircles(array $circles): void
     {
         foreach ($circles as $circle) {
             $this->addCircle($circle);
         }
     }
 
-    /**
-     * @return bool
-     */
-    public function hasCircle(Circle $circle)
+    public function hasCircle(Circle $circle): bool
     {
         return in_array($circle, $this->circles, true);
     }
 
-    public function addCircle(Circle $circle)
+    public function addCircle(Circle $circle): void
     {
         if (!$this->hasCircle($circle)) {
             $this->circles[] = $circle;
@@ -525,17 +455,14 @@ class OverlayManager
         $this->addExtendable($circle);
     }
 
-    public function removeCircle(Circle $circle)
+    public function removeCircle(Circle $circle): void
     {
         unset($this->circles[array_search($circle, $this->circles, true)]);
         $this->circles = empty($this->circles) ? [] : array_values($this->circles);
         $this->removeExtendable($circle);
     }
 
-    /**
-     * @return bool
-     */
-    public function hasGroundOverlays()
+    public function hasGroundOverlays(): bool
     {
         return !empty($this->groundOverlays);
     }
@@ -543,7 +470,7 @@ class OverlayManager
     /**
      * @return GroundOverlay[]
      */
-    public function getGroundOverlays()
+    public function getGroundOverlays(): array
     {
         return $this->groundOverlays;
     }
@@ -551,7 +478,7 @@ class OverlayManager
     /**
      * @param GroundOverlay[] $groundOverlays
      */
-    public function setGroundOverlays(array $groundOverlays)
+    public function setGroundOverlays(array $groundOverlays): void
     {
         foreach ($this->groundOverlays as $groundOverlay) {
             $this->removeGroundOverlay($groundOverlay);
@@ -563,22 +490,19 @@ class OverlayManager
     /**
      * @param GroundOverlay[] $groundOverlays
      */
-    public function addGroundOverlays(array $groundOverlays)
+    public function addGroundOverlays(array $groundOverlays): void
     {
         foreach ($groundOverlays as $groundOverlay) {
             $this->addGroundOverlay($groundOverlay);
         }
     }
 
-    /**
-     * @return bool
-     */
-    public function hasGroundOverlay(GroundOverlay $groundOverlay)
+    public function hasGroundOverlay(GroundOverlay $groundOverlay): bool
     {
         return in_array($groundOverlay, $this->groundOverlays, true);
     }
 
-    public function addGroundOverlay(GroundOverlay $groundOverlay)
+    public function addGroundOverlay(GroundOverlay $groundOverlay): void
     {
         if (!$this->hasGroundOverlay($groundOverlay)) {
             $this->groundOverlays[] = $groundOverlay;
@@ -587,31 +511,28 @@ class OverlayManager
         $this->addExtendable($groundOverlay);
     }
 
-    public function removeGroundOverlay(GroundOverlay $groundOverlay)
+    public function removeGroundOverlay(GroundOverlay $groundOverlay): void
     {
         unset($this->groundOverlays[array_search($groundOverlay, $this->groundOverlays, true)]);
         $this->groundOverlays = empty($this->groundOverlays) ? [] : array_values($this->groundOverlays);
         $this->removeExtendable($groundOverlay);
     }
 
-    private function addExtendable(ExtendableInterface $extendable)
+    private function addExtendable(ExtendableInterface $extendable): void
     {
         if ($this->isAutoZoom()) {
             $this->getMap()->getBound()->addExtendable($extendable);
         }
     }
 
-    private function removeExtendable(ExtendableInterface $extendable)
+    private function removeExtendable(ExtendableInterface $extendable): void
     {
         if ($this->isAutoZoom()) {
             $this->getMap()->getBound()->removeExtendable($extendable);
         }
     }
 
-    /**
-     * @return bool
-     */
-    private function isAutoZoom()
+    private function isAutoZoom(): bool
     {
         return $this->hasMap() && $this->getMap()->isAutoZoom();
     }

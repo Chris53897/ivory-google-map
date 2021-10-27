@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -13,44 +15,27 @@ namespace Ivory\GoogleMap\Helper\Event;
 
 use Symfony\Contracts\EventDispatcher\Event;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class AbstractEvent extends Event
 {
-    /**
-     * @var string
-     */
+    /** @var string */
     private $code = '';
 
-    /**
-     * @return bool
-     */
-    public function hasCode()
+    public function hasCode(): bool
     {
         return !empty($this->code);
     }
 
-    /**
-     * @return string|null
-     */
-    public function getCode()
+    public function getCode(): string
     {
         return $this->code;
     }
 
-    /**
-     * @param string $code
-     */
-    public function setCode($code)
+    public function setCode(string $code): void
     {
         $this->code = $code;
     }
 
-    /**
-     * @param string $code
-     */
-    public function addCode($code)
+    public function addCode(string $code): void
     {
         $this->code .= $code;
     }

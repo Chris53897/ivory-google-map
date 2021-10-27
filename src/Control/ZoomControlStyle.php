@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -13,14 +15,12 @@ namespace Ivory\GoogleMap\Control;
 
 /**
  * @see http://code.google.com/apis/maps/documentation/javascript/reference.html#ZoomControlStyle
- *
- * @author GeLo <geloen.eric@gmail.com>
  */
 final class ZoomControlStyle
 {
-    const DEFAULT_ = 'default';
-    const LARGE = 'large';
-    const SMALL = 'small';
+    public const DEFAULT_ = 'default';
+    public const LARGE = 'large';
+    public const SMALL = 'small';
 
     /**
      * @codeCoverageIgnore

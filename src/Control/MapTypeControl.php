@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -15,45 +17,32 @@ use Ivory\GoogleMap\MapTypeId;
 
 /**
  * @see http://code.google.com/apis/maps/documentation/javascript/reference.html#MapTypeControlOptions
- *
- * @author GeLo <geloen.eric@gmail.com>
  */
 class MapTypeControl
 {
-    /**
-     * @var string[]
-     */
+    /** @var string[] */
     private $ids = [];
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $position;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $style;
 
     /**
      * @param string[] $ids
-     * @param string   $position
-     * @param string   $style
      */
     public function __construct(
-        array $ids = [MapTypeId::ROADMAP, MapTypeId::SATELLITE],
-        $position = ControlPosition::TOP_RIGHT,
-        $style = MapTypeControlStyle::DEFAULT_
+        array  $ids = [MapTypeId::ROADMAP, MapTypeId::SATELLITE],
+        string $position = ControlPosition::TOP_RIGHT,
+        string $style = MapTypeControlStyle::DEFAULT_
     ) {
         $this->addIds($ids);
         $this->setPosition($position);
         $this->setStyle($style);
     }
 
-    /**
-     * @return bool
-     */
-    public function hasIds()
+    public function hasIds(): bool
     {
         return !empty($this->ids);
     }
@@ -61,7 +50,7 @@ class MapTypeControl
     /**
      * @return string[]
      */
-    public function getIds()
+    public function getIds(): array
     {
         return $this->ids;
     }
@@ -69,7 +58,7 @@ class MapTypeControl
     /**
      * @param string[] $ids
      */
-    public function setIds(array $ids)
+    public function setIds(array $ids): void
     {
         $this->ids = [];
         $this->addIds($ids);
@@ -78,70 +67,47 @@ class MapTypeControl
     /**
      * @param string[] $ids
      */
-    public function addIds(array $ids)
+    public function addIds(array $ids): void
     {
         foreach ($ids as $mapTypeId) {
             $this->addId($mapTypeId);
         }
     }
 
-    /**
-     * @param string $id
-     *
-     * @return bool
-     */
-    public function hasId($id)
+    public function hasId(string $id): bool
     {
         return in_array($id, $this->ids, true);
     }
 
-    /**
-     * @param string $id
-     */
-    public function addId($id)
+    public function addId(string $id): void
     {
         if (!$this->hasId($id)) {
             $this->ids[] = $id;
         }
     }
 
-    /**
-     * @param string $id
-     */
-    public function removeId($id)
+    public function removeId(string $id): void
     {
         unset($this->ids[array_search($id, $this->ids, true)]);
         $this->ids = empty($this->ids) ? [] : array_values($this->ids);
     }
 
-    /**
-     * @return string
-     */
-    public function getPosition()
+    public function getPosition(): string
     {
         return $this->position;
     }
 
-    /**
-     * @param string $position
-     */
-    public function setPosition($position)
+    public function setPosition(string $position): void
     {
         $this->position = $position;
     }
 
-    /**
-     * @return string
-     */
-    public function getStyle()
+    public function getStyle(): string
     {
         return $this->style;
     }
 
-    /**
-     * @param string $style
-     */
-    public function setStyle($style)
+    public function setStyle(string $style): void
     {
         $this->style = $style;
     }

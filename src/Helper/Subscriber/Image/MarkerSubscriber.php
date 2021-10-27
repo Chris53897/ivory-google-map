@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -17,19 +19,12 @@ use Ivory\GoogleMap\Helper\Event\StaticMapEvents;
 use Ivory\GoogleMap\Helper\Renderer\Image\Overlay\MarkerRenderer;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class MarkerSubscriber implements EventSubscriberInterface
 {
-    /**
-     * @var MarkerCollector
-     */
+    /** @var MarkerCollector */
     private $markerCollector;
 
-    /**
-     * @var MarkerRenderer
-     */
+    /** @var MarkerRenderer */
     private $markerRenderer;
 
     public function __construct(MarkerCollector $markerCollector, MarkerRenderer $markerRenderer)
@@ -38,7 +33,7 @@ class MarkerSubscriber implements EventSubscriberInterface
         $this->markerRenderer = $markerRenderer;
     }
 
-    public function handleMap(StaticMapEvent $event)
+    public function handleMap(StaticMapEvent $event): void
     {
         $result = [];
 
@@ -54,7 +49,7 @@ class MarkerSubscriber implements EventSubscriberInterface
     /**
      * {@inheritdoc}
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [StaticMapEvents::MARKER => 'handleMap'];
     }

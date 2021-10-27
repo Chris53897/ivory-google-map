@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,19 +20,12 @@ use Ivory\GoogleMap\Helper\Formatter\Formatter;
 use Ivory\GoogleMap\Helper\Renderer\Event\DomEventRenderer;
 use Ivory\GoogleMap\Helper\Subscriber\AbstractSubscriber;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class AutocompleteDomEventSubscriber extends AbstractSubscriber
 {
-    /**
-     * @var AutocompleteDomEventCollector
-     */
+    /** @var AutocompleteDomEventCollector */
     private $domEventCollector;
 
-    /**
-     * @var DomEventRenderer
-     */
+    /** @var DomEventRenderer */
     private $domEventRenderer;
 
     public function __construct(
@@ -44,33 +39,27 @@ class AutocompleteDomEventSubscriber extends AbstractSubscriber
         $this->setDomEventRenderer($domEventRenderer);
     }
 
-    /**
-     * @return AutocompleteDomEventCollector
-     */
-    public function getDomEventCollector()
+    public function getDomEventCollector(): AutocompleteDomEventCollector
     {
         return $this->domEventCollector;
     }
 
-    public function setDomEventCollector(AutocompleteDomEventCollector $domEventCollector)
+    public function setDomEventCollector(AutocompleteDomEventCollector $domEventCollector): void
     {
         $this->domEventCollector = $domEventCollector;
     }
 
-    /**
-     * @return DomEventRenderer
-     */
-    public function getDomEventRenderer()
+    public function getDomEventRenderer(): DomEventRenderer
     {
         return $this->domEventRenderer;
     }
 
-    public function setDomEventRenderer(DomEventRenderer $domEventRenderer)
+    public function setDomEventRenderer(DomEventRenderer $domEventRenderer): void
     {
         $this->domEventRenderer = $domEventRenderer;
     }
 
-    public function handleAutocomplete(PlaceAutocompleteEvent $event)
+    public function handleAutocomplete(PlaceAutocompleteEvent $event): void
     {
         $formatter = $this->getFormatter();
         $autocomplete = $event->getAutocomplete();
@@ -88,7 +77,7 @@ class AutocompleteDomEventSubscriber extends AbstractSubscriber
     /**
      * {@inheritdoc}
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [PlaceAutocompleteEvents::JAVASCRIPT_EVENT_DOM_EVENT => 'handleAutocomplete'];
     }

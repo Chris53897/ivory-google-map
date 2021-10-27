@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -13,15 +15,9 @@ namespace Ivory\GoogleMap\Helper\Renderer\Image\Overlay;
 
 use Ivory\GoogleMap\Overlay\Polyline;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class PolylineStyleRenderer extends AbstractPolylineStyleRenderer
 {
-    /**
-     * @return string
-     */
-    public function render(Polyline $polyline)
+    public function render(Polyline $polyline): string
     {
         return $this->renderPolylineStyle(
             $polyline->hasStaticOption('styles') ? $polyline->getStaticOption('styles') : [],

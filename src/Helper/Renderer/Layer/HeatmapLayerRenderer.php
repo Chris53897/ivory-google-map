@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -15,15 +17,9 @@ use Ivory\GoogleMap\Helper\Renderer\AbstractJsonRenderer;
 use Ivory\GoogleMap\Layer\HeatmapLayer;
 use Ivory\GoogleMap\Map;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class HeatmapLayerRenderer extends AbstractJsonRenderer
 {
-    /**
-     * @return string
-     */
-    public function render(HeatmapLayer $heatmapLayer, Map $map)
+    public function render(HeatmapLayer $heatmapLayer, Map $map): string
     {
         $formatter = $this->getFormatter();
         $jsonBuilder = $this->getJsonBuilder();
@@ -41,10 +37,7 @@ class HeatmapLayerRenderer extends AbstractJsonRenderer
         ], $formatter->renderClass('visualization')));
     }
 
-    /**
-     * @return string
-     */
-    public function renderRequirement()
+    public function renderRequirement(): string
     {
         return $this->getFormatter()->renderClass('visualization');
     }

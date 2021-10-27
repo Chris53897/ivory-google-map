@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,15 +13,7 @@
 
 namespace Ivory\GoogleMap\Helper\Renderer\Control;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 interface ControlRendererInterface
 {
-    /**
-     * @param object $control
-     *
-     * @return string
-     */
-    public function render($control);
+    public function render(object $control): string;
 }

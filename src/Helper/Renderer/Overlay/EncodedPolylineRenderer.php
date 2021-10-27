@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,14 +20,9 @@ use Ivory\GoogleMap\Map;
 use Ivory\GoogleMap\Overlay\EncodedPolyline;
 use Ivory\JsonBuilder\JsonBuilder;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class EncodedPolylineRenderer extends AbstractJsonRenderer
 {
-    /**
-     * @var EncodingRenderer
-     */
+    /** @var EncodingRenderer */
     private $encodingRenderer;
 
     public function __construct(
@@ -38,23 +35,17 @@ class EncodedPolylineRenderer extends AbstractJsonRenderer
         $this->setEncodingRenderer($encodingRenderer);
     }
 
-    /**
-     * @return EncodingRenderer
-     */
-    public function getEncodingRenderer()
+    public function getEncodingRenderer(): EncodingRenderer
     {
         return $this->encodingRenderer;
     }
 
-    public function setEncodingRenderer(EncodingRenderer $encodingRenderer)
+    public function setEncodingRenderer(EncodingRenderer $encodingRenderer): void
     {
         $this->encodingRenderer = $encodingRenderer;
     }
 
-    /**
-     * @return string
-     */
-    public function render(EncodedPolyline $encodedPolyline, Map $map)
+    public function render(EncodedPolyline $encodedPolyline, Map $map): string
     {
         $formatter = $this->getFormatter();
         $jsonBuilder = $this->getJsonBuilder()

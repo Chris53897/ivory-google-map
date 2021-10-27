@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -13,15 +15,13 @@ namespace Ivory\GoogleMap;
 
 /**
  * @see http://code.google.com/apis/maps/documentation/javascript/reference.html#MapTypeId
- *
- * @author GeLo <geloen.eric@gmail.com>
  */
 final class MapTypeId
 {
-    const HYBRID = 'hybrid';
-    const ROADMAP = 'roadmap';
-    const SATELLITE = 'satellite';
-    const TERRAIN = 'terrain';
+    public const HYBRID = 'hybrid';
+    public const ROADMAP = 'roadmap';
+    public const SATELLITE = 'satellite';
+    public const TERRAIN = 'terrain';
 
     /**
      * @codeCoverageIgnore

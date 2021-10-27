@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,19 +20,12 @@ use Ivory\GoogleMap\Helper\Formatter\Formatter;
 use Ivory\GoogleMap\Helper\Renderer\Overlay\GroundOverlayRenderer;
 use Ivory\GoogleMap\Helper\Subscriber\AbstractSubscriber;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class GroundOverlaySubscriber extends AbstractSubscriber
 {
-    /**
-     * @var GroundOverlayCollector
-     */
+    /** @var GroundOverlayCollector */
     private $groundOverlayCollector;
 
-    /**
-     * @var GroundOverlayRenderer
-     */
+    /** @var GroundOverlayRenderer */
     private $groundOverlayRenderer;
 
     public function __construct(
@@ -44,33 +39,27 @@ class GroundOverlaySubscriber extends AbstractSubscriber
         $this->setGroundOverlayRenderer($groundOverlayRenderer);
     }
 
-    /**
-     * @return GroundOverlayCollector
-     */
-    public function getGroundOverlayCollector()
+    public function getGroundOverlayCollector(): GroundOverlayCollector
     {
         return $this->groundOverlayCollector;
     }
 
-    public function setGroundOverlayCollector(GroundOverlayCollector $groundOverlayCollector)
+    public function setGroundOverlayCollector(GroundOverlayCollector $groundOverlayCollector): void
     {
         $this->groundOverlayCollector = $groundOverlayCollector;
     }
 
-    /**
-     * @return GroundOverlayRenderer
-     */
-    public function getGroundOverlayRenderer()
+    public function getGroundOverlayRenderer(): GroundOverlayRenderer
     {
         return $this->groundOverlayRenderer;
     }
 
-    public function setGroundOverlayRenderer(GroundOverlayRenderer $groundOverlayRenderer)
+    public function setGroundOverlayRenderer(GroundOverlayRenderer $groundOverlayRenderer): void
     {
         $this->groundOverlayRenderer = $groundOverlayRenderer;
     }
 
-    public function handleMap(MapEvent $event)
+    public function handleMap(MapEvent $event): void
     {
         $formatter = $this->getFormatter();
         $map = $event->getMap();
@@ -88,7 +77,7 @@ class GroundOverlaySubscriber extends AbstractSubscriber
     /**
      * {@inheritdoc}
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [MapEvents::JAVASCRIPT_OVERLAY_GROUND_OVERLAY => 'handleMap'];
     }

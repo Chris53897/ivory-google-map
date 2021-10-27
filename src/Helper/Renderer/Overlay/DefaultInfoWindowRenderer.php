@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,15 +13,9 @@
 
 namespace Ivory\GoogleMap\Helper\Renderer\Overlay;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class DefaultInfoWindowRenderer extends AbstractInfoWindowRenderer
 {
-    /**
-     * {@inheritdoc}
-     */
-    protected function getClass()
+    protected function getClass(): string
     {
         return 'InfoWindow';
     }

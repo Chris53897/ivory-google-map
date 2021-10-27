@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,37 +20,27 @@ use Ivory\GoogleMap\Utility\VariableAwareTrait;
 
 /**
  * @see http://code.google.com/apis/maps/documentation/javascript/reference#IconSequence
- *
- * @author GeLo <geloen.eric@gmail.com>
  */
 class IconSequence implements OptionsAwareInterface, VariableAwareInterface
 {
     use OptionsAwareTrait;
     use VariableAwareTrait;
 
-    /**
-     * @var Symbol
-     */
+    /** @var Symbol */
     private $symbol;
 
-    /**
-     * @param mixed[] $options
-     */
     public function __construct(Symbol $symbol, array $options = [])
     {
         $this->setSymbol($symbol);
         $this->setOptions($options);
     }
 
-    /**
-     * @return Symbol
-     */
-    public function getSymbol()
+    public function getSymbol(): Symbol
     {
         return $this->symbol;
     }
 
-    public function setSymbol(Symbol $symbol)
+    public function setSymbol(Symbol $symbol): void
     {
         $this->symbol = $symbol;
     }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -14,14 +16,9 @@ namespace Ivory\GoogleMap\Helper\Subscriber;
 use Ivory\GoogleMap\Helper\Formatter\Formatter;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 abstract class AbstractSubscriber implements EventSubscriberInterface
 {
-    /**
-     * @var Formatter
-     */
+    /** @var Formatter */
     private $formatter;
 
     public function __construct(Formatter $formatter)
@@ -29,15 +26,12 @@ abstract class AbstractSubscriber implements EventSubscriberInterface
         $this->setFormatter($formatter);
     }
 
-    /**
-     * @return Formatter
-     */
-    public function getFormatter()
+    public function getFormatter(): Formatter
     {
         return $this->formatter;
     }
 
-    public function setFormatter(Formatter $formatter)
+    public function setFormatter(Formatter $formatter): void
     {
         $this->formatter = $formatter;
     }

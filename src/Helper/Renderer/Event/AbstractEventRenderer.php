@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -14,15 +16,9 @@ namespace Ivory\GoogleMap\Helper\Renderer\Event;
 use Ivory\GoogleMap\Event\Event;
 use Ivory\GoogleMap\Helper\Renderer\AbstractRenderer;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 abstract class AbstractEventRenderer extends AbstractRenderer
 {
-    /**
-     * @return string
-     */
-    public function render(Event $event)
+    public function render(Event $event): string
     {
         $formatter = $this->getFormatter();
 
@@ -42,15 +38,9 @@ abstract class AbstractEventRenderer extends AbstractRenderer
         ));
     }
 
-    /**
-     * @return string
-     */
-    abstract protected function getMethod();
+    abstract protected function getMethod(): string;
 
-    /**
-     * @return bool
-     */
-    protected function hasCapture()
+    protected function hasCapture(): bool
     {
         return true;
     }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,19 +20,12 @@ use Ivory\GoogleMap\Helper\Formatter\Formatter;
 use Ivory\GoogleMap\Helper\Renderer\Base\BoundRenderer;
 use Ivory\GoogleMap\Helper\Subscriber\AbstractSubscriber;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class AutocompleteBoundSubscriber extends AbstractSubscriber
 {
-    /**
-     * @var AutocompleteBoundCollector
-     */
+    /** @var AutocompleteBoundCollector */
     private $boundCollector;
 
-    /**
-     * @var BoundRenderer
-     */
+    /** @var BoundRenderer */
     private $boundRenderer;
 
     public function __construct(
@@ -44,33 +39,27 @@ class AutocompleteBoundSubscriber extends AbstractSubscriber
         $this->setBoundRenderer($boundRenderer);
     }
 
-    /**
-     * @return AutocompleteBoundCollector
-     */
-    public function getBoundCollector()
+    public function getBoundCollector(): AutocompleteBoundCollector
     {
         return $this->boundCollector;
     }
 
-    public function setBoundCollector(AutocompleteBoundCollector $boundCollector)
+    public function setBoundCollector(AutocompleteBoundCollector $boundCollector): void
     {
         $this->boundCollector = $boundCollector;
     }
 
-    /**
-     * @return BoundRenderer
-     */
-    public function getBoundRenderer()
+    public function getBoundRenderer(): BoundRenderer
     {
         return $this->boundRenderer;
     }
 
-    public function setBoundRenderer(BoundRenderer $boundRenderer)
+    public function setBoundRenderer(BoundRenderer $boundRenderer): void
     {
         $this->boundRenderer = $boundRenderer;
     }
 
-    public function handleAutocomplete(PlaceAutocompleteEvent $event)
+    public function handleAutocomplete(PlaceAutocompleteEvent $event): void
     {
         $formatter = $this->getFormatter();
         $autocomplete = $event->getAutocomplete();
@@ -88,7 +77,7 @@ class AutocompleteBoundSubscriber extends AbstractSubscriber
     /**
      * {@inheritdoc}
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [PlaceAutocompleteEvents::JAVASCRIPT_BASE_BOUND => 'handleAutocomplete'];
     }

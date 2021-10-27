@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -20,8 +22,6 @@ use Ivory\GoogleMap\Utility\VariableAwareTrait;
 
 /**
  * @see http://code.google.com/apis/maps/documentation/javascript/reference.html#Polyline
- *
- * @author GeLo <geloen.eric@gmail.com>
  */
 class Polyline implements ExtendableInterface, OptionsAwareInterface, StaticOptionsAwareInterface
 {
@@ -29,20 +29,15 @@ class Polyline implements ExtendableInterface, OptionsAwareInterface, StaticOpti
     use StaticOptionsAwareTrait;
     use VariableAwareTrait;
 
-    /**
-     * @var Coordinate[]
-     */
+    /** @var Coordinate[] */
     private $coordinates = [];
 
-    /**
-     * @var IconSequence[]
-     */
+    /** @var IconSequence[] */
     private $iconSequences = [];
 
     /**
      * @param Coordinate[]   $coordinates
      * @param IconSequence[] $icons
-     * @param mixed[]        $options
      */
     public function __construct(array $coordinates = [], array $icons = [], array $options = [])
     {
@@ -51,10 +46,7 @@ class Polyline implements ExtendableInterface, OptionsAwareInterface, StaticOpti
         $this->addOptions($options);
     }
 
-    /**
-     * @return bool
-     */
-    public function hasCoordinates()
+    public function hasCoordinates(): bool
     {
         return !empty($this->coordinates);
     }
@@ -62,7 +54,7 @@ class Polyline implements ExtendableInterface, OptionsAwareInterface, StaticOpti
     /**
      * @return Coordinate[]
      */
-    public function getCoordinates()
+    public function getCoordinates(): array
     {
         return $this->coordinates;
     }
@@ -70,7 +62,7 @@ class Polyline implements ExtendableInterface, OptionsAwareInterface, StaticOpti
     /**
      * @param Coordinate[] $coordinates
      */
-    public function setCoordinates($coordinates)
+    public function setCoordinates(array $coordinates): void
     {
         $this->coordinates = [];
         $this->addCoordinates($coordinates);
@@ -79,36 +71,30 @@ class Polyline implements ExtendableInterface, OptionsAwareInterface, StaticOpti
     /**
      * @param Coordinate[] $coordinates
      */
-    public function addCoordinates($coordinates)
+    public function addCoordinates(array $coordinates): void
     {
         foreach ($coordinates as $coordinate) {
             $this->addCoordinate($coordinate);
         }
     }
 
-    /**
-     * @return bool
-     */
-    public function hasCoordinate(Coordinate $coordinate)
+    public function hasCoordinate(Coordinate $coordinate): bool
     {
         return in_array($coordinate, $this->coordinates, true);
     }
 
-    public function addCoordinate(Coordinate $coordinate)
+    public function addCoordinate(Coordinate $coordinate): void
     {
         $this->coordinates[] = $coordinate;
     }
 
-    public function removeCoordinate(Coordinate $coordinate)
+    public function removeCoordinate(Coordinate $coordinate): void
     {
         unset($this->coordinates[array_search($coordinate, $this->coordinates, true)]);
         $this->coordinates = empty($this->coordinates) ? [] : array_values($this->coordinates);
     }
 
-    /**
-     * @return bool
-     */
-    public function hasIconSequences()
+    public function hasIconSequences(): bool
     {
         return !empty($this->iconSequences);
     }
@@ -116,7 +102,7 @@ class Polyline implements ExtendableInterface, OptionsAwareInterface, StaticOpti
     /**
      * @return IconSequence[]
      */
-    public function getIconSequences()
+    public function getIconSequences(): array
     {
         return $this->iconSequences;
     }
@@ -124,7 +110,7 @@ class Polyline implements ExtendableInterface, OptionsAwareInterface, StaticOpti
     /**
      * @param IconSequence[] $iconSequences
      */
-    public function setIconSequences($iconSequences)
+    public function setIconSequences(array $iconSequences): void
     {
         $this->iconSequences = [];
         $this->addIconSequences($iconSequences);
@@ -133,27 +119,24 @@ class Polyline implements ExtendableInterface, OptionsAwareInterface, StaticOpti
     /**
      * @param IconSequence[] $iconSequences
      */
-    public function addIconSequences($iconSequences)
+    public function addIconSequences(array $iconSequences): void
     {
         foreach ($iconSequences as $iconSequence) {
             $this->addIconSequence($iconSequence);
         }
     }
 
-    /**
-     * @return bool
-     */
-    public function hasIconSequence(IconSequence $iconSequence)
+    public function hasIconSequence(IconSequence $iconSequence): bool
     {
         return in_array($iconSequence, $this->iconSequences, true);
     }
 
-    public function addIconSequence(IconSequence $iconSequence)
+    public function addIconSequence(IconSequence $iconSequence): void
     {
         $this->iconSequences[] = $iconSequence;
     }
 
-    public function removeIconSequence(IconSequence $iconSequence)
+    public function removeIconSequence(IconSequence $iconSequence): void
     {
         unset($this->iconSequences[array_search($iconSequence, $this->iconSequences, true)]);
         $this->iconSequences = empty($this->iconSequences) ? [] : array_values($this->iconSequences);

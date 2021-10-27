@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -15,14 +17,9 @@ use Ivory\GoogleMap\Base\Coordinate;
 use Ivory\GoogleMap\Helper\Collector\AbstractCollector;
 use Ivory\GoogleMap\Place\Autocomplete;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class AutocompleteCoordinateCollector extends AbstractCollector
 {
-    /**
-     * @var AutocompleteBoundCollector
-     */
+    /** @var AutocompleteBoundCollector */
     private $boundCollector;
 
     public function __construct(AutocompleteBoundCollector $boundCollector)
@@ -30,15 +27,12 @@ class AutocompleteCoordinateCollector extends AbstractCollector
         $this->setBoundCollector($boundCollector);
     }
 
-    /**
-     * @return AutocompleteBoundCollector
-     */
-    public function getBoundCollector()
+    public function getBoundCollector(): AutocompleteBoundCollector
     {
         return $this->boundCollector;
     }
 
-    public function setBoundCollector(AutocompleteBoundCollector $boundCollector)
+    public function setBoundCollector(AutocompleteBoundCollector $boundCollector): void
     {
         $this->boundCollector = $boundCollector;
     }
@@ -48,7 +42,7 @@ class AutocompleteCoordinateCollector extends AbstractCollector
      *
      * @return Coordinate[]
      */
-    public function collect(Autocomplete $autocomplete, array $coordinates = [])
+    public function collect(Autocomplete $autocomplete, array $coordinates = []): array
     {
         foreach ($this->boundCollector->collect($autocomplete) as $bound) {
             if ($bound->hasSouthWest()) {

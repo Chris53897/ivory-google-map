@@ -11,6 +11,7 @@
 
 namespace Ivory\Tests\GoogleMap\Helper\Functional\Place\Event;
 
+use Ivory\GoogleMap\Event\Event;
 use Ivory\GoogleMap\Event\MouseEvent;
 use Ivory\GoogleMap\Place\Autocomplete;
 
@@ -45,7 +46,7 @@ abstract class AbstractDomEventFunctionalTest extends AbstractEventFunctionalTes
     /**
      * {@inheritdoc}
      */
-    protected function createEvent($instance = null)
+    protected function createEvent($instance = null): Event
     {
         $event = parent::createEvent($instance ?: 'document.getElementById("'.$this->spyButton.'")');
         $event->setTrigger(MouseEvent::CLICK);

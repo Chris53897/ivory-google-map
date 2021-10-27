@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -155,15 +157,9 @@ use Ivory\GoogleMap\Overlay\Polygon;
 use Ivory\GoogleMap\Overlay\Polyline;
 use Ivory\GoogleMap\Overlay\Rectangle;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class MapHelperBuilder extends AbstractJavascriptHelperBuilder
 {
-    /**
-     * @return MapHelper
-     */
-    public function build()
+    public function build(): MapHelper
     {
         return new MapHelper($this->createEventDispatcher());
     }
@@ -171,7 +167,7 @@ class MapHelperBuilder extends AbstractJavascriptHelperBuilder
     /**
      * {@inheritdoc}
      */
-    protected function createSubscribers()
+    protected function createSubscribers(): array
     {
         $formatter = $this->getFormatter();
         $jsonBuilder = $this->getJsonBuilder();

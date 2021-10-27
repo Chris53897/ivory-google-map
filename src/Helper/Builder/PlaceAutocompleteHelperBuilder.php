@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -45,15 +47,9 @@ use Ivory\GoogleMap\Helper\Subscriber\Place\Event\AutocompleteEventOnceSubscribe
 use Ivory\GoogleMap\Helper\Subscriber\Place\Event\AutocompleteEventSubscriber;
 use Ivory\GoogleMap\Helper\Subscriber\Place\Event\AutocompleteSimpleEventSubscriber;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class PlaceAutocompleteHelperBuilder extends AbstractJavascriptHelperBuilder
 {
-    /**
-     * @return PlaceAutocompleteHelper
-     */
-    public function build()
+    public function build(): PlaceAutocompleteHelper
     {
         return new PlaceAutocompleteHelper($this->createEventDispatcher());
     }
@@ -61,7 +57,7 @@ class PlaceAutocompleteHelperBuilder extends AbstractJavascriptHelperBuilder
     /**
      * {@inheritdoc}
      */
-    protected function createSubscribers()
+    protected function createSubscribers(): array
     {
         $formatter = $this->getFormatter();
         $jsonBuilder = $this->getJsonBuilder();

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,55 +20,38 @@ use Ivory\GoogleMap\Utility\VariableAwareTrait;
 
 /**
  * @see http://code.google.com/apis/maps/documentation/javascript/reference.html#Icon
- *
- * @author GeLo <geloen.eric@gmail.com>
  */
 class Icon implements VariableAwareInterface
 {
-    const DEFAULT_URL = 'https://maps.gstatic.com/mapfiles/markers/marker.png';
+    public const DEFAULT_URL = 'https://maps.gstatic.com/mapfiles/markers/marker.png';
 
     use VariableAwareTrait;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $url;
 
-    /**
-     * @var Point|null
-     */
+    /** @var Point|null */
     private $anchor;
 
-    /**
-     * @var Point|null
-     */
+    /** @var Point|null */
     private $origin;
 
-    /**
-     * @var Size|null
-     */
+    /** @var Size|null */
     private $scaledSize;
 
-    /**
-     * @var Size|null
-     */
+    /** @var Size|null */
     private $size;
 
-    /**
-     * @var Point|null
-     */
+    /** @var Point|null */
     private $labelOrigin;
 
-    /**
-     * @param string $url
-     */
     public function __construct(
-        $url = self::DEFAULT_URL,
-        Point $anchor = null,
-        Point $origin = null,
-        Size $scaledSize = null,
-        Size $size = null,
-        Point $labelOrigin = null
+        string $url = self::DEFAULT_URL,
+        Point  $anchor = null,
+        Point  $origin = null,
+        Size   $scaledSize = null,
+        Size   $size = null,
+        Point  $labelOrigin = null
     ) {
         $this->setUrl($url);
         $this->setAnchor($anchor);
@@ -76,123 +61,87 @@ class Icon implements VariableAwareInterface
         $this->setLabelOrigin($labelOrigin);
     }
 
-    /**
-     * @return string
-     */
-    public function getUrl()
+    public function getUrl(): string
     {
         return $this->url;
     }
 
-    /**
-     * @param string $url
-     */
-    public function setUrl($url)
+    public function setUrl(string $url): void
     {
         $this->url = $url;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasAnchor()
+    public function hasAnchor(): bool
     {
         return null !== $this->anchor;
     }
 
-    /**
-     * @return Point|null
-     */
-    public function getAnchor()
+    public function getAnchor(): ?Point
     {
         return $this->anchor;
     }
 
-    public function setAnchor(Point $anchor = null)
+    public function setAnchor(Point $anchor = null): void
     {
         $this->anchor = $anchor;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasOrigin()
+    public function hasOrigin(): bool
     {
         return null !== $this->origin;
     }
 
-    /**
-     * @return Point|null
-     */
-    public function getOrigin()
+    public function getOrigin(): ?Point
     {
         return $this->origin;
     }
 
-    public function setOrigin(Point $origin = null)
+    public function setOrigin(Point $origin = null): void
     {
         $this->origin = $origin;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasScaledSize()
+    public function hasScaledSize(): bool
     {
         return null !== $this->scaledSize;
     }
 
-    /**
-     * @return Size|null
-     */
-    public function getScaledSize()
+    public function getScaledSize(): ?Size
     {
         return $this->scaledSize;
     }
 
-    public function setScaledSize(Size $scaledSize = null)
+    public function setScaledSize(Size $scaledSize = null): void
     {
         $this->scaledSize = $scaledSize;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasSize()
+    public function hasSize(): bool
     {
         return null !== $this->size;
     }
 
-    /**
-     * @return Size|null
-     */
-    public function getSize()
+    public function getSize(): ?Size
     {
         return $this->size;
     }
 
-    public function setSize(Size $size = null)
+    public function setSize(Size $size = null): void
     {
         $this->size = $size;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasLabelOrigin()
+    public function hasLabelOrigin(): bool
     {
         return null !== $this->labelOrigin;
     }
 
-    /**
-     * @return Point|null
-     */
-    public function getLabelOrigin()
+    public function getLabelOrigin(): ?Point
     {
         return $this->labelOrigin;
     }
 
-    public function setLabelOrigin(Point $labelOrigin = null)
+    public function setLabelOrigin(Point $labelOrigin = null): void
     {
         $this->labelOrigin = $labelOrigin;
     }

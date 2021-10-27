@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -15,14 +17,9 @@ use Ivory\GoogleMap\Helper\Collector\AbstractCollector;
 use Ivory\GoogleMap\Map;
 use Ivory\GoogleMap\Overlay\IconSequence;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class IconSequenceCollector extends AbstractCollector
 {
-    /**
-     * @var PolylineCollector
-     */
+    /** @var PolylineCollector */
     private $polylineCollector;
 
     public function __construct(PolylineCollector $polylineCollector)
@@ -30,15 +27,12 @@ class IconSequenceCollector extends AbstractCollector
         $this->setPolylineCollector($polylineCollector);
     }
 
-    /**
-     * @return PolylineCollector
-     */
-    public function getPolylineCollector()
+    public function getPolylineCollector(): PolylineCollector
     {
         return $this->polylineCollector;
     }
 
-    public function setPolylineCollector(PolylineCollector $polylineCollector)
+    public function setPolylineCollector(PolylineCollector $polylineCollector): void
     {
         $this->polylineCollector = $polylineCollector;
     }
@@ -48,7 +42,7 @@ class IconSequenceCollector extends AbstractCollector
      *
      * @return IconSequence[]
      */
-    public function collect(Map $map, array $icons = [])
+    public function collect(Map $map, array $icons = []): array
     {
         foreach ($this->polylineCollector->collect($map) as $polyline) {
             if ($polyline->hasIconSequences()) {

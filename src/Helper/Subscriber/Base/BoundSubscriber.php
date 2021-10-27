@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -18,19 +20,12 @@ use Ivory\GoogleMap\Helper\Formatter\Formatter;
 use Ivory\GoogleMap\Helper\Renderer\Base\BoundRenderer;
 use Ivory\GoogleMap\Helper\Subscriber\AbstractSubscriber;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class BoundSubscriber extends AbstractSubscriber
 {
-    /**
-     * @var BoundCollector
-     */
+    /** @var BoundCollector */
     private $boundCollector;
 
-    /**
-     * @var BoundRenderer
-     */
+    /** @var BoundRenderer */
     private $boundRenderer;
 
     public function __construct(
@@ -44,33 +39,27 @@ class BoundSubscriber extends AbstractSubscriber
         $this->setBoundRenderer($boundRenderer);
     }
 
-    /**
-     * @return BoundCollector
-     */
-    public function getBoundCollector()
+    public function getBoundCollector(): BoundCollector
     {
         return $this->boundCollector;
     }
 
-    public function setBoundCollector(BoundCollector $boundCollector)
+    public function setBoundCollector(BoundCollector $boundCollector): void
     {
         $this->boundCollector = $boundCollector;
     }
 
-    /**
-     * @return BoundRenderer
-     */
-    public function getBoundRenderer()
+    public function getBoundRenderer(): BoundRenderer
     {
         return $this->boundRenderer;
     }
 
-    public function setBoundRenderer(BoundRenderer $boundRenderer)
+    public function setBoundRenderer(BoundRenderer $boundRenderer): void
     {
         $this->boundRenderer = $boundRenderer;
     }
 
-    public function handleMap(MapEvent $event)
+    public function handleMap(MapEvent $event): void
     {
         $formatter = $this->getFormatter();
         $map = $event->getMap();
@@ -88,7 +77,7 @@ class BoundSubscriber extends AbstractSubscriber
     /**
      * {@inheritdoc}
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [MapEvents::JAVASCRIPT_BASE_BOUND => 'handleMap'];
     }

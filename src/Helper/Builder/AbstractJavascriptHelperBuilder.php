@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -14,57 +16,38 @@ namespace Ivory\GoogleMap\Helper\Builder;
 use Ivory\GoogleMap\Helper\Formatter\Formatter;
 use Ivory\JsonBuilder\JsonBuilder;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 abstract class AbstractJavascriptHelperBuilder extends AbstractHelperBuilder
 {
-    /**
-     * @var Formatter
-     */
+    /** @var Formatter */
     private $formatter;
 
-    /**
-     * @var JsonBuilder
-     */
+    /** @var JsonBuilder */
     private $jsonBuilder;
 
     public function __construct(Formatter $formatter = null, JsonBuilder $jsonBuilder = null)
     {
-        $this->setFormatter($formatter ?: new Formatter());
-        $this->setJsonBuilder($jsonBuilder ?: new JsonBuilder());
+        $this->formatter = $formatter ?: new Formatter();
+        $this->jsonBuilder = $jsonBuilder ?: new JsonBuilder();
     }
 
-    /**
-     * @return Formatter
-     */
-    public function getFormatter()
+    public function getFormatter(): Formatter
     {
         return $this->formatter;
     }
 
-    /**
-     * @return $this
-     */
-    public function setFormatter(Formatter $formatter)
+    public function setFormatter(Formatter $formatter): AbstractJavascriptHelperBuilder
     {
         $this->formatter = $formatter;
 
         return $this;
     }
 
-    /**
-     * @return JsonBuilder
-     */
-    public function getJsonBuilder()
+    public function getJsonBuilder(): JsonBuilder
     {
         return $this->jsonBuilder;
     }
 
-    /**
-     * @return $this
-     */
-    public function setJsonBuilder(JsonBuilder $jsonBuilder)
+    public function setJsonBuilder(JsonBuilder $jsonBuilder): AbstractJavascriptHelperBuilder
     {
         $this->jsonBuilder = $jsonBuilder;
 

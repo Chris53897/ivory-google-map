@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -15,14 +17,9 @@ use Ivory\GoogleMap\Helper\Collector\Overlay\InfoWindowCollector;
 use Ivory\GoogleMap\Helper\Formatter\Formatter;
 use Ivory\GoogleMap\Helper\Subscriber\AbstractSubscriber;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 abstract class AbstractInfoWindowSubscriber extends AbstractSubscriber
 {
-    /**
-     * @var InfoWindowCollector
-     */
+    /** @var InfoWindowCollector */
     private $infoWindowCollector;
 
     public function __construct(Formatter $formatter, InfoWindowCollector $infoWindowCollector)
@@ -32,15 +29,12 @@ abstract class AbstractInfoWindowSubscriber extends AbstractSubscriber
         $this->setInfoWindowCollector($infoWindowCollector);
     }
 
-    /**
-     * @return InfoWindowCollector
-     */
-    public function getInfoWindowCollector()
+    public function getInfoWindowCollector(): InfoWindowCollector
     {
         return $this->infoWindowCollector;
     }
 
-    public function setInfoWindowCollector(InfoWindowCollector $infoWindowCollector)
+    public function setInfoWindowCollector(InfoWindowCollector $infoWindowCollector): void
     {
         $this->infoWindowCollector = $infoWindowCollector;
     }

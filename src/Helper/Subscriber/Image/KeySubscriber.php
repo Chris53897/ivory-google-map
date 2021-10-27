@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -15,25 +17,18 @@ use Ivory\GoogleMap\Helper\Event\StaticMapEvent;
 use Ivory\GoogleMap\Helper\Event\StaticMapEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class KeySubscriber implements EventSubscriberInterface
 {
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $key;
 
-    /**
-     * @param string|null $key
-     */
+    /** @param string|null $key */
     public function __construct($key = null)
     {
         $this->key = $key;
     }
 
-    public function handleMap(StaticMapEvent $event)
+    public function handleMap(StaticMapEvent $event): void
     {
         if (null !== $this->key) {
             $event->setParameter('key', $this->key);
@@ -43,7 +38,7 @@ class KeySubscriber implements EventSubscriberInterface
     /**
      * {@inheritdoc}
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [StaticMapEvents::KEY => 'handleMap'];
     }

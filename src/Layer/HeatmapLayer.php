@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -17,22 +19,16 @@ use Ivory\GoogleMap\Utility\OptionsAwareInterface;
 use Ivory\GoogleMap\Utility\OptionsAwareTrait;
 use Ivory\GoogleMap\Utility\VariableAwareTrait;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class HeatmapLayer implements ExtendableInterface, OptionsAwareInterface
 {
     use OptionsAwareTrait;
     use VariableAwareTrait;
 
-    /**
-     * @var Coordinate[]
-     */
+    /** @var Coordinate[] */
     private $coordinates = [];
 
     /**
      * @param Coordinate[] $coordinates
-     * @param mixed[]      $options
      */
     public function __construct(array $coordinates = [], array $options = [])
     {
@@ -40,10 +36,7 @@ class HeatmapLayer implements ExtendableInterface, OptionsAwareInterface
         $this->setOptions($options);
     }
 
-    /**
-     * @return bool
-     */
-    public function hasCoordinates()
+    public function hasCoordinates(): bool
     {
         return !empty($this->coordinates);
     }
@@ -51,7 +44,7 @@ class HeatmapLayer implements ExtendableInterface, OptionsAwareInterface
     /**
      * @return Coordinate[]
      */
-    public function getCoordinates()
+    public function getCoordinates(): array
     {
         return $this->coordinates;
     }
@@ -59,7 +52,7 @@ class HeatmapLayer implements ExtendableInterface, OptionsAwareInterface
     /**
      * @param Coordinate[] $coordinates
      */
-    public function setCoordinates(array $coordinates)
+    public function setCoordinates(array $coordinates): void
     {
         $this->coordinates = [];
         $this->addCoordinates($coordinates);
@@ -68,29 +61,26 @@ class HeatmapLayer implements ExtendableInterface, OptionsAwareInterface
     /**
      * @param Coordinate[] $coordinates
      */
-    public function addCoordinates(array $coordinates)
+    public function addCoordinates(array $coordinates): void
     {
         foreach ($coordinates as $coordinate) {
             $this->addCoordinate($coordinate);
         }
     }
 
-    /**
-     * @return bool
-     */
-    public function hasCoordinate(Coordinate $coordinate)
+    public function hasCoordinate(Coordinate $coordinate): bool
     {
         return in_array($coordinate, $this->coordinates, true);
     }
 
-    public function addCoordinate(Coordinate $coordinate)
+    public function addCoordinate(Coordinate $coordinate): void
     {
         if (!$this->hasCoordinate($coordinate)) {
             $this->coordinates[] = $coordinate;
         }
     }
 
-    public function removeCoordinate(Coordinate $coordinate)
+    public function removeCoordinate(Coordinate $coordinate): void
     {
         unset($this->coordinates[array_search($coordinate, $this->coordinates, true)]);
         $this->coordinates = empty($this->coordinates) ? [] : array_values($this->coordinates);

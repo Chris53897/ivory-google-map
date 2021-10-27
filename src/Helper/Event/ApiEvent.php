@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -11,34 +13,23 @@
 
 namespace Ivory\GoogleMap\Helper\Event;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
+use SplObjectStorage;
+
 class ApiEvent extends AbstractEvent
 {
-    /**
-     * @var object[]
-     */
+    /** @var object[] */
     private $objects;
 
-    /**
-     * @var string[]
-     */
+    /** @var string[] */
     private $sources = [];
 
-    /**
-     * @var string[]
-     */
+    /** @var string[] */
     private $libraries = [];
 
-    /**
-     * @var \SplObjectStorage
-     */
+    /** @var SplObjectStorage */
     private $callbacks;
 
-    /**
-     * @var \SplObjectStorage
-     */
+    /** @var SplObjectStorage */
     private $requirements;
 
     /**
@@ -47,16 +38,11 @@ class ApiEvent extends AbstractEvent
     public function __construct(array $objects)
     {
         $this->objects = $objects;
-        $this->callbacks = new \SplObjectStorage();
-        $this->requirements = new \SplObjectStorage();
+        $this->callbacks = new SplObjectStorage();
+        $this->requirements = new SplObjectStorage();
     }
 
-    /**
-     * @param string|null $class
-     *
-     * @return bool
-     */
-    public function hasObjects($class = null)
+    public function hasObjects(?string $class = null): bool
     {
         $objects = $this->getObjects($class);
 
@@ -64,11 +50,9 @@ class ApiEvent extends AbstractEvent
     }
 
     /**
-     * @param string|null $class
-     *
      * @return object[]
      */
-    public function getObjects($class = null)
+    public function getObjects(?string $class = null): array
     {
         if (null === $class) {
             return $this->objects;
@@ -85,10 +69,7 @@ class ApiEvent extends AbstractEvent
         return $objects;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasSources()
+    public function hasSources(): bool
     {
         return !empty($this->sources);
     }
@@ -96,7 +77,7 @@ class ApiEvent extends AbstractEvent
     /**
      * @return string[]
      */
-    public function getSources()
+    public function getSources(): array
     {
         return $this->sources;
     }
@@ -104,7 +85,7 @@ class ApiEvent extends AbstractEvent
     /**
      * @param string[] $sources
      */
-    public function setSources(array $sources)
+    public function setSources(array $sources): void
     {
         $this->sources = [];
         $this->addSources($sources);
@@ -113,46 +94,32 @@ class ApiEvent extends AbstractEvent
     /**
      * @param string[] $sources
      */
-    public function addSources(array $sources)
+    public function addSources(array $sources): void
     {
         foreach ($sources as $source) {
             $this->addSource($source);
         }
     }
 
-    /**
-     * @param string $source
-     *
-     * @return bool
-     */
-    public function hasSource($source)
+    public function hasSource(string $source): bool
     {
         return in_array($source, $this->sources, true);
     }
 
-    /**
-     * @param string $source
-     */
-    public function addSource($source)
+    public function addSource(string $source): void
     {
         if (!$this->hasSource($source)) {
             $this->sources[] = $source;
         }
     }
 
-    /**
-     * @param string $source
-     */
-    public function removeSource($source)
+    public function removeSource(string $source): void
     {
         unset($this->sources[array_search($source, $this->sources, true)]);
         $this->sources = empty($this->sources) ? [] : array_values($this->sources);
     }
 
-    /**
-     * @return bool
-     */
-    public function hasLibraries()
+    public function hasLibraries(): bool
     {
         return !empty($this->libraries);
     }
@@ -160,7 +127,7 @@ class ApiEvent extends AbstractEvent
     /**
      * @return string[]
      */
-    public function getLibraries()
+    public function getLibraries(): array
     {
         return $this->libraries;
     }
@@ -168,7 +135,7 @@ class ApiEvent extends AbstractEvent
     /**
      * @param string[] $libraries
      */
-    public function setLibraries(array $libraries)
+    public function setLibraries(array $libraries): void
     {
         $this->libraries = [];
         $this->addLibraries($libraries);
@@ -177,65 +144,42 @@ class ApiEvent extends AbstractEvent
     /**
      * @param string[] $libraries
      */
-    public function addLibraries(array $libraries)
+    public function addLibraries(array $libraries): void
     {
         foreach ($libraries as $library) {
             $this->addLibrary($library);
         }
     }
 
-    /**
-     * @param string $library
-     *
-     * @return bool
-     */
-    public function hasLibrary($library)
+    public function hasLibrary(string $library): bool
     {
         return in_array($library, $this->libraries, true);
     }
 
-    /**
-     * @param string $library
-     */
-    public function addLibrary($library)
+    public function addLibrary(string $library): void
     {
         if (!$this->hasLibrary($library)) {
             $this->libraries[] = $library;
         }
     }
 
-    /**
-     * @param string $library
-     */
-    public function removeLibrary($library)
+    public function removeLibrary(string $library): void
     {
         unset($this->libraries[array_search($library, $this->libraries, true)]);
         $this->libraries = empty($this->libraries) ? [] : array_values($this->libraries);
     }
 
-    /**
-     * @return bool
-     */
-    public function hasCallbacks()
+    public function hasCallbacks(): bool
     {
         return count($this->callbacks) > 0;
     }
 
-    /**
-     * @return \SplObjectStorage
-     */
-    public function getCallbacks()
+    public function getCallbacks(): SplObjectStorage
     {
         return $this->callbacks;
     }
 
-    /**
-     * @param string      $callback
-     * @param object|null $object
-     *
-     * @return bool
-     */
-    public function hasCallback($callback, $object = null)
+    public function hasCallback(string $callback, ?object $object = null): bool
     {
         foreach ($this->callbacks as $rawObject) {
             if ($this->callbacks[$rawObject] === $callback && (null === $object || $object === $rawObject)) {
@@ -246,76 +190,47 @@ class ApiEvent extends AbstractEvent
         return false;
     }
 
-    /**
-     * @param object      $object
-     * @param string|null $callback
-     *
-     * @return bool
-     */
-    public function hasCallbackObject($object, $callback = null)
+    public function hasCallbackObject(object $object, ?string $callback = null): bool
     {
         return isset($this->callbacks[$object]) && (null === $callback || $this->callbacks[$object] === $callback);
     }
 
-    /**
-     * @param $object
-     *
-     * @return string|null
-     */
-    public function getCallback($object)
+    public function getCallback(object $object): ?string
     {
         return $this->hasCallbackObject($object) ? $this->callbacks[$object] : null;
     }
 
-    /**
-     * @param string $callback
-     *
-     * @return object
-     */
-    public function getCallbackObject($callback)
+    public function getCallbackObject(string $callback): ?object
     {
         foreach ($this->callbacks as $object) {
             if ($this->callbacks[$object] === $callback) {
                 return $object;
             }
         }
+
+        return null;
     }
 
-    /**
-     * @param object $object
-     * @param string $callback
-     */
-    public function addCallback($object, $callback)
+    public function addCallback(object $object, string $callback): void
     {
         if (!$this->hasCallback($callback, $object)) {
             $this->callbacks[$object] = $callback;
         }
     }
 
-    /**
-     * @param object $object
-     */
-    public function removeCallbackObject($object)
+    public function removeCallbackObject(object $object): void
     {
         unset($this->callbacks[$object]);
     }
 
-    /**
-     * @param string $callback
-     */
-    public function removeCallback($callback)
+    public function removeCallback(string $callback): void
     {
         if ($this->hasCallback($callback)) {
             $this->removeCallbackObject($this->getCallbackObject($callback));
         }
     }
 
-    /**
-     * @param object|null $object
-     *
-     * @return bool
-     */
-    public function hasRequirements($object = null)
+    public function hasRequirements(?object $object = null): bool
     {
         if (null === $object) {
             return count($this->requirements) > 0;
@@ -326,62 +241,45 @@ class ApiEvent extends AbstractEvent
         return !empty($requirements);
     }
 
-    /**
-     * @return \SplObjectStorage
-     */
-    public function getRequirements()
+    public function getRequirements(): SplObjectStorage
     {
         return $this->requirements;
     }
 
     /**
-     * @param object $object
-     *
      * @return string[]
      */
-    public function getRequirementsObject($object)
+    public function getRequirementsObject(object $object): array
     {
         return $this->hasRequirement($object) ? $this->requirements[$object] : [];
     }
 
     /**
-     * @param object   $object
      * @param string[] $requirements
      */
-    public function setRequirements($object, array $requirements)
+    public function setRequirements(object $object, array $requirements): void
     {
-        $this->requirements = new \SplObjectStorage();
+        $this->requirements = new SplObjectStorage();
         $this->addRequirements($object, $requirements);
     }
 
     /**
-     * @param object   $object
      * @param string[] $requirements
      */
-    public function addRequirements($object, array $requirements)
+    public function addRequirements(object $object, array $requirements): void
     {
         foreach ($requirements as $requirement) {
             $this->addRequirement($object, $requirement);
         }
     }
 
-    /**
-     * @param object      $object
-     * @param string|null $requirement
-     *
-     * @return bool
-     */
-    public function hasRequirement($object, $requirement = null)
+    public function hasRequirement(object $object, ?string $requirement = null): bool
     {
         return isset($this->requirements[$object])
             && (null === $requirement || in_array($requirement, $this->requirements[$object], true));
     }
 
-    /**
-     * @param object $object
-     * @param string $requirement
-     */
-    public function addRequirement($object, $requirement)
+    public function addRequirement(object $object, string $requirement): void
     {
         if (!$this->hasRequirement($object)) {
             $this->requirements[$object] = [];
@@ -395,11 +293,7 @@ class ApiEvent extends AbstractEvent
         }
     }
 
-    /**
-     * @param object      $object
-     * @param string|null $requirement
-     */
-    public function removeRequirement($object, $requirement = null)
+    public function removeRequirement(object $object, ?string $requirement = null): void
     {
         if (null === $requirement) {
             unset($this->requirements[$object]);

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -15,17 +17,10 @@ use Ivory\GoogleMap\Helper\Renderer\AbstractRenderer;
 
 /**
  * @see http://code.google.com/apis/maps/documentation/javascript/reference.html#encoding
- *
- * @author GeLo <geloen.eric@gmail.com>
  */
 class EncodingRenderer extends AbstractRenderer
 {
-    /**
-     * @param string $encodedPath
-     *
-     * @return string
-     */
-    public function renderDecodePath($encodedPath)
+    public function renderDecodePath(string $encodedPath): string
     {
         $formatter = $this->getFormatter();
 

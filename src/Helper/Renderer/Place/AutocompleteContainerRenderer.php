@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Ivory Google Map package.
  *
@@ -13,15 +15,10 @@ namespace Ivory\GoogleMap\Helper\Renderer\Place;
 
 use Ivory\GoogleMap\Helper\Renderer\AbstractJsonRenderer;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
 class AutocompleteContainerRenderer extends AbstractJsonRenderer
 {
-    /**
-     * @return string
-     */
-    public function render()
+
+    public function render(): string
     {
         return $this->getJsonBuilder()
             ->setValue('[base][coordinates]', [])

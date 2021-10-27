@@ -19,6 +19,8 @@ use Ivory\GoogleMap\Service\Direction\Response\DirectionResponse;
 use Ivory\Serializer\Context\Context;
 use Ivory\Serializer\Naming\SnakeCaseNamingStrategy;
 use Ivory\Serializer\SerializerInterface;
+use Psr\Http\Client\ClientInterface;
+use Psr\Http\Message\MessageInterface;
 
 /**
  * @author GeLo <geloen.eric@gmail.com>
@@ -26,8 +28,8 @@ use Ivory\Serializer\SerializerInterface;
 class DirectionService extends AbstractSerializableService
 {
     public function __construct(
-        HttpClient $client,
-        MessageFactory $messageFactory,
+        ClientInterface $client,
+        MessageInterface $messageFactory,
         SerializerInterface $serializer = null
     ) {
         parent::__construct('https://maps.googleapis.com/maps/api/directions', $client, $messageFactory, $serializer);
