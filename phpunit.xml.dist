@@ -13,8 +13,6 @@
         <server name="SELENIUM_HOST" value="selenium-chrome" />
         <server name="CACHE_PATH" value="tests/.cache" />
         <server name="CACHE_RESET" value="true"/>
-        <server name="XDEBUG_HOST" value="host.docker.internal"/>
-        <server name="xdebug.remote_host" value="host.docker.internal"/>
     </php>
     <filter>
         <whitelist>
