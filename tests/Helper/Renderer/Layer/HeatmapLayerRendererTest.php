@@ -19,7 +19,7 @@ use Ivory\GoogleMap\Helper\Renderer\AbstractJsonRenderer;
 use Ivory\GoogleMap\Helper\Renderer\Layer\HeatmapLayerRenderer;
 use Ivory\GoogleMap\Layer\HeatmapLayer;
 use Ivory\GoogleMap\Map;
-use Ivory\JsonBuilder\JsonBuilder;
+use Ivory\GoogleMap\Helper\JsonBuilder\JsonBuilder;
 use PHPUnit\Framework\TestCase;
 
 class HeatmapLayerRendererTest extends TestCase

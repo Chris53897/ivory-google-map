@@ -18,7 +18,7 @@ use Ivory\GoogleMap\Helper\Renderer\AbstractJsonRenderer;
 use Ivory\GoogleMap\Helper\Renderer\Layer\GeoJsonLayerRenderer;
 use Ivory\GoogleMap\Layer\GeoJsonLayer;
 use Ivory\GoogleMap\Map;
-use Ivory\JsonBuilder\JsonBuilder;
+use Ivory\GoogleMap\Helper\JsonBuilder\JsonBuilder;
 use PHPUnit\Framework\TestCase;
 
 class GeoJsonLayerRendererTest extends TestCase

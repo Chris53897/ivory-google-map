@@ -44,7 +44,7 @@ use Ivory\GoogleMap\Helper\Subscriber\Overlay\EncodedPolylineSubscriber;
 use Ivory\GoogleMap\Helper\Subscriber\Overlay\InfoBoxSubscriber;
 use Ivory\GoogleMap\Helper\Subscriber\Overlay\MarkerClustererSubscriber;
 use Ivory\GoogleMap\Helper\Subscriber\Place\AutocompleteJavascriptSubscriber;
-use Ivory\JsonBuilder\JsonBuilder;
+use Ivory\GoogleMap\Helper\JsonBuilder\JsonBuilder;
 
 class ApiHelperBuilder extends AbstractJavascriptHelperBuilder
 {

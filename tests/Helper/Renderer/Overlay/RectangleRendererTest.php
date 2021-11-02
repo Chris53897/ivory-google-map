@@ -19,7 +19,7 @@ use Ivory\GoogleMap\Helper\Renderer\AbstractJsonRenderer;
 use Ivory\GoogleMap\Helper\Renderer\Overlay\RectangleRenderer;
 use Ivory\GoogleMap\Map;
 use Ivory\GoogleMap\Overlay\Rectangle;
-use Ivory\JsonBuilder\JsonBuilder;
+use Ivory\GoogleMap\Helper\JsonBuilder\JsonBuilder;
 use PHPUnit\Framework\TestCase;
 
 class RectangleRendererTest extends TestCase

@@ -22,7 +22,7 @@ use Ivory\GoogleMap\Overlay\IconSequence;
 use Ivory\GoogleMap\Overlay\Polyline;
 use Ivory\GoogleMap\Overlay\Symbol;
 use Ivory\GoogleMap\Overlay\SymbolPath;
-use Ivory\JsonBuilder\JsonBuilder;
+use Ivory\GoogleMap\Helper\JsonBuilder\JsonBuilder;
 use PHPUnit\Framework\TestCase;
 
 class PolylineRendererTest extends TestCase

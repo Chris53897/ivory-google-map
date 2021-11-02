@@ -21,7 +21,7 @@ use Ivory\GoogleMap\Helper\Renderer\MapTypeIdRenderer;
 use Ivory\GoogleMap\Helper\Renderer\Utility\RequirementRenderer;
 use Ivory\GoogleMap\Map;
 use Ivory\GoogleMap\MapTypeId;
-use Ivory\JsonBuilder\JsonBuilder;
+use Ivory\GoogleMap\Helper\JsonBuilder\JsonBuilder;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

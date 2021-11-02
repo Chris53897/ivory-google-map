@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace Ivory\GoogleMap\Helper\Renderer;
 
 use Ivory\GoogleMap\Helper\Formatter\Formatter;
-use Ivory\JsonBuilder\JsonBuilder;
+use Ivory\GoogleMap\Helper\JsonBuilder\JsonBuilder;
 
 class LoaderRenderer extends AbstractJsonRenderer
 {

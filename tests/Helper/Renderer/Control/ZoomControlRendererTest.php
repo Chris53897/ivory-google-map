@@ -20,7 +20,7 @@ use Ivory\GoogleMap\Helper\Renderer\Control\ControlPositionRenderer;
 use Ivory\GoogleMap\Helper\Renderer\Control\ControlRendererInterface;
 use Ivory\GoogleMap\Helper\Renderer\Control\ZoomControlRenderer;
 use Ivory\GoogleMap\Helper\Renderer\Control\ZoomControlStyleRenderer;
-use Ivory\JsonBuilder\JsonBuilder;
+use Ivory\GoogleMap\Helper\JsonBuilder\JsonBuilder;
 use PHPUnit\Framework\TestCase;
 
 class ZoomControlRendererTest extends TestCase

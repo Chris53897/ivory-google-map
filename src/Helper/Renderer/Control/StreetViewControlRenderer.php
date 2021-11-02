@@ -17,7 +17,7 @@ use InvalidArgumentException;
 use Ivory\GoogleMap\Control\StreetViewControl;
 use Ivory\GoogleMap\Helper\Formatter\Formatter;
 use Ivory\GoogleMap\Helper\Renderer\AbstractJsonRenderer;
-use Ivory\JsonBuilder\JsonBuilder;
+use Ivory\GoogleMap\Helper\JsonBuilder\JsonBuilder;
 
 class StreetViewControlRenderer extends AbstractJsonRenderer implements ControlRendererInterface
 {

@@ -19,7 +19,7 @@ use Ivory\GoogleMap\Helper\Renderer\AbstractJsonRenderer;
 use Ivory\GoogleMap\Helper\Renderer\Overlay\CircleRenderer;
 use Ivory\GoogleMap\Map;
 use Ivory\GoogleMap\Overlay\Circle;
-use Ivory\JsonBuilder\JsonBuilder;
+use Ivory\GoogleMap\Helper\JsonBuilder\JsonBuilder;
 use PHPUnit\Framework\TestCase;
 
 class CircleRendererTest extends TestCase

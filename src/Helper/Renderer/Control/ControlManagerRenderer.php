@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace Ivory\GoogleMap\Helper\Renderer\Control;
 
 use Ivory\GoogleMap\Control\ControlManager;
-use Ivory\JsonBuilder\JsonBuilder;
+use Ivory\GoogleMap\Helper\JsonBuilder\JsonBuilder;
 
 class ControlManagerRenderer
 {

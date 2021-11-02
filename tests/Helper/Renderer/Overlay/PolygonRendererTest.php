@@ -19,7 +19,7 @@ use Ivory\GoogleMap\Helper\Renderer\AbstractJsonRenderer;
 use Ivory\GoogleMap\Helper\Renderer\Overlay\PolygonRenderer;
 use Ivory\GoogleMap\Map;
 use Ivory\GoogleMap\Overlay\Polygon;
-use Ivory\JsonBuilder\JsonBuilder;
+use Ivory\GoogleMap\Helper\JsonBuilder\JsonBuilder;
 use PHPUnit\Framework\TestCase;
 
 class PolygonRendererTest extends TestCase

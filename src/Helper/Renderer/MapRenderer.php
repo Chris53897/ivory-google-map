@@ -18,7 +18,7 @@ use Ivory\GoogleMap\Helper\Renderer\Control\ControlManagerRenderer;
 use Ivory\GoogleMap\Helper\Renderer\Utility\RequirementRenderer;
 use Ivory\GoogleMap\Map;
 use Ivory\GoogleMap\MapTypeId;
-use Ivory\JsonBuilder\JsonBuilder;
+use Ivory\GoogleMap\Helper\JsonBuilder\JsonBuilder;
 
 class MapRenderer extends AbstractJsonRenderer
 {
